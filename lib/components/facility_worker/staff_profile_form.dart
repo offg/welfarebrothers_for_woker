@@ -8,7 +8,7 @@ import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facili
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/working_hours_config.dart';
 
 class StaffProfileForm extends StatefulWidget {
-  FacilityWorkerProfile facilityWorkerProfile;
+  final FacilityWorkerProfile facilityWorkerProfile;
   StaffProfileForm(this.facilityWorkerProfile);
 
   @override
@@ -158,31 +158,32 @@ class _StaffProfileFormState extends State<StaffProfileForm> {
           icon: Icons.delete,
           onTap: () {
             showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text("確認"),
-                    content: Text("削除します。よろしいですか？"),
-                    actions: [
-                      FlatButton(
-                        child: Text("キャンセル"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                      FlatButton(
-                        child: Text("削除"),
-                        onPressed: () {
-                          setState(() {
-                            _dayOffRequests.remove(dayOffRequest);
-                            _dayOffRequests = _dayOffRequests;
-                          });
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
-                });
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text("確認"),
+                  content: Text("削除します。よろしいですか？"),
+                  actions: [
+                    FlatButton(
+                      child: Text("キャンセル"),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    FlatButton(
+                      child: Text("削除"),
+                      onPressed: () {
+                        setState(() {
+                          _dayOffRequests.remove(dayOffRequest);
+                          _dayOffRequests = _dayOffRequests;
+                        });
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
           },
         ),
       ],
