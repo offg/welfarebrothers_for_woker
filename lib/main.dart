@@ -3,7 +3,7 @@ import 'package:welfarebrothers_for_worker/config/locator.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/home.dart';
 import 'package:welfarebrothers_for_worker/welfarebrothers_theme.dart';
 
-void main() {
+Future main() async {
   setUp();
   runApp(WelfareBrothersForWorkerApp());
 }

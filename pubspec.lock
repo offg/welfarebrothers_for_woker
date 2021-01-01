@@ -340,6 +340,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  openapi_dart_common:
+    dependency: "direct main"
+    description:
+      name: openapi_dart_common
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.0"
   package_config:
     dependency: transitive
     description:
@@ -409,7 +416,7 @@ packages:
       name: retrofit_generator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.1"
+    version: "1.4.1+1"
   shelf:
     dependency: transitive
     description:
@@ -527,6 +534,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  welfarebrothers_for_worker_api_client:
+    dependency: "direct main"
+    description:
+      path: "../welfarebrothers_for_worker_api_client"
+      relative: true
+    source: path
+    version: "1.0.0"
   yaml:
     dependency: transitive
     description:

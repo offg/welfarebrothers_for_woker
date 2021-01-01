@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/bottom_navigator.dart';
 import 'package:welfarebrothers_for_worker/components/app/tab_navigator.dart';
-import 'package:welfarebrothers_for_worker/screens/for_admin/facility_management.dart';
+import 'package:welfarebrothers_for_worker/screens/for_admin/facility_administration.dart';
+import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_profile_list.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/shift.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/staff_detail.dart';
-import 'package:welfarebrothers_for_worker/screens/for_admin/staff_list.dart';
 import 'package:welfarebrothers_for_worker/screens/me.dart';
-import 'package:welfarebrothers_for_worker/view_models/facility_management.dart';
+import 'package:welfarebrothers_for_worker/view_models/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/view_models/me.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -42,9 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Map<TabItem, Function> routerBuilderByTab = {
     TabItem.facility_management: (context) => {
-          '/': (context) => const FacilityManagementScreen(),
+          '/': (context) => const FacilityAdministrationScreen(),
           '/shift': (context) => const ShiftScreen(),
-          '/staff': (context) => const StaffListScreen(),
+          '/staff': (context) => const FacilityWorkerProfileListScreen(),
           '/staff/detail': (context) => const StaffDetailScreen(),
         },
     TabItem.me: (context) => {
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
   };
   Map<TabItem, Function> navigatorBuilderByTab = {
     TabItem.facility_management: (navigator) => ChangeNotifierProvider(
-          create: (_) => FacilityManagementViewModel()..initialize(),
+          create: (_) => FacilityAdministrationViewModel()..initialize(),
           child: navigator,
         ),
     TabItem.me: (navigator) => ChangeNotifierProvider(

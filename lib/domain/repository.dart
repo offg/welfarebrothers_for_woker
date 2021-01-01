@@ -1,3 +1,1 @@
-import 'base.dart';
-
-abstract class IRepository<T extends WelfareBrothersModelBase> {}
+abstract class IRepository {}

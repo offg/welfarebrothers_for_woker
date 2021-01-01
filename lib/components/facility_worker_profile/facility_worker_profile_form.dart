@@ -3,20 +3,20 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
 import 'package:welfarebrothers_for_worker/config/locator.dart';
-import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/day_off_request.dart';
-import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facility_worker_profile.dart';
-import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/working_hours_config.dart';
+import 'package:welfarebrothers_for_worker/domain/facility_worker_profile.dart';
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
-class StaffProfileForm extends StatefulWidget {
+class FacilityWorkerProfileForm extends StatefulWidget {
   final FacilityWorkerProfile facilityWorkerProfile;
-  StaffProfileForm(this.facilityWorkerProfile);
+  FacilityWorkerProfileForm(this.facilityWorkerProfile);
 
   @override
-  _StaffProfileFormState createState() => _StaffProfileFormState();
+  _FacilityWorkerProfileFormState createState() => _FacilityWorkerProfileFormState();
 }
 
-class _StaffProfileFormState extends State<StaffProfileForm> {
+class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  WorkingHoursConfig workingHoursConfig;
   SlidableController _slidableController;
   FacilityWorkerProfile facilityWorkerProfile;
 
@@ -28,7 +28,7 @@ class _StaffProfileFormState extends State<StaffProfileForm> {
   void initState() {
     setState(() {
       facilityWorkerProfile = widget.facilityWorkerProfile;
-      var workingHoursConfig = facilityWorkerProfile.workingHoursConfig;
+      workingHoursConfig = facilityWorkerProfile.workingHoursConfigObject;
       var dayOffRequests = facilityWorkerProfile.dayOffRequests;
       _controllerForMonthlyWorkingHours = TextEditingController(text: workingHoursConfig.monthlyMaxWorkingHours.toString());
       _controllerForWeeklyWorkingHours = TextEditingController(text: workingHoursConfig.weeklyMaxWorkingHours.toString());
@@ -75,9 +75,9 @@ class _StaffProfileFormState extends State<StaffProfileForm> {
         key: _formKey,
         child: Column(
           children: [
-            Text(facilityWorkerProfile.displayValue),
+            Text(facilityWorkerProfile.displayName),
             SizedBox(height: 20),
-            _buildWorkingHoursConfigForm(context, facilityWorkerProfile.workingHoursConfig),
+            _buildWorkingHoursConfigForm(context, workingHoursConfig),
             SizedBox(height: 20),
             _buildDayOffRequestForm(context),
             RaisedButton(
@@ -124,7 +124,7 @@ class _StaffProfileFormState extends State<StaffProfileForm> {
                 if (valid) {
                   setState(() {
                     _dayOffRequests.add(
-                      DayOffRequest(facilityWorkerProfile.id, value),
+                      DayOffRequest(facilityWorkerProfileId: facilityWorkerProfile.id, date: value),
                     );
                   });
                   return;

@@ -1,18 +1,27 @@
-import 'package:welfarebrothers_for_worker/domain/shift_config/repository.dart';
-import 'package:welfarebrothers_for_worker/domain/shift_config/shift_config.dart';
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class ShiftConfigViewModel extends WelfareBrothersViewModelBase {
-  IShiftConfigRepository _repository;
-  ShiftConfigViewModel(this._repository);
-
   ShiftConfig shiftConfig;
 
-  Future updateShiftConfig(ShiftConfig shiftConfig) async {
-    assert(shiftConfig.id != null);
+  ShiftPatternForWrite _convertShiftPatternForWrite(ShiftPattern shiftPattern) {
+    return ShiftPatternForWrite(
+      shiftConfigId: shiftPattern.shiftConfigId,
+      timeFrom: shiftPattern.timeFrom,
+      timeTo: shiftPattern.timeTo,
+      symbol: shiftPattern.symbol,
+      name: shiftPattern.name,
+    );
+  }
+
+  Future updateShiftPattern(ShiftPattern shiftPattern) async {
     loading = true;
-    var updatedShiftConfig = await _repository.updateShiftConfig(shiftConfig.facilityId, shiftConfig.id, shiftConfig);
-    shiftConfig = updatedShiftConfig;
+    var updatedShiftPattern = await client.forWorkerApi.forWorkerFacilityAdministrationsShiftConfigShiftPatternsUpdate(
+      shiftConfig.facilityAdministration.facility.id,
+      shiftPattern.id,
+      shiftPattern.shiftConfigId.toString(),
+      _convertShiftPatternForWrite(shiftPattern),
+    );
     loading = false;
   }
 }
