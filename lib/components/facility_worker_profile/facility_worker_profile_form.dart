@@ -6,6 +6,7 @@ import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
+import 'package:welfarebrothers_for_worker/view_models/app.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
@@ -27,6 +28,7 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
   @override
   void initState() {
     setState(() {
+      super.initState();
       _facilityWorkerProfile = widget.facilityWorkerProfile;
       _workingHoursConfig = _facilityWorkerProfile.workingHoursConfig;
       _slidableController = SlidableController();
@@ -84,31 +86,50 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
   }
 
   Widget _buildCapabilitiesForm(BuildContext context) {
-    List<Role> roles = [
-      Role(id: "caregiver", name: "介護士"),
-      Role(id: "nurse", name: "看護師"),
-      Role(id: "trainer", name: "機能訓練士"),
-    ];
     return Column(children: [
       SectionTitle("職種設定"),
       Expanded(
-        child: ListView(
-          children: roles
-              .map((role) => CheckboxListTile(
-                    title: Text(role.name),
-                    value: _facilityWorkerProfile.capabilities.contains(role),
-                  ))
-              .toList(),
-        ),
+        child: Consumer<AppViewModel>(
+            builder: (_context, model, child) => ListView(
+                  children: context
+                      .read<AppViewModel>()
+                      .roles
+                      .map((role) => CheckboxListTile(
+                          title: Text(role.name),
+                          onChanged: (value) {
+                            if (value)
+                              _facilityWorkerProfile.addCapability(role);
+                            else
+                              _facilityWorkerProfile.removeCapability(role);
+                            setState(() {});
+                          },
+                          value: _facilityWorkerProfile.capabilities.contains(role)))
+                      .toList(),
+                )),
       ),
       Consumer<FacilityWorkerProfileViewModel>(
           builder: (_context, model, child) => RaisedButton(
               child: Text("保存"),
               onPressed: () async {
-                LoadingOverlay.of(context).during(model.updateOrCreateWorkingHoursConfig(
+                if (_facilityWorkerProfile.capabilities.isEmpty) {
+                  await showDialog(
+                      context: _context,
+                      builder: (context) => AlertDialog(
+                            title: Text("エラー"),
+                            content: Text("一つ以上の職種を選択してください"),
+                            actions: [
+                              RaisedButton(
+                                child: Text("閉じる"),
+                                onPressed: () => Navigator.of(context).pop(),
+                              ),
+                            ],
+                          ));
+                  return;
+                }
+                await LoadingOverlay.of(context).during(model.updateFacilityWorkerProfile(
                   _facilityWorkerProfile,
-                  _workingHoursConfig,
                 ));
+                setState(() {});
               }))
     ]);
   }

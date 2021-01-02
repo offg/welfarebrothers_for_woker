@@ -39,10 +39,24 @@ extension WorkingHoursConfigExtension on WorkingHoursConfig {
 extension FacilityWorkerProfileExtension on FacilityWorkerProfile {
   FacilityWorkerProfileForWrite toWritable() {
     return FacilityWorkerProfileForWrite(
-        facilityAdministrationId: this.facilityAdministration.facility.id,
-        workerProfileId: this.workerProfile.id,
-        firstName: this.firstName,
-        lastName: this.lastName);
+      facilityAdministrationId: this.facilityAdministration.facility.id,
+      workerProfileId: this.workerProfile.id,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      capabilityIds: this.capabilities.map((e) => e.id).toList(),
+    );
+  }
+
+  void addCapability(Role role) {
+    var newCapabilities = List<Role>.from(this.capabilities);
+    newCapabilities.add(role);
+    this.capabilities = newCapabilities;
+  }
+
+  void removeCapability(Role role) {
+    var newCapabilities = List<Role>.from(this.capabilities);
+    newCapabilities.remove(role);
+    this.capabilities = newCapabilities;
   }
 
   String get facilityAdministrationId => this.facilityAdministration.facility.id;

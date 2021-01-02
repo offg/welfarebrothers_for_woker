@@ -36,8 +36,7 @@ class FacilityWorkerProfileViewModel extends WelfareBrothersViewModelBase {
     loading = true;
     var updatedFacilityWorkerProfile =
         await _repository.updateFacilityWorkerProfile(facilityId, facilityWorkerProfile.id, facilityWorkerProfile);
-    int index = facilityWorkerProfiles.indexWhere((element) => element.id == facilityWorkerProfile.id);
-    facilityWorkerProfiles.replaceRange(index, index + 1, [updatedFacilityWorkerProfile]);
+    _updateFacilityWorkerProfile(facilityWorkerProfile);
     loading = false;
   }
 

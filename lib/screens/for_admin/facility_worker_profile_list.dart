@@ -10,16 +10,23 @@ class FacilityWorkerProfileListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FacilityWorkerProfileViewModel staffViewModel =
-        ModalRoute.of(context).settings.arguments as FacilityWorkerProfileViewModel;
     return Consumer<FacilityAdministrationViewModel>(
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(),
         body: Column(
           children: [
-            SectionTitle("従業員一覧"),
             Expanded(
               flex: 1,
+              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                SectionTitle("従業員一覧"),
+                IconButton(
+                  icon: Icon(Icons.add_rounded),
+                  onPressed: () async {},
+                ),
+              ]),
+            ),
+            Expanded(
+              flex: 9,
               child: Consumer<FacilityWorkerProfileViewModel>(
                 builder: (context, model, child) => _buildStaffList(context, model),
               ),
