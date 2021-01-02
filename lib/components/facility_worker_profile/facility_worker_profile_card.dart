@@ -24,7 +24,7 @@ class FacilityWorkerProfileCard extends StatelessWidget {
         ]),
         subtitle: Column(
           children: [
-            _buildWorkingHours(context, facilityWorkerProfile.workingHoursConfigObject),
+            _buildWorkingHours(context, facilityWorkerProfile.workingHoursConfig),
             _buildCapabilities(context, facilityWorkerProfile.capabilities)
           ],
         ),

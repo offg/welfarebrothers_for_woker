@@ -45,10 +45,6 @@ extension FacilityWorkerProfileExtension on FacilityWorkerProfile {
         lastName: this.lastName);
   }
 
+  String get facilityAdministrationId => this.facilityAdministration.facility.id;
   String get displayName => (this.lastName ?? "") + (this.firstName ?? "");
-  WorkingHoursConfig get workingHoursConfigObject => this.workingHoursConfig.isNotEmpty
-      ? this.workingHoursConfig.first
-      : WorkingHoursConfigExtension.withDefault(
-          facilityWorkerProfileId: this.id,
-        );
 }

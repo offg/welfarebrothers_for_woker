@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/bottom_navigator.dart';
 import 'package:welfarebrothers_for_worker/components/app/tab_navigator.dart';
+import 'package:welfarebrothers_for_worker/config/locator.dart';
+import 'package:welfarebrothers_for_worker/domain/facility_worker_profile_repository.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_profile_list.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/shift.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/staff_detail.dart';
 import 'package:welfarebrothers_for_worker/screens/me.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_administration.dart';
+import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/view_models/me.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -52,8 +55,15 @@ class _HomeScreenState extends State<HomeScreen> {
         }
   };
   Map<TabItem, Function> navigatorBuilderByTab = {
-    TabItem.facility_management: (navigator) => ChangeNotifierProvider(
-          create: (_) => FacilityAdministrationViewModel()..initialize(),
+    TabItem.facility_management: (navigator) => MultiProvider(
+          providers: [
+            ChangeNotifierProvider(
+              create: (_) => FacilityAdministrationViewModel()..initialize(),
+            ),
+            ChangeNotifierProvider(
+              create: (_) => FacilityWorkerProfileViewModel(locator<IFacilityWorkerProfileRepository>())..initialize(),
+            ),
+          ],
           child: navigator,
         ),
     TabItem.me: (navigator) => ChangeNotifierProvider(

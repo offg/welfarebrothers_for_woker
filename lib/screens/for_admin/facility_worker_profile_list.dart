@@ -13,21 +13,18 @@ class FacilityWorkerProfileListScreen extends StatelessWidget {
     FacilityWorkerProfileViewModel staffViewModel =
         ModalRoute.of(context).settings.arguments as FacilityWorkerProfileViewModel;
     return Consumer<FacilityAdministrationViewModel>(
-      builder: (context, model, child) => ChangeNotifierProvider<FacilityWorkerProfileViewModel>(
-        create: (_) => staffViewModel,
-        child: Scaffold(
-          appBar: AppBar(),
-          body: Column(
-            children: [
-              SectionTitle("従業員一覧"),
-              Expanded(
-                flex: 1,
-                child: Consumer<FacilityWorkerProfileViewModel>(
-                  builder: (context, model, child) => _buildStaffList(context, model),
-                ),
-              )
-            ],
-          ),
+      builder: (context, model, child) => Scaffold(
+        appBar: AppBar(),
+        body: Column(
+          children: [
+            SectionTitle("従業員一覧"),
+            Expanded(
+              flex: 1,
+              child: Consumer<FacilityWorkerProfileViewModel>(
+                builder: (context, model, child) => _buildStaffList(context, model),
+              ),
+            )
+          ],
         ),
       ),
     );

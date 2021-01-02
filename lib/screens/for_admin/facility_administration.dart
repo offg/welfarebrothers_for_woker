@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/components/logo.dart';
-import 'package:welfarebrothers_for_worker/config/locator.dart';
-import 'package:welfarebrothers_for_worker/domain/facility_worker_profile_repository.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
 
@@ -58,11 +57,12 @@ class FacilityAdministrationScreen extends StatelessWidget {
         "従業員管理",
         Icons.people_rounded,
         (_context, model) => () async {
-          var facilityId = model.currentFacilityId;
-          var repository = locator<IFacilityWorkerProfileRepository>();
-          var vm = FacilityWorkerProfileViewModel(facilityId, repository);
-          await vm.initialize();
-          Navigator.of(_context).pushNamed("/staff", arguments: vm);
+          await LoadingOverlay.of(_context).during(
+            _context.read<FacilityWorkerProfileViewModel>().initializeWithFacility(
+                  model.currentFacilityId,
+                ),
+          );
+          Navigator.of(_context).pushNamed("/staff");
         },
       ),
       Menu("シフト管理", Icons.table_chart_rounded, (context, model) => () {})

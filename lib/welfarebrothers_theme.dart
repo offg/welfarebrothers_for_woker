@@ -34,7 +34,7 @@ const _textStyleBase = TextStyle(
 );
 
 TextStyle _textStyleBySize(double size) {
-  return _textStyleBase.merge(TextStyle(fontSize: size));
+  return _textStyleBase.merge(TextStyle(fontSize: size, height: 1));
 }
 
 var _textTheme = TextTheme(
@@ -86,6 +86,14 @@ var _iconTheme = IconThemeData(
   opacity: 0.8,
   color: _primaryColor,
 );
+var _buttonTheme = ButtonThemeData(
+  minWidth: 135.0,
+  height: 38,
+  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+  colorScheme: _colorScheme,
+  textTheme: ButtonTextTheme.primary,
+  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+);
 
 var welfareBrothersTheme = ThemeData(
   brightness: Brightness.light,
@@ -93,7 +101,7 @@ var welfareBrothersTheme = ThemeData(
   accentColor: _secondaryColor,
   backgroundColor: Colors.white,
   colorScheme: _colorScheme,
-  buttonTheme: ButtonThemeData(colorScheme: _colorScheme, textTheme: ButtonTextTheme.primary),
+  buttonTheme: _buttonTheme,
 
   scaffoldBackgroundColor: Colors.white,
   canvasColor: Colors.white,
