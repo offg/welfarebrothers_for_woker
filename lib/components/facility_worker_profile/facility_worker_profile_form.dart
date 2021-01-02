@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
-import 'package:welfarebrothers_for_worker/config/locator.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
@@ -24,7 +23,6 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
 
   FacilityWorkerProfile _facilityWorkerProfile;
   WorkingHoursConfig _workingHoursConfig;
-  List<DayOffRequest> _dayOffRequests;
 
   @override
   void initState() {
@@ -37,7 +35,6 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
   }
 
   Future<bool> validate(BuildContext context, DateTime value) async {
-    print(value);
     bool duplicated = _facilityWorkerProfile.dayOffRequests.any((element) => dateTimeEq(element.date, value));
     if (duplicated) {
       showDialog(
@@ -72,7 +69,12 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
           children: [
             Text(_facilityWorkerProfile.displayName),
             SizedBox(height: 10),
-            Expanded(flex: 2, child: _buildWorkingHoursConfigForm(context, _workingHoursConfig)),
+            Expanded(
+              flex: 2,
+              child: _buildCapabilitiesForm(context),
+            ),
+            SizedBox(height: 10),
+            Expanded(flex: 2, child: _buildWorkingHoursConfigForm(context)),
             SizedBox(height: 10),
             Expanded(flex: 2, child: _buildDayOffRequestForm(context)),
           ],
@@ -81,7 +83,37 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
     );
   }
 
-  Widget _buildWorkingHoursConfigForm(BuildContext context, WorkingHoursConfig workingHoursConfig) {
+  Widget _buildCapabilitiesForm(BuildContext context) {
+    List<Role> roles = [
+      Role(id: "caregiver", name: "介護士"),
+      Role(id: "nurse", name: "看護師"),
+      Role(id: "trainer", name: "機能訓練士"),
+    ];
+    return Column(children: [
+      SectionTitle("職種設定"),
+      Expanded(
+        child: ListView(
+          children: roles
+              .map((role) => CheckboxListTile(
+                    title: Text(role.name),
+                    value: _facilityWorkerProfile.capabilities.contains(role),
+                  ))
+              .toList(),
+        ),
+      ),
+      Consumer<FacilityWorkerProfileViewModel>(
+          builder: (_context, model, child) => RaisedButton(
+              child: Text("保存"),
+              onPressed: () async {
+                LoadingOverlay.of(context).during(model.updateOrCreateWorkingHoursConfig(
+                  _facilityWorkerProfile,
+                  _workingHoursConfig,
+                ));
+              }))
+    ]);
+  }
+
+  Widget _buildWorkingHoursConfigForm(BuildContext context) {
     return Column(children: [
       SectionTitle("勤務時間設定"),
       TextFormField(
@@ -124,10 +156,12 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
                 var value = await showDatePicker(
                   context: context,
                   initialDate: now,
+                  locale: const Locale("ja"),
                   firstDate: DateTime(now.year, now.month - 1),
                   lastDate: DateTime(now.year, now.month + 6),
                 );
                 if (value != null) {
+                  value = value.add(value.timeZoneOffset);
                   bool valid = await validate(_context, value);
                   if (valid) {
                     await LoadingOverlay.of(_context).during(model.createDayOffRequest(_facilityWorkerProfile,
@@ -154,6 +188,7 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
   }
 
   Widget _buildDayOffRequest(BuildContext context, DayOffRequest dayOffRequest) {
+    var formatter = DateFormat("yyyy/MM/dd(EE)", "ja");
     return Consumer<FacilityWorkerProfileViewModel>(
         builder: (_context, model, child) => Slidable(
               controller: _slidableController,
@@ -162,7 +197,7 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
               child: Container(
                   child: ListTile(
                 title: Text(
-                  locator<DateFormat>().format(dayOffRequest.date),
+                  formatter.format(dayOffRequest.date),
                 ),
               )),
               actionPane: SlidableDrawerActionPane(),
