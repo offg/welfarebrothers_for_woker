@@ -1,3 +1,4 @@
+import 'package:welfarebrothers_for_worker/domain/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile_repository.dart';
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
@@ -6,43 +7,60 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 class FacilityWorkerProfileViewModel extends WelfareBrothersViewModelBase {
   IFacilityWorkerProfileRepository _repository;
   List<FacilityWorkerProfile> facilityWorkerProfiles;
-  String facilityId;
+  FacilityAdministration facilityAdministration;
   FacilityWorkerProfileViewModel(this._repository);
 
-  Future initializeWithFacility(String facilityId) async {
-    this.facilityId = facilityId;
+  Future initializeWithFacility(FacilityAdministration facilityAdministration) async {
+    this.facilityAdministration = facilityAdministration;
     await initialize();
   }
 
   @override
   Future initialize() async {
-    if (facilityId == null) return;
+    if (facilityAdministration == null) return;
     loading = true;
-    facilityWorkerProfiles = await _repository.fetchFacilityWorkerProfiles(facilityId);
+    await _fetchFacilityProfiles();
+    loading = false;
+  }
+
+  Future _fetchFacilityProfiles() async {
+    loading = true;
+    facilityWorkerProfiles = await _repository.fetchFacilityWorkerProfiles(facilityAdministration.id);
+    loading = false;
+  }
+
+  Future updateOrCreateFacilityWorkerProfile(FacilityWorkerProfile facilityWorkerProfile) async {
+    loading = true;
+    var fn = facilityWorkerProfile.id == null ? createFacilityWorkerProfile : updateFacilityWorkerProfile;
+    await fn(facilityWorkerProfile);
+    await updateOrCreateWorkingHoursConfig(facilityWorkerProfile, facilityWorkerProfile.workingHoursConfig);
     loading = false;
   }
 
   Future createFacilityWorkerProfile(FacilityWorkerProfile facilityWorkerProfile) async {
     loading = true;
     var createdFacilityWorkerProfile = await _repository.createFacilityWorkerProfile(
-      facilityId,
+      facilityAdministration.id,
       facilityWorkerProfile,
     );
-    facilityWorkerProfiles.add(createdFacilityWorkerProfile);
+    facilityWorkerProfile.id = createdFacilityWorkerProfile.id;
+    facilityWorkerProfile.workingHoursConfig.facilityWorkerProfileId = createdFacilityWorkerProfile.id;
+
+    await _fetchFacilityProfiles();
     loading = false;
   }
 
   Future updateFacilityWorkerProfile(FacilityWorkerProfile facilityWorkerProfile) async {
     loading = true;
-    var updatedFacilityWorkerProfile =
-        await _repository.updateFacilityWorkerProfile(facilityId, facilityWorkerProfile.id, facilityWorkerProfile);
-    _updateFacilityWorkerProfile(facilityWorkerProfile);
+    var updatedFacilityWorkerProfile = await _repository.updateFacilityWorkerProfile(
+        facilityAdministration.id, facilityWorkerProfile.id, facilityWorkerProfile);
+    _updateFacilityWorkerProfile(updatedFacilityWorkerProfile);
     loading = false;
   }
 
   Future deleteFacilityWorkerProfile(int facilityWorkerProfileId) async {
     loading = true;
-    await _repository.deleteFacilityWorkerProfile(facilityId, facilityWorkerProfileId);
+    await _repository.deleteFacilityWorkerProfile(facilityAdministration.id, facilityWorkerProfileId);
     loading = false;
   }
 
@@ -89,16 +107,21 @@ class FacilityWorkerProfileViewModel extends WelfareBrothersViewModelBase {
   }
 
   Future updateOrCreateWorkingHoursConfig(
-      FacilityWorkerProfile facilityWorkerProfile, WorkingHoursConfig workingHoursConfig) async {
+    FacilityWorkerProfile facilityWorkerProfile,
+    WorkingHoursConfig workingHoursConfig,
+  ) async {
     loading = true;
 
     WorkingHoursConfig newObject;
     if (workingHoursConfig.id == null) {
       newObject = await _repository.createWorkingHoursConfig(
-          facilityWorkerProfile.facilityAdministration.facility.id, facilityWorkerProfile.id, workingHoursConfig);
+        facilityWorkerProfile.facilityAdministrationId,
+        facilityWorkerProfile.id,
+        workingHoursConfig,
+      );
     } else {
       newObject = await _repository.updateWorkingHoursConfig(
-        facilityId,
+        facilityWorkerProfile.facilityAdministrationId,
         facilityWorkerProfile.id,
         workingHoursConfig.id,
         workingHoursConfig,

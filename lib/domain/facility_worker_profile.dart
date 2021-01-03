@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:welfarebrothers_for_worker/constants/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
@@ -36,16 +38,25 @@ extension WorkingHoursConfigExtension on WorkingHoursConfig {
   String get monthlyMaxWorkingHoursDisplay => (monthlyMaxWorkingHours.toString() ?? "-") + "時間/月";
 }
 
+mixin Foo {}
+
 extension FacilityWorkerProfileExtension on FacilityWorkerProfile {
   FacilityWorkerProfileForWrite toWritable() {
     return FacilityWorkerProfileForWrite(
       facilityAdministrationId: this.facilityAdministration.facility.id,
-      workerProfileId: this.workerProfile.id,
+      workerProfileId: this.workerProfile?.id ?? null,
       firstName: this.firstName,
       lastName: this.lastName,
       capabilityIds: this.capabilities.map((e) => e.id).toList(),
     );
   }
+
+  static FacilityWorkerProfile withEmpty(FacilityAdministration facilityAdministration) => FacilityWorkerProfile(
+      firstName: "",
+      lastName: "",
+      capabilities: [],
+      facilityAdministration: facilityAdministration,
+      workingHoursConfig: WorkingHoursConfigExtension.withDefault(facilityWorkerProfileId: null));
 
   void addCapability(Role role) {
     var newCapabilities = List<Role>.from(this.capabilities);
@@ -58,6 +69,8 @@ extension FacilityWorkerProfileExtension on FacilityWorkerProfile {
     newCapabilities.remove(role);
     this.capabilities = newCapabilities;
   }
+
+  FacilityWorkerProfile clone() => FacilityWorkerProfile.fromJson(json.decode(json.encode(this)));
 
   String get facilityAdministrationId => this.facilityAdministration.facility.id;
   String get displayName => (this.lastName ?? "") + (this.firstName ?? "");

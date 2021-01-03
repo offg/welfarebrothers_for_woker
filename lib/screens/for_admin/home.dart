@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/bottom_navigator.dart';
 import 'package:welfarebrothers_for_worker/components/app/tab_navigator.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/facility_administration.dart';
+import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_profile_detail.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_profile_list.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/shift.dart';
-import 'package:welfarebrothers_for_worker/screens/for_admin/staff_detail.dart';
 import 'package:welfarebrothers_for_worker/screens/me.dart';
 import 'package:welfarebrothers_for_worker/view_models/me.dart';
 
@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
           '/': (context) => const FacilityAdministrationScreen(),
           '/shift': (context) => const ShiftScreen(),
           '/staff': (context) => const FacilityWorkerProfileListScreen(),
-          '/staff/detail': (context) => const StaffDetailScreen(),
+          '/staff/detail': (context) => const FacilityWorkerProfileDetailScreen(),
         },
     TabItem.me: (context) => {
           '/': (context) => MeScreen(),

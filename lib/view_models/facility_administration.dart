@@ -1,15 +1,14 @@
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class FacilityAdministrationViewModel extends WelfareBrothersViewModelBase {
-  String _currentFacilityId;
-  String get currentFacilityId => _currentFacilityId;
-  set currentFacilityId(String facilityId) {
-    _currentFacilityId = facilityId;
-    notifyListeners();
-  }
+  List<FacilityAdministration> facilityAdministrations;
+  FacilityAdministration currentFacilityAdministration;
 
   @override
   Future initialize() async {
-    currentFacilityId = "sample001";
+    facilityAdministrations = [FacilityAdministration(facility: Facility(id: "sample001", name: "サンプルデイ"))];
+    currentFacilityAdministration = facilityAdministrations.first;
+    notifyListeners();
   }
 }

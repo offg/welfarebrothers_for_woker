@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
 import 'package:welfarebrothers_for_worker/components/facility_worker_profile/facility_worker_profile_card.dart';
+import 'package:welfarebrothers_for_worker/domain/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class FacilityWorkerProfileListScreen extends StatelessWidget {
   const FacilityWorkerProfileListScreen();
@@ -21,7 +23,11 @@ class FacilityWorkerProfileListScreen extends StatelessWidget {
                 SectionTitle("従業員一覧"),
                 IconButton(
                   icon: Icon(Icons.add_rounded),
-                  onPressed: () async {},
+                  onPressed: () async {
+                    FacilityWorkerProfile facilityWorkerProfile =
+                        FacilityWorkerProfileExtension.withEmpty(model.currentFacilityAdministration);
+                    Navigator.of(context).pushNamed("/staff/detail", arguments: facilityWorkerProfile);
+                  },
                 ),
               ]),
             ),

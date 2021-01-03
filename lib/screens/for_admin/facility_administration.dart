@@ -18,36 +18,16 @@ class FacilityAdministrationScreen extends StatelessWidget {
   const FacilityAdministrationScreen();
   Widget _buildMenu(BuildContext context, Menu menu) {
     return Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Consumer<FacilityAdministrationViewModel>(
-          builder: (_context, model, child) => InkWell(
-            onTap: menu.menuOnTap(_context, model),
-            child: Container(
-              constraints: BoxConstraints(
-                maxHeight: 100,
-                maxWidth: 200,
-              ),
-              child: Card(
-                elevation: 0.5,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(menu.icon),
-                      Text(
-                        menu.title,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.withOpacity(0.8),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ));
+      padding: const EdgeInsets.all(12.0),
+      child: Consumer<FacilityAdministrationViewModel>(
+        builder: (_context, model, child) => ListTile(
+          leading: Icon(menu.icon),
+          title: Text(menu.title),
+          onTap: menu.menuOnTap(_context, model),
+          trailing: Icon(Icons.navigate_next_sharp),
+        ),
+      ),
+    );
   }
 
   @override
@@ -55,17 +35,17 @@ class FacilityAdministrationScreen extends StatelessWidget {
     List<Menu> menuList = [
       Menu(
         "従業員管理",
-        Icons.people_rounded,
+        Icons.people_sharp,
         (_context, model) => () async {
           await LoadingOverlay.of(_context).during(
             _context.read<FacilityWorkerProfileViewModel>().initializeWithFacility(
-                  model.currentFacilityId,
+                  model.currentFacilityAdministration,
                 ),
           );
           Navigator.of(_context).pushNamed("/staff");
         },
       ),
-      Menu("シフト管理", Icons.table_chart_rounded, (context, model) => () {})
+      Menu("シフト管理", Icons.watch_later_sharp, (context, model) => () {})
     ];
     return Scaffold(
       appBar: AppBar(
