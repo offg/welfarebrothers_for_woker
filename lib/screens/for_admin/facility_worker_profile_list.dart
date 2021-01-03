@@ -26,7 +26,7 @@ class FacilityWorkerProfileListScreen extends StatelessWidget {
                   onPressed: () async {
                     FacilityWorkerProfile facilityWorkerProfile =
                         FacilityWorkerProfileExtension.withEmpty(model.currentFacilityAdministration);
-                    Navigator.of(context).pushNamed("/staff/detail", arguments: facilityWorkerProfile);
+                    Navigator.of(context).pushNamed("/workers/detail", arguments: facilityWorkerProfile);
                   },
                 ),
               ]),
@@ -34,7 +34,7 @@ class FacilityWorkerProfileListScreen extends StatelessWidget {
             Expanded(
               flex: 9,
               child: Consumer<FacilityWorkerProfileViewModel>(
-                builder: (context, model, child) => _buildStaffList(context, model),
+                builder: (context, model, child) => _buildFacilityWorkerProfileList(context, model),
               ),
             )
           ],
@@ -43,7 +43,7 @@ class FacilityWorkerProfileListScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStaffList(BuildContext context, FacilityWorkerProfileViewModel model) {
+  Widget _buildFacilityWorkerProfileList(BuildContext context, FacilityWorkerProfileViewModel model) {
     if (model.facilityWorkerProfiles?.isNotEmpty ?? false) {
       return ListView(
         children: model.facilityWorkerProfiles
@@ -51,7 +51,7 @@ class FacilityWorkerProfileListScreen extends StatelessWidget {
               (facilityWorkerProfile) => FacilityWorkerProfileCard(
                 facilityWorkerProfile,
                 () {
-                  Navigator.of(context).pushNamed("/staff/detail", arguments: facilityWorkerProfile);
+                  Navigator.of(context).pushNamed("/workers/detail", arguments: facilityWorkerProfile);
                 },
               ),
             )

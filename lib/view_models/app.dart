@@ -7,11 +7,13 @@ class AppViewModel extends WelfareBrothersViewModelBase {
   AppViewModel(this._roleRepository);
 
   List<Role> roles = new List<Role>();
+  Map<String, Role> roleById;
 
   @override
   Future initialize() async {
     loading = true;
     this.roles = await _roleRepository.listRoles();
+    this.roleById = Map<String, Role>.fromEntries(this.roles.map((e) => MapEntry(e.id, e)));
     loading = false;
   }
 }

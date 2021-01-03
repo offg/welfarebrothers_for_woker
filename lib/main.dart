@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/config/locator.dart';
+import 'package:welfarebrothers_for_worker/domain/shift_config_repository.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/home.dart';
 import 'package:welfarebrothers_for_worker/view_models/app.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
+import 'package:welfarebrothers_for_worker/view_models/shift_config.dart';
 import 'package:welfarebrothers_for_worker/welfarebrothers_theme.dart';
 
 import 'domain/facility_worker_profile_repository.dart';
@@ -22,6 +24,9 @@ Future main() async {
     ),
     ChangeNotifierProvider(
       create: (_) => FacilityWorkerProfileViewModel(locator<IFacilityWorkerProfileRepository>())..initialize(),
+    ),
+    ChangeNotifierProvider(
+      create: (_) => ShiftConfigViewModel(locator<IShiftConfigRepository>())..initialize(),
     ),
   ], child: WelfareBrothersForWorkerApp()));
 }

@@ -1,3 +1,4 @@
+import 'package:welfarebrothers_for_worker/domain/shift_config.dart';
 import 'package:welfarebrothers_for_worker/domain/shift_config_repository.dart';
 import 'package:welfarebrothers_for_worker/services/api_client.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
@@ -5,23 +6,6 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 class ShiftConfigApiRepository extends IShiftConfigRepository {
   WelfarebrothersApiClient _client;
   ShiftConfigApiRepository(this._client);
-
-  _convertRoleAssignmentRequirementForWrite(RoleAssignmentRequirement roleAssignmentRequirement) {
-    return RoleAssignmentRequirementForWrite(
-      roleId: roleAssignmentRequirement.role.id,
-      shiftConfigId: roleAssignmentRequirement.shiftConfigId,
-    );
-  }
-
-  _convertShiftPatternForWrite(ShiftPattern shiftPattern) {
-    return ShiftPatternForWrite(
-      shiftConfigId: shiftPattern.shiftConfigId,
-      timeFrom: shiftPattern.timeFrom,
-      timeTo: shiftPattern.timeTo,
-      symbol: shiftPattern.symbol,
-      name: shiftPattern.name,
-    );
-  }
 
   @override
   Future<RoleAssignmentRequirement> createRoleAssignmentRequirement(
@@ -32,7 +16,7 @@ class ShiftConfigApiRepository extends IShiftConfigRepository {
     return await _client.forWorkerApi.forWorkerFacilityAdministrationsShiftConfigRoleAssignmentRequirementsCreate(
       facilityId,
       shiftConfigId.toString(),
-      _convertRoleAssignmentRequirementForWrite(roleAssignmentRequirement),
+      roleAssignmentRequirement.toWritable(),
     );
   }
 
@@ -51,10 +35,7 @@ class ShiftConfigApiRepository extends IShiftConfigRepository {
     ShiftPattern shiftPattern,
   ) async {
     return await _client.forWorkerApi.forWorkerFacilityAdministrationsShiftConfigShiftPatternsCreate(
-      facilityId,
-      shiftConfigId.toString(),
-      _convertShiftPatternForWrite(shiftPattern),
-    );
+        facilityId, shiftConfigId.toString(), shiftPattern.toWritable());
   }
 
   @override
@@ -71,7 +52,7 @@ class ShiftConfigApiRepository extends IShiftConfigRepository {
   }
 
   @override
-  Future<ShiftPattern> deleteShiftPattern(String facilityId, int shiftConfigId, int shiftPatternId) async {
+  Future deleteShiftPattern(String facilityId, int shiftConfigId, int shiftPatternId) async {
     await _client.forWorkerApi.forWorkerFacilityAdministrationsShiftConfigShiftPatternsDelete(
       facilityId,
       shiftPatternId,
@@ -96,7 +77,7 @@ class ShiftConfigApiRepository extends IShiftConfigRepository {
       facilityId,
       roleAssignmentRequirementId,
       shiftConfigId.toString(),
-      _convertRoleAssignmentRequirementForWrite(roleAssignmentRequirement),
+      roleAssignmentRequirement.toWritable(),
     );
   }
 
@@ -108,10 +89,6 @@ class ShiftConfigApiRepository extends IShiftConfigRepository {
     ShiftPattern shiftPattern,
   ) async {
     return await _client.forWorkerApi.forWorkerFacilityAdministrationsShiftConfigShiftPatternsUpdate(
-      facilityId,
-      shiftPatternId,
-      shiftConfigId.toString(),
-      _convertShiftPatternForWrite(shiftPattern),
-    );
+        facilityId, shiftPatternId, shiftConfigId.toString(), shiftPattern.toWritable());
   }
 }

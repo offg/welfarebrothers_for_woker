@@ -4,30 +4,13 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
+import 'package:welfarebrothers_for_worker/components/app/panel.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
 import 'package:welfarebrothers_for_worker/view_models/app.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-
-class Panel extends StatelessWidget {
-  final Widget child;
-  final double padding;
-  const Panel({Widget child, double padding})
-      : child = child,
-        padding = padding ?? 12;
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-        elevation: 0,
-        color: Colors.blueGrey.withOpacity(0.1),
-        child: Padding(
-          padding: EdgeInsets.all(padding),
-          child: child,
-        ));
-  }
-}
 
 class FacilityWorkerProfileForm extends StatefulWidget {
   final FacilityWorkerProfile facilityWorkerProfile;

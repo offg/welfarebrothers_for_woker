@@ -61,8 +61,9 @@ class FacilityWorkerProfileCard extends StatelessWidget {
     if (workingHoursConfig == null) return Container();
     return Padding(
         padding: EdgeInsets.all(8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          direction: Axis.horizontal,
           children: [
             Text(workingHoursConfig.weeklyMaxWorkingHoursDisplay),
             SizedBox(width: 20),

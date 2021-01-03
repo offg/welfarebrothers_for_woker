@@ -4,6 +4,7 @@ import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/components/logo.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
+import 'package:welfarebrothers_for_worker/view_models/shift_config.dart';
 
 typedef MenuOnTap = Function Function(BuildContext context, FacilityAdministrationViewModel model);
 
@@ -42,10 +43,20 @@ class FacilityAdministrationScreen extends StatelessWidget {
                   model.currentFacilityAdministration,
                 ),
           );
-          Navigator.of(_context).pushNamed("/staff");
+          Navigator.of(_context).pushNamed("/workers");
         },
       ),
-      Menu("シフト管理", Icons.watch_later_sharp, (context, model) => () {})
+      Menu(
+          "シフト管理",
+          Icons.watch_later_sharp,
+          (_context, model) => () async {
+                await LoadingOverlay.of(_context).during(
+                  _context
+                      .read<ShiftConfigViewModel>()
+                      .initializeWithFacilityAdministration(model.currentFacilityAdministration),
+                );
+                Navigator.of(_context).pushNamed("/shift_config");
+              }),
     ];
     return Scaffold(
       appBar: AppBar(
@@ -69,18 +80,19 @@ class FacilityAdministrationScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-              flex: 2,
-              child: SingleChildScrollView(
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  direction: Axis.horizontal,
-                  children: menuList
-                      .map(
-                        (menu) => _buildMenu(context, menu),
-                      )
-                      .toList(),
-                ),
-              ))
+            flex: 2,
+            child: SingleChildScrollView(
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                direction: Axis.horizontal,
+                children: menuList
+                    .map(
+                      (menu) => _buildMenu(context, menu),
+                    )
+                    .toList(),
+              ),
+            ),
+          )
         ],
       ),
     );

@@ -13,6 +13,32 @@ extension DayOffRequestExtension on DayOffRequest {
   }
 }
 
+class _WorkingHoursConfigForForWriteWrapper extends WorkingHoursConfigForWrite {
+  _WorkingHoursConfigForForWriteWrapper(int facilityWorkerProfileId, int monthlyMaxWorkingHours, int weeklyMaxWorkingHours)
+      : super(
+            facilityWorkerProfileId: facilityWorkerProfileId,
+            weeklyMaxWorkingHours: weeklyMaxWorkingHours,
+            monthlyMaxWorkingHours: monthlyMaxWorkingHours);
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (facilityWorkerProfileId != null) {
+      json[r'facility_worker_profile_id'] = facilityWorkerProfileId;
+    }
+    json[r'monthly_max_working_hours'] = monthlyMaxWorkingHours;
+    json[r'weekly_max_working_hours'] = weeklyMaxWorkingHours;
+    return json;
+  }
+  // @override
+  // Map<String, dyna toJson() {
+  //   var jsonObj = this.toJson();
+  //   print(jsonObj);
+  //   if (this.weeklyMaxWorkingHours == null) jsonObj['weekly_max_working_hours'] = null;
+  //   if (this.monthlyMaxWorkingHours == null) jsonObj['weekly_max_working_hours'] = null;
+  //   return jsonObj;
+  // }
+}
+
 extension WorkingHoursConfigExtension on WorkingHoursConfig {
   static WorkingHoursConfig withDefault({
     @required int facilityWorkerProfileId,
@@ -27,18 +53,18 @@ extension WorkingHoursConfigExtension on WorkingHoursConfig {
         monthlyMaxWorkingHours: monthlyMaxWorkingHours,
       );
   WorkingHoursConfigForWrite toWritable() {
-    return WorkingHoursConfigForWrite(
-      facilityWorkerProfileId: this.facilityWorkerProfileId,
-      monthlyMaxWorkingHours: this.monthlyMaxWorkingHours,
-      weeklyMaxWorkingHours: this.weeklyMaxWorkingHours,
+    return _WorkingHoursConfigForForWriteWrapper(
+      this.facilityWorkerProfileId,
+      this.monthlyMaxWorkingHours,
+      this.weeklyMaxWorkingHours,
     );
   }
 
-  String get weeklyMaxWorkingHoursDisplay => (weeklyMaxWorkingHours.toString() ?? "-") + "時間/週";
-  String get monthlyMaxWorkingHoursDisplay => (monthlyMaxWorkingHours.toString() ?? "-") + "時間/月";
+  String get weeklyMaxWorkingHoursDisplay =>
+      weeklyMaxWorkingHours == null ? "勤務時間未設定/週" : (weeklyMaxWorkingHours.toString() + "時間/週");
+  String get monthlyMaxWorkingHoursDisplay =>
+      monthlyMaxWorkingHours == null ? "勤務時間未設定/月" : (monthlyMaxWorkingHours.toString() + "時間/月");
 }
-
-mixin Foo {}
 
 extension FacilityWorkerProfileExtension on FacilityWorkerProfile {
   FacilityWorkerProfileForWrite toWritable() {

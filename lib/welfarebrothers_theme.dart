@@ -30,7 +30,7 @@ const _fontWeightMedium = FontWeight.w600;
 const _fontWeightBold = FontWeight.w700;
 const _textStyleBase = TextStyle(
   color: _textColor,
-  fontWeight: _fontWeightMedium,
+  fontWeight: _fontWeightNormal,
 );
 
 TextStyle _textStyleBySize(double size) {
