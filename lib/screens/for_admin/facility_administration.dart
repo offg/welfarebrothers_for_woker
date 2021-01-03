@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
+import 'package:welfarebrothers_for_worker/components/dashboard/dashboard.dart';
 import 'package:welfarebrothers_for_worker/components/logo.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
@@ -68,16 +69,8 @@ class FacilityAdministrationScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Card(
-                  child: Column(
-                children: [
-                  Text("お疲れ様です"),
-                ],
-              )),
-            ),
+            flex: 2,
+            child: PieChartDashboard(),
           ),
           Expanded(
             flex: 2,
