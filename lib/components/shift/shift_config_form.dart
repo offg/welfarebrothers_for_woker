@@ -24,6 +24,7 @@ class _ShiftConfigFormState extends State<ShiftConfigForm> {
     if (shiftPatterns.isEmpty) return Center(child: Text("シフトが登録されていません"));
     return ListView(
       shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
       children: shiftPatterns
           .map((e) => ListTile(
                 leading: Text(e.symbol),
@@ -39,6 +40,7 @@ class _ShiftConfigFormState extends State<ShiftConfigForm> {
     if (roleAssignmentRequirements.isEmpty) return Center(child: Text("必要人員が登録されていません"));
     return ListView(
       shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
       children: roleAssignmentRequirements
           .map((e) => ListTile(
                 title: Text(e.role.name),
@@ -51,32 +53,34 @@ class _ShiftConfigFormState extends State<ShiftConfigForm> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ShiftConfigViewModel>(
-      builder: (context, model, child) => Column(
-        children: [
-          SizedBox(height: 10),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            SectionTitle("シフトパターン"),
-            IconButton(
-              icon: Icon(Icons.add_rounded),
-              onPressed: _onPressedForShiftPattern(
-                ShiftPatternExtension.withEmpty(model.shiftConfig.id),
-                model,
-              ),
-            )
-          ]),
-          SizedBox(height: 10),
-          _buildShitPatternList(context, model.shiftConfig.shiftPatterns),
-          SizedBox(height: 20),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            SectionTitle("必要人員"),
-            IconButton(
+      builder: (context, model, child) => SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 10),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              SectionTitle("シフトパターン"),
+              IconButton(
                 icon: Icon(Icons.add_rounded),
-                onPressed: _onPressedForRoleAssignmentRequirement(
-                    RoleAssignmentRequirementExtension.withEmpty(model.shiftConfig.id), model))
-          ]),
-          SizedBox(height: 10),
-          _buildRoleAssignmentRequirementList(context, model.shiftConfig.roleAssignmentRequirements),
-        ],
+                onPressed: _onPressedForShiftPattern(
+                  ShiftPatternExtension.withEmpty(model.shiftConfig.id),
+                  model,
+                ),
+              )
+            ]),
+            SizedBox(height: 10),
+            _buildShitPatternList(context, model.shiftConfig.shiftPatterns),
+            SizedBox(height: 20),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              SectionTitle("必要人員"),
+              IconButton(
+                  icon: Icon(Icons.add_rounded),
+                  onPressed: _onPressedForRoleAssignmentRequirement(
+                      RoleAssignmentRequirementExtension.withEmpty(model.shiftConfig.id), model))
+            ]),
+            SizedBox(height: 10),
+            _buildRoleAssignmentRequirementList(context, model.shiftConfig.roleAssignmentRequirements),
+          ],
+        ),
       ),
     );
   }
