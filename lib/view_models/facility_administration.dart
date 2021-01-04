@@ -7,7 +7,11 @@ class FacilityAdministrationViewModel extends WelfareBrothersViewModelBase {
 
   @override
   Future initialize() async {
-    facilityAdministrations = [FacilityAdministration(facility: Facility(id: "sample001", name: "サンプルデイ"))];
+    facilityAdministrations = [
+      FacilityAdministration(facilityId: "sample001")
+        ..id = "sample001"
+        ..facility = Facility(id: "sample001", name: "サンプルデイ")
+    ];
     currentFacilityAdministration = facilityAdministrations.first;
     notifyListeners();
   }
