@@ -29,14 +29,6 @@ class _WorkingHoursConfigForForWriteWrapper extends WorkingHoursConfigForWrite {
     json[r'weekly_max_working_hours'] = weeklyMaxWorkingHours;
     return json;
   }
-  // @override
-  // Map<String, dyna toJson() {
-  //   var jsonObj = this.toJson();
-  //   print(jsonObj);
-  //   if (this.weeklyMaxWorkingHours == null) jsonObj['weekly_max_working_hours'] = null;
-  //   if (this.monthlyMaxWorkingHours == null) jsonObj['weekly_max_working_hours'] = null;
-  //   return jsonObj;
-  // }
 }
 
 extension WorkingHoursConfigExtension on WorkingHoursConfig {

@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:welfarebrothers_for_worker/domain/util.dart';
 
 bool dateTimeEq(DateTime dt1, DateTime dt2) {
@@ -18,3 +19,7 @@ double stringToTime(String s) {
   double time = double.parse(hourStr);
   return time + double.parse(minuteStr) * (5 / 3);
 }
+
+const String locale = "ja";
+const String dateFormat = "yyyy/MM/dd(E)";
+DateFormat dateFormatter = DateFormat(dateFormat, locale);

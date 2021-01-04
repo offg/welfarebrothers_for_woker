@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
-import 'package:welfarebrothers_for_worker/components/shift/role_assignment_requirement_form.dart';
-import 'package:welfarebrothers_for_worker/components/shift/shift_pattern_form.dart';
-import 'package:welfarebrothers_for_worker/domain/facility_administration.dart';
-import 'package:welfarebrothers_for_worker/domain/shift_config.dart';
+import 'package:welfarebrothers_for_worker/components/shift_config/role_assignment_requirement_form.dart';
+import 'package:welfarebrothers_for_worker/components/shift_config/shift_pattern_form.dart';
+import 'package:welfarebrothers_for_worker/domain/shift_config/shift_config.dart';
 import 'package:welfarebrothers_for_worker/view_models/shift_config.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 

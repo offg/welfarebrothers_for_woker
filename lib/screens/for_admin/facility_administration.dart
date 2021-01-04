@@ -6,6 +6,7 @@ import 'package:welfarebrothers_for_worker/components/logo.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/view_models/shift_config.dart';
+import 'package:welfarebrothers_for_worker/view_models/work_schedule.dart';
 
 typedef MenuOnTap = Function Function(BuildContext context, FacilityAdministrationViewModel model);
 
@@ -48,8 +49,8 @@ class FacilityAdministrationScreen extends StatelessWidget {
         },
       ),
       Menu(
-          "シフト管理",
-          Icons.watch_later_sharp,
+          "シフト設定",
+          Icons.settings_display_sharp,
           (_context, model) => () async {
                 await LoadingOverlay.of(_context).during(
                   _context
@@ -57,6 +58,17 @@ class FacilityAdministrationScreen extends StatelessWidget {
                       .initializeWithFacilityAdministration(model.currentFacilityAdministration),
                 );
                 Navigator.of(_context).pushNamed("/shift_config");
+              }),
+      Menu(
+          "シフト管理",
+          Icons.watch_later_sharp,
+          (_context, model) => () async {
+                await LoadingOverlay.of(_context).during(
+                  _context
+                      .read<WorkScheduleViewModel>()
+                      .initializeWithFacilityAdministration(model.currentFacilityAdministration),
+                );
+                Navigator.of(_context).pushNamed("/work_schedules");
               }),
     ];
     return Scaffold(

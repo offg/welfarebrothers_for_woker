@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:welfarebrothers_for_worker/components/shift/shift_config_form.dart';
+import 'package:welfarebrothers_for_worker/components/shift_config/shift_config_form.dart';
 
 class ShiftConfigScreen extends StatelessWidget {
   const ShiftConfigScreen();

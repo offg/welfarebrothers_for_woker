@@ -1,6 +1,6 @@
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
-import 'repository.dart';
+import '../repository.dart';
 
 abstract class IWorkerProfileRepository implements IRepository {
   WorkerProfile fetchMyWorkerProfile(int userId);

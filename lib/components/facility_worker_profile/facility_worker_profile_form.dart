@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/components/app/panel.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
-import 'package:welfarebrothers_for_worker/domain/facility_worker_profile.dart';
+import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
 import 'package:welfarebrothers_for_worker/view_models/app.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
@@ -255,14 +254,13 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
   }
 
   Widget _buildDayOffRequest(BuildContext context, FacilityWorkerProfileViewModel model, DayOffRequest dayOffRequest) {
-    var formatter = DateFormat("yyyy/MM/dd(EE)", "ja");
     return Slidable(
       controller: _slidableController,
       key: Key(dayOffRequest.date.toString() + _facilityWorkerProfile.dayOffRequests.indexOf(dayOffRequest).toString()),
       child: Container(
           child: ListTile(
         title: Text(
-          formatter.format(dayOffRequest.date),
+          dateFormatter.format(dayOffRequest.date),
         ),
       )),
       actionPane: SlidableDrawerActionPane(),

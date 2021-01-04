@@ -1,5 +1,4 @@
-import 'package:welfarebrothers_for_worker/domain/facility_administration.dart';
-import 'package:welfarebrothers_for_worker/domain/shift_config_repository.dart';
+import 'package:welfarebrothers_for_worker/domain/shift_config/shift_config_repository.dart';
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 

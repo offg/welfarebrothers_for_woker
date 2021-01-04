@@ -1,6 +1,4 @@
-import 'package:welfarebrothers_for_worker/domain/facility_administration.dart';
-import 'package:welfarebrothers_for_worker/domain/facility_worker_profile.dart';
-import 'package:welfarebrothers_for_worker/domain/facility_worker_profile_repository.dart';
+import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facility_worker_profile_repository.dart';
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 

@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/config/locator.dart';
-import 'package:welfarebrothers_for_worker/domain/shift_config_repository.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/home.dart';
 import 'package:welfarebrothers_for_worker/view_models/app.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/view_models/shift_config.dart';
+import 'package:welfarebrothers_for_worker/view_models/work_schedule.dart';
 import 'package:welfarebrothers_for_worker/welfarebrothers_theme.dart';
 
-import 'domain/facility_worker_profile_repository.dart';
-import 'domain/role_repository.dart';
+import 'domain/facility_worker_profile/facility_worker_profile_repository.dart';
+import 'domain/role/role_repository.dart';
+import 'domain/shift_config/shift_config_repository.dart';
+import 'domain/work_schedule/work_schedule_repository.dart';
 
 Future main() async {
   await setUp();
@@ -27,6 +29,9 @@ Future main() async {
     ),
     ChangeNotifierProvider(
       create: (_) => ShiftConfigViewModel(locator<IShiftConfigRepository>())..initialize(),
+    ),
+    ChangeNotifierProvider(
+      create: (_) => WorkScheduleViewModel(locator<IWorkScheduleRepository>())..initialize(),
     ),
   ], child: WelfareBrothersForWorkerApp()));
 }

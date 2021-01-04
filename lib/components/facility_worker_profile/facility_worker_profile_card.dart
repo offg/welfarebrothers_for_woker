@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:welfarebrothers_for_worker/components/default_avatar.dart';
-import 'package:welfarebrothers_for_worker/domain/facility_worker_profile.dart';
+import 'package:welfarebrothers_for_worker/components/role/role_chip.dart';
+import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class FacilityWorkerProfileCard extends StatelessWidget {
@@ -42,18 +43,7 @@ class FacilityWorkerProfileCard extends StatelessWidget {
     return Wrap(
       spacing: 12,
       runSpacing: 12,
-      children: capabilities
-          .map((e) => Chip(
-                padding: EdgeInsets.all(8),
-                backgroundColor: Theme.of(context).primaryColor.withOpacity(0.75),
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  height: 1,
-                  fontSize: 10,
-                ),
-                label: Text(e.name),
-              ))
-          .toList(),
+      children: capabilities.map((e) => RoleChip(e)).toList(),
     );
   }
 

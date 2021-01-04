@@ -3,9 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/bottom_navigator.dart';
 import 'package:welfarebrothers_for_worker/components/app/tab_navigator.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/facility_administration.dart';
-import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_profile_detail.dart';
-import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_profile_list.dart';
+import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_profile/facility_worker_profile_detail.dart';
+import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_profile/facility_worker_profile_list.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/shift_config.dart';
+import 'package:welfarebrothers_for_worker/screens/for_admin/work_schedule/work_schedule_detail.dart';
+import 'package:welfarebrothers_for_worker/screens/for_admin/work_schedule/work_schedule_list.dart';
 import 'package:welfarebrothers_for_worker/screens/me.dart';
 import 'package:welfarebrothers_for_worker/view_models/me.dart';
 
@@ -45,6 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
           '/workers': (context) => const FacilityWorkerProfileListScreen(),
           '/workers/detail': (context) => const FacilityWorkerProfileDetailScreen(),
           '/shift_config': (context) => const ShiftConfigScreen(),
+          '/work_schedules': (context) => const WorkScheduleListScreen(),
+          '/work_schedules/detail': (context) => const WorkScheduleDetailScreen(),
         },
     TabItem.me: (context) => {
           '/': (context) => MeScreen(),
