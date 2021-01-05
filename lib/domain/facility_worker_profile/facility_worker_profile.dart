@@ -72,6 +72,7 @@ extension FacilityWorkerProfileExtension on FacilityWorkerProfile {
   static FacilityWorkerProfile withEmpty(FacilityAdministration facilityAdministration) => FacilityWorkerProfile(
       firstName: "",
       lastName: "",
+      facilityAdministrationId: facilityAdministration.id,
       capabilities: [],
       facilityAdministration: facilityAdministration,
       workingHoursConfig: WorkingHoursConfigExtension.withDefault(facilityWorkerProfileId: null));

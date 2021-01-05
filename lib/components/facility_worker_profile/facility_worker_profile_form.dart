@@ -144,7 +144,9 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
                   _workingHoursConfig.weeklyMaxWorkingHours = int.tryParse(value);
                 },
                 keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
                 validator: (value) {
                   int valueInt = int.tryParse(value);
                   if (valueInt != null) {

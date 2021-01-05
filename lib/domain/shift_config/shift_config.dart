@@ -20,11 +20,19 @@ extension ShiftPatternExtension on ShiftPattern {
 
 extension RoleAssignmentRequirementExtension on RoleAssignmentRequirement {
   RoleAssignmentRequirementForWrite toWritable() => RoleAssignmentRequirementForWrite(
-      roleId: this.roleId, shiftConfigId: this.shiftConfigId, timeFrom: this.timeFrom, timeTo: this.timeTo);
+        roleId: this.roleId,
+        shiftConfigId: this.shiftConfigId,
+        timeFrom: this.timeFrom,
+        timeTo: this.timeTo,
+        minNumberOfWorkers: this.minNumberOfWorkers,
+        maxNumberOfWorkers: this.maxNumberOfWorkers,
+      );
   static RoleAssignmentRequirement withEmpty(int shiftConfigId) => RoleAssignmentRequirement(
         roleId: null,
         shiftConfigId: shiftConfigId,
         timeFrom: "00:00",
         timeTo: "24:00",
+        minNumberOfWorkers: 1,
+        maxNumberOfWorkers: null,
       );
 }

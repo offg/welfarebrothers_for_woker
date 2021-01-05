@@ -5,7 +5,10 @@ import 'package:welfarebrothers_for_worker/view_models/app.dart';
 class RoleDropdown extends StatefulWidget {
   final onChanged;
   final validate;
-  RoleDropdown(this.onChanged, {bool validate}) : this.validate = validate ?? true;
+  final String selectedRoleId;
+  RoleDropdown(this.onChanged, {String selectedRoleId, bool validate})
+      : this.selectedRoleId = selectedRoleId,
+        this.validate = validate ?? true;
   @override
   _RoleDropdownState createState() => _RoleDropdownState();
 }
@@ -14,6 +17,7 @@ class _RoleDropdownState extends State<RoleDropdown> {
   String _selectedRoleId;
   @override
   void initState() {
+    _selectedRoleId = widget.selectedRoleId;
     super.initState();
   }
 

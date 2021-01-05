@@ -19,31 +19,39 @@ class _ShiftConfigFormState extends State<ShiftConfigForm> {
     super.initState();
   }
 
-  Widget _buildShitPatternList(BuildContext context, List<ShiftPattern> shiftPatterns) {
-    if (shiftPatterns.isEmpty) return Center(child: Text("シフトが登録されていません"));
+  Widget _buildShitPatternList(BuildContext context, ShiftConfigViewModel model) {
+    if (model.shiftConfig.shiftPatterns.isEmpty) return Center(child: Text("シフトが登録されていません"));
     return ListView(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      children: shiftPatterns
+      children: model.shiftConfig.shiftPatterns
           .map((e) => ListTile(
                 leading: Text(e.symbol),
+                minLeadingWidth: 100,
                 title: Text(e.name),
                 subtitle: Text(e.timeFrom + "〜" + e.timeTo),
+                dense: true,
+                onTap: _onPressedForShiftPattern(e, model),
               ))
           .toList(),
     );
   }
 
-  Widget _buildRoleAssignmentRequirementList(
-      BuildContext context, List<RoleAssignmentRequirement> roleAssignmentRequirements) {
-    if (roleAssignmentRequirements.isEmpty) return Center(child: Text("必要人員が登録されていません"));
+  Widget _buildRoleAssignmentRequirementList(BuildContext context, ShiftConfigViewModel model) {
+    if (model.shiftConfig.roleAssignmentRequirements.isEmpty) return Center(child: Text("必要人員が登録されていません"));
     return ListView(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      children: roleAssignmentRequirements
+      children: model.shiftConfig.roleAssignmentRequirements
           .map((e) => ListTile(
-                title: Text(e.role.name),
+                leading: Text(e.role.name),
+                isThreeLine: true,
+                minLeadingWidth: 100,
+                title: Text(
+                    "${e.minNumberOfWorkers.toString()}名〜${e.maxNumberOfWorkers?.toString()}${e.maxNumberOfWorkers == null ? '' : '名'}"),
+                dense: true,
                 subtitle: Text(e.timeFrom + "〜" + e.timeTo),
+                onTap: _onPressedForRoleAssignmentRequirement(e, model),
               ))
           .toList(),
     );
@@ -67,7 +75,7 @@ class _ShiftConfigFormState extends State<ShiftConfigForm> {
               )
             ]),
             SizedBox(height: 10),
-            _buildShitPatternList(context, model.shiftConfig.shiftPatterns),
+            _buildShitPatternList(context, model),
             SizedBox(height: 20),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               SectionTitle("必要人員"),
@@ -77,7 +85,7 @@ class _ShiftConfigFormState extends State<ShiftConfigForm> {
                       RoleAssignmentRequirementExtension.withEmpty(model.shiftConfig.id), model))
             ]),
             SizedBox(height: 10),
-            _buildRoleAssignmentRequirementList(context, model.shiftConfig.roleAssignmentRequirements),
+            _buildRoleAssignmentRequirementList(context, model),
           ],
         ),
       ),

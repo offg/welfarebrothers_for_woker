@@ -85,7 +85,7 @@ class FacilityWorkerProfileViewModel extends WelfareBrothersViewModelBase {
   Future createDayOffRequest(FacilityWorkerProfile facilityWorkerProfile, DayOffRequest dayOffRequest) async {
     loading = true;
     DayOffRequest newObject = await _repository.createDayOffRequest(
-      facilityWorkerProfile.facilityAdministrationId,
+      facilityWorkerProfile.facilityAdministration.id,
       facilityWorkerProfile.id,
       dayOffRequest,
     );
@@ -96,7 +96,7 @@ class FacilityWorkerProfileViewModel extends WelfareBrothersViewModelBase {
   Future deleteDayOffRequest(FacilityWorkerProfile facilityWorkerProfile, DayOffRequest dayOffRequest) async {
     loading = true;
     await _repository.deleteDayOffRequest(
-      facilityWorkerProfile.facilityAdministrationId,
+      facilityWorkerProfile.facilityAdministration.id,
       facilityWorkerProfile.id,
       dayOffRequest.id,
     );
@@ -113,13 +113,13 @@ class FacilityWorkerProfileViewModel extends WelfareBrothersViewModelBase {
     WorkingHoursConfig newObject;
     if (workingHoursConfig.id == null) {
       newObject = await _repository.createWorkingHoursConfig(
-        facilityWorkerProfile.facilityAdministrationId,
+        facilityWorkerProfile.facilityAdministration.id,
         facilityWorkerProfile.id,
         workingHoursConfig,
       );
     } else {
       newObject = await _repository.updateWorkingHoursConfig(
-        facilityWorkerProfile.facilityAdministrationId,
+        facilityWorkerProfile.facilityAdministration.id,
         facilityWorkerProfile.id,
         workingHoursConfig.id,
         workingHoursConfig,
