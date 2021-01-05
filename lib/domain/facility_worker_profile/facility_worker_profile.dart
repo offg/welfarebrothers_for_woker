@@ -53,9 +53,9 @@ extension WorkingHoursConfigExtension on WorkingHoursConfig {
   }
 
   String get weeklyMaxWorkingHoursDisplay =>
-      weeklyMaxWorkingHours == null ? "勤務時間未設定/週" : (weeklyMaxWorkingHours.toString() + "時間/週");
+      weeklyMaxWorkingHours == null ? "  　　 　" : (weeklyMaxWorkingHours.toString() + "時間/週");
   String get monthlyMaxWorkingHoursDisplay =>
-      monthlyMaxWorkingHours == null ? "勤務時間未設定/月" : (monthlyMaxWorkingHours.toString() + "時間/月");
+      monthlyMaxWorkingHours == null ? "　　 　" : (monthlyMaxWorkingHours.toString() + "時間/月");
 }
 
 extension FacilityWorkerProfileExtension on FacilityWorkerProfile {

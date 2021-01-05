@@ -8,7 +8,7 @@ class SectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(14),
       child: Align(
         child: Row(children: [
           if (withBack)
@@ -16,7 +16,13 @@ class SectionTitle extends StatelessWidget {
               icon: Icon(Icons.navigate_before_rounded),
               onPressed: () => Navigator.of(context).pop(),
             ),
-          Text(title)
+          Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 15,
+            ),
+          )
         ]),
         alignment: Alignment.centerLeft,
       ),

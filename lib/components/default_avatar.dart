@@ -7,7 +7,7 @@ class DefaultAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius,
-      backgroundColor: Theme.of(context).primaryColor.withOpacity(0.6),
+      backgroundColor: Theme.of(context).primaryColor.withOpacity(0.3),
       backgroundImage: AssetImage('assets/images/avatar_default.png'),
     );
   }

@@ -27,6 +27,9 @@ extension RoleAssignmentRequirementExtension on RoleAssignmentRequirement {
         minNumberOfWorkers: this.minNumberOfWorkers,
         maxNumberOfWorkers: this.maxNumberOfWorkers,
       );
+  String get minNumberOfWorkersDisplay => minNumberOfWorkers.toString() + "名";
+  String get maxNumberOfWorkersDisplay => maxNumberOfWorkers == null ? "" : maxNumberOfWorkers.toString() + "名";
+  String get numberOfWorkersDisplay => this.minNumberOfWorkersDisplay + "〜" + this.maxNumberOfWorkersDisplay;
   static RoleAssignmentRequirement withEmpty(int shiftConfigId) => RoleAssignmentRequirement(
         roleId: null,
         shiftConfigId: shiftConfigId,

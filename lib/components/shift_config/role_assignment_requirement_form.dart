@@ -29,7 +29,7 @@ class _RoleAssignmentRequirementState extends State<RoleAssignmentRequirementFor
       _controllerForMinNumberOfWorkers =
           TextEditingController(text: _roleAssignmentRequirement.minNumberOfWorkers.toString());
       _controllerForMaxNumberOfWorkers =
-          TextEditingController(text: _roleAssignmentRequirement.maxNumberOfWorkers.toString());
+          TextEditingController(text: _roleAssignmentRequirement.maxNumberOfWorkers?.toString() ?? "");
     });
     super.initState();
   }

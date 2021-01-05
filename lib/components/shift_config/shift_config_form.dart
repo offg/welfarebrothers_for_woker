@@ -47,8 +47,7 @@ class _ShiftConfigFormState extends State<ShiftConfigForm> {
                 leading: Text(e.role.name),
                 isThreeLine: true,
                 minLeadingWidth: 100,
-                title: Text(
-                    "${e.minNumberOfWorkers.toString()}名〜${e.maxNumberOfWorkers?.toString()}${e.maxNumberOfWorkers == null ? '' : '名'}"),
+                title: Text(e.numberOfWorkersDisplay),
                 dense: true,
                 subtitle: Text(e.timeFrom + "〜" + e.timeTo),
                 onTap: _onPressedForRoleAssignmentRequirement(e, model),

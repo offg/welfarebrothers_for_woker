@@ -47,8 +47,8 @@ class _PieChartDashboardState extends State<PieChartDashboard> {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const <Widget>[
-              Indicator(
-                color: Color(0xff0293ee),
+              const Indicator(
+                color: Colors.cyan,
                 text: '中本',
                 isSquare: false,
               ),
@@ -56,7 +56,7 @@ class _PieChartDashboardState extends State<PieChartDashboard> {
                 height: 4,
               ),
               Indicator(
-                color: Color(0xfff8b250),
+                color: Colors.greenAccent,
                 text: '平',
                 isSquare: false,
               ),
@@ -64,7 +64,7 @@ class _PieChartDashboardState extends State<PieChartDashboard> {
                 height: 4,
               ),
               Indicator(
-                color: Color(0xff845bef),
+                color: Colors.deepOrangeAccent,
                 text: '富永',
                 isSquare: false,
               ),
@@ -72,7 +72,7 @@ class _PieChartDashboardState extends State<PieChartDashboard> {
                 height: 4,
               ),
               Indicator(
-                color: Color(0xff13d38e),
+                color: Colors.pinkAccent,
                 text: '島津',
                 isSquare: false,
               ),
@@ -97,7 +97,7 @@ class _PieChartDashboardState extends State<PieChartDashboard> {
       switch (i) {
         case 0:
           return PieChartSectionData(
-            color: const Color(0xff0293ee),
+            color: Colors.cyan.withOpacity(0.8),
             value: 40,
             title: '40%',
             radius: radius,
@@ -105,7 +105,7 @@ class _PieChartDashboardState extends State<PieChartDashboard> {
           );
         case 1:
           return PieChartSectionData(
-            color: const Color(0xfff8b250),
+            color: Colors.greenAccent.withOpacity(0.8),
             value: 30,
             title: '30%',
             radius: radius,
@@ -113,7 +113,7 @@ class _PieChartDashboardState extends State<PieChartDashboard> {
           );
         case 2:
           return PieChartSectionData(
-            color: const Color(0xff845bef),
+            color: Colors.deepOrangeAccent.withOpacity(0.8),
             value: 15,
             title: '15%',
             radius: radius,
@@ -121,7 +121,7 @@ class _PieChartDashboardState extends State<PieChartDashboard> {
           );
         case 3:
           return PieChartSectionData(
-            color: const Color(0xff13d38e),
+            color: Colors.pinkAccent.withOpacity(0.8),
             value: 15,
             title: '15%',
             radius: radius,
