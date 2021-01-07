@@ -9,6 +9,7 @@
 .history
 .svn/
 
+codesigndoc_exports/
 # IntelliJ related
 *.iml
 *.ipr
