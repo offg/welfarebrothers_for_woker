@@ -37,7 +37,7 @@ dependencies:
   openapi_dart_common: ^3.1.0
   fl_chart: ^0.12.2
   welfarebrothers_for_worker_api_client:
-    path: ../welfarebrothers_for_worker_api_client
+    path: ./api_client
 
 
   # The following adds the Cupertino Icons font to your application.
