@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:welfarebrothers_for_worker/components/TimeRangeSlider.dart';
 import 'package:welfarebrothers_for_worker/components/app/panel.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
+import 'package:welfarebrothers_for_worker/components/input/days_of_the_week_choice.dart';
 import 'package:welfarebrothers_for_worker/components/input/welfarebrothers_input.dart';
 import 'package:welfarebrothers_for_worker/components/role/role_dropdown.dart';
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
+import 'package:welfarebrothers_for_worker/utils/design.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class RoleAssignmentRequirementForm extends StatefulWidget {
@@ -63,7 +65,23 @@ class _RoleAssignmentRequirementState extends State<RoleAssignmentRequirementFor
               selectedRoleId: _roleAssignmentRequirement.role.id,
             ),
           ),
-          SizedBox(height: 10),
+          verticalSpace(),
+          SectionTitle("曜日"),
+          Expanded(
+            flex: 1,
+            child: SingleChildScrollView(
+              child: DayOfTheWeekChoice(
+                  daysOfTheWeekChoiceStatusFromSelectedDays(_roleAssignmentRequirement.daysOfTheWeek),
+                  (int dayInt) => (bool value) {
+                        if (value) {
+                          _roleAssignmentRequirement.daysOfTheWeek.add(dayInt);
+                        } else {
+                          _roleAssignmentRequirement.daysOfTheWeek.remove(dayInt);
+                        }
+                      }),
+            ),
+          ),
+          verticalSpace(),
           SectionTitle("勤務時間"),
           Panel(
             child: TimeRangeSlider(
@@ -77,7 +95,7 @@ class _RoleAssignmentRequirementState extends State<RoleAssignmentRequirementFor
               },
             ),
           ),
-          SizedBox(height: 10),
+          verticalSpace(),
           SectionTitle("人数"),
           Panel(
             child: Row(

@@ -94,6 +94,7 @@ var _buttonTheme = ButtonThemeData(
   textTheme: ButtonTextTheme.primary,
   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
 );
+
 var welfareBrothersTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: _primaryColor,
@@ -101,6 +102,12 @@ var welfareBrothersTheme = ThemeData(
   backgroundColor: Colors.white,
   colorScheme: _colorScheme,
   buttonTheme: _buttonTheme,
+  sliderTheme: SliderThemeData(
+    showValueIndicator: ShowValueIndicator.always,
+    activeTickMarkColor: null,
+    inactiveTickMarkColor: null,
+    trackHeight: 1,
+  ),
 
   scaffoldBackgroundColor: Colors.white,
   canvasColor: Colors.white,

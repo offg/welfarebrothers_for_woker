@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **timeTo** | **String** |  | 
 **minNumberOfWorkers** | **int** |  | [optional] 
 **maxNumberOfWorkers** | **int** |  | [optional] 
+**daysOfTheWeek** | **List<int>** |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

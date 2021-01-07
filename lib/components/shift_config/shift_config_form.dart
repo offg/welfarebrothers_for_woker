@@ -111,11 +111,13 @@ class _ShiftConfigFormState extends State<ShiftConfigForm> {
 
   _onPressedForRoleAssignmentRequirement(object, ShiftConfigViewModel model) {
     return () async {
-      RoleAssignmentRequirement edited = await Navigator.of(context).push(MaterialPageRoute<RoleAssignmentRequirement>(
-          builder: (BuildContext context) {
-            return RoleAssignmentRequirementForm(object);
-          },
-          fullscreenDialog: true));
+      RoleAssignmentRequirement edited = await Navigator.of(context).push(
+        MaterialPageRoute<RoleAssignmentRequirement>(
+            builder: (BuildContext context) {
+              return RoleAssignmentRequirementForm(object);
+            },
+            fullscreenDialog: true),
+      );
 
       if (edited != null)
         await LoadingOverlay.of(context).during(model.updateOrCreateRoleAssignmentRequirement(

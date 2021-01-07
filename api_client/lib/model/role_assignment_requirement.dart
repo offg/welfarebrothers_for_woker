@@ -20,6 +20,7 @@ class RoleAssignmentRequirement {
     @required this.timeTo,
     this.minNumberOfWorkers,
     this.maxNumberOfWorkers,
+    this.daysOfTheWeek = const [],
   });
 
   int id;
@@ -42,6 +43,8 @@ class RoleAssignmentRequirement {
   // maximum: 2147483647
   int maxNumberOfWorkers;
 
+  List<int> daysOfTheWeek;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is RoleAssignmentRequirement &&
      other.id == id &&
@@ -51,7 +54,8 @@ class RoleAssignmentRequirement {
      other.timeFrom == timeFrom &&
      other.timeTo == timeTo &&
      other.minNumberOfWorkers == minNumberOfWorkers &&
-     other.maxNumberOfWorkers == maxNumberOfWorkers;
+     other.maxNumberOfWorkers == maxNumberOfWorkers &&
+     other.daysOfTheWeek == daysOfTheWeek;
 
   @override
   int get hashCode =>
@@ -62,10 +66,11 @@ class RoleAssignmentRequirement {
     (timeFrom == null ? 0 : timeFrom.hashCode) +
     (timeTo == null ? 0 : timeTo.hashCode) +
     (minNumberOfWorkers == null ? 0 : minNumberOfWorkers.hashCode) +
-    (maxNumberOfWorkers == null ? 0 : maxNumberOfWorkers.hashCode);
+    (maxNumberOfWorkers == null ? 0 : maxNumberOfWorkers.hashCode) +
+    (daysOfTheWeek == null ? 0 : daysOfTheWeek.hashCode);
 
   @override
-  String toString() => 'RoleAssignmentRequirement[id=$id, role=$role, roleId=$roleId, shiftConfigId=$shiftConfigId, timeFrom=$timeFrom, timeTo=$timeTo, minNumberOfWorkers=$minNumberOfWorkers, maxNumberOfWorkers=$maxNumberOfWorkers]';
+  String toString() => 'RoleAssignmentRequirement[id=$id, role=$role, roleId=$roleId, shiftConfigId=$shiftConfigId, timeFrom=$timeFrom, timeTo=$timeTo, minNumberOfWorkers=$minNumberOfWorkers, maxNumberOfWorkers=$maxNumberOfWorkers, daysOfTheWeek=$daysOfTheWeek]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -93,6 +98,9 @@ class RoleAssignmentRequirement {
     if (maxNumberOfWorkers != null) {
       json[r'max_number_of_workers'] = maxNumberOfWorkers;
     }
+    if (daysOfTheWeek != null) {
+      json[r'days_of_the_week'] = daysOfTheWeek;
+    }
     return json;
   }
 
@@ -109,6 +117,9 @@ class RoleAssignmentRequirement {
         timeTo: json[r'time_to'],
         minNumberOfWorkers: json[r'min_number_of_workers'],
         maxNumberOfWorkers: json[r'max_number_of_workers'],
+        daysOfTheWeek: json[r'days_of_the_week'] == null
+          ? null
+          : (json[r'days_of_the_week'] as List).cast<int>(),
     );
 
   static List<RoleAssignmentRequirement> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>

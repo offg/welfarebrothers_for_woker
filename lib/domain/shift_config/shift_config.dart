@@ -16,6 +16,7 @@ extension ShiftPatternExtension on ShiftPattern {
       );
   ShiftPatternForWrite toWritable() => ShiftPatternForWrite(
       shiftConfigId: this.shiftConfigId, timeFrom: this.timeFrom, timeTo: this.timeTo, symbol: this.symbol, name: this.name);
+  ShiftPattern clone() => ShiftPattern.fromJson(json.decode(json.encode(this)));
 }
 
 extension RoleAssignmentRequirementExtension on RoleAssignmentRequirement {
@@ -26,6 +27,7 @@ extension RoleAssignmentRequirementExtension on RoleAssignmentRequirement {
         timeTo: this.timeTo,
         minNumberOfWorkers: this.minNumberOfWorkers,
         maxNumberOfWorkers: this.maxNumberOfWorkers,
+        daysOfTheWeek: this.daysOfTheWeek,
       );
   String get minNumberOfWorkersDisplay => minNumberOfWorkers.toString() + "名";
   String get maxNumberOfWorkersDisplay => maxNumberOfWorkers == null ? "" : maxNumberOfWorkers.toString() + "名";
@@ -40,4 +42,5 @@ extension RoleAssignmentRequirementExtension on RoleAssignmentRequirement {
         minNumberOfWorkers: 1,
         maxNumberOfWorkers: null,
       );
+  RoleAssignmentRequirement clone() => RoleAssignmentRequirement.fromJson(json.decode(json.encode(this)));
 }

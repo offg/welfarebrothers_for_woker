@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facility_worker_profile_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/role/role_repository.dart';
@@ -17,10 +18,12 @@ Future setUp() async {
   final dio = Dio();
   locator.registerSingleton<Dio>(dio);
 
-  String basePath = "http://localhost:8000";
-  // String basePath = "http://192.168.11.3:8000";
-  // String basePath = "http://127.0.0.1:8000";
-  // String basePath = "https://welfarebrothers-api-edge.herokuapp.com";
+  String basePath;
+  if (kDebugMode) {
+    basePath = "http://localhost:8000";
+  } else {
+    basePath = "https://welfarebrothers-api-edge.herokuapp.com";
+  }
 
   locator.registerSingleton<ApiClient>(ApiClient(basePath: basePath));
   var apiClient = WelfarebrothersApiClient();
