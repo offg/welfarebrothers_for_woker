@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:welfarebrothers_for_worker/components/TimeRangeSlider.dart';
 import 'package:welfarebrothers_for_worker/components/app/panel.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
+import 'package:welfarebrothers_for_worker/components/input/welfarebrothers_input.dart';
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
+import 'package:welfarebrothers_for_worker/utils/design.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class ShiftPatternForm extends StatefulWidget {
@@ -16,15 +18,11 @@ class ShiftPatternForm extends StatefulWidget {
 class _ShiftPatternFormState extends State<ShiftPatternForm> {
   GlobalKey<FormState> _shiftPatternFormKey = new GlobalKey<FormState>();
   ShiftPattern _shiftPattern;
-  TextEditingController _controllerForSymbol;
-  TextEditingController _controllerForName;
 
   @override
   void initState() {
     setState(() {
       _shiftPattern = widget.shiftPattern;
-      _controllerForSymbol = TextEditingController(text: _shiftPattern.symbol);
-      _controllerForName = TextEditingController(text: _shiftPattern.name);
     });
     super.initState();
   }
@@ -56,9 +54,9 @@ class _ShiftPatternFormState extends State<ShiftPatternForm> {
             Panel(
               child: Row(children: [
                 Flexible(
-                  child: TextFormField(
-                    controller: _controllerForSymbol,
-                    decoration: InputDecoration(labelText: "記号"),
+                  child: WelfarebrothersInput(
+                    text: _shiftPattern.symbol,
+                    labelText: "記号",
                     onChanged: (value) {
                       setState(() {
                         _shiftPattern.symbol = value;
@@ -66,10 +64,11 @@ class _ShiftPatternFormState extends State<ShiftPatternForm> {
                     },
                   ),
                 ),
+                horizontalSpace(),
                 Flexible(
-                  child: TextFormField(
-                    controller: _controllerForName,
-                    decoration: InputDecoration(labelText: "名前"),
+                  child: WelfarebrothersInput(
+                    text: _shiftPattern.name,
+                    labelText: "名前",
                     onChanged: (value) {
                       setState(() {
                         _shiftPattern.name = value;

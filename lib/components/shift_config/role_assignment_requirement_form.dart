@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:welfarebrothers_for_worker/components/TimeRangeSlider.dart';
 import 'package:welfarebrothers_for_worker/components/app/panel.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
+import 'package:welfarebrothers_for_worker/components/input/welfarebrothers_input.dart';
 import 'package:welfarebrothers_for_worker/components/role/role_dropdown.dart';
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
@@ -18,18 +18,12 @@ class _RoleAssignmentRequirementState extends State<RoleAssignmentRequirementFor
   GlobalKey<FormState> _roleAssignmentRequirementFormKey = new GlobalKey<FormState>();
 
   RoleAssignmentRequirement _roleAssignmentRequirement;
-  TextEditingController _controllerForMinNumberOfWorkers;
-  TextEditingController _controllerForMaxNumberOfWorkers;
   RangeValues roleAssignmentRequirementTimeRange;
   @override
   void initState() {
     setState(() {
       roleAssignmentRequirementTimeRange = RangeValues(0, 24);
       _roleAssignmentRequirement = widget.roleAssignmentRequirement;
-      _controllerForMinNumberOfWorkers =
-          TextEditingController(text: _roleAssignmentRequirement.minNumberOfWorkers.toString());
-      _controllerForMaxNumberOfWorkers =
-          TextEditingController(text: _roleAssignmentRequirement.maxNumberOfWorkers?.toString() ?? "");
     });
     super.initState();
   }
@@ -49,10 +43,8 @@ class _RoleAssignmentRequirementState extends State<RoleAssignmentRequirementFor
             icon: Icon(Icons.check_sharp),
             onPressed: () {
               if (_roleAssignmentRequirementFormKey.currentState.validate()) {
-                _roleAssignmentRequirement.minNumberOfWorkers = int.parse(_controllerForMinNumberOfWorkers.text);
-                _roleAssignmentRequirement.maxNumberOfWorkers = int.tryParse(_controllerForMaxNumberOfWorkers.text);
+                Navigator.of(context).pop(_roleAssignmentRequirement);
               }
-              Navigator.of(context).pop(_roleAssignmentRequirement);
             },
           )
         ],
@@ -91,17 +83,15 @@ class _RoleAssignmentRequirementState extends State<RoleAssignmentRequirementFor
             child: Row(
               children: [
                 Flexible(
-                  child: TextFormField(
-                      controller: _controllerForMinNumberOfWorkers,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(suffixText: "名", labelText: "最小人数"),
-                      inputFormatters: [
-                        FilteringTextInputFormatter.deny(
-                          RegExp("^0"),
-                        ),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      autovalidateMode: AutovalidateMode.always,
+                  child: WelfarebrothersInput(
+                      labelText: "最大人数",
+                      text: _roleAssignmentRequirement.minNumberOfWorkers,
+                      onChanged: (value) {
+                        setState(() {
+                          _roleAssignmentRequirement.minNumberOfWorkers = int.tryParse(value);
+                        });
+                      },
+                      textInputMode: TextInputMode.number,
                       validator: (value) {
                         if (value.isEmpty) {
                           return "値を入れてください";
@@ -110,16 +100,15 @@ class _RoleAssignmentRequirementState extends State<RoleAssignmentRequirementFor
                       }),
                 ),
                 Flexible(
-                  child: TextFormField(
-                    controller: _controllerForMaxNumberOfWorkers,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(suffixText: "名", labelText: "最大人数"),
-                    inputFormatters: [
-                      FilteringTextInputFormatter.deny(
-                        RegExp("^0"),
-                      ),
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
+                  child: WelfarebrothersInput(
+                    labelText: "最大人数",
+                    text: _roleAssignmentRequirement.maxNumberOfWorkers,
+                    onChanged: (value) {
+                      setState(() {
+                        _roleAssignmentRequirement.maxNumberOfWorkers = int.tryParse(value);
+                      });
+                    },
+                    textInputMode: TextInputMode.number,
                   ),
                 ),
               ],

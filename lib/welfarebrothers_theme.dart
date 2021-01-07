@@ -94,7 +94,6 @@ var _buttonTheme = ButtonThemeData(
   textTheme: ButtonTextTheme.primary,
   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
 );
-
 var welfareBrothersTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: _primaryColor,
