@@ -18,8 +18,9 @@ Future setUp() async {
   locator.registerSingleton<Dio>(dio);
 
   // String basePath = "http://localhost:8000";
-  String basePath = "http://192.168.11.3:8000";
+  // String basePath = "http://192.168.11.3:8000";
   // String basePath = "http://127.0.0.1:8000";
+  String basePath = "https://welfarebrothers-api-edge.herokuapp.com";
 
   locator.registerSingleton<ApiClient>(ApiClient(basePath: basePath));
   var apiClient = WelfarebrothersApiClient();

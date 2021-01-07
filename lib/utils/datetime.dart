@@ -17,10 +17,7 @@ double stringToTime(String s) {
   String hourStr = splitTime[0];
   String minuteStr = splitTime[1];
   double time = double.parse(hourStr);
-  print(time);
-  print(minuteStr);
   double result = time + (double.parse(minuteStr) * 0.01 * (5 / 3));
-  print(result);
   return result;
 }
 
