@@ -22,8 +22,12 @@ class WorkingHoursConfig {
 
   int facilityWorkerProfileId;
 
+  // minimum: -2147483648
+  // maximum: 2147483647
   int monthlyMaxWorkingHours;
 
+  // minimum: -2147483648
+  // maximum: 2147483647
   int weeklyMaxWorkingHours;
 
   @override

@@ -7,7 +7,7 @@
 // ignore_for_file: always_put_required_named_parameters_first
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:openapi/api.dart';
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
 import 'package:test/test.dart';
 
 
@@ -133,6 +133,36 @@ void main() {
 
     //Future<FacilityAdministration> forWorkerFacilityAdministrationsUpdate(String facility, FacilityAdministrationForWrite data) async
     test('test forWorkerFacilityAdministrationsUpdate', () async {
+      // TODO
+    });
+
+    //Future<WorkSchedule> forWorkerFacilityAdministrationsWorkSchedulesCreate(String facilityAdministrationPk, WorkScheduleForWrite data) async
+    test('test forWorkerFacilityAdministrationsWorkSchedulesCreate', () async {
+      // TODO
+    });
+
+    //Future forWorkerFacilityAdministrationsWorkSchedulesDelete(String facilityAdministrationPk, int id) async
+    test('test forWorkerFacilityAdministrationsWorkSchedulesDelete', () async {
+      // TODO
+    });
+
+    //Future forWorkerFacilityAdministrationsWorkSchedulesExportCreate(String facilityAdministrationId, String workScheduleId) async
+    test('test forWorkerFacilityAdministrationsWorkSchedulesExportCreate', () async {
+      // TODO
+    });
+
+    //Future forWorkerFacilityAdministrationsWorkSchedulesExportList(String facilityAdministrationId, String workScheduleId) async
+    test('test forWorkerFacilityAdministrationsWorkSchedulesExportList', () async {
+      // TODO
+    });
+
+    //Future<List<WorkScheduleSummary>> forWorkerFacilityAdministrationsWorkSchedulesList(String facilityAdministrationPk) async
+    test('test forWorkerFacilityAdministrationsWorkSchedulesList', () async {
+      // TODO
+    });
+
+    //Future<WorkSchedule> forWorkerFacilityAdministrationsWorkSchedulesRead(String facilityAdministrationPk, int id) async
+    test('test forWorkerFacilityAdministrationsWorkSchedulesRead', () async {
       // TODO
     });
 
@@ -286,6 +316,16 @@ void main() {
       // TODO
     });
 
+    //Future<WorkerProfile> forWorkerUserProfileWorkerProfileCreate(String userProfilePk, WorkerProfileForWrite data) async
+    test('test forWorkerUserProfileWorkerProfileCreate', () async {
+      // TODO
+    });
+
+    //Future forWorkerUserProfileWorkerProfileDelete(int id, String userProfilePk) async
+    test('test forWorkerUserProfileWorkerProfileDelete', () async {
+      // TODO
+    });
+
     //Future<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate(String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async
     test('test forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate', () async {
       // TODO
@@ -313,6 +353,26 @@ void main() {
 
     //Future<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate(int id, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async
     test('test forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate', () async {
+      // TODO
+    });
+
+    //Future<List<WorkerProfile>> forWorkerUserProfileWorkerProfileList(String userProfilePk) async
+    test('test forWorkerUserProfileWorkerProfileList', () async {
+      // TODO
+    });
+
+    //Future<WorkerProfile> forWorkerUserProfileWorkerProfilePartialUpdate(int id, String userProfilePk, WorkerProfileForWrite data) async
+    test('test forWorkerUserProfileWorkerProfilePartialUpdate', () async {
+      // TODO
+    });
+
+    //Future<WorkerProfile> forWorkerUserProfileWorkerProfileRead(int id, String userProfilePk) async
+    test('test forWorkerUserProfileWorkerProfileRead', () async {
+      // TODO
+    });
+
+    //Future<WorkerProfile> forWorkerUserProfileWorkerProfileUpdate(int id, String userProfilePk, WorkerProfileForWrite data) async
+    test('test forWorkerUserProfileWorkerProfileUpdate', () async {
       // TODO
     });
 

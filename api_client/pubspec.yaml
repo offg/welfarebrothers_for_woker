@@ -9,7 +9,7 @@ authors:
   - 'Author <author@homepage>'
 homepage: 'homepage'
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.10.0 <3.0.0'
 dependencies:
   http: '>=0.12.0 <0.13.0'
   intl: '^0.16.1'

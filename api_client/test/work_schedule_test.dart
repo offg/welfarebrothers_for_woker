@@ -31,6 +31,11 @@ void main() {
       // TODO
     });
 
+    // List<WorkerStat> workerStats (default value: const [])
+    test('to test the property `workerStats`', () async {
+      // TODO
+    });
+
 
   });
 

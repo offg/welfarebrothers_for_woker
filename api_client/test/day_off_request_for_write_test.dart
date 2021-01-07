@@ -1,4 +1,4 @@
-import 'package:openapi/api.dart';
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
 import 'package:test/test.dart';
 
 // tests for DayOffRequestForWrite

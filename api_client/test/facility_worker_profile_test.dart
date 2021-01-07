@@ -1,4 +1,4 @@
-import 'package:openapi/api.dart';
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
 import 'package:test/test.dart';
 
 // tests for FacilityWorkerProfile
@@ -16,13 +16,38 @@ void main() {
       // TODO
     });
 
+    // String facilityAdministrationId
+    test('to test the property `facilityAdministrationId`', () async {
+      // TODO
+    });
+
     // WorkerProfile workerProfile
     test('to test the property `workerProfile`', () async {
       // TODO
     });
 
+    // int workerProfileId
+    test('to test the property `workerProfileId`', () async {
+      // TODO
+    });
+
     // List<Role> capabilities (default value: const [])
     test('to test the property `capabilities`', () async {
+      // TODO
+    });
+
+    // ModelSet<String> capabilityIds (default value: const [])
+    test('to test the property `capabilityIds`', () async {
+      // TODO
+    });
+
+    // WorkingHoursConfig workingHoursConfig
+    test('to test the property `workingHoursConfig`', () async {
+      // TODO
+    });
+
+    // List<DayOffRequest> dayOffRequests (default value: const [])
+    test('to test the property `dayOffRequests`', () async {
       // TODO
     });
 

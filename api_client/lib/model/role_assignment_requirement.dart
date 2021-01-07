@@ -34,8 +34,12 @@ class RoleAssignmentRequirement {
 
   String timeTo;
 
+  // minimum: -2147483648
+  // maximum: 2147483647
   int minNumberOfWorkers;
 
+  // minimum: -2147483648
+  // maximum: 2147483647
   int maxNumberOfWorkers;
 
   @override

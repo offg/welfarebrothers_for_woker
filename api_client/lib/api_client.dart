@@ -10,7 +10,7 @@
 part of welfarebrothers_for_worker_api_client;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://192.168.11.3:8000'}) {
+  ApiClient({this.basePath = 'http://localhost:8000'}) {
     // Setup authentications (key: authentication name, value: authentication).
     _authentications[r'Basic'] = HttpBasicAuth();
   }

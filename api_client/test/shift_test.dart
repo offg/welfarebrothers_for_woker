@@ -41,6 +41,11 @@ void main() {
       // TODO
     });
 
+    // FacilityWorkerProfile facilityWorkerProfile
+    test('to test the property `facilityWorkerProfile`', () async {
+      // TODO
+    });
+
 
   });
 

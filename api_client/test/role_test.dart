@@ -1,4 +1,4 @@
-import 'package:openapi/api.dart';
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
 import 'package:test/test.dart';
 
 // tests for Role
@@ -8,16 +8,6 @@ void main() {
   group('test Role', () {
     // String id
     test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // DateTime createdAt
-    test('to test the property `createdAt`', () async {
-      // TODO
-    });
-
-    // DateTime updatedAt
-    test('to test the property `updatedAt`', () async {
       // TODO
     });
 
