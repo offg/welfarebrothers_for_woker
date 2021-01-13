@@ -106,6 +106,96 @@ paths:
         description: A unique value identifying this facility.
         required: true
         type: string
+  /for_worker/facilities/:
+    get:
+      operationId: for_worker_facilities_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FacilityForWorker'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facilities_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityForWorkerForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityForWorker'
+      tags:
+        - for_worker
+    parameters: []
+  /for_worker/facilities/{id}/:
+    get:
+      operationId: for_worker_facilities_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityForWorker'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facilities_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityForWorkerForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityForWorker'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facilities_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityForWorkerForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityForWorker'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facilities_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: id
+        in: path
+        description: A unique value identifying this facility.
+        required: true
+        type: string
   /for_worker/facility_administrations/:
     get:
       operationId: for_worker_facility_administrations_list
@@ -165,6 +255,104 @@ paths:
         in: path
         required: true
         type: string
+  /for_worker/facility_administrations/{facility_administration_pk}/availability/:
+    get:
+      operationId: for_worker_facility_administrations_availability_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FacilityAvailability'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_availability_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityAvailabilityForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAvailability'
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/:
+    get:
+      operationId: for_worker_facility_administrations_availability_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAvailability'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facility_administrations_availability_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityAvailabilityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAvailability'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facility_administrations_availability_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityAvailabilityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAvailability'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_administrations_availability_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique integer value identifying this facility availability.
+        required: true
+        type: integer
   /for_worker/facility_administrations/{facility_administration_pk}/shift_config/:
     get:
       operationId: for_worker_facility_administrations_shift_config_list
@@ -1295,6 +1483,17 @@ paths:
         in: path
         required: true
         type: string
+  /message:
+    get:
+      operationId: message_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - message
+    parameters: []
   /users/:
     get:
       operationId: users_list
@@ -1460,6 +1659,48 @@ definitions:
         type: string
         maxLength: 255
         minLength: 1
+  FacilityForWorker:
+    required:
+      - id
+      - name
+      - available_days_of_the_week
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        maxLength: 40
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      available_days_of_the_week:
+        type: array
+        items:
+          type: integer
+  FacilityForWorkerForWrite:
+    required:
+      - id
+      - name
+      - available_days_of_the_week
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        maxLength: 40
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      available_days_of_the_week:
+        type: array
+        items:
+          type: integer
   FacilityAdministration:
     required:
       - facility_id
@@ -1483,6 +1724,49 @@ definitions:
       facility_id:
         title: Facility id
         type: string
+  FacilityAvailability:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      facility_administration:
+        $ref: '#/definitions/FacilityAdministration'
+      days_of_the_week:
+        type: array
+        items:
+          title: Days of the week
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+  FacilityAvailabilityForWrite:
+    required:
+      - facility_administration_id
+    type: object
+    properties:
+      facility_administration_id:
+        title: Facility administration id
+        type: string
+      days_of_the_week:
+        type: array
+        items:
+          title: Days of the week
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
   Role:
     required:
       - id

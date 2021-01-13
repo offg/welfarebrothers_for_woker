@@ -9,6 +9,18 @@ All URIs are relative to *http://localhost:8000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**forWorkerFacilitiesCreate**](ForWorkerApi.md#forWorkerFacilitiesCreate) | **POST** /for_worker/facilities/ | 
+[**forWorkerFacilitiesDelete**](ForWorkerApi.md#forWorkerFacilitiesDelete) | **DELETE** /for_worker/facilities/{id}/ | 
+[**forWorkerFacilitiesList**](ForWorkerApi.md#forWorkerFacilitiesList) | **GET** /for_worker/facilities/ | 
+[**forWorkerFacilitiesPartialUpdate**](ForWorkerApi.md#forWorkerFacilitiesPartialUpdate) | **PATCH** /for_worker/facilities/{id}/ | 
+[**forWorkerFacilitiesRead**](ForWorkerApi.md#forWorkerFacilitiesRead) | **GET** /for_worker/facilities/{id}/ | 
+[**forWorkerFacilitiesUpdate**](ForWorkerApi.md#forWorkerFacilitiesUpdate) | **PUT** /for_worker/facilities/{id}/ | 
+[**forWorkerFacilityAdministrationsAvailabilityCreate**](ForWorkerApi.md#forWorkerFacilityAdministrationsAvailabilityCreate) | **POST** /for_worker/facility_administrations/{facility_administration_pk}/availability/ | 
+[**forWorkerFacilityAdministrationsAvailabilityDelete**](ForWorkerApi.md#forWorkerFacilityAdministrationsAvailabilityDelete) | **DELETE** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
+[**forWorkerFacilityAdministrationsAvailabilityList**](ForWorkerApi.md#forWorkerFacilityAdministrationsAvailabilityList) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/availability/ | 
+[**forWorkerFacilityAdministrationsAvailabilityPartialUpdate**](ForWorkerApi.md#forWorkerFacilityAdministrationsAvailabilityPartialUpdate) | **PATCH** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
+[**forWorkerFacilityAdministrationsAvailabilityRead**](ForWorkerApi.md#forWorkerFacilityAdministrationsAvailabilityRead) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
+[**forWorkerFacilityAdministrationsAvailabilityUpdate**](ForWorkerApi.md#forWorkerFacilityAdministrationsAvailabilityUpdate) | **PUT** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
 [**forWorkerFacilityAdministrationsCreate**](ForWorkerApi.md#forWorkerFacilityAdministrationsCreate) | **POST** /for_worker/facility_administrations/ | 
 [**forWorkerFacilityAdministrationsDelete**](ForWorkerApi.md#forWorkerFacilityAdministrationsDelete) | **DELETE** /for_worker/facility_administrations/{facility}/ | 
 [**forWorkerFacilityAdministrationsList**](ForWorkerApi.md#forWorkerFacilityAdministrationsList) | **GET** /for_worker/facility_administrations/ | 
@@ -82,6 +94,546 @@ Method | HTTP request | Description
 [**forWorkerUserProfileWorkerProfileRead**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileRead) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
 [**forWorkerUserProfileWorkerProfileUpdate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileUpdate) | **PUT** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
 
+
+# **forWorkerFacilitiesCreate**
+> FacilityForWorker forWorkerFacilitiesCreate(data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final data = FacilityForWorkerForWrite(); // FacilityForWorkerForWrite | 
+
+try { 
+    final result = api_instance.forWorkerFacilitiesCreate(data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilitiesCreate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**FacilityForWorkerForWrite**](FacilityForWorkerForWrite.md)|  | 
+
+### Return type
+
+[**FacilityForWorker**](FacilityForWorker.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilitiesDelete**
+> forWorkerFacilitiesDelete(id)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final id = id_example; // String | A unique value identifying this facility.
+
+try { 
+    api_instance.forWorkerFacilitiesDelete(id);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilitiesDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| A unique value identifying this facility. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilitiesList**
+> List<FacilityForWorker> forWorkerFacilitiesList()
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+
+try { 
+    final result = api_instance.forWorkerFacilitiesList();
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilitiesList: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<FacilityForWorker>**](FacilityForWorker.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilitiesPartialUpdate**
+> FacilityForWorker forWorkerFacilitiesPartialUpdate(id, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final id = id_example; // String | A unique value identifying this facility.
+final data = FacilityForWorkerForWrite(); // FacilityForWorkerForWrite | 
+
+try { 
+    final result = api_instance.forWorkerFacilitiesPartialUpdate(id, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilitiesPartialUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| A unique value identifying this facility. | 
+ **data** | [**FacilityForWorkerForWrite**](FacilityForWorkerForWrite.md)|  | 
+
+### Return type
+
+[**FacilityForWorker**](FacilityForWorker.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilitiesRead**
+> FacilityForWorker forWorkerFacilitiesRead(id)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final id = id_example; // String | A unique value identifying this facility.
+
+try { 
+    final result = api_instance.forWorkerFacilitiesRead(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilitiesRead: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| A unique value identifying this facility. | 
+
+### Return type
+
+[**FacilityForWorker**](FacilityForWorker.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilitiesUpdate**
+> FacilityForWorker forWorkerFacilitiesUpdate(id, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final id = id_example; // String | A unique value identifying this facility.
+final data = FacilityForWorkerForWrite(); // FacilityForWorkerForWrite | 
+
+try { 
+    final result = api_instance.forWorkerFacilitiesUpdate(id, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilitiesUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| A unique value identifying this facility. | 
+ **data** | [**FacilityForWorkerForWrite**](FacilityForWorkerForWrite.md)|  | 
+
+### Return type
+
+[**FacilityForWorker**](FacilityForWorker.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityAdministrationsAvailabilityCreate**
+> FacilityAvailability forWorkerFacilityAdministrationsAvailabilityCreate(facilityAdministrationPk, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
+final data = FacilityAvailabilityForWrite(); // FacilityAvailabilityForWrite | 
+
+try { 
+    final result = api_instance.forWorkerFacilityAdministrationsAvailabilityCreate(facilityAdministrationPk, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityAdministrationsAvailabilityCreate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **facilityAdministrationPk** | **String**|  | 
+ **data** | [**FacilityAvailabilityForWrite**](FacilityAvailabilityForWrite.md)|  | 
+
+### Return type
+
+[**FacilityAvailability**](FacilityAvailability.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityAdministrationsAvailabilityDelete**
+> forWorkerFacilityAdministrationsAvailabilityDelete(facilityAdministrationPk, id)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
+final id = 56; // int | A unique integer value identifying this facility availability.
+
+try { 
+    api_instance.forWorkerFacilityAdministrationsAvailabilityDelete(facilityAdministrationPk, id);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityAdministrationsAvailabilityDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **facilityAdministrationPk** | **String**|  | 
+ **id** | **int**| A unique integer value identifying this facility availability. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityAdministrationsAvailabilityList**
+> List<FacilityAvailability> forWorkerFacilityAdministrationsAvailabilityList(facilityAdministrationPk)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
+
+try { 
+    final result = api_instance.forWorkerFacilityAdministrationsAvailabilityList(facilityAdministrationPk);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityAdministrationsAvailabilityList: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **facilityAdministrationPk** | **String**|  | 
+
+### Return type
+
+[**List<FacilityAvailability>**](FacilityAvailability.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityAdministrationsAvailabilityPartialUpdate**
+> FacilityAvailability forWorkerFacilityAdministrationsAvailabilityPartialUpdate(facilityAdministrationPk, id, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
+final id = 56; // int | A unique integer value identifying this facility availability.
+final data = FacilityAvailabilityForWrite(); // FacilityAvailabilityForWrite | 
+
+try { 
+    final result = api_instance.forWorkerFacilityAdministrationsAvailabilityPartialUpdate(facilityAdministrationPk, id, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityAdministrationsAvailabilityPartialUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **facilityAdministrationPk** | **String**|  | 
+ **id** | **int**| A unique integer value identifying this facility availability. | 
+ **data** | [**FacilityAvailabilityForWrite**](FacilityAvailabilityForWrite.md)|  | 
+
+### Return type
+
+[**FacilityAvailability**](FacilityAvailability.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityAdministrationsAvailabilityRead**
+> FacilityAvailability forWorkerFacilityAdministrationsAvailabilityRead(facilityAdministrationPk, id)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
+final id = 56; // int | A unique integer value identifying this facility availability.
+
+try { 
+    final result = api_instance.forWorkerFacilityAdministrationsAvailabilityRead(facilityAdministrationPk, id);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityAdministrationsAvailabilityRead: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **facilityAdministrationPk** | **String**|  | 
+ **id** | **int**| A unique integer value identifying this facility availability. | 
+
+### Return type
+
+[**FacilityAvailability**](FacilityAvailability.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityAdministrationsAvailabilityUpdate**
+> FacilityAvailability forWorkerFacilityAdministrationsAvailabilityUpdate(facilityAdministrationPk, id, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = ForWorkerApi();
+final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
+final id = 56; // int | A unique integer value identifying this facility availability.
+final data = FacilityAvailabilityForWrite(); // FacilityAvailabilityForWrite | 
+
+try { 
+    final result = api_instance.forWorkerFacilityAdministrationsAvailabilityUpdate(facilityAdministrationPk, id, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityAdministrationsAvailabilityUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **facilityAdministrationPk** | **String**|  | 
+ **id** | **int**| A unique integer value identifying this facility availability. | 
+ **data** | [**FacilityAvailabilityForWrite**](FacilityAvailabilityForWrite.md)|  | 
+
+### Return type
+
+[**FacilityAvailability**](FacilityAvailability.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerFacilityAdministrationsCreate**
 > FacilityAdministration forWorkerFacilityAdministrationsCreate(data)

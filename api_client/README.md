@@ -67,6 +67,18 @@ Class | Method | HTTP request | Description
 *FacilitiesApi* | [**facilitiesPartialUpdate**](doc//FacilitiesApi.md#facilitiespartialupdate) | **PATCH** /facilities/{id}/ | 
 *FacilitiesApi* | [**facilitiesRead**](doc//FacilitiesApi.md#facilitiesread) | **GET** /facilities/{id}/ | 
 *FacilitiesApi* | [**facilitiesUpdate**](doc//FacilitiesApi.md#facilitiesupdate) | **PUT** /facilities/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilitiesCreate**](doc//ForWorkerApi.md#forworkerfacilitiescreate) | **POST** /for_worker/facilities/ | 
+*ForWorkerApi* | [**forWorkerFacilitiesDelete**](doc//ForWorkerApi.md#forworkerfacilitiesdelete) | **DELETE** /for_worker/facilities/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilitiesList**](doc//ForWorkerApi.md#forworkerfacilitieslist) | **GET** /for_worker/facilities/ | 
+*ForWorkerApi* | [**forWorkerFacilitiesPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilitiespartialupdate) | **PATCH** /for_worker/facilities/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilitiesRead**](doc//ForWorkerApi.md#forworkerfacilitiesread) | **GET** /for_worker/facilities/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilitiesUpdate**](doc//ForWorkerApi.md#forworkerfacilitiesupdate) | **PUT** /for_worker/facilities/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityCreate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilitycreate) | **POST** /for_worker/facility_administrations/{facility_administration_pk}/availability/ | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityDelete**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilitydelete) | **DELETE** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityList**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilitylist) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/availability/ | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilitypartialupdate) | **PATCH** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityRead**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilityread) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilityupdate) | **PUT** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsCreate**](doc//ForWorkerApi.md#forworkerfacilityadministrationscreate) | **POST** /for_worker/facility_administrations/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsDelete**](doc//ForWorkerApi.md#forworkerfacilityadministrationsdelete) | **DELETE** /for_worker/facility_administrations/{facility}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsList**](doc//ForWorkerApi.md#forworkerfacilityadministrationslist) | **GET** /for_worker/facility_administrations/ | 
@@ -139,6 +151,7 @@ Class | Method | HTTP request | Description
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfilePartialUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilepartialupdate) | **PATCH** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfileRead**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofileread) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfileUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofileupdate) | **PUT** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
+*MessageApi* | [**messageList**](doc//MessageApi.md#messagelist) | **GET** /message | 
 *UsersApi* | [**usersList**](doc//UsersApi.md#userslist) | **GET** /users/ | 
 *UsersApi* | [**usersProfilesCreate**](doc//UsersApi.md#usersprofilescreate) | **POST** /users/{user_pk}/profiles/ | 
 *UsersApi* | [**usersProfilesDelete**](doc//UsersApi.md#usersprofilesdelete) | **DELETE** /users/{user_pk}/profiles/{id}/ | 
@@ -156,6 +169,10 @@ Class | Method | HTTP request | Description
  - [Facility](doc//Facility.md)
  - [FacilityAdministration](doc//FacilityAdministration.md)
  - [FacilityAdministrationForWrite](doc//FacilityAdministrationForWrite.md)
+ - [FacilityAvailability](doc//FacilityAvailability.md)
+ - [FacilityAvailabilityForWrite](doc//FacilityAvailabilityForWrite.md)
+ - [FacilityForWorker](doc//FacilityForWorker.md)
+ - [FacilityForWorkerForWrite](doc//FacilityForWorkerForWrite.md)
  - [FacilityForWrite](doc//FacilityForWrite.md)
  - [FacilityWorkerProfile](doc//FacilityWorkerProfile.md)
  - [FacilityWorkerProfileForWrite](doc//FacilityWorkerProfileForWrite.md)

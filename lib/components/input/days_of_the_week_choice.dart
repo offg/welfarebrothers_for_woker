@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiver/iterables.dart';
+import 'package:welfarebrothers_for_worker/utils/datetime.dart';
 
 Map<int, bool> daysOfTheWeekChoiceStatusFromSelectedDays(List<int> selected) {
   var result = initDaysOfTheWeekChoiceStatus();
@@ -21,7 +22,7 @@ Map<int, bool> initDaysOfTheWeekChoiceStatus() => Map<int, bool>.fromEntries(
 
 class DayOfTheWeekChoice extends StatefulWidget {
   final Map<int, bool> choiceStatus;
-  Function onChanged;
+  final Function onChanged;
   DayOfTheWeekChoice(this.choiceStatus, this.onChanged);
 
   @override
@@ -30,16 +31,6 @@ class DayOfTheWeekChoice extends StatefulWidget {
 
 class _DayOfTheWeekChoice extends State<DayOfTheWeekChoice> {
   Map<int, bool> _choiceStatus;
-
-  Map<int, String> _choiceLabel = {
-    0: "月曜日",
-    1: "火曜日",
-    2: "水曜日",
-    3: "木曜日",
-    4: "金曜日",
-    5: "土曜日",
-    6: "日曜日",
-  };
 
   @override
   void initState() {
@@ -59,7 +50,7 @@ class _DayOfTheWeekChoice extends State<DayOfTheWeekChoice> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: _choiceLabel.entries
+        children: dayLabels.entries
             .map((entry) => CheckboxListTile(
                   title: Text(entry.value),
                   value: _choiceStatus[entry.key],

@@ -28,6 +28,7 @@ part 'auth/http_bearer_auth.dart';
 
 part 'api/facilities_api.dart';
 part 'api/for_worker_api.dart';
+part 'api/message_api.dart';
 part 'api/users_api.dart';
 
 part 'model/day_off_request.dart';
@@ -35,6 +36,10 @@ part 'model/day_off_request_for_write.dart';
 part 'model/facility.dart';
 part 'model/facility_administration.dart';
 part 'model/facility_administration_for_write.dart';
+part 'model/facility_availability.dart';
+part 'model/facility_availability_for_write.dart';
+part 'model/facility_for_worker.dart';
+part 'model/facility_for_worker_for_write.dart';
 part 'model/facility_for_write.dart';
 part 'model/facility_worker_profile.dart';
 part 'model/facility_worker_profile_for_write.dart';

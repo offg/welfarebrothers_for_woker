@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
-import 'package:welfarebrothers_for_worker/view_models/work_schedule.dart';
+import 'package:welfarebrothers_for_worker/view_models/for_admin/work_schedule.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class WorkScheduleSummaryCard extends StatelessWidget {

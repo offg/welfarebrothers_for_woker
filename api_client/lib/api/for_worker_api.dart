@@ -15,6 +15,834 @@ class ForWorkerApi {
 
   final ApiClient apiClient;
 
+  /// Performs an HTTP 'POST /for_worker/facilities/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<Response> forWorkerFacilitiesCreateWithHttpInfo(FacilityForWorkerForWrite data) async {
+    // Verify required params are set.
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facilities/'.replaceAll('{format}', 'json');
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<FacilityForWorker> forWorkerFacilitiesCreate(FacilityForWorkerForWrite data) async {
+    final response = await forWorkerFacilitiesCreateWithHttpInfo(data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityForWorker') as FacilityForWorker;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'DELETE /for_worker/facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A unique value identifying this facility.
+  Future<Response> forWorkerFacilitiesDeleteWithHttpInfo(String id) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A unique value identifying this facility.
+  Future<void> forWorkerFacilitiesDelete(String id) async {
+    final response = await forWorkerFacilitiesDeleteWithHttpInfo(id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facilities/' operation and returns the [Response].
+  Future<Response> forWorkerFacilitiesListWithHttpInfo() async {
+    final path = '/for_worker/facilities/'.replaceAll('{format}', 'json');
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  Future<List<FacilityForWorker>> forWorkerFacilitiesList() async {
+    final response = await forWorkerFacilitiesListWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<FacilityForWorker>') as List)
+        .map((item) => item as FacilityForWorker)
+        .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PATCH /for_worker/facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A unique value identifying this facility.
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<Response> forWorkerFacilitiesPartialUpdateWithHttpInfo(String id, FacilityForWorkerForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A unique value identifying this facility.
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<FacilityForWorker> forWorkerFacilitiesPartialUpdate(String id, FacilityForWorkerForWrite data) async {
+    final response = await forWorkerFacilitiesPartialUpdateWithHttpInfo(id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityForWorker') as FacilityForWorker;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A unique value identifying this facility.
+  Future<Response> forWorkerFacilitiesReadWithHttpInfo(String id) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A unique value identifying this facility.
+  Future<FacilityForWorker> forWorkerFacilitiesRead(String id) async {
+    final response = await forWorkerFacilitiesReadWithHttpInfo(id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityForWorker') as FacilityForWorker;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PUT /for_worker/facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A unique value identifying this facility.
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<Response> forWorkerFacilitiesUpdateWithHttpInfo(String id, FacilityForWorkerForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A unique value identifying this facility.
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<FacilityForWorker> forWorkerFacilitiesUpdate(String id, FacilityForWorkerForWrite data) async {
+    final response = await forWorkerFacilitiesUpdateWithHttpInfo(id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityForWorker') as FacilityForWorker;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /for_worker/facility_administrations/{facility_administration_pk}/availability/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityCreateWithHttpInfo(String facilityAdministrationPk, FacilityAvailabilityForWrite data) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<FacilityAvailability> forWorkerFacilityAdministrationsAvailabilityCreate(String facilityAdministrationPk, FacilityAvailabilityForWrite data) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityCreateWithHttpInfo(facilityAdministrationPk, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityAvailability') as FacilityAvailability;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'DELETE /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityDeleteWithHttpInfo(String facilityAdministrationPk, int id) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString())
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  Future<void> forWorkerFacilityAdministrationsAvailabilityDelete(String facilityAdministrationPk, int id) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityDeleteWithHttpInfo(facilityAdministrationPk, id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facility_administrations/{facility_administration_pk}/availability/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityListWithHttpInfo(String facilityAdministrationPk) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  Future<List<FacilityAvailability>> forWorkerFacilityAdministrationsAvailabilityList(String facilityAdministrationPk) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityListWithHttpInfo(facilityAdministrationPk);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<FacilityAvailability>') as List)
+        .map((item) => item as FacilityAvailability)
+        .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PATCH /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityPartialUpdateWithHttpInfo(String facilityAdministrationPk, int id, FacilityAvailabilityForWrite data) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString())
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<FacilityAvailability> forWorkerFacilityAdministrationsAvailabilityPartialUpdate(String facilityAdministrationPk, int id, FacilityAvailabilityForWrite data) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityPartialUpdateWithHttpInfo(facilityAdministrationPk, id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityAvailability') as FacilityAvailability;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityReadWithHttpInfo(String facilityAdministrationPk, int id) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString())
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  Future<FacilityAvailability> forWorkerFacilityAdministrationsAvailabilityRead(String facilityAdministrationPk, int id) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityReadWithHttpInfo(facilityAdministrationPk, id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityAvailability') as FacilityAvailability;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PUT /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityUpdateWithHttpInfo(String facilityAdministrationPk, int id, FacilityAvailabilityForWrite data) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString())
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Basic'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<FacilityAvailability> forWorkerFacilityAdministrationsAvailabilityUpdate(String facilityAdministrationPk, int id, FacilityAvailabilityForWrite data) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityUpdateWithHttpInfo(facilityAdministrationPk, id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityAvailability') as FacilityAvailability;
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /for_worker/facility_administrations/' operation and returns the [Response].
   /// Parameters:
   ///

@@ -170,6 +170,14 @@ class ApiClient {
           return FacilityAdministration.fromJson(value);
         case 'FacilityAdministrationForWrite':
           return FacilityAdministrationForWrite.fromJson(value);
+        case 'FacilityAvailability':
+          return FacilityAvailability.fromJson(value);
+        case 'FacilityAvailabilityForWrite':
+          return FacilityAvailabilityForWrite.fromJson(value);
+        case 'FacilityForWorker':
+          return FacilityForWorker.fromJson(value);
+        case 'FacilityForWorkerForWrite':
+          return FacilityForWorkerForWrite.fromJson(value);
         case 'FacilityForWrite':
           return FacilityForWrite.fromJson(value);
         case 'FacilityWorkerProfile':

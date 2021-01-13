@@ -5,7 +5,7 @@ import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
 import 'package:welfarebrothers_for_worker/components/shift_config/role_assignment_requirement_form.dart';
 import 'package:welfarebrothers_for_worker/components/shift_config/shift_pattern_form.dart';
 import 'package:welfarebrothers_for_worker/domain/shift_config/shift_config.dart';
-import 'package:welfarebrothers_for_worker/view_models/shift_config.dart';
+import 'package:welfarebrothers_for_worker/view_models/for_admin/shift_config.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class ShiftConfigForm extends StatefulWidget {

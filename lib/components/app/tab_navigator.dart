@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum TabItem {
-  facility_management,
-  me,
-}
-
 class TabNavigator extends StatelessWidget {
-  final TabItem tabItem;
   final String routerName;
   final GlobalKey<NavigatorState> navigationKey;
   final Map<String, Widget Function(BuildContext)> Function(BuildContext) routerBuilder;
@@ -14,7 +8,6 @@ class TabNavigator extends StatelessWidget {
 
   const TabNavigator(
       {Key key,
-      @required this.tabItem,
       @required this.routerName,
       @required this.navigationKey,
       @required this.routerBuilder,

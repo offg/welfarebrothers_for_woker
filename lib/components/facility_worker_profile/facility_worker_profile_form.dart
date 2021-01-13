@@ -10,7 +10,7 @@ import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facili
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
 import 'package:welfarebrothers_for_worker/utils/design.dart';
 import 'package:welfarebrothers_for_worker/view_models/app.dart';
-import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
+import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class FacilityWorkerProfileForm extends StatefulWidget {
