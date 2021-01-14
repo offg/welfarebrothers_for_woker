@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
-InputDecoration inputDecoration(BuildContext context, String labelText) {
+InputDecoration inputDecoration(
+  BuildContext context,
+  String labelText, {
+  String hintText,
+}) {
   return InputDecoration(
     labelText: labelText,
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(6)),
-      borderSide: BorderSide(color: Colors.blueGrey, width: 4),
-    ),
+    hintText: hintText,
+    // border: OutlineInputBorder(
+    //   borderRadius: BorderRadius.all(Radius.circular(4)),
+    //   borderSide: BorderSide(color: Colors.blueGrey, width: 4),
+    // ),
   );
 }

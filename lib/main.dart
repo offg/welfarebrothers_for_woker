@@ -3,7 +3,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/config/locator.dart';
 import 'package:welfarebrothers_for_worker/domain/facility/facility_repository.dart';
-import 'package:welfarebrothers_for_worker/screens/for_admin/home.dart';
+import 'package:welfarebrothers_for_worker/screens/facility_registration.dart';
+import 'package:welfarebrothers_for_worker/screens/sign_in.dart';
+import 'package:welfarebrothers_for_worker/screens/sign_up.dart';
 import 'package:welfarebrothers_for_worker/view_models/app.dart';
 import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_availability.dart';
@@ -62,7 +64,8 @@ class WelfareBrothersForWorkerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Widget home = ForCaremanagerHomeScreen();
-    Widget home = ForAdminHomeScreen();
+    // Widget home = ForAdminHomeScreen();
+    Widget home = SignInScreen();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: welfareBrothersTheme,
@@ -70,6 +73,11 @@ class WelfareBrothersForWorkerApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
+      routes: {
+        '/sign_in': (_) => SignInScreen(),
+        '/sign_up': (_) => SignUpScreen(),
+        '/facility_registration': (_) => FacilityRegistrationScreen(),
+      },
       locale: const Locale("ja"),
       supportedLocales: const [
         const Locale("en"),
