@@ -8,20 +8,21 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+          child: Stack(
+        // mainAxisAlignment: MainAxisAlignment.start,
         children: [
           verticalSpace(size: size.height * 0.1),
-          Logo(),
           Padding(
             padding: const EdgeInsets.all(52.0),
             child: Card(
-              elevation: 10,
+              elevation: 25,
               child: Padding(
                 padding: const EdgeInsets.all(36.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     TextFormField(decoration: inputDecoration(context, "姓")),
                     TextFormField(decoration: inputDecoration(context, "名")),
@@ -52,6 +53,12 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          Positioned(
+            child: Logo(),
+            top: 25,
+            left: 0,
+            right: 0,
           ),
         ],
       )),

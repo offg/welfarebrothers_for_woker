@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:welfarebrothers_for_worker/components/app/panel.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
+import 'package:welfarebrothers_for_worker/utils/design.dart';
 
 class FacilityRegistrationScreen extends StatefulWidget {
   _FacilityRegistrationScreenState createState() => _FacilityRegistrationScreenState();
@@ -24,6 +25,7 @@ class _FacilityRegistrationScreenState extends State<FacilityRegistrationScreen>
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
       body: Column(
@@ -118,6 +120,7 @@ class _FacilityRegistrationScreenState extends State<FacilityRegistrationScreen>
                   )
                 ]),
                 RaisedButton(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.4),
                   child: Text("検索"),
                   onPressed: () {
                     setState(() {
@@ -138,28 +141,31 @@ class _FacilityRegistrationScreenState extends State<FacilityRegistrationScreen>
                               onTap: () {
                                 showDialog(
                                   context: context,
-                                  builder: (_context) => AlertDialog(
-                                    content: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        FlatButton(
-                                          child: Text("管理者として登録する"),
-                                          onPressed: () {},
+                                  builder: (_context) => SimpleDialog(
+                                    contentPadding: EdgeInsets.all(12),
+                                    children: [
+                                      verticalSpace(size: 12),
+                                      FlatButton(
+                                        child: Text("管理者として登録する"),
+                                        onPressed: () {},
+                                      ),
+                                      verticalSpace(size: 12),
+                                      FlatButton(
+                                        child: Text("従業員として登録する"),
+                                        onPressed: () {},
+                                      ),
+                                      verticalSpace(size: 12),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: RaisedButton(
+                                          child: Text("閉じる"),
+                                          elevation: 0,
+                                          color: Colors.blueGrey.withOpacity(0.5),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
                                         ),
-                                        FlatButton(
-                                          child: Text("従業員として登録する"),
-                                          onPressed: () {},
-                                        ),
-                                      ],
-                                    ),
-                                    actions: [
-                                      RaisedButton(
-                                        child: Text("閉じる"),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      )
+                                      ),
                                     ],
                                   ),
                                 );

@@ -9,19 +9,17 @@ class SignInScreen extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+          child: Stack(
         children: [
-          verticalSpace(size: size.height * 0.1),
-          Logo(),
           Padding(
-            padding: const EdgeInsets.all(52.0),
+            padding: const EdgeInsets.all(42.0),
             child: Card(
               elevation: 10,
               child: Padding(
-                padding: const EdgeInsets.all(36.0),
+                padding: const EdgeInsets.all(32.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     TextFormField(decoration: inputDecoration(context, "ユーザーID")),
                     TextFormField(decoration: inputDecoration(context, "パスワード")),
@@ -40,6 +38,12 @@ class SignInScreen extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          Positioned(
+            child: Logo(),
+            top: 15,
+            left: 0,
+            right: 0,
           ),
         ],
       )),
