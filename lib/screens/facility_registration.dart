@@ -38,7 +38,7 @@ class _FacilityRegistrationScreenState extends State<FacilityRegistrationScreen>
                   children: [
                     DropdownButtonHideUnderline(
                       child: DropdownButton(
-                        hint: Text("都道府県"),
+                        hint: Text("都道府県　　　　　"),
                         value: _prefCode,
                         underline: null,
                         items: [
@@ -57,7 +57,7 @@ class _FacilityRegistrationScreenState extends State<FacilityRegistrationScreen>
                     DropdownButtonHideUnderline(
                       child: DropdownButton(
                         value: _cityCode,
-                        hint: Text("市区町村"),
+                        hint: Text("市区町村　　　　　"),
                         items: [
                           DropdownMenuItem(
                             value: 2500,
@@ -80,7 +80,7 @@ class _FacilityRegistrationScreenState extends State<FacilityRegistrationScreen>
                 Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                   DropdownButton(
                     value: _categoryGroupId,
-                    hint: Text("サービス"),
+                    hint: Text("サービスカテゴリー"),
                     items: [
                       DropdownMenuItem(
                         value: "0",
@@ -99,7 +99,7 @@ class _FacilityRegistrationScreenState extends State<FacilityRegistrationScreen>
                   ),
                   DropdownButton(
                     value: _categoryId,
-                    hint: Text("サービス詳細"),
+                    hint: Text("サービス　　　　　"),
                     items: [
                       DropdownMenuItem(
                         value: "0",
