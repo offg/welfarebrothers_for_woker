@@ -13,25 +13,49 @@ class FacilityForWrite {
   /// Returns a new [FacilityForWrite] instance.
   FacilityForWrite({
     @required this.name,
+    @required this.category,
+    @required this.group,
+    @required this.careService,
   });
 
   String name;
 
+  CareServiceCategory category;
+
+  CareServiceGroup group;
+
+  CareService careService;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is FacilityForWrite &&
-     other.name == name;
+     other.name == name &&
+     other.category == category &&
+     other.group == group &&
+     other.careService == careService;
 
   @override
   int get hashCode =>
-    (name == null ? 0 : name.hashCode);
+    (name == null ? 0 : name.hashCode) +
+    (category == null ? 0 : category.hashCode) +
+    (group == null ? 0 : group.hashCode) +
+    (careService == null ? 0 : careService.hashCode);
 
   @override
-  String toString() => 'FacilityForWrite[name=$name]';
+  String toString() => 'FacilityForWrite[name=$name, category=$category, group=$group, careService=$careService]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (name != null) {
       json[r'name'] = name;
+    }
+    if (category != null) {
+      json[r'category'] = category;
+    }
+    if (group != null) {
+      json[r'group'] = group;
+    }
+    if (careService != null) {
+      json[r'care_service'] = careService;
     }
     return json;
   }
@@ -42,6 +66,9 @@ class FacilityForWrite {
     ? null
     : FacilityForWrite(
         name: json[r'name'],
+        category: CareServiceCategory.fromJson(json[r'category']),
+        group: CareServiceGroup.fromJson(json[r'group']),
+        careService: CareService.fromJson(json[r'care_service']),
     );
 
   static List<FacilityForWrite> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>

@@ -16,6 +16,300 @@ securityDefinitions:
 security:
   - Basic: []
 paths:
+  /care_service_categories/:
+    get:
+      operationId: care_service_categories_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CareServiceCategory'
+      tags:
+        - care_service_categories
+    post:
+      operationId: care_service_categories_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceCategoryForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceCategory'
+      tags:
+        - care_service_categories
+    parameters: []
+  /care_service_categories/{category_pk}/groups/:
+    get:
+      operationId: care_service_categories_groups_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CareServiceGroup'
+      tags:
+        - care_service_categories
+    post:
+      operationId: care_service_categories_groups_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceGroupForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceGroup'
+      tags:
+        - care_service_categories
+    parameters:
+      - name: category_pk
+        in: path
+        required: true
+        type: string
+  /care_service_categories/{category_pk}/groups/{group_pk}/services/:
+    get:
+      operationId: care_service_categories_groups_services_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CareService'
+      tags:
+        - care_service_categories
+    post:
+      operationId: care_service_categories_groups_services_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareService'
+      tags:
+        - care_service_categories
+    parameters:
+      - name: category_pk
+        in: path
+        required: true
+        type: string
+      - name: group_pk
+        in: path
+        required: true
+        type: string
+  /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/:
+    get:
+      operationId: care_service_categories_groups_services_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareService'
+      tags:
+        - care_service_categories
+    put:
+      operationId: care_service_categories_groups_services_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareService'
+      tags:
+        - care_service_categories
+    patch:
+      operationId: care_service_categories_groups_services_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareService'
+      tags:
+        - care_service_categories
+    delete:
+      operationId: care_service_categories_groups_services_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - care_service_categories
+    parameters:
+      - name: category_pk
+        in: path
+        required: true
+        type: string
+      - name: group_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique value identifying this care service.
+        required: true
+        type: string
+  /care_service_categories/{category_pk}/groups/{id}/:
+    get:
+      operationId: care_service_categories_groups_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceGroup'
+      tags:
+        - care_service_categories
+    put:
+      operationId: care_service_categories_groups_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceGroupForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceGroup'
+      tags:
+        - care_service_categories
+    patch:
+      operationId: care_service_categories_groups_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceGroupForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceGroup'
+      tags:
+        - care_service_categories
+    delete:
+      operationId: care_service_categories_groups_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - care_service_categories
+    parameters:
+      - name: category_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique value identifying this care service group.
+        required: true
+        type: string
+  /care_service_categories/{id}/:
+    get:
+      operationId: care_service_categories_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceCategory'
+      tags:
+        - care_service_categories
+    put:
+      operationId: care_service_categories_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceCategoryForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceCategory'
+      tags:
+        - care_service_categories
+    patch:
+      operationId: care_service_categories_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceCategoryForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceCategory'
+      tags:
+        - care_service_categories
+    delete:
+      operationId: care_service_categories_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - care_service_categories
+    parameters:
+      - name: id
+        in: path
+        description: A unique value identifying this care service category.
+        required: true
+        type: string
   /facilities/:
     get:
       operationId: facilities_list
@@ -41,7 +335,7 @@ paths:
           description: ''
           required: false
           type: string
-        - name: care_service__category
+        - name: care_service__group__category
           in: query
           description: ''
           required: false
@@ -136,7 +430,32 @@ paths:
     get:
       operationId: for_worker_facilities_list
       description: ''
-      parameters: []
+      parameters:
+        - name: prefecture
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: city
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: care_service
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: care_service__group
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: care_service__group__category
+          in: query
+          description: ''
+          required: false
+          type: string
       responses:
         '200':
           description: ''
@@ -1611,6 +1930,104 @@ paths:
         description: A unique value identifying this prefecture.
         required: true
         type: string
+  /prefectures/{prefecture_pk}/cities/:
+    get:
+      operationId: prefectures_cities_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/City'
+      tags:
+        - prefectures
+    post:
+      operationId: prefectures_cities_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CityForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/City'
+      tags:
+        - prefectures
+    parameters:
+      - name: prefecture_pk
+        in: path
+        required: true
+        type: string
+  /prefectures/{prefecture_pk}/cities/{id}/:
+    get:
+      operationId: prefectures_cities_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/City'
+      tags:
+        - prefectures
+    put:
+      operationId: prefectures_cities_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/City'
+      tags:
+        - prefectures
+    patch:
+      operationId: prefectures_cities_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/City'
+      tags:
+        - prefectures
+    delete:
+      operationId: prefectures_cities_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - prefectures
+    parameters:
+      - name: id
+        in: path
+        description: A unique value identifying this city.
+        required: true
+        type: string
+      - name: prefecture_pk
+        in: path
+        required: true
+        type: string
   /users/:
     get:
       operationId: users_list
@@ -1744,9 +2161,108 @@ paths:
         required: true
         type: string
 definitions:
+  CareServiceCategory:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+  CareServiceCategoryForWrite:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+  CareServiceGroup:
+    required:
+      - id
+      - name
+      - category
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+  CareServiceGroupForWrite:
+    required:
+      - id
+      - name
+      - category
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+  CareService:
+    required:
+      - id
+      - name
+      - group
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+  CareServiceForWrite:
+    required:
+      - id
+      - name
+      - group
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      group:
+        $ref: '#/definitions/CareServiceGroup'
   Facility:
     required:
       - name
+      - category
+      - group
+      - care_service
     type: object
     properties:
       id:
@@ -1759,9 +2275,18 @@ definitions:
         type: string
         maxLength: 255
         minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+      care_service:
+        $ref: '#/definitions/CareService'
   FacilityForWrite:
     required:
       - name
+      - category
+      - group
+      - care_service
     type: object
     properties:
       name:
@@ -1769,9 +2294,18 @@ definitions:
         type: string
         maxLength: 255
         minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+      care_service:
+        $ref: '#/definitions/CareService'
   FacilityForWorker:
     required:
       - name
+      - category
+      - group
+      - care_service
       - available_days_of_the_week
     type: object
     properties:
@@ -1785,6 +2319,12 @@ definitions:
         type: string
         maxLength: 255
         minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+      care_service:
+        $ref: '#/definitions/CareService'
       available_days_of_the_week:
         type: array
         items:
@@ -1792,6 +2332,9 @@ definitions:
   FacilityForWorkerForWrite:
     required:
       - name
+      - category
+      - group
+      - care_service
       - available_days_of_the_week
     type: object
     properties:
@@ -1800,6 +2343,12 @@ definitions:
         type: string
         maxLength: 255
         minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+      care_service:
+        $ref: '#/definitions/CareService'
       available_days_of_the_week:
         type: array
         items:
@@ -2468,3 +3017,37 @@ definitions:
         title: Name
         type: string
         minLength: 1
+  City:
+    required:
+      - id
+      - name
+      - prefecture
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      prefecture:
+        $ref: '#/definitions/Prefecture'
+  CityForWrite:
+    required:
+      - id
+      - name
+      - prefecture
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      prefecture:
+        $ref: '#/definitions/Prefecture'

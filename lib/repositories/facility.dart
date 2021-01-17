@@ -7,8 +7,18 @@ class FacilityApiRepository extends IFacilityRepository {
   FacilityApiRepository(this._client);
 
   @override
-  Future<List<FacilityForWorker>> fetchFacilities() async {
-    return await _client.forWorkerApi.forWorkerFacilitiesList();
+  Future<List<FacilityForWorker>> fetchFacilities({
+    String prefecture,
+    String city,
+    String careServiceCategory,
+    String careServiceGroup,
+  }) async {
+    return await _client.forWorkerApi.forWorkerFacilitiesList(
+      prefecture: prefecture,
+      city: city,
+      careServiceGroupCategory: careServiceCategory,
+      careServiceGroup: careServiceGroup,
+    );
   }
 
   @override

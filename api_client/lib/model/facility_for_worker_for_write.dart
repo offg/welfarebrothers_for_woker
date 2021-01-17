@@ -13,30 +13,54 @@ class FacilityForWorkerForWrite {
   /// Returns a new [FacilityForWorkerForWrite] instance.
   FacilityForWorkerForWrite({
     @required this.name,
+    @required this.category,
+    @required this.group,
+    @required this.careService,
     this.availableDaysOfTheWeek = const [],
   });
 
   String name;
+
+  CareServiceCategory category;
+
+  CareServiceGroup group;
+
+  CareService careService;
 
   List<int> availableDaysOfTheWeek;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is FacilityForWorkerForWrite &&
      other.name == name &&
+     other.category == category &&
+     other.group == group &&
+     other.careService == careService &&
      other.availableDaysOfTheWeek == availableDaysOfTheWeek;
 
   @override
   int get hashCode =>
     (name == null ? 0 : name.hashCode) +
+    (category == null ? 0 : category.hashCode) +
+    (group == null ? 0 : group.hashCode) +
+    (careService == null ? 0 : careService.hashCode) +
     (availableDaysOfTheWeek == null ? 0 : availableDaysOfTheWeek.hashCode);
 
   @override
-  String toString() => 'FacilityForWorkerForWrite[name=$name, availableDaysOfTheWeek=$availableDaysOfTheWeek]';
+  String toString() => 'FacilityForWorkerForWrite[name=$name, category=$category, group=$group, careService=$careService, availableDaysOfTheWeek=$availableDaysOfTheWeek]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (name != null) {
       json[r'name'] = name;
+    }
+    if (category != null) {
+      json[r'category'] = category;
+    }
+    if (group != null) {
+      json[r'group'] = group;
+    }
+    if (careService != null) {
+      json[r'care_service'] = careService;
     }
     if (availableDaysOfTheWeek != null) {
       json[r'available_days_of_the_week'] = availableDaysOfTheWeek;
@@ -50,6 +74,9 @@ class FacilityForWorkerForWrite {
     ? null
     : FacilityForWorkerForWrite(
         name: json[r'name'],
+        category: CareServiceCategory.fromJson(json[r'category']),
+        group: CareServiceGroup.fromJson(json[r'group']),
+        careService: CareService.fromJson(json[r'care_service']),
         availableDaysOfTheWeek: json[r'available_days_of_the_week'] == null
           ? null
           : (json[r'available_days_of_the_week'] as List).cast<int>(),

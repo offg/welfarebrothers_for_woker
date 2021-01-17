@@ -26,12 +26,21 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
+part 'api/care_service_categories_api.dart';
 part 'api/facilities_api.dart';
 part 'api/for_worker_api.dart';
 part 'api/message_api.dart';
 part 'api/prefectures_api.dart';
 part 'api/users_api.dart';
 
+part 'model/care_service.dart';
+part 'model/care_service_category.dart';
+part 'model/care_service_category_for_write.dart';
+part 'model/care_service_for_write.dart';
+part 'model/care_service_group.dart';
+part 'model/care_service_group_for_write.dart';
+part 'model/city.dart';
+part 'model/city_for_write.dart';
 part 'model/day_off_request.dart';
 part 'model/day_off_request_for_write.dart';
 part 'model/facility.dart';

@@ -105,7 +105,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **facilitiesList**
-> List<Facility> facilitiesList(prefecture, city, careService, careServiceGroup, careServiceCategory)
+> List<Facility> facilitiesList(prefecture, city, careService, careServiceGroup, careServiceGroupCategory)
 
 
 
@@ -121,10 +121,10 @@ final prefecture = prefecture_example; // String |
 final city = city_example; // String | 
 final careService = careService_example; // String | 
 final careServiceGroup = careServiceGroup_example; // String | 
-final careServiceCategory = careServiceCategory_example; // String | 
+final careServiceGroupCategory = careServiceGroupCategory_example; // String | 
 
 try { 
-    final result = api_instance.facilitiesList(prefecture, city, careService, careServiceGroup, careServiceCategory);
+    final result = api_instance.facilitiesList(prefecture, city, careService, careServiceGroup, careServiceGroupCategory);
     print(result);
 } catch (e) {
     print('Exception when calling FacilitiesApi->facilitiesList: $e\n');
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
  **city** | **String**|  | [optional] 
  **careService** | **String**|  | [optional] 
  **careServiceGroup** | **String**|  | [optional] 
- **careServiceCategory** | **String**|  | [optional] 
+ **careServiceGroupCategory** | **String**|  | [optional] 
 
 ### Return type
 

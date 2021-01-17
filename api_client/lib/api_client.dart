@@ -160,6 +160,22 @@ class ApiClient {
           break;
         case 'double':
           return value is double ? value : double.parse('$value');
+        case 'CareService':
+          return CareService.fromJson(value);
+        case 'CareServiceCategory':
+          return CareServiceCategory.fromJson(value);
+        case 'CareServiceCategoryForWrite':
+          return CareServiceCategoryForWrite.fromJson(value);
+        case 'CareServiceForWrite':
+          return CareServiceForWrite.fromJson(value);
+        case 'CareServiceGroup':
+          return CareServiceGroup.fromJson(value);
+        case 'CareServiceGroupForWrite':
+          return CareServiceGroupForWrite.fromJson(value);
+        case 'City':
+          return City.fromJson(value);
+        case 'CityForWrite':
+          return CityForWrite.fromJson(value);
         case 'DayOffRequest':
           return DayOffRequest.fromJson(value);
         case 'DayOffRequestForWrite':

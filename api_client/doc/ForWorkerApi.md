@@ -183,7 +183,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerFacilitiesList**
-> List<FacilityForWorker> forWorkerFacilitiesList()
+> List<FacilityForWorker> forWorkerFacilitiesList(prefecture, city, careService, careServiceGroup, careServiceGroupCategory)
 
 
 
@@ -195,9 +195,14 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
 final api_instance = ForWorkerApi();
+final prefecture = prefecture_example; // String | 
+final city = city_example; // String | 
+final careService = careService_example; // String | 
+final careServiceGroup = careServiceGroup_example; // String | 
+final careServiceGroupCategory = careServiceGroupCategory_example; // String | 
 
 try { 
-    final result = api_instance.forWorkerFacilitiesList();
+    final result = api_instance.forWorkerFacilitiesList(prefecture, city, careService, careServiceGroup, careServiceGroupCategory);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerFacilitiesList: $e\n');
@@ -205,7 +210,14 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **prefecture** | **String**|  | [optional] 
+ **city** | **String**|  | [optional] 
+ **careService** | **String**|  | [optional] 
+ **careServiceGroup** | **String**|  | [optional] 
+ **careServiceGroupCategory** | **String**|  | [optional] 
 
 ### Return type
 

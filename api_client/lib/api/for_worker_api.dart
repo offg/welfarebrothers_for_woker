@@ -138,7 +138,20 @@ class ForWorkerApi {
   }
 
   /// Performs an HTTP 'GET /for_worker/facilities/' operation and returns the [Response].
-  Future<Response> forWorkerFacilitiesListWithHttpInfo() async {
+  /// Parameters:
+  ///
+  /// * [String] prefecture:
+  ///
+  /// * [String] city:
+  ///
+  /// * [String] careService:
+  ///
+  /// * [String] careServiceGroup:
+  ///
+  /// * [String] careServiceGroupCategory:
+  Future<Response> forWorkerFacilitiesListWithHttpInfo({ String prefecture, String city, String careService, String careServiceGroup, String careServiceGroupCategory }) async {
+    // Verify required params are set.
+
     final path = '/for_worker/facilities/'.replaceAll('{format}', 'json');
 
     Object postBody;
@@ -146,6 +159,22 @@ class ForWorkerApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (prefecture != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'prefecture', prefecture));
+    }
+    if (city != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'city', city));
+    }
+    if (careService != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service', careService));
+    }
+    if (careServiceGroup != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group', careServiceGroup));
+    }
+    if (careServiceGroupCategory != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group__category', careServiceGroupCategory));
+    }
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
@@ -175,8 +204,19 @@ class ForWorkerApi {
     );
   }
 
-  Future<List<FacilityForWorker>> forWorkerFacilitiesList() async {
-    final response = await forWorkerFacilitiesListWithHttpInfo();
+  /// Parameters:
+  ///
+  /// * [String] prefecture:
+  ///
+  /// * [String] city:
+  ///
+  /// * [String] careService:
+  ///
+  /// * [String] careServiceGroup:
+  ///
+  /// * [String] careServiceGroupCategory:
+  Future<List<FacilityForWorker>> forWorkerFacilitiesList({ String prefecture, String city, String careService, String careServiceGroup, String careServiceGroupCategory }) async {
+    final response = await forWorkerFacilitiesListWithHttpInfo( prefecture: prefecture, city: city, careService: careService, careServiceGroup: careServiceGroup, careServiceGroupCategory: careServiceGroupCategory );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }

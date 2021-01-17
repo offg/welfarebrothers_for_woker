@@ -148,8 +148,8 @@ class FacilitiesApi {
   ///
   /// * [String] careServiceGroup:
   ///
-  /// * [String] careServiceCategory:
-  Future<Response> facilitiesListWithHttpInfo({ String prefecture, String city, String careService, String careServiceGroup, String careServiceCategory }) async {
+  /// * [String] careServiceGroupCategory:
+  Future<Response> facilitiesListWithHttpInfo({ String prefecture, String city, String careService, String careServiceGroup, String careServiceGroupCategory }) async {
     // Verify required params are set.
 
     final path = '/facilities/'.replaceAll('{format}', 'json');
@@ -172,8 +172,8 @@ class FacilitiesApi {
     if (careServiceGroup != null) {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group', careServiceGroup));
     }
-    if (careServiceCategory != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__category', careServiceCategory));
+    if (careServiceGroupCategory != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group__category', careServiceGroupCategory));
     }
 
     final contentTypes = <String>[];
@@ -214,9 +214,9 @@ class FacilitiesApi {
   ///
   /// * [String] careServiceGroup:
   ///
-  /// * [String] careServiceCategory:
-  Future<List<Facility>> facilitiesList({ String prefecture, String city, String careService, String careServiceGroup, String careServiceCategory }) async {
-    final response = await facilitiesListWithHttpInfo( prefecture: prefecture, city: city, careService: careService, careServiceGroup: careServiceGroup, careServiceCategory: careServiceCategory );
+  /// * [String] careServiceGroupCategory:
+  Future<List<Facility>> facilitiesList({ String prefecture, String city, String careService, String careServiceGroup, String careServiceGroupCategory }) async {
+    final response = await facilitiesListWithHttpInfo( prefecture: prefecture, city: city, careService: careService, careServiceGroup: careServiceGroup, careServiceGroupCategory: careServiceGroupCategory );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }

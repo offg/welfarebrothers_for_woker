@@ -1,12 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:welfarebrothers_for_worker/domain/area/area_repository.dart';
+import 'package:welfarebrothers_for_worker/domain/facility/care_service_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/facility/facility_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_availability/facility_availability_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facility_worker_profile_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/role/role_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/shift_config/shift_config_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/work_schedule/work_schedule_repository.dart';
+import 'package:welfarebrothers_for_worker/repositories/area.dart';
+import 'package:welfarebrothers_for_worker/repositories/care_service.dart';
 import 'package:welfarebrothers_for_worker/repositories/facility.dart';
 import 'package:welfarebrothers_for_worker/repositories/facility_availability.dart';
 import 'package:welfarebrothers_for_worker/repositories/facility_worker_profile.dart';
@@ -38,4 +42,6 @@ Future setUp() async {
   locator.registerSingleton<IShiftConfigRepository>(ShiftConfigApiRepository(apiClient));
   locator.registerSingleton<IWorkScheduleRepository>(WorkScheduleApiRepository(apiClient));
   locator.registerSingleton<IFacilityRepository>(FacilityApiRepository(apiClient));
+  locator.registerSingleton<IAreaRepository>(AreaApiRepository(apiClient));
+  locator.registerSingleton<ICareServiceRepository>(CareServiceApiRepository(apiClient));
 }

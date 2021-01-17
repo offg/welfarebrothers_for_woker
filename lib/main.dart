@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/config/locator.dart';
+import 'package:welfarebrothers_for_worker/domain/area/area_repository.dart';
+import 'package:welfarebrothers_for_worker/domain/facility/care_service_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/facility/facility_repository.dart';
 import 'package:welfarebrothers_for_worker/screens/facility_registration.dart';
 import 'package:welfarebrothers_for_worker/screens/sign_in.dart';
 import 'package:welfarebrothers_for_worker/screens/sign_up.dart';
 import 'package:welfarebrothers_for_worker/view_models/app.dart';
+import 'package:welfarebrothers_for_worker/view_models/facility_search_form.dart';
 import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_availability.dart';
 import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_worker_profile.dart';
@@ -55,6 +58,13 @@ Future main() async {
       ),
       ChangeNotifierProvider(
         create: (_) => CoordinationRequestViewModel()..initialize(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => FacilitySearchFormViewModel(
+          locator<IAreaRepository>(),
+          locator<ICareServiceRepository>(),
+          locator<IFacilityRepository>(),
+        )..initialize(),
       ),
     ], child: WelfareBrothersForWorkerApp()),
   );

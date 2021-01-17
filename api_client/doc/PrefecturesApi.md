@@ -9,6 +9,12 @@ All URIs are relative to *http://localhost:8000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**prefecturesCitiesCreate**](PrefecturesApi.md#prefecturesCitiesCreate) | **POST** /prefectures/{prefecture_pk}/cities/ | 
+[**prefecturesCitiesDelete**](PrefecturesApi.md#prefecturesCitiesDelete) | **DELETE** /prefectures/{prefecture_pk}/cities/{id}/ | 
+[**prefecturesCitiesList**](PrefecturesApi.md#prefecturesCitiesList) | **GET** /prefectures/{prefecture_pk}/cities/ | 
+[**prefecturesCitiesPartialUpdate**](PrefecturesApi.md#prefecturesCitiesPartialUpdate) | **PATCH** /prefectures/{prefecture_pk}/cities/{id}/ | 
+[**prefecturesCitiesRead**](PrefecturesApi.md#prefecturesCitiesRead) | **GET** /prefectures/{prefecture_pk}/cities/{id}/ | 
+[**prefecturesCitiesUpdate**](PrefecturesApi.md#prefecturesCitiesUpdate) | **PUT** /prefectures/{prefecture_pk}/cities/{id}/ | 
 [**prefecturesCreate**](PrefecturesApi.md#prefecturesCreate) | **POST** /prefectures/ | 
 [**prefecturesDelete**](PrefecturesApi.md#prefecturesDelete) | **DELETE** /prefectures/{id}/ | 
 [**prefecturesList**](PrefecturesApi.md#prefecturesList) | **GET** /prefectures/ | 
@@ -16,6 +22,283 @@ Method | HTTP request | Description
 [**prefecturesRead**](PrefecturesApi.md#prefecturesRead) | **GET** /prefectures/{id}/ | 
 [**prefecturesUpdate**](PrefecturesApi.md#prefecturesUpdate) | **PUT** /prefectures/{id}/ | 
 
+
+# **prefecturesCitiesCreate**
+> City prefecturesCitiesCreate(prefecturePk, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = PrefecturesApi();
+final prefecturePk = prefecturePk_example; // String | 
+final data = CityForWrite(); // CityForWrite | 
+
+try { 
+    final result = api_instance.prefecturesCitiesCreate(prefecturePk, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling PrefecturesApi->prefecturesCitiesCreate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **prefecturePk** | **String**|  | 
+ **data** | [**CityForWrite**](CityForWrite.md)|  | 
+
+### Return type
+
+[**City**](City.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **prefecturesCitiesDelete**
+> prefecturesCitiesDelete(id, prefecturePk)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = PrefecturesApi();
+final id = id_example; // String | A unique value identifying this city.
+final prefecturePk = prefecturePk_example; // String | 
+
+try { 
+    api_instance.prefecturesCitiesDelete(id, prefecturePk);
+} catch (e) {
+    print('Exception when calling PrefecturesApi->prefecturesCitiesDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| A unique value identifying this city. | 
+ **prefecturePk** | **String**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **prefecturesCitiesList**
+> List<City> prefecturesCitiesList(prefecturePk)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = PrefecturesApi();
+final prefecturePk = prefecturePk_example; // String | 
+
+try { 
+    final result = api_instance.prefecturesCitiesList(prefecturePk);
+    print(result);
+} catch (e) {
+    print('Exception when calling PrefecturesApi->prefecturesCitiesList: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **prefecturePk** | **String**|  | 
+
+### Return type
+
+[**List<City>**](City.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **prefecturesCitiesPartialUpdate**
+> City prefecturesCitiesPartialUpdate(id, prefecturePk, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = PrefecturesApi();
+final id = id_example; // String | A unique value identifying this city.
+final prefecturePk = prefecturePk_example; // String | 
+final data = CityForWrite(); // CityForWrite | 
+
+try { 
+    final result = api_instance.prefecturesCitiesPartialUpdate(id, prefecturePk, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling PrefecturesApi->prefecturesCitiesPartialUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| A unique value identifying this city. | 
+ **prefecturePk** | **String**|  | 
+ **data** | [**CityForWrite**](CityForWrite.md)|  | 
+
+### Return type
+
+[**City**](City.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **prefecturesCitiesRead**
+> City prefecturesCitiesRead(id, prefecturePk)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = PrefecturesApi();
+final id = id_example; // String | A unique value identifying this city.
+final prefecturePk = prefecturePk_example; // String | 
+
+try { 
+    final result = api_instance.prefecturesCitiesRead(id, prefecturePk);
+    print(result);
+} catch (e) {
+    print('Exception when calling PrefecturesApi->prefecturesCitiesRead: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| A unique value identifying this city. | 
+ **prefecturePk** | **String**|  | 
+
+### Return type
+
+[**City**](City.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **prefecturesCitiesUpdate**
+> City prefecturesCitiesUpdate(id, prefecturePk, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure HTTP basic authorization: Basic
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+
+final api_instance = PrefecturesApi();
+final id = id_example; // String | A unique value identifying this city.
+final prefecturePk = prefecturePk_example; // String | 
+final data = CityForWrite(); // CityForWrite | 
+
+try { 
+    final result = api_instance.prefecturesCitiesUpdate(id, prefecturePk, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling PrefecturesApi->prefecturesCitiesUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| A unique value identifying this city. | 
+ **prefecturePk** | **String**|  | 
+ **data** | [**CityForWrite**](CityForWrite.md)|  | 
+
+### Return type
+
+[**City**](City.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **prefecturesCreate**
 > Prefecture prefecturesCreate(data)
