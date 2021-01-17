@@ -4,33 +4,14 @@ import 'package:welfarebrothers_for_worker/components/facility/facility_search_f
 import 'package:welfarebrothers_for_worker/utils/design.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
-class FacilityRegistrationScreen extends StatefulWidget {
-  _FacilityRegistrationScreenState createState() => _FacilityRegistrationScreenState();
-}
-
-class _FacilityRegistrationScreenState extends State<FacilityRegistrationScreen> {
-  int _prefCode;
-  int _cityCode;
-  String _categoryGroupId;
-  String _categoryId;
-  List<String> _facilities;
-  @override
-  void initState() {
-    _prefCode = null;
-    _cityCode = null;
-    _categoryGroupId = null;
-    _categoryId = null;
-    _facilities = [];
-    super.initState();
-  }
-
+class FacilityRegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
       body: Column(children: [
-        SectionTitle("施設へ登録する"),
+        SectionTitle("所属事業所への登録"),
         FacilitySearchForm(
           onFacilityTap: (FacilityForWorker facility) => () {
             showDialog(
@@ -43,10 +24,24 @@ class _FacilityRegistrationScreenState extends State<FacilityRegistrationScreen>
                     child: Text("管理者として登録する"),
                     onPressed: () {},
                   ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "* 電話による認証を行います",
+                      style: TextStyle(fontSize: 10, color: Colors.grey.shade400),
+                    ),
+                  ),
                   verticalSpace(size: 12),
                   FlatButton(
                     child: Text("従業員として登録する"),
                     onPressed: () {},
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "* 管理者への承認リクエストを送信します",
+                      style: TextStyle(fontSize: 10, color: Colors.grey.shade400),
+                    ),
                   ),
                   verticalSpace(size: 12),
                   Padding(
