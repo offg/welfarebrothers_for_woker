@@ -12,7 +12,7 @@ part of welfarebrothers_for_worker_api_client;
 class FacilityForWorker {
   /// Returns a new [FacilityForWorker] instance.
   FacilityForWorker({
-    @required this.id,
+    this.id,
     @required this.name,
     this.availableDaysOfTheWeek = const [],
   });

@@ -152,6 +152,12 @@ Class | Method | HTTP request | Description
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfileRead**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofileread) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfileUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofileupdate) | **PUT** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
 *MessageApi* | [**messageList**](doc//MessageApi.md#messagelist) | **GET** /message | 
+*PrefecturesApi* | [**prefecturesCreate**](doc//PrefecturesApi.md#prefecturescreate) | **POST** /prefectures/ | 
+*PrefecturesApi* | [**prefecturesDelete**](doc//PrefecturesApi.md#prefecturesdelete) | **DELETE** /prefectures/{id}/ | 
+*PrefecturesApi* | [**prefecturesList**](doc//PrefecturesApi.md#prefectureslist) | **GET** /prefectures/ | 
+*PrefecturesApi* | [**prefecturesPartialUpdate**](doc//PrefecturesApi.md#prefecturespartialupdate) | **PATCH** /prefectures/{id}/ | 
+*PrefecturesApi* | [**prefecturesRead**](doc//PrefecturesApi.md#prefecturesread) | **GET** /prefectures/{id}/ | 
+*PrefecturesApi* | [**prefecturesUpdate**](doc//PrefecturesApi.md#prefecturesupdate) | **PUT** /prefectures/{id}/ | 
 *UsersApi* | [**usersList**](doc//UsersApi.md#userslist) | **GET** /users/ | 
 *UsersApi* | [**usersProfilesCreate**](doc//UsersApi.md#usersprofilescreate) | **POST** /users/{user_pk}/profiles/ | 
 *UsersApi* | [**usersProfilesDelete**](doc//UsersApi.md#usersprofilesdelete) | **DELETE** /users/{user_pk}/profiles/{id}/ | 
@@ -176,6 +182,8 @@ Class | Method | HTTP request | Description
  - [FacilityForWrite](doc//FacilityForWrite.md)
  - [FacilityWorkerProfile](doc//FacilityWorkerProfile.md)
  - [FacilityWorkerProfileForWrite](doc//FacilityWorkerProfileForWrite.md)
+ - [Prefecture](doc//Prefecture.md)
+ - [PrefectureForWrite](doc//PrefectureForWrite.md)
  - [Role](doc//Role.md)
  - [RoleAssignmentRequirement](doc//RoleAssignmentRequirement.md)
  - [RoleAssignmentRequirementForWrite](doc//RoleAssignmentRequirementForWrite.md)

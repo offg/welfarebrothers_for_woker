@@ -12,32 +12,24 @@ part of welfarebrothers_for_worker_api_client;
 class FacilityForWrite {
   /// Returns a new [FacilityForWrite] instance.
   FacilityForWrite({
-    @required this.id,
     @required this.name,
   });
-
-  String id;
 
   String name;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is FacilityForWrite &&
-     other.id == id &&
      other.name == name;
 
   @override
   int get hashCode =>
-    (id == null ? 0 : id.hashCode) +
     (name == null ? 0 : name.hashCode);
 
   @override
-  String toString() => 'FacilityForWrite[id=$id, name=$name]';
+  String toString() => 'FacilityForWrite[name=$name]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (id != null) {
-      json[r'id'] = id;
-    }
     if (name != null) {
       json[r'name'] = name;
     }
@@ -49,7 +41,6 @@ class FacilityForWrite {
   static FacilityForWrite fromJson(Map<String, dynamic> json) => json == null
     ? null
     : FacilityForWrite(
-        id: json[r'id'],
         name: json[r'name'],
     );
 

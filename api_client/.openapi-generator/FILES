@@ -16,6 +16,9 @@ doc/FacilityWorkerProfile.md
 doc/FacilityWorkerProfileForWrite.md
 doc/ForWorkerApi.md
 doc/MessageApi.md
+doc/Prefecture.md
+doc/PrefectureForWrite.md
+doc/PrefecturesApi.md
 doc/Role.md
 doc/RoleAssignmentRequirement.md
 doc/RoleAssignmentRequirementForWrite.md
@@ -42,6 +45,7 @@ lib/api.dart
 lib/api/facilities_api.dart
 lib/api/for_worker_api.dart
 lib/api/message_api.dart
+lib/api/prefectures_api.dart
 lib/api/users_api.dart
 lib/api_client.dart
 lib/api_exception.dart
@@ -63,6 +67,8 @@ lib/model/facility_for_worker_for_write.dart
 lib/model/facility_for_write.dart
 lib/model/facility_worker_profile.dart
 lib/model/facility_worker_profile_for_write.dart
+lib/model/prefecture.dart
+lib/model/prefecture_for_write.dart
 lib/model/role.dart
 lib/model/role_assignment_requirement.dart
 lib/model/role_assignment_requirement_for_write.dart

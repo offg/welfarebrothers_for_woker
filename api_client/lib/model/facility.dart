@@ -12,7 +12,7 @@ part of welfarebrothers_for_worker_api_client;
 class Facility {
   /// Returns a new [Facility] instance.
   Facility({
-    @required this.id,
+    this.id,
     @required this.name,
   });
 

@@ -82,7 +82,7 @@ class ForWorkerApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   Future<Response> forWorkerFacilitiesDeleteWithHttpInfo(String id) async {
     // Verify required params are set.
     if (id == null) {
@@ -129,7 +129,7 @@ class ForWorkerApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   Future<void> forWorkerFacilitiesDelete(String id) async {
     final response = await forWorkerFacilitiesDeleteWithHttpInfo(id);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -195,7 +195,7 @@ class ForWorkerApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   ///
   /// * [FacilityForWorkerForWrite] data (required):
   Future<Response> forWorkerFacilitiesPartialUpdateWithHttpInfo(String id, FacilityForWorkerForWrite data) async {
@@ -247,7 +247,7 @@ class ForWorkerApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   ///
   /// * [FacilityForWorkerForWrite] data (required):
   Future<FacilityForWorker> forWorkerFacilitiesPartialUpdate(String id, FacilityForWorkerForWrite data) async {
@@ -268,7 +268,7 @@ class ForWorkerApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   Future<Response> forWorkerFacilitiesReadWithHttpInfo(String id) async {
     // Verify required params are set.
     if (id == null) {
@@ -315,7 +315,7 @@ class ForWorkerApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   Future<FacilityForWorker> forWorkerFacilitiesRead(String id) async {
     final response = await forWorkerFacilitiesReadWithHttpInfo(id);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -334,7 +334,7 @@ class ForWorkerApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   ///
   /// * [FacilityForWorkerForWrite] data (required):
   Future<Response> forWorkerFacilitiesUpdateWithHttpInfo(String id, FacilityForWorkerForWrite data) async {
@@ -386,7 +386,7 @@ class ForWorkerApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   ///
   /// * [FacilityForWorkerForWrite] data (required):
   Future<FacilityForWorker> forWorkerFacilitiesUpdate(String id, FacilityForWorkerForWrite data) async {

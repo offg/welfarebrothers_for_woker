@@ -184,6 +184,10 @@ class ApiClient {
           return FacilityWorkerProfile.fromJson(value);
         case 'FacilityWorkerProfileForWrite':
           return FacilityWorkerProfileForWrite.fromJson(value);
+        case 'Prefecture':
+          return Prefecture.fromJson(value);
+        case 'PrefectureForWrite':
+          return PrefectureForWrite.fromJson(value);
         case 'Role':
           return Role.fromJson(value);
         case 'RoleAssignmentRequirement':

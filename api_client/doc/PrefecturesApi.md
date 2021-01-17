@@ -1,4 +1,4 @@
-# welfarebrothers_for_worker_api_client.api.FacilitiesApi
+# welfarebrothers_for_worker_api_client.api.PrefecturesApi
 
 ## Load the API package
 ```dart
@@ -9,16 +9,16 @@ All URIs are relative to *http://localhost:8000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**facilitiesCreate**](FacilitiesApi.md#facilitiesCreate) | **POST** /facilities/ | 
-[**facilitiesDelete**](FacilitiesApi.md#facilitiesDelete) | **DELETE** /facilities/{id}/ | 
-[**facilitiesList**](FacilitiesApi.md#facilitiesList) | **GET** /facilities/ | 
-[**facilitiesPartialUpdate**](FacilitiesApi.md#facilitiesPartialUpdate) | **PATCH** /facilities/{id}/ | 
-[**facilitiesRead**](FacilitiesApi.md#facilitiesRead) | **GET** /facilities/{id}/ | 
-[**facilitiesUpdate**](FacilitiesApi.md#facilitiesUpdate) | **PUT** /facilities/{id}/ | 
+[**prefecturesCreate**](PrefecturesApi.md#prefecturesCreate) | **POST** /prefectures/ | 
+[**prefecturesDelete**](PrefecturesApi.md#prefecturesDelete) | **DELETE** /prefectures/{id}/ | 
+[**prefecturesList**](PrefecturesApi.md#prefecturesList) | **GET** /prefectures/ | 
+[**prefecturesPartialUpdate**](PrefecturesApi.md#prefecturesPartialUpdate) | **PATCH** /prefectures/{id}/ | 
+[**prefecturesRead**](PrefecturesApi.md#prefecturesRead) | **GET** /prefectures/{id}/ | 
+[**prefecturesUpdate**](PrefecturesApi.md#prefecturesUpdate) | **PUT** /prefectures/{id}/ | 
 
 
-# **facilitiesCreate**
-> Facility facilitiesCreate(data)
+# **prefecturesCreate**
+> Prefecture prefecturesCreate(data)
 
 
 
@@ -29,14 +29,14 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
-final api_instance = FacilitiesApi();
-final data = FacilityForWrite(); // FacilityForWrite | 
+final api_instance = PrefecturesApi();
+final data = PrefectureForWrite(); // PrefectureForWrite | 
 
 try { 
-    final result = api_instance.facilitiesCreate(data);
+    final result = api_instance.prefecturesCreate(data);
     print(result);
 } catch (e) {
-    print('Exception when calling FacilitiesApi->facilitiesCreate: $e\n');
+    print('Exception when calling PrefecturesApi->prefecturesCreate: $e\n');
 }
 ```
 
@@ -44,11 +44,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**FacilityForWrite**](FacilityForWrite.md)|  | 
+ **data** | [**PrefectureForWrite**](PrefectureForWrite.md)|  | 
 
 ### Return type
 
-[**Facility**](Facility.md)
+[**Prefecture**](Prefecture.md)
 
 ### Authorization
 
@@ -61,8 +61,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **facilitiesDelete**
-> facilitiesDelete(id)
+# **prefecturesDelete**
+> prefecturesDelete(id)
 
 
 
@@ -73,13 +73,13 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
-final api_instance = FacilitiesApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
+final api_instance = PrefecturesApi();
+final id = id_example; // String | A unique value identifying this prefecture.
 
 try { 
-    api_instance.facilitiesDelete(id);
+    api_instance.prefecturesDelete(id);
 } catch (e) {
-    print('Exception when calling FacilitiesApi->facilitiesDelete: $e\n');
+    print('Exception when calling PrefecturesApi->prefecturesDelete: $e\n');
 }
 ```
 
@@ -87,7 +87,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**String**](.md)| A UUID string identifying this facility. | 
+ **id** | **String**| A unique value identifying this prefecture. | 
 
 ### Return type
 
@@ -104,8 +104,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **facilitiesList**
-> List<Facility> facilitiesList(prefecture, city, careService, careServiceGroup, careServiceCategory)
+# **prefecturesList**
+> List<Prefecture> prefecturesList()
 
 
 
@@ -116,34 +116,22 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
-final api_instance = FacilitiesApi();
-final prefecture = prefecture_example; // String | 
-final city = city_example; // String | 
-final careService = careService_example; // String | 
-final careServiceGroup = careServiceGroup_example; // String | 
-final careServiceCategory = careServiceCategory_example; // String | 
+final api_instance = PrefecturesApi();
 
 try { 
-    final result = api_instance.facilitiesList(prefecture, city, careService, careServiceGroup, careServiceCategory);
+    final result = api_instance.prefecturesList();
     print(result);
 } catch (e) {
-    print('Exception when calling FacilitiesApi->facilitiesList: $e\n');
+    print('Exception when calling PrefecturesApi->prefecturesList: $e\n');
 }
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **prefecture** | **String**|  | [optional] 
- **city** | **String**|  | [optional] 
- **careService** | **String**|  | [optional] 
- **careServiceGroup** | **String**|  | [optional] 
- **careServiceCategory** | **String**|  | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<Facility>**](Facility.md)
+[**List<Prefecture>**](Prefecture.md)
 
 ### Authorization
 
@@ -156,8 +144,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **facilitiesPartialUpdate**
-> Facility facilitiesPartialUpdate(id, data)
+# **prefecturesPartialUpdate**
+> Prefecture prefecturesPartialUpdate(id, data)
 
 
 
@@ -168,15 +156,15 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
-final api_instance = FacilitiesApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
-final data = FacilityForWrite(); // FacilityForWrite | 
+final api_instance = PrefecturesApi();
+final id = id_example; // String | A unique value identifying this prefecture.
+final data = PrefectureForWrite(); // PrefectureForWrite | 
 
 try { 
-    final result = api_instance.facilitiesPartialUpdate(id, data);
+    final result = api_instance.prefecturesPartialUpdate(id, data);
     print(result);
 } catch (e) {
-    print('Exception when calling FacilitiesApi->facilitiesPartialUpdate: $e\n');
+    print('Exception when calling PrefecturesApi->prefecturesPartialUpdate: $e\n');
 }
 ```
 
@@ -184,12 +172,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**String**](.md)| A UUID string identifying this facility. | 
- **data** | [**FacilityForWrite**](FacilityForWrite.md)|  | 
+ **id** | **String**| A unique value identifying this prefecture. | 
+ **data** | [**PrefectureForWrite**](PrefectureForWrite.md)|  | 
 
 ### Return type
 
-[**Facility**](Facility.md)
+[**Prefecture**](Prefecture.md)
 
 ### Authorization
 
@@ -202,8 +190,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **facilitiesRead**
-> Facility facilitiesRead(id)
+# **prefecturesRead**
+> Prefecture prefecturesRead(id)
 
 
 
@@ -214,14 +202,14 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
-final api_instance = FacilitiesApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
+final api_instance = PrefecturesApi();
+final id = id_example; // String | A unique value identifying this prefecture.
 
 try { 
-    final result = api_instance.facilitiesRead(id);
+    final result = api_instance.prefecturesRead(id);
     print(result);
 } catch (e) {
-    print('Exception when calling FacilitiesApi->facilitiesRead: $e\n');
+    print('Exception when calling PrefecturesApi->prefecturesRead: $e\n');
 }
 ```
 
@@ -229,11 +217,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**String**](.md)| A UUID string identifying this facility. | 
+ **id** | **String**| A unique value identifying this prefecture. | 
 
 ### Return type
 
-[**Facility**](Facility.md)
+[**Prefecture**](Prefecture.md)
 
 ### Authorization
 
@@ -246,8 +234,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **facilitiesUpdate**
-> Facility facilitiesUpdate(id, data)
+# **prefecturesUpdate**
+> Prefecture prefecturesUpdate(id, data)
 
 
 
@@ -258,15 +246,15 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
-final api_instance = FacilitiesApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
-final data = FacilityForWrite(); // FacilityForWrite | 
+final api_instance = PrefecturesApi();
+final id = id_example; // String | A unique value identifying this prefecture.
+final data = PrefectureForWrite(); // PrefectureForWrite | 
 
 try { 
-    final result = api_instance.facilitiesUpdate(id, data);
+    final result = api_instance.prefecturesUpdate(id, data);
     print(result);
 } catch (e) {
-    print('Exception when calling FacilitiesApi->facilitiesUpdate: $e\n');
+    print('Exception when calling PrefecturesApi->prefecturesUpdate: $e\n');
 }
 ```
 
@@ -274,12 +262,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**String**](.md)| A UUID string identifying this facility. | 
- **data** | [**FacilityForWrite**](FacilityForWrite.md)|  | 
+ **id** | **String**| A unique value identifying this prefecture. | 
+ **data** | [**PrefectureForWrite**](PrefectureForWrite.md)|  | 
 
 ### Return type
 
-[**Facility**](Facility.md)
+[**Prefecture**](Prefecture.md)
 
 ### Authorization
 

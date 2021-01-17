@@ -12,12 +12,9 @@ part of welfarebrothers_for_worker_api_client;
 class FacilityForWorkerForWrite {
   /// Returns a new [FacilityForWorkerForWrite] instance.
   FacilityForWorkerForWrite({
-    @required this.id,
     @required this.name,
     this.availableDaysOfTheWeek = const [],
   });
-
-  String id;
 
   String name;
 
@@ -25,24 +22,19 @@ class FacilityForWorkerForWrite {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is FacilityForWorkerForWrite &&
-     other.id == id &&
      other.name == name &&
      other.availableDaysOfTheWeek == availableDaysOfTheWeek;
 
   @override
   int get hashCode =>
-    (id == null ? 0 : id.hashCode) +
     (name == null ? 0 : name.hashCode) +
     (availableDaysOfTheWeek == null ? 0 : availableDaysOfTheWeek.hashCode);
 
   @override
-  String toString() => 'FacilityForWorkerForWrite[id=$id, name=$name, availableDaysOfTheWeek=$availableDaysOfTheWeek]';
+  String toString() => 'FacilityForWorkerForWrite[name=$name, availableDaysOfTheWeek=$availableDaysOfTheWeek]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (id != null) {
-      json[r'id'] = id;
-    }
     if (name != null) {
       json[r'name'] = name;
     }
@@ -57,7 +49,6 @@ class FacilityForWorkerForWrite {
   static FacilityForWorkerForWrite fromJson(Map<String, dynamic> json) => json == null
     ? null
     : FacilityForWorkerForWrite(
-        id: json[r'id'],
         name: json[r'name'],
         availableDaysOfTheWeek: json[r'available_days_of_the_week'] == null
           ? null

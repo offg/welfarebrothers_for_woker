@@ -10,22 +10,22 @@
 part of welfarebrothers_for_worker_api_client;
 
 
-class FacilitiesApi {
-  FacilitiesApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class PrefecturesApi {
+  PrefecturesApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /facilities/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /prefectures/' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [FacilityForWrite] data (required):
-  Future<Response> facilitiesCreateWithHttpInfo(FacilityForWrite data) async {
+  /// * [PrefectureForWrite] data (required):
+  Future<Response> prefecturesCreateWithHttpInfo(PrefectureForWrite data) async {
     // Verify required params are set.
     if (data == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/facilities/'.replaceAll('{format}', 'json');
+    final path = '/prefectures/'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -63,9 +63,9 @@ class FacilitiesApi {
 
   /// Parameters:
   ///
-  /// * [FacilityForWrite] data (required):
-  Future<Facility> facilitiesCreate(FacilityForWrite data) async {
-    final response = await facilitiesCreateWithHttpInfo(data);
+  /// * [PrefectureForWrite] data (required):
+  Future<Prefecture> prefecturesCreate(PrefectureForWrite data) async {
+    final response = await prefecturesCreateWithHttpInfo(data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -73,23 +73,23 @@ class FacilitiesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'Facility') as Facility;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'Prefecture') as Prefecture;
     }
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /prefectures/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A UUID string identifying this facility.
-  Future<Response> facilitiesDeleteWithHttpInfo(String id) async {
+  ///   A unique value identifying this prefecture.
+  Future<Response> prefecturesDeleteWithHttpInfo(String id) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -129,52 +129,23 @@ class FacilitiesApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A UUID string identifying this facility.
-  Future<void> facilitiesDelete(String id) async {
-    final response = await facilitiesDeleteWithHttpInfo(id);
+  ///   A unique value identifying this prefecture.
+  Future<void> prefecturesDelete(String id) async {
+    final response = await prefecturesDeleteWithHttpInfo(id);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'GET /facilities/' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [String] prefecture:
-  ///
-  /// * [String] city:
-  ///
-  /// * [String] careService:
-  ///
-  /// * [String] careServiceGroup:
-  ///
-  /// * [String] careServiceCategory:
-  Future<Response> facilitiesListWithHttpInfo({ String prefecture, String city, String careService, String careServiceGroup, String careServiceCategory }) async {
-    // Verify required params are set.
-
-    final path = '/facilities/'.replaceAll('{format}', 'json');
+  /// Performs an HTTP 'GET /prefectures/' operation and returns the [Response].
+  Future<Response> prefecturesListWithHttpInfo() async {
+    final path = '/prefectures/'.replaceAll('{format}', 'json');
 
     Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (prefecture != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'prefecture', prefecture));
-    }
-    if (city != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'city', city));
-    }
-    if (careService != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service', careService));
-    }
-    if (careServiceGroup != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group', careServiceGroup));
-    }
-    if (careServiceCategory != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__category', careServiceCategory));
-    }
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
@@ -204,19 +175,8 @@ class FacilitiesApi {
     );
   }
 
-  /// Parameters:
-  ///
-  /// * [String] prefecture:
-  ///
-  /// * [String] city:
-  ///
-  /// * [String] careService:
-  ///
-  /// * [String] careServiceGroup:
-  ///
-  /// * [String] careServiceCategory:
-  Future<List<Facility>> facilitiesList({ String prefecture, String city, String careService, String careServiceGroup, String careServiceCategory }) async {
-    final response = await facilitiesListWithHttpInfo( prefecture: prefecture, city: city, careService: careService, careServiceGroup: careServiceGroup, careServiceCategory: careServiceCategory );
+  Future<List<Prefecture>> prefecturesList() async {
+    final response = await prefecturesListWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -224,21 +184,21 @@ class FacilitiesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<Facility>') as List)
-        .map((item) => item as Facility)
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<Prefecture>') as List)
+        .map((item) => item as Prefecture)
         .toList(growable: false);
     }
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /prefectures/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A UUID string identifying this facility.
+  ///   A unique value identifying this prefecture.
   ///
-  /// * [FacilityForWrite] data (required):
-  Future<Response> facilitiesPartialUpdateWithHttpInfo(String id, FacilityForWrite data) async {
+  /// * [PrefectureForWrite] data (required):
+  Future<Response> prefecturesPartialUpdateWithHttpInfo(String id, PrefectureForWrite data) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
@@ -247,7 +207,7 @@ class FacilitiesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -287,11 +247,11 @@ class FacilitiesApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A UUID string identifying this facility.
+  ///   A unique value identifying this prefecture.
   ///
-  /// * [FacilityForWrite] data (required):
-  Future<Facility> facilitiesPartialUpdate(String id, FacilityForWrite data) async {
-    final response = await facilitiesPartialUpdateWithHttpInfo(id, data);
+  /// * [PrefectureForWrite] data (required):
+  Future<Prefecture> prefecturesPartialUpdate(String id, PrefectureForWrite data) async {
+    final response = await prefecturesPartialUpdateWithHttpInfo(id, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -299,23 +259,23 @@ class FacilitiesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'Facility') as Facility;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'Prefecture') as Prefecture;
     }
     return null;
   }
 
-  /// Performs an HTTP 'GET /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /prefectures/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A UUID string identifying this facility.
-  Future<Response> facilitiesReadWithHttpInfo(String id) async {
+  ///   A unique value identifying this prefecture.
+  Future<Response> prefecturesReadWithHttpInfo(String id) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -355,9 +315,9 @@ class FacilitiesApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A UUID string identifying this facility.
-  Future<Facility> facilitiesRead(String id) async {
-    final response = await facilitiesReadWithHttpInfo(id);
+  ///   A unique value identifying this prefecture.
+  Future<Prefecture> prefecturesRead(String id) async {
+    final response = await prefecturesReadWithHttpInfo(id);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -365,19 +325,19 @@ class FacilitiesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'Facility') as Facility;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'Prefecture') as Prefecture;
     }
     return null;
   }
 
-  /// Performs an HTTP 'PUT /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /prefectures/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A UUID string identifying this facility.
+  ///   A unique value identifying this prefecture.
   ///
-  /// * [FacilityForWrite] data (required):
-  Future<Response> facilitiesUpdateWithHttpInfo(String id, FacilityForWrite data) async {
+  /// * [PrefectureForWrite] data (required):
+  Future<Response> prefecturesUpdateWithHttpInfo(String id, PrefectureForWrite data) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
@@ -386,7 +346,7 @@ class FacilitiesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -426,11 +386,11 @@ class FacilitiesApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A UUID string identifying this facility.
+  ///   A unique value identifying this prefecture.
   ///
-  /// * [FacilityForWrite] data (required):
-  Future<Facility> facilitiesUpdate(String id, FacilityForWrite data) async {
-    final response = await facilitiesUpdateWithHttpInfo(id, data);
+  /// * [PrefectureForWrite] data (required):
+  Future<Prefecture> prefecturesUpdate(String id, PrefectureForWrite data) async {
+    final response = await prefecturesUpdateWithHttpInfo(id, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -438,7 +398,7 @@ class FacilitiesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'Facility') as Facility;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'Prefecture') as Prefecture;
     }
     return null;
   }

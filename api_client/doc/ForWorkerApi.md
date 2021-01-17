@@ -152,7 +152,7 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
 final api_instance = ForWorkerApi();
-final id = id_example; // String | A unique value identifying this facility.
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
 
 try { 
     api_instance.forWorkerFacilitiesDelete(id);
@@ -165,7 +165,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| A unique value identifying this facility. | 
+ **id** | [**String**](.md)| A UUID string identifying this facility. | 
 
 ### Return type
 
@@ -235,7 +235,7 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
 final api_instance = ForWorkerApi();
-final id = id_example; // String | A unique value identifying this facility.
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
 final data = FacilityForWorkerForWrite(); // FacilityForWorkerForWrite | 
 
 try { 
@@ -250,7 +250,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| A unique value identifying this facility. | 
+ **id** | [**String**](.md)| A UUID string identifying this facility. | 
  **data** | [**FacilityForWorkerForWrite**](FacilityForWorkerForWrite.md)|  | 
 
 ### Return type
@@ -281,7 +281,7 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
 final api_instance = ForWorkerApi();
-final id = id_example; // String | A unique value identifying this facility.
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
 
 try { 
     final result = api_instance.forWorkerFacilitiesRead(id);
@@ -295,7 +295,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| A unique value identifying this facility. | 
+ **id** | [**String**](.md)| A UUID string identifying this facility. | 
 
 ### Return type
 
@@ -325,7 +325,7 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
 
 final api_instance = ForWorkerApi();
-final id = id_example; // String | A unique value identifying this facility.
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
 final data = FacilityForWorkerForWrite(); // FacilityForWorkerForWrite | 
 
 try { 
@@ -340,7 +340,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| A unique value identifying this facility. | 
+ **id** | [**String**](.md)| A UUID string identifying this facility. | 
  **data** | [**FacilityForWorkerForWrite**](FacilityForWorkerForWrite.md)|  | 
 
 ### Return type

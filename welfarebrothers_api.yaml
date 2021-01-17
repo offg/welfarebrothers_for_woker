@@ -20,7 +20,32 @@ paths:
     get:
       operationId: facilities_list
       description: ''
-      parameters: []
+      parameters:
+        - name: prefecture
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: city
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: care_service
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: care_service__group
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: care_service__category
+          in: query
+          description: ''
+          required: false
+          type: string
       responses:
         '200':
           description: ''
@@ -103,9 +128,10 @@ paths:
     parameters:
       - name: id
         in: path
-        description: A unique value identifying this facility.
+        description: A UUID string identifying this facility.
         required: true
         type: string
+        format: uuid
   /for_worker/facilities/:
     get:
       operationId: for_worker_facilities_list
@@ -193,9 +219,10 @@ paths:
     parameters:
       - name: id
         in: path
-        description: A unique value identifying this facility.
+        description: A UUID string identifying this facility.
         required: true
         type: string
+        format: uuid
   /for_worker/facility_administrations/:
     get:
       operationId: for_worker_facility_administrations_list
@@ -1494,6 +1521,96 @@ paths:
       tags:
         - message
     parameters: []
+  /prefectures/:
+    get:
+      operationId: prefectures_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Prefecture'
+      tags:
+        - prefectures
+    post:
+      operationId: prefectures_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PrefectureForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Prefecture'
+      tags:
+        - prefectures
+    parameters: []
+  /prefectures/{id}/:
+    get:
+      operationId: prefectures_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Prefecture'
+      tags:
+        - prefectures
+    put:
+      operationId: prefectures_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PrefectureForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Prefecture'
+      tags:
+        - prefectures
+    patch:
+      operationId: prefectures_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PrefectureForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Prefecture'
+      tags:
+        - prefectures
+    delete:
+      operationId: prefectures_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - prefectures
+    parameters:
+      - name: id
+        in: path
+        description: A unique value identifying this prefecture.
+        required: true
+        type: string
   /users/:
     get:
       operationId: users_list
@@ -1629,15 +1746,14 @@ paths:
 definitions:
   Facility:
     required:
-      - id
       - name
     type: object
     properties:
       id:
         title: Id
         type: string
-        maxLength: 40
-        minLength: 1
+        format: uuid
+        readOnly: true
       name:
         title: Name
         type: string
@@ -1645,15 +1761,9 @@ definitions:
         minLength: 1
   FacilityForWrite:
     required:
-      - id
       - name
     type: object
     properties:
-      id:
-        title: Id
-        type: string
-        maxLength: 40
-        minLength: 1
       name:
         title: Name
         type: string
@@ -1661,7 +1771,6 @@ definitions:
         minLength: 1
   FacilityForWorker:
     required:
-      - id
       - name
       - available_days_of_the_week
     type: object
@@ -1669,8 +1778,8 @@ definitions:
       id:
         title: Id
         type: string
-        maxLength: 40
-        minLength: 1
+        format: uuid
+        readOnly: true
       name:
         title: Name
         type: string
@@ -1682,16 +1791,10 @@ definitions:
           type: integer
   FacilityForWorkerForWrite:
     required:
-      - id
       - name
       - available_days_of_the_week
     type: object
     properties:
-      id:
-        title: Id
-        type: string
-        maxLength: 40
-        minLength: 1
       name:
         title: Name
         type: string
@@ -1716,6 +1819,7 @@ definitions:
       facility_id:
         title: Facility id
         type: string
+        format: uuid
   FacilityAdministrationForWrite:
     required:
       - facility_id
@@ -1724,6 +1828,7 @@ definitions:
       facility_id:
         title: Facility id
         type: string
+        format: uuid
   FacilityAvailability:
     type: object
     properties:
@@ -2335,3 +2440,31 @@ definitions:
       user_profile_id:
         title: User profile id
         type: integer
+  Prefecture:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+  PrefectureForWrite:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1

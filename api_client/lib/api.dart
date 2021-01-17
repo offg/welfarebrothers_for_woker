@@ -29,6 +29,7 @@ part 'auth/http_bearer_auth.dart';
 part 'api/facilities_api.dart';
 part 'api/for_worker_api.dart';
 part 'api/message_api.dart';
+part 'api/prefectures_api.dart';
 part 'api/users_api.dart';
 
 part 'model/day_off_request.dart';
@@ -43,6 +44,8 @@ part 'model/facility_for_worker_for_write.dart';
 part 'model/facility_for_write.dart';
 part 'model/facility_worker_profile.dart';
 part 'model/facility_worker_profile_for_write.dart';
+part 'model/prefecture.dart';
+part 'model/prefecture_for_write.dart';
 part 'model/role.dart';
 part 'model/role_assignment_requirement.dart';
 part 'model/role_assignment_requirement_for_write.dart';
