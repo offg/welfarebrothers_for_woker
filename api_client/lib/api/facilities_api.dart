@@ -144,12 +144,12 @@ class FacilitiesApi {
   ///
   /// * [String] city:
   ///
-  /// * [String] careService:
-  ///
   /// * [String] careServiceGroup:
   ///
   /// * [String] careServiceGroupCategory:
-  Future<Response> facilitiesListWithHttpInfo({ String prefecture, String city, String careService, String careServiceGroup, String careServiceGroupCategory }) async {
+  ///
+  /// * [String] keywordContains:
+  Future<Response> facilitiesListWithHttpInfo({ String prefecture, String city, String careServiceGroup, String careServiceGroupCategory, String keywordContains }) async {
     // Verify required params are set.
 
     final path = '/facilities/'.replaceAll('{format}', 'json');
@@ -166,14 +166,14 @@ class FacilitiesApi {
     if (city != null) {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'city', city));
     }
-    if (careService != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service', careService));
-    }
     if (careServiceGroup != null) {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group', careServiceGroup));
     }
     if (careServiceGroupCategory != null) {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group__category', careServiceGroupCategory));
+    }
+    if (keywordContains != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'keyword__contains', keywordContains));
     }
 
     final contentTypes = <String>[];
@@ -210,13 +210,13 @@ class FacilitiesApi {
   ///
   /// * [String] city:
   ///
-  /// * [String] careService:
-  ///
   /// * [String] careServiceGroup:
   ///
   /// * [String] careServiceGroupCategory:
-  Future<List<Facility>> facilitiesList({ String prefecture, String city, String careService, String careServiceGroup, String careServiceGroupCategory }) async {
-    final response = await facilitiesListWithHttpInfo( prefecture: prefecture, city: city, careService: careService, careServiceGroup: careServiceGroup, careServiceGroupCategory: careServiceGroupCategory );
+  ///
+  /// * [String] keywordContains:
+  Future<List<Facility>> facilitiesList({ String prefecture, String city, String careServiceGroup, String careServiceGroupCategory, String keywordContains }) async {
+    final response = await facilitiesListWithHttpInfo( prefecture: prefecture, city: city, careServiceGroup: careServiceGroup, careServiceGroupCategory: careServiceGroupCategory, keywordContains: keywordContains );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }

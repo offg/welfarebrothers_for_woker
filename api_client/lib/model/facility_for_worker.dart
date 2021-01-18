@@ -17,6 +17,10 @@ class FacilityForWorker {
     @required this.category,
     @required this.group,
     @required this.careService,
+    @required this.city,
+    @required this.prefecture,
+    @required this.address,
+    @required this.building,
     this.availableDaysOfTheWeek = const [],
   });
 
@@ -30,6 +34,14 @@ class FacilityForWorker {
 
   CareService careService;
 
+  City city;
+
+  Prefecture prefecture;
+
+  String address;
+
+  String building;
+
   List<int> availableDaysOfTheWeek;
 
   @override
@@ -39,6 +51,10 @@ class FacilityForWorker {
      other.category == category &&
      other.group == group &&
      other.careService == careService &&
+     other.city == city &&
+     other.prefecture == prefecture &&
+     other.address == address &&
+     other.building == building &&
      other.availableDaysOfTheWeek == availableDaysOfTheWeek;
 
   @override
@@ -48,10 +64,14 @@ class FacilityForWorker {
     (category == null ? 0 : category.hashCode) +
     (group == null ? 0 : group.hashCode) +
     (careService == null ? 0 : careService.hashCode) +
+    (city == null ? 0 : city.hashCode) +
+    (prefecture == null ? 0 : prefecture.hashCode) +
+    (address == null ? 0 : address.hashCode) +
+    (building == null ? 0 : building.hashCode) +
     (availableDaysOfTheWeek == null ? 0 : availableDaysOfTheWeek.hashCode);
 
   @override
-  String toString() => 'FacilityForWorker[id=$id, name=$name, category=$category, group=$group, careService=$careService, availableDaysOfTheWeek=$availableDaysOfTheWeek]';
+  String toString() => 'FacilityForWorker[id=$id, name=$name, category=$category, group=$group, careService=$careService, city=$city, prefecture=$prefecture, address=$address, building=$building, availableDaysOfTheWeek=$availableDaysOfTheWeek]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -70,6 +90,18 @@ class FacilityForWorker {
     if (careService != null) {
       json[r'care_service'] = careService;
     }
+    if (city != null) {
+      json[r'city'] = city;
+    }
+    if (prefecture != null) {
+      json[r'prefecture'] = prefecture;
+    }
+    if (address != null) {
+      json[r'address'] = address;
+    }
+    if (building != null) {
+      json[r'building'] = building;
+    }
     if (availableDaysOfTheWeek != null) {
       json[r'available_days_of_the_week'] = availableDaysOfTheWeek;
     }
@@ -86,6 +118,10 @@ class FacilityForWorker {
         category: CareServiceCategory.fromJson(json[r'category']),
         group: CareServiceGroup.fromJson(json[r'group']),
         careService: CareService.fromJson(json[r'care_service']),
+        city: City.fromJson(json[r'city']),
+        prefecture: Prefecture.fromJson(json[r'prefecture']),
+        address: json[r'address'],
+        building: json[r'building'],
         availableDaysOfTheWeek: json[r'available_days_of_the_week'] == null
           ? null
           : (json[r'available_days_of_the_week'] as List).cast<int>(),

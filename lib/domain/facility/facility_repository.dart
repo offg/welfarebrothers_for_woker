@@ -8,6 +8,7 @@ abstract class IFacilityRepository implements IRepository {
     String city,
     String careServiceCategory,
     String careServiceGroup,
+    String keyword,
   });
   Future<FacilityForWorker> fetchFacility(
     String facilityId,

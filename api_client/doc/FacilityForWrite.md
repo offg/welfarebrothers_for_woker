@@ -12,6 +12,10 @@ Name | Type | Description | Notes
 **category** | [**CareServiceCategory**](CareServiceCategory.md) |  | 
 **group** | [**CareServiceGroup**](CareServiceGroup.md) |  | 
 **careService** | [**CareService**](CareService.md) |  | 
+**city** | [**City**](City.md) |  | 
+**prefecture** | [**Prefecture**](Prefecture.md) |  | 
+**address** | **String** |  | 
+**building** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

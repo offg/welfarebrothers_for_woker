@@ -325,17 +325,17 @@ paths:
           description: ''
           required: false
           type: string
-        - name: care_service
-          in: query
-          description: ''
-          required: false
-          type: string
         - name: care_service__group
           in: query
           description: ''
           required: false
           type: string
         - name: care_service__group__category
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: keyword__contains
           in: query
           description: ''
           required: false
@@ -441,17 +441,17 @@ paths:
           description: ''
           required: false
           type: string
-        - name: care_service
-          in: query
-          description: ''
-          required: false
-          type: string
         - name: care_service__group
           in: query
           description: ''
           required: false
           type: string
         - name: care_service__group__category
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: keyword__contains
           in: query
           description: ''
           required: false
@@ -2257,12 +2257,47 @@ definitions:
         minLength: 1
       group:
         $ref: '#/definitions/CareServiceGroup'
+  Prefecture:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+  City:
+    required:
+      - id
+      - name
+      - prefecture
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      prefecture:
+        $ref: '#/definitions/Prefecture'
   Facility:
     required:
       - name
       - category
       - group
       - care_service
+      - city
+      - prefecture
+      - address
+      - building
     type: object
     properties:
       id:
@@ -2281,12 +2316,28 @@ definitions:
         $ref: '#/definitions/CareServiceGroup'
       care_service:
         $ref: '#/definitions/CareService'
+      city:
+        $ref: '#/definitions/City'
+      prefecture:
+        $ref: '#/definitions/Prefecture'
+      address:
+        title: Address
+        type: string
+        minLength: 1
+      building:
+        title: Building
+        type: string
+        minLength: 1
   FacilityForWrite:
     required:
       - name
       - category
       - group
       - care_service
+      - city
+      - prefecture
+      - address
+      - building
     type: object
     properties:
       name:
@@ -2300,12 +2351,28 @@ definitions:
         $ref: '#/definitions/CareServiceGroup'
       care_service:
         $ref: '#/definitions/CareService'
+      city:
+        $ref: '#/definitions/City'
+      prefecture:
+        $ref: '#/definitions/Prefecture'
+      address:
+        title: Address
+        type: string
+        minLength: 1
+      building:
+        title: Building
+        type: string
+        minLength: 1
   FacilityForWorker:
     required:
       - name
       - category
       - group
       - care_service
+      - city
+      - prefecture
+      - address
+      - building
       - available_days_of_the_week
     type: object
     properties:
@@ -2325,6 +2392,18 @@ definitions:
         $ref: '#/definitions/CareServiceGroup'
       care_service:
         $ref: '#/definitions/CareService'
+      city:
+        $ref: '#/definitions/City'
+      prefecture:
+        $ref: '#/definitions/Prefecture'
+      address:
+        title: Address
+        type: string
+        minLength: 1
+      building:
+        title: Building
+        type: string
+        minLength: 1
       available_days_of_the_week:
         type: array
         items:
@@ -2335,6 +2414,10 @@ definitions:
       - category
       - group
       - care_service
+      - city
+      - prefecture
+      - address
+      - building
       - available_days_of_the_week
     type: object
     properties:
@@ -2349,6 +2432,18 @@ definitions:
         $ref: '#/definitions/CareServiceGroup'
       care_service:
         $ref: '#/definitions/CareService'
+      city:
+        $ref: '#/definitions/City'
+      prefecture:
+        $ref: '#/definitions/Prefecture'
+      address:
+        title: Address
+        type: string
+        minLength: 1
+      building:
+        title: Building
+        type: string
+        minLength: 1
       available_days_of_the_week:
         type: array
         items:
@@ -2989,20 +3084,6 @@ definitions:
       user_profile_id:
         title: User profile id
         type: integer
-  Prefecture:
-    required:
-      - id
-      - name
-    type: object
-    properties:
-      id:
-        title: Id
-        type: string
-        minLength: 1
-      name:
-        title: Name
-        type: string
-        minLength: 1
   PrefectureForWrite:
     required:
       - id
@@ -3017,23 +3098,6 @@ definitions:
         title: Name
         type: string
         minLength: 1
-  City:
-    required:
-      - id
-      - name
-      - prefecture
-    type: object
-    properties:
-      id:
-        title: Id
-        type: string
-        minLength: 1
-      name:
-        title: Name
-        type: string
-        minLength: 1
-      prefecture:
-        $ref: '#/definitions/Prefecture'
   CityForWrite:
     required:
       - id

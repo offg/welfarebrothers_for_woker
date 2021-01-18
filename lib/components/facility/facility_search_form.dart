@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/components/facility/area_form.dart';
 import 'package:welfarebrothers_for_worker/components/facility/care_service_form.dart';
+import 'package:welfarebrothers_for_worker/utils/design.dart';
+import 'package:welfarebrothers_for_worker/utils/input_decoration.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_search_form.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
@@ -28,6 +30,13 @@ class FacilitySearchForm extends StatelessWidget {
             child: CareServiceForm(),
           ),
           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            child: TextField(
+              controller: model.textEditingController,
+              decoration: inputDecoration(context, "キーワード (施設名等)"),
+            ),
+          ),
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
             child: RaisedButton(
               child: Text("検索"),
@@ -38,6 +47,7 @@ class FacilitySearchForm extends StatelessWidget {
                   : null,
             ),
           ),
+          verticalSpace(size: 20),
           Expanded(
             child: (model.facilities == null || model.facilities.isEmpty)
                 ? Container()

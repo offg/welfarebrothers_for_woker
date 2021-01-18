@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:welfarebrothers_for_worker/domain/area/area_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/facility/care_service_repository.dart';
@@ -10,6 +11,7 @@ class FacilitySearchFormViewModel extends WelfareBrothersViewModelBase {
   final ICareServiceRepository _careServiceRepository;
   final IFacilityRepository _facilityRepository;
   FacilitySearchFormViewModel(this._areaRepository, this._careServiceRepository, this._facilityRepository);
+  TextEditingController textEditingController;
 
   List<Prefecture> prefectures;
   String _currentPrefectureId;
@@ -53,10 +55,11 @@ class FacilitySearchFormViewModel extends WelfareBrothersViewModelBase {
   List<FacilityForWorker> facilities;
 
   bool get searchable =>
-      _currentPrefectureId != null &&
-      _currentCityId != null &&
-      _currentCareServiceCategoryId != null &&
-      _currentServiceGroupId != null;
+      (_currentPrefectureId != null &&
+          _currentCityId != null &&
+          _currentCareServiceCategoryId != null &&
+          _currentServiceGroupId != null) ||
+      (textEditingController.text != null && textEditingController.text.trim() != '');
 
   Future _debug() async {
     await this.setCurrentPrefectureId('43');
@@ -68,6 +71,7 @@ class FacilitySearchFormViewModel extends WelfareBrothersViewModelBase {
   @override
   Future initialize() async {
     loading = true;
+    this.textEditingController = TextEditingController();
     await _fetchPrefectures();
     await _fetchCareServiceCategories();
     this.facilities = [];
@@ -103,9 +107,11 @@ class FacilitySearchFormViewModel extends WelfareBrothersViewModelBase {
 
   Future _fetchFacilities() async {
     this.facilities = await _facilityRepository.fetchFacilities(
-        prefecture: _currentPrefectureId,
-        city: _currentCityId,
-        careServiceCategory: _currentCareServiceCategoryId,
-        careServiceGroup: _currentServiceGroupId);
+      prefecture: _currentPrefectureId,
+      city: _currentCityId,
+      careServiceCategory: _currentCareServiceCategoryId,
+      careServiceGroup: _currentServiceGroupId,
+      keyword: textEditingController.text,
+    );
   }
 }
