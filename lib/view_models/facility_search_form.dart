@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:welfarebrothers_for_worker/domain/area/area_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/facility/care_service_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/facility/facility_repository.dart';
@@ -57,6 +58,13 @@ class FacilitySearchFormViewModel extends WelfareBrothersViewModelBase {
       _currentCareServiceCategoryId != null &&
       _currentServiceGroupId != null;
 
+  Future _debug() async {
+    await this.setCurrentPrefectureId('43');
+    this.setCurrentCityId('43101');
+    await this.setCurrentCareServiceCategoryId('1');
+    this.setCurrentServiceGroupId('1');
+  }
+
   @override
   Future initialize() async {
     loading = true;
@@ -65,6 +73,7 @@ class FacilitySearchFormViewModel extends WelfareBrothersViewModelBase {
     this.facilities = [];
     this.cities = [];
     this.careServiceGroups = [];
+    if (kDebugMode) await _debug();
     loading = false;
     notifyListeners();
     super.initialize();

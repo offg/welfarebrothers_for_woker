@@ -38,22 +38,44 @@ class FacilitySearchForm extends StatelessWidget {
                   : null,
             ),
           ),
-          (model.facilities == null || model.facilities.isEmpty)
-              ? Container()
-              : ListView(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: model.facilities
-                      .map(
-                        (e) => ListTile(
-                          title: Text(e.name),
-                          onTap: onFacilityTap(e),
-                        ),
-                      )
-                      .toList(),
-                ),
+          Expanded(
+            child: (model.facilities == null || model.facilities.isEmpty)
+                ? Container()
+                : ListView(
+                    // shrinkWrap: true,
+                    // physics: NeverScrollableScrollPhysics(),
+                    children: model.facilities.map((e) => _renderFacility(e)).toList(),
+                  ),
+          ),
         ],
       ),
+    );
+  }
+
+  Widget _renderFacility(FacilityForWorker facility) {
+    return ListTile(
+      contentPadding: EdgeInsets.all(8),
+      isThreeLine: true,
+      title: Text(
+        [facility.category.name, facility.group.name, facility.careService.name].join(' / '),
+        style: TextStyle(
+          fontSize: 12,
+          color: Colors.grey.shade400,
+        ),
+      ),
+      subtitle: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: Text(
+          facility.name,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 15,
+          ),
+        ),
+      ),
+      dense: true,
+      trailing: Icon(Icons.navigate_next_sharp),
+      onTap: onFacilityTap(facility),
     );
   }
 }
