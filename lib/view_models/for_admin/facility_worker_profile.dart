@@ -2,26 +2,21 @@ import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facili
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
-class FacilityWorkerProfileViewModel extends WelfareBrothersViewModelBase {
+class FacilityWorkerProfileViewModel extends FacilityResourceViewModelBase {
   IFacilityWorkerProfileRepository _repository;
   List<FacilityWorkerProfile> facilityWorkerProfiles;
-  FacilityAdministration facilityAdministration;
+  FacilityAdministration get facilityAdministration => facilityAdministrationViewModel.currentFacilityAdministration;
   FacilityWorkerProfileViewModel(this._repository);
-
-  Future initializeWithFacility(FacilityAdministration facilityAdministration) async {
-    this.facilityAdministration = facilityAdministration;
-    await initialize();
-  }
 
   @override
   Future initialize() async {
-    if (facilityAdministration == null) return;
     loading = true;
     await _fetchFacilityProfiles();
     loading = false;
   }
 
   Future _fetchFacilityProfiles() async {
+    if (!ready) return;
     loading = true;
     facilityWorkerProfiles = await _repository.fetchFacilityWorkerProfiles(facilityAdministration.id);
     loading = false;

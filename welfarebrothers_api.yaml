@@ -11,12 +11,63 @@ consumes:
 produces:
   - application/json
 securityDefinitions:
-  Basic:
-    type: basic
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
 security:
-  - Basic: []
+  - Bearer: []
 paths:
-  /care_service_categories/:
+  /auth/message:
+    get:
+      operationId: auth_message_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - auth
+    parameters: []
+  /auth/token:
+    post:
+      operationId: auth_token_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersTokenClaimsForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersTokenClaims'
+      tags:
+        - auth
+    parameters: []
+  /auth/token/refresh/:
+    post:
+      operationId: auth_token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/TokenRefresh'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/TokenRefresh'
+      tags:
+        - auth
+    parameters: []
+  /care_service_categories:
     get:
       operationId: care_service_categories_list
       description: ''
@@ -47,7 +98,7 @@ paths:
       tags:
         - care_service_categories
     parameters: []
-  /care_service_categories/{category_pk}/groups/:
+  /care_service_categories/{category_pk}/groups:
     get:
       operationId: care_service_categories_groups_list
       description: ''
@@ -82,7 +133,7 @@ paths:
         in: path
         required: true
         type: string
-  /care_service_categories/{category_pk}/groups/{group_pk}/services/:
+  /care_service_categories/{category_pk}/groups/{group_pk}/services:
     get:
       operationId: care_service_categories_groups_services_list
       description: ''
@@ -121,7 +172,7 @@ paths:
         in: path
         required: true
         type: string
-  /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/:
+  /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}:
     get:
       operationId: care_service_categories_groups_services_read
       description: ''
@@ -188,7 +239,7 @@ paths:
         description: A unique value identifying this care service.
         required: true
         type: string
-  /care_service_categories/{category_pk}/groups/{id}/:
+  /care_service_categories/{category_pk}/groups/{id}:
     get:
       operationId: care_service_categories_groups_read
       description: ''
@@ -251,7 +302,7 @@ paths:
         description: A unique value identifying this care service group.
         required: true
         type: string
-  /care_service_categories/{id}/:
+  /care_service_categories/{id}:
     get:
       operationId: care_service_categories_read
       description: ''
@@ -310,7 +361,7 @@ paths:
         description: A unique value identifying this care service category.
         required: true
         type: string
-  /facilities/:
+  /facilities:
     get:
       operationId: facilities_list
       description: ''
@@ -366,7 +417,7 @@ paths:
       tags:
         - facilities
     parameters: []
-  /facilities/{id}/:
+  /facilities/{id}:
     get:
       operationId: facilities_read
       description: ''
@@ -1534,7 +1585,84 @@ paths:
         description: A unique value identifying this role.
         required: true
         type: string
-  /for_worker/user_profile/:
+  /for_worker/user/:
+    post:
+      operationId: for_worker_user_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - for_worker
+    parameters: []
+  /for_worker/user/{id}/:
+    get:
+      operationId: for_worker_user_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_user_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_user_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_user_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this welfarebrothers_user.
+        required: true
+        type: integer
+  /for_worker/user/{user_pk}/profile/:
     get:
       operationId: for_worker_user_profile_list
       description: ''
@@ -1564,19 +1692,12 @@ paths:
             $ref: '#/definitions/WelfarebrothersUserProfile'
       tags:
         - for_worker
-    parameters: []
-  /for_worker/user_profile/{id}/:
-    get:
-      operationId: for_worker_user_profile_read
-      description: ''
-      parameters: []
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/WelfarebrothersUserProfile'
-      tags:
-        - for_worker
+    parameters:
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/user/{user_pk}/profile/{id}/:
     put:
       operationId: for_worker_user_profile_update
       description: ''
@@ -1625,7 +1746,11 @@ paths:
           profile.
         required: true
         type: integer
-  /for_worker/user_profile/{user_profile_pk}/worker_profile/:
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/:
     get:
       operationId: for_worker_user_profile_worker_profile_list
       description: ''
@@ -1656,22 +1781,15 @@ paths:
       tags:
         - for_worker
     parameters:
+      - name: user_pk
+        in: path
+        required: true
+        type: string
       - name: user_profile_pk
         in: path
         required: true
         type: string
-  /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/:
-    get:
-      operationId: for_worker_user_profile_worker_profile_read
-      description: ''
-      parameters: []
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/WorkerProfile'
-      tags:
-        - for_worker
+  /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/:
     put:
       operationId: for_worker_user_profile_worker_profile_update
       description: ''
@@ -1719,11 +1837,15 @@ paths:
         description: A unique integer value identifying this worker profile.
         required: true
         type: integer
+      - name: user_pk
+        in: path
+        required: true
+        type: string
       - name: user_profile_pk
         in: path
         required: true
         type: string
-  /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/:
+  /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/:
     get:
       operationId: for_worker_user_profile_worker_profile_facility_worker_profiles_list
       description: ''
@@ -1754,6 +1876,10 @@ paths:
       tags:
         - for_worker
     parameters:
+      - name: user_pk
+        in: path
+        required: true
+        type: string
       - name: user_profile_pk
         in: path
         required: true
@@ -1762,7 +1888,7 @@ paths:
         in: path
         required: true
         type: string
-  /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/:
+  /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/:
     get:
       operationId: for_worker_user_profile_worker_profile_facility_worker_profiles_read
       description: ''
@@ -1821,6 +1947,10 @@ paths:
         description: A unique integer value identifying this facility worker profile.
         required: true
         type: integer
+      - name: user_pk
+        in: path
+        required: true
+        type: string
       - name: user_profile_pk
         in: path
         required: true
@@ -1829,18 +1959,7 @@ paths:
         in: path
         required: true
         type: string
-  /message:
-    get:
-      operationId: message_list
-      description: ''
-      parameters: []
-      responses:
-        '200':
-          description: ''
-      tags:
-        - message
-    parameters: []
-  /prefectures/:
+  /prefectures:
     get:
       operationId: prefectures_list
       description: ''
@@ -1871,7 +1990,7 @@ paths:
       tags:
         - prefectures
     parameters: []
-  /prefectures/{id}/:
+  /prefectures/{id}:
     get:
       operationId: prefectures_read
       description: ''
@@ -1930,7 +2049,7 @@ paths:
         description: A unique value identifying this prefecture.
         required: true
         type: string
-  /prefectures/{prefecture_pk}/cities/:
+  /prefectures/{prefecture_pk}/cities:
     get:
       operationId: prefectures_cities_list
       description: ''
@@ -1965,7 +2084,7 @@ paths:
         in: path
         required: true
         type: string
-  /prefectures/{prefecture_pk}/cities/{id}/:
+  /prefectures/{prefecture_pk}/cities/{id}:
     get:
       operationId: prefectures_cities_read
       description: ''
@@ -2028,22 +2147,25 @@ paths:
         in: path
         required: true
         type: string
-  /users/:
-    get:
-      operationId: users_list
+  /users:
+    post:
+      operationId: users_create
       description: ''
-      parameters: []
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
       responses:
-        '200':
+        '201':
           description: ''
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/WelfarebrothersUser'
+            $ref: '#/definitions/User'
       tags:
         - users
     parameters: []
-  /users/{id}/:
+  /users/{id}:
     get:
       operationId: users_read
       description: ''
@@ -2052,7 +2174,48 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/WelfarebrothersUser'
+            $ref: '#/definitions/User'
+      tags:
+        - users
+    put:
+      operationId: users_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - users
+    patch:
+      operationId: users_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - users
+    delete:
+      operationId: users_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
       tags:
         - users
     parameters:
@@ -2061,9 +2224,9 @@ paths:
         description: A unique integer value identifying this welfarebrothers_user.
         required: true
         type: integer
-  /users/{user_pk}/profiles/:
+  /users/{user_pk}/profile/:
     get:
-      operationId: users_profiles_list
+      operationId: users_profile_list
       description: ''
       parameters: []
       responses:
@@ -2076,7 +2239,7 @@ paths:
       tags:
         - users
     post:
-      operationId: users_profiles_create
+      operationId: users_profile_create
       description: ''
       parameters:
         - name: data
@@ -2096,20 +2259,9 @@ paths:
         in: path
         required: true
         type: string
-  /users/{user_pk}/profiles/{id}/:
-    get:
-      operationId: users_profiles_read
-      description: ''
-      parameters: []
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/WelfarebrothersUserProfile'
-      tags:
-        - users
+  /users/{user_pk}/profile/{id}/:
     put:
-      operationId: users_profiles_update
+      operationId: users_profile_update
       description: ''
       parameters:
         - name: data
@@ -2125,7 +2277,7 @@ paths:
       tags:
         - users
     patch:
-      operationId: users_profiles_partial_update
+      operationId: users_profile_partial_update
       description: ''
       parameters:
         - name: data
@@ -2141,7 +2293,7 @@ paths:
       tags:
         - users
     delete:
-      operationId: users_profiles_delete
+      operationId: users_profile_delete
       description: ''
       parameters: []
       responses:
@@ -2161,6 +2313,42 @@ paths:
         required: true
         type: string
 definitions:
+  WelfarebrothersTokenClaimsForWrite:
+    required:
+      - username
+      - password
+    type: object
+    properties:
+      username:
+        title: Username
+        type: string
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  WelfarebrothersTokenClaims:
+    type: object
+    properties:
+      access:
+        title: Access
+        type: string
+        readOnly: true
+        minLength: 1
+      refresh:
+        title: Refresh
+        type: string
+        readOnly: true
+        minLength: 1
+  TokenRefresh:
+    required:
+      - refresh
+    type: object
+    properties:
+      refresh:
+        title: Refresh
+        type: string
+        minLength: 1
   CareServiceCategory:
     required:
       - id
@@ -2719,6 +2907,10 @@ definitions:
       - password
     type: object
     properties:
+      id:
+        title: Id
+        type: integer
+        readOnly: true
       username:
         title: Username
         description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
@@ -2746,7 +2938,8 @@ definitions:
         $ref: '#/definitions/WelfarebrothersUser'
       user_id:
         title: User id
-        type: integer
+        type: string
+        minLength: 1
       first_name:
         title: First name
         type: string
@@ -3056,6 +3249,56 @@ definitions:
         type: string
         maxLength: 40
         minLength: 1
+  UserForWrite:
+    required:
+      - username
+      - password
+    type: object
+    properties:
+      username:
+        title: Username
+        description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+          only.
+        type: string
+        pattern: ^[\w.@+-]+$
+        maxLength: 150
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  Group:
+    required:
+      - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 150
+        minLength: 1
+  User:
+    required:
+      - username
+    type: object
+    properties:
+      username:
+        title: Username
+        description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+          only.
+        type: string
+        pattern: ^[\w.@+-]+$
+        maxLength: 150
+        minLength: 1
+      groups:
+        type: array
+        items:
+          $ref: '#/definitions/Group'
+        readOnly: true
   WelfarebrothersUserProfileForWrite:
     required:
       - user_id
@@ -3065,7 +3308,8 @@ definitions:
     properties:
       user_id:
         title: User id
-        type: integer
+        type: string
+        minLength: 1
       first_name:
         title: First name
         type: string

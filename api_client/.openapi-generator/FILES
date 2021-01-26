@@ -1,6 +1,7 @@
 .gitignore
 .travis.yml
 README.md
+doc/AuthApi.md
 doc/CareService.md
 doc/CareServiceCategoriesApi.md
 doc/CareServiceCategory.md
@@ -24,7 +25,7 @@ doc/FacilityForWrite.md
 doc/FacilityWorkerProfile.md
 doc/FacilityWorkerProfileForWrite.md
 doc/ForWorkerApi.md
-doc/MessageApi.md
+doc/Group.md
 doc/Prefecture.md
 doc/PrefectureForWrite.md
 doc/PrefecturesApi.md
@@ -37,7 +38,12 @@ doc/ShiftConfig.md
 doc/ShiftConfigForWrite.md
 doc/ShiftPattern.md
 doc/ShiftPatternForWrite.md
+doc/TokenRefresh.md
+doc/User.md
+doc/UserForWrite.md
 doc/UsersApi.md
+doc/WelfarebrothersTokenClaims.md
+doc/WelfarebrothersTokenClaimsForWrite.md
 doc/WelfarebrothersUser.md
 doc/WelfarebrothersUserProfile.md
 doc/WelfarebrothersUserProfileForWrite.md
@@ -51,10 +57,10 @@ doc/WorkingHoursConfig.md
 doc/WorkingHoursConfigForWrite.md
 git_push.sh
 lib/api.dart
+lib/api/auth_api.dart
 lib/api/care_service_categories_api.dart
 lib/api/facilities_api.dart
 lib/api/for_worker_api.dart
-lib/api/message_api.dart
 lib/api/prefectures_api.dart
 lib/api/users_api.dart
 lib/api_client.dart
@@ -85,6 +91,7 @@ lib/model/facility_for_worker_for_write.dart
 lib/model/facility_for_write.dart
 lib/model/facility_worker_profile.dart
 lib/model/facility_worker_profile_for_write.dart
+lib/model/group.dart
 lib/model/prefecture.dart
 lib/model/prefecture_for_write.dart
 lib/model/role.dart
@@ -96,6 +103,11 @@ lib/model/shift_config.dart
 lib/model/shift_config_for_write.dart
 lib/model/shift_pattern.dart
 lib/model/shift_pattern_for_write.dart
+lib/model/token_refresh.dart
+lib/model/user.dart
+lib/model/user_for_write.dart
+lib/model/welfarebrothers_token_claims.dart
+lib/model/welfarebrothers_token_claims_for_write.dart
 lib/model/welfarebrothers_user.dart
 lib/model/welfarebrothers_user_profile.dart
 lib/model/welfarebrothers_user_profile_for_write.dart

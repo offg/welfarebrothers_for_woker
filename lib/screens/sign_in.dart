@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/logo.dart';
 import 'package:welfarebrothers_for_worker/utils/design.dart';
 import 'package:welfarebrothers_for_worker/utils/input_decoration.dart';
+import 'package:welfarebrothers_for_worker/view_models/sign_in.dart';
 
 class SignInScreen extends StatelessWidget {
   @override
@@ -17,24 +19,38 @@ class SignInScreen extends StatelessWidget {
               elevation: 10,
               child: Padding(
                 padding: const EdgeInsets.all(32.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextFormField(decoration: inputDecoration(context, "ユーザーID")),
-                    TextFormField(decoration: inputDecoration(context, "パスワード")),
-                    verticalSpace(size: 40),
-                    RaisedButton(
-                      child: Text("ログイン"),
-                      onPressed: () {},
-                    ),
-                    FlatButton(
-                      child: Text("新規登録の方はこちら"),
-                      onPressed: () {
-                        Navigator.of(context).pushNamed("/sign_up");
-                      },
-                    ),
-                  ],
+                child: Consumer<SignInViewModel>(
+                  builder: (context, model, child) => Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextFormField(
+                        decoration: inputDecoration(context, "ユーザーID"),
+                        controller: model.usernameController,
+                      ),
+                      TextFormField(
+                        decoration: inputDecoration(context, "パスワード"),
+                        controller: model.passwordController,
+                      ),
+                      verticalSpace(size: 40),
+                      RaisedButton(
+                        child: Text("ログイン"),
+                        onPressed: () async {
+                          bool succeed = await model.signIn();
+                          if (succeed) {
+                            print('succeed');
+                            Navigator.of(context).pushNamed("/facility_admin");
+                          }
+                        },
+                      ),
+                      FlatButton(
+                        child: Text("新規登録の方はこちら"),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("/sign_up");
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -23,7 +23,7 @@ class WelfarebrothersUserProfile {
 
   WelfarebrothersUser user;
 
-  int userId;
+  String userId;
 
   String firstName;
 

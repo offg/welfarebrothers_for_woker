@@ -15,7 +15,7 @@ class PrefecturesApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /prefectures/{prefecture_pk}/cities/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /prefectures/{prefecture_pk}/cities' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] prefecturePk (required):
@@ -30,7 +30,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/prefectures/{prefecture_pk}/cities/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{prefecture_pk}/cities'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'prefecture_pk' + '}', prefecturePk.toString());
 
     Object postBody = data;
@@ -41,7 +41,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -86,7 +86,7 @@ class PrefecturesApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /prefectures/{prefecture_pk}/cities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /prefectures/{prefecture_pk}/cities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -102,7 +102,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: prefecturePk');
     }
 
-    final path = '/prefectures/{prefecture_pk}/cities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{prefecture_pk}/cities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
       .replaceAll('{' + 'prefecture_pk' + '}', prefecturePk.toString());
 
@@ -114,7 +114,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -153,7 +153,7 @@ class PrefecturesApi {
     }
   }
 
-  /// Performs an HTTP 'GET /prefectures/{prefecture_pk}/cities/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /prefectures/{prefecture_pk}/cities' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] prefecturePk (required):
@@ -163,7 +163,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: prefecturePk');
     }
 
-    final path = '/prefectures/{prefecture_pk}/cities/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{prefecture_pk}/cities'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'prefecture_pk' + '}', prefecturePk.toString());
 
     Object postBody;
@@ -174,7 +174,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -219,7 +219,7 @@ class PrefecturesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /prefectures/{prefecture_pk}/cities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /prefectures/{prefecture_pk}/cities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -240,7 +240,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/prefectures/{prefecture_pk}/cities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{prefecture_pk}/cities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
       .replaceAll('{' + 'prefecture_pk' + '}', prefecturePk.toString());
 
@@ -252,7 +252,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -300,7 +300,7 @@ class PrefecturesApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /prefectures/{prefecture_pk}/cities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /prefectures/{prefecture_pk}/cities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -316,7 +316,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: prefecturePk');
     }
 
-    final path = '/prefectures/{prefecture_pk}/cities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{prefecture_pk}/cities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
       .replaceAll('{' + 'prefecture_pk' + '}', prefecturePk.toString());
 
@@ -328,7 +328,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -374,7 +374,7 @@ class PrefecturesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /prefectures/{prefecture_pk}/cities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /prefectures/{prefecture_pk}/cities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -395,7 +395,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/prefectures/{prefecture_pk}/cities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{prefecture_pk}/cities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
       .replaceAll('{' + 'prefecture_pk' + '}', prefecturePk.toString());
 
@@ -407,7 +407,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -455,7 +455,7 @@ class PrefecturesApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /prefectures/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /prefectures' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [PrefectureForWrite] data (required):
@@ -465,7 +465,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/prefectures/'.replaceAll('{format}', 'json');
+    final path = '/prefectures'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -475,7 +475,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -518,7 +518,7 @@ class PrefecturesApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /prefectures/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /prefectures/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -529,7 +529,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/prefectures/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -540,7 +540,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -577,9 +577,9 @@ class PrefecturesApi {
     }
   }
 
-  /// Performs an HTTP 'GET /prefectures/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /prefectures' operation and returns the [Response].
   Future<Response> prefecturesListWithHttpInfo() async {
-    final path = '/prefectures/'.replaceAll('{format}', 'json');
+    final path = '/prefectures'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -589,7 +589,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -631,7 +631,7 @@ class PrefecturesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /prefectures/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /prefectures/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -647,7 +647,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/prefectures/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -658,7 +658,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -704,7 +704,7 @@ class PrefecturesApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /prefectures/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /prefectures/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -715,7 +715,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/prefectures/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -726,7 +726,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -770,7 +770,7 @@ class PrefecturesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /prefectures/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /prefectures/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -786,7 +786,7 @@ class PrefecturesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/prefectures/{id}/'.replaceAll('{format}', 'json')
+    final path = '/prefectures/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -797,7 +797,7 @@ class PrefecturesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&

@@ -9,18 +9,18 @@ All URIs are relative to *http://localhost:8000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**prefecturesCitiesCreate**](PrefecturesApi.md#prefecturesCitiesCreate) | **POST** /prefectures/{prefecture_pk}/cities/ | 
-[**prefecturesCitiesDelete**](PrefecturesApi.md#prefecturesCitiesDelete) | **DELETE** /prefectures/{prefecture_pk}/cities/{id}/ | 
-[**prefecturesCitiesList**](PrefecturesApi.md#prefecturesCitiesList) | **GET** /prefectures/{prefecture_pk}/cities/ | 
-[**prefecturesCitiesPartialUpdate**](PrefecturesApi.md#prefecturesCitiesPartialUpdate) | **PATCH** /prefectures/{prefecture_pk}/cities/{id}/ | 
-[**prefecturesCitiesRead**](PrefecturesApi.md#prefecturesCitiesRead) | **GET** /prefectures/{prefecture_pk}/cities/{id}/ | 
-[**prefecturesCitiesUpdate**](PrefecturesApi.md#prefecturesCitiesUpdate) | **PUT** /prefectures/{prefecture_pk}/cities/{id}/ | 
-[**prefecturesCreate**](PrefecturesApi.md#prefecturesCreate) | **POST** /prefectures/ | 
-[**prefecturesDelete**](PrefecturesApi.md#prefecturesDelete) | **DELETE** /prefectures/{id}/ | 
-[**prefecturesList**](PrefecturesApi.md#prefecturesList) | **GET** /prefectures/ | 
-[**prefecturesPartialUpdate**](PrefecturesApi.md#prefecturesPartialUpdate) | **PATCH** /prefectures/{id}/ | 
-[**prefecturesRead**](PrefecturesApi.md#prefecturesRead) | **GET** /prefectures/{id}/ | 
-[**prefecturesUpdate**](PrefecturesApi.md#prefecturesUpdate) | **PUT** /prefectures/{id}/ | 
+[**prefecturesCitiesCreate**](PrefecturesApi.md#prefecturesCitiesCreate) | **POST** /prefectures/{prefecture_pk}/cities | 
+[**prefecturesCitiesDelete**](PrefecturesApi.md#prefecturesCitiesDelete) | **DELETE** /prefectures/{prefecture_pk}/cities/{id} | 
+[**prefecturesCitiesList**](PrefecturesApi.md#prefecturesCitiesList) | **GET** /prefectures/{prefecture_pk}/cities | 
+[**prefecturesCitiesPartialUpdate**](PrefecturesApi.md#prefecturesCitiesPartialUpdate) | **PATCH** /prefectures/{prefecture_pk}/cities/{id} | 
+[**prefecturesCitiesRead**](PrefecturesApi.md#prefecturesCitiesRead) | **GET** /prefectures/{prefecture_pk}/cities/{id} | 
+[**prefecturesCitiesUpdate**](PrefecturesApi.md#prefecturesCitiesUpdate) | **PUT** /prefectures/{prefecture_pk}/cities/{id} | 
+[**prefecturesCreate**](PrefecturesApi.md#prefecturesCreate) | **POST** /prefectures | 
+[**prefecturesDelete**](PrefecturesApi.md#prefecturesDelete) | **DELETE** /prefectures/{id} | 
+[**prefecturesList**](PrefecturesApi.md#prefecturesList) | **GET** /prefectures | 
+[**prefecturesPartialUpdate**](PrefecturesApi.md#prefecturesPartialUpdate) | **PATCH** /prefectures/{id} | 
+[**prefecturesRead**](PrefecturesApi.md#prefecturesRead) | **GET** /prefectures/{id} | 
+[**prefecturesUpdate**](PrefecturesApi.md#prefecturesUpdate) | **PUT** /prefectures/{id} | 
 
 
 # **prefecturesCitiesCreate**
@@ -31,9 +31,10 @@ Method | HTTP request | Description
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final prefecturePk = prefecturePk_example; // String | 
@@ -60,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -77,9 +78,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final id = id_example; // String | A unique value identifying this city.
@@ -105,7 +107,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -122,9 +124,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final prefecturePk = prefecturePk_example; // String | 
@@ -149,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -166,9 +169,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final id = id_example; // String | A unique value identifying this city.
@@ -197,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -214,9 +218,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final id = id_example; // String | A unique value identifying this city.
@@ -243,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -260,9 +265,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final id = id_example; // String | A unique value identifying this city.
@@ -291,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -308,9 +314,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final data = PrefectureForWrite(); // PrefectureForWrite | 
@@ -335,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -352,9 +359,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final id = id_example; // String | A unique value identifying this prefecture.
@@ -378,7 +386,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -395,9 +403,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 
@@ -418,7 +427,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -435,9 +444,10 @@ This endpoint does not need any parameter.
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final id = id_example; // String | A unique value identifying this prefecture.
@@ -464,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -481,9 +491,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final id = id_example; // String | A unique value identifying this prefecture.
@@ -508,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -525,9 +536,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = PrefecturesApi();
 final id = id_example; // String | A unique value identifying this prefecture.
@@ -554,7 +566,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/tab_navigator.dart';
 import 'package:welfarebrothers_for_worker/screens/for_caremanager/facility_coordination/facility_coordination.dart';
 import 'package:welfarebrothers_for_worker/screens/for_caremanager/facility_coordination/facility_search.dart';
 import 'package:welfarebrothers_for_worker/screens/for_caremanager/facility_coordination/request.dart';
 import 'package:welfarebrothers_for_worker/screens/me.dart';
-import 'package:welfarebrothers_for_worker/view_models/me.dart';
 
 enum TabItem { facility_coordination, me }
 
@@ -72,10 +70,7 @@ class _ForCaremanagerHomeScreenState extends State<ForCaremanagerHomeScreen> {
   };
   Map<TabItem, Function> navigatorBuilderByTab = {
     TabItem.facility_coordination: (navigator) => navigator,
-    TabItem.me: (navigator) => ChangeNotifierProvider(
-          create: (_) => MeViewModel()..initialize(),
-          child: navigator,
-        ),
+    TabItem.me: (navigator) => navigator,
   };
   Widget _buildTabItem(
     TabItem tabItem,

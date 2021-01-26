@@ -39,18 +39,17 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
-final api_instance = CareServiceCategoriesApi();
-final data = CareServiceCategoryForWrite(); // CareServiceCategoryForWrite | 
+final api_instance = AuthApi();
 
 try {
-    final result = api_instance.careServiceCategoriesCreate(data);
-    print(result);
+    api_instance.authMessageList();
 } catch (e) {
-    print('Exception when calling CareServiceCategoriesApi->careServiceCategoriesCreate: $e\n');
+    print('Exception when calling AuthApi->authMessageList: $e\n');
 }
 
 ```
@@ -61,30 +60,33 @@ All URIs are relative to *http://localhost:8000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CareServiceCategoriesApi* | [**careServiceCategoriesCreate**](doc//CareServiceCategoriesApi.md#careservicecategoriescreate) | **POST** /care_service_categories/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesDelete**](doc//CareServiceCategoriesApi.md#careservicecategoriesdelete) | **DELETE** /care_service_categories/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsCreate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupscreate) | **POST** /care_service_categories/{category_pk}/groups/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsDelete**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsdelete) | **DELETE** /care_service_categories/{category_pk}/groups/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsList**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupslist) | **GET** /care_service_categories/{category_pk}/groups/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsPartialUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupspartialupdate) | **PATCH** /care_service_categories/{category_pk}/groups/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsRead**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsread) | **GET** /care_service_categories/{category_pk}/groups/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesCreate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsservicescreate) | **POST** /care_service_categories/{category_pk}/groups/{group_pk}/services/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesDelete**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsservicesdelete) | **DELETE** /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesList**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsserviceslist) | **GET** /care_service_categories/{category_pk}/groups/{group_pk}/services/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesPartialUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsservicespartialupdate) | **PATCH** /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesRead**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsservicesread) | **GET** /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsservicesupdate) | **PUT** /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsupdate) | **PUT** /care_service_categories/{category_pk}/groups/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesList**](doc//CareServiceCategoriesApi.md#careservicecategorieslist) | **GET** /care_service_categories/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesPartialUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriespartialupdate) | **PATCH** /care_service_categories/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesRead**](doc//CareServiceCategoriesApi.md#careservicecategoriesread) | **GET** /care_service_categories/{id}/ | 
-*CareServiceCategoriesApi* | [**careServiceCategoriesUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriesupdate) | **PUT** /care_service_categories/{id}/ | 
-*FacilitiesApi* | [**facilitiesCreate**](doc//FacilitiesApi.md#facilitiescreate) | **POST** /facilities/ | 
-*FacilitiesApi* | [**facilitiesDelete**](doc//FacilitiesApi.md#facilitiesdelete) | **DELETE** /facilities/{id}/ | 
-*FacilitiesApi* | [**facilitiesList**](doc//FacilitiesApi.md#facilitieslist) | **GET** /facilities/ | 
-*FacilitiesApi* | [**facilitiesPartialUpdate**](doc//FacilitiesApi.md#facilitiespartialupdate) | **PATCH** /facilities/{id}/ | 
-*FacilitiesApi* | [**facilitiesRead**](doc//FacilitiesApi.md#facilitiesread) | **GET** /facilities/{id}/ | 
-*FacilitiesApi* | [**facilitiesUpdate**](doc//FacilitiesApi.md#facilitiesupdate) | **PUT** /facilities/{id}/ | 
+*AuthApi* | [**authMessageList**](doc//AuthApi.md#authmessagelist) | **GET** /auth/message | 
+*AuthApi* | [**authTokenCreate**](doc//AuthApi.md#authtokencreate) | **POST** /auth/token | 
+*AuthApi* | [**authTokenRefreshCreate**](doc//AuthApi.md#authtokenrefreshcreate) | **POST** /auth/token/refresh/ | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesCreate**](doc//CareServiceCategoriesApi.md#careservicecategoriescreate) | **POST** /care_service_categories | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesDelete**](doc//CareServiceCategoriesApi.md#careservicecategoriesdelete) | **DELETE** /care_service_categories/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsCreate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupscreate) | **POST** /care_service_categories/{category_pk}/groups | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsDelete**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsdelete) | **DELETE** /care_service_categories/{category_pk}/groups/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsList**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupslist) | **GET** /care_service_categories/{category_pk}/groups | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsPartialUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupspartialupdate) | **PATCH** /care_service_categories/{category_pk}/groups/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsRead**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsread) | **GET** /care_service_categories/{category_pk}/groups/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesCreate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsservicescreate) | **POST** /care_service_categories/{category_pk}/groups/{group_pk}/services | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesDelete**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsservicesdelete) | **DELETE** /care_service_categories/{category_pk}/groups/{group_pk}/services/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesList**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsserviceslist) | **GET** /care_service_categories/{category_pk}/groups/{group_pk}/services | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesPartialUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsservicespartialupdate) | **PATCH** /care_service_categories/{category_pk}/groups/{group_pk}/services/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesRead**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsservicesread) | **GET** /care_service_categories/{category_pk}/groups/{group_pk}/services/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsServicesUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsservicesupdate) | **PUT** /care_service_categories/{category_pk}/groups/{group_pk}/services/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesGroupsUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriesgroupsupdate) | **PUT** /care_service_categories/{category_pk}/groups/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesList**](doc//CareServiceCategoriesApi.md#careservicecategorieslist) | **GET** /care_service_categories | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesPartialUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriespartialupdate) | **PATCH** /care_service_categories/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesRead**](doc//CareServiceCategoriesApi.md#careservicecategoriesread) | **GET** /care_service_categories/{id} | 
+*CareServiceCategoriesApi* | [**careServiceCategoriesUpdate**](doc//CareServiceCategoriesApi.md#careservicecategoriesupdate) | **PUT** /care_service_categories/{id} | 
+*FacilitiesApi* | [**facilitiesCreate**](doc//FacilitiesApi.md#facilitiescreate) | **POST** /facilities | 
+*FacilitiesApi* | [**facilitiesDelete**](doc//FacilitiesApi.md#facilitiesdelete) | **DELETE** /facilities/{id} | 
+*FacilitiesApi* | [**facilitiesList**](doc//FacilitiesApi.md#facilitieslist) | **GET** /facilities | 
+*FacilitiesApi* | [**facilitiesPartialUpdate**](doc//FacilitiesApi.md#facilitiespartialupdate) | **PATCH** /facilities/{id} | 
+*FacilitiesApi* | [**facilitiesRead**](doc//FacilitiesApi.md#facilitiesread) | **GET** /facilities/{id} | 
+*FacilitiesApi* | [**facilitiesUpdate**](doc//FacilitiesApi.md#facilitiesupdate) | **PUT** /facilities/{id} | 
 *ForWorkerApi* | [**forWorkerFacilitiesCreate**](doc//ForWorkerApi.md#forworkerfacilitiescreate) | **POST** /for_worker/facilities/ | 
 *ForWorkerApi* | [**forWorkerFacilitiesDelete**](doc//ForWorkerApi.md#forworkerfacilitiesdelete) | **DELETE** /for_worker/facilities/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilitiesList**](doc//ForWorkerApi.md#forworkerfacilitieslist) | **GET** /for_worker/facilities/ | 
@@ -151,45 +153,49 @@ Class | Method | HTTP request | Description
 *ForWorkerApi* | [**forWorkerRolesPartialUpdate**](doc//ForWorkerApi.md#forworkerrolespartialupdate) | **PATCH** /for_worker/roles/{id}/ | 
 *ForWorkerApi* | [**forWorkerRolesRead**](doc//ForWorkerApi.md#forworkerrolesread) | **GET** /for_worker/roles/{id}/ | 
 *ForWorkerApi* | [**forWorkerRolesUpdate**](doc//ForWorkerApi.md#forworkerrolesupdate) | **PUT** /for_worker/roles/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileCreate**](doc//ForWorkerApi.md#forworkeruserprofilecreate) | **POST** /for_worker/user_profile/ | 
-*ForWorkerApi* | [**forWorkerUserProfileDelete**](doc//ForWorkerApi.md#forworkeruserprofiledelete) | **DELETE** /for_worker/user_profile/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileList**](doc//ForWorkerApi.md#forworkeruserprofilelist) | **GET** /for_worker/user_profile/ | 
-*ForWorkerApi* | [**forWorkerUserProfilePartialUpdate**](doc//ForWorkerApi.md#forworkeruserprofilepartialupdate) | **PATCH** /for_worker/user_profile/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileRead**](doc//ForWorkerApi.md#forworkeruserprofileread) | **GET** /for_worker/user_profile/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileUpdate**](doc//ForWorkerApi.md#forworkeruserprofileupdate) | **PUT** /for_worker/user_profile/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileCreate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilecreate) | **POST** /for_worker/user_profile/{user_profile_pk}/worker_profile/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileDelete**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofiledelete) | **DELETE** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofilescreate) | **POST** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofilesdelete) | **DELETE** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofileslist) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofilespartialupdate) | **PATCH** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofilesread) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofilesupdate) | **PUT** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileList**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilelist) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfilePartialUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilepartialupdate) | **PATCH** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileRead**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofileread) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofileupdate) | **PUT** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
-*MessageApi* | [**messageList**](doc//MessageApi.md#messagelist) | **GET** /message | 
-*PrefecturesApi* | [**prefecturesCitiesCreate**](doc//PrefecturesApi.md#prefecturescitiescreate) | **POST** /prefectures/{prefecture_pk}/cities/ | 
-*PrefecturesApi* | [**prefecturesCitiesDelete**](doc//PrefecturesApi.md#prefecturescitiesdelete) | **DELETE** /prefectures/{prefecture_pk}/cities/{id}/ | 
-*PrefecturesApi* | [**prefecturesCitiesList**](doc//PrefecturesApi.md#prefecturescitieslist) | **GET** /prefectures/{prefecture_pk}/cities/ | 
-*PrefecturesApi* | [**prefecturesCitiesPartialUpdate**](doc//PrefecturesApi.md#prefecturescitiespartialupdate) | **PATCH** /prefectures/{prefecture_pk}/cities/{id}/ | 
-*PrefecturesApi* | [**prefecturesCitiesRead**](doc//PrefecturesApi.md#prefecturescitiesread) | **GET** /prefectures/{prefecture_pk}/cities/{id}/ | 
-*PrefecturesApi* | [**prefecturesCitiesUpdate**](doc//PrefecturesApi.md#prefecturescitiesupdate) | **PUT** /prefectures/{prefecture_pk}/cities/{id}/ | 
-*PrefecturesApi* | [**prefecturesCreate**](doc//PrefecturesApi.md#prefecturescreate) | **POST** /prefectures/ | 
-*PrefecturesApi* | [**prefecturesDelete**](doc//PrefecturesApi.md#prefecturesdelete) | **DELETE** /prefectures/{id}/ | 
-*PrefecturesApi* | [**prefecturesList**](doc//PrefecturesApi.md#prefectureslist) | **GET** /prefectures/ | 
-*PrefecturesApi* | [**prefecturesPartialUpdate**](doc//PrefecturesApi.md#prefecturespartialupdate) | **PATCH** /prefectures/{id}/ | 
-*PrefecturesApi* | [**prefecturesRead**](doc//PrefecturesApi.md#prefecturesread) | **GET** /prefectures/{id}/ | 
-*PrefecturesApi* | [**prefecturesUpdate**](doc//PrefecturesApi.md#prefecturesupdate) | **PUT** /prefectures/{id}/ | 
-*UsersApi* | [**usersList**](doc//UsersApi.md#userslist) | **GET** /users/ | 
-*UsersApi* | [**usersProfilesCreate**](doc//UsersApi.md#usersprofilescreate) | **POST** /users/{user_pk}/profiles/ | 
-*UsersApi* | [**usersProfilesDelete**](doc//UsersApi.md#usersprofilesdelete) | **DELETE** /users/{user_pk}/profiles/{id}/ | 
-*UsersApi* | [**usersProfilesList**](doc//UsersApi.md#usersprofileslist) | **GET** /users/{user_pk}/profiles/ | 
-*UsersApi* | [**usersProfilesPartialUpdate**](doc//UsersApi.md#usersprofilespartialupdate) | **PATCH** /users/{user_pk}/profiles/{id}/ | 
-*UsersApi* | [**usersProfilesRead**](doc//UsersApi.md#usersprofilesread) | **GET** /users/{user_pk}/profiles/{id}/ | 
-*UsersApi* | [**usersProfilesUpdate**](doc//UsersApi.md#usersprofilesupdate) | **PUT** /users/{user_pk}/profiles/{id}/ | 
-*UsersApi* | [**usersRead**](doc//UsersApi.md#usersread) | **GET** /users/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserCreate**](doc//ForWorkerApi.md#forworkerusercreate) | **POST** /for_worker/user/ | 
+*ForWorkerApi* | [**forWorkerUserDelete**](doc//ForWorkerApi.md#forworkeruserdelete) | **DELETE** /for_worker/user/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserPartialUpdate**](doc//ForWorkerApi.md#forworkeruserpartialupdate) | **PATCH** /for_worker/user/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileCreate**](doc//ForWorkerApi.md#forworkeruserprofilecreate) | **POST** /for_worker/user/{user_pk}/profile/ | 
+*ForWorkerApi* | [**forWorkerUserProfileDelete**](doc//ForWorkerApi.md#forworkeruserprofiledelete) | **DELETE** /for_worker/user/{user_pk}/profile/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileList**](doc//ForWorkerApi.md#forworkeruserprofilelist) | **GET** /for_worker/user/{user_pk}/profile/ | 
+*ForWorkerApi* | [**forWorkerUserProfilePartialUpdate**](doc//ForWorkerApi.md#forworkeruserprofilepartialupdate) | **PATCH** /for_worker/user/{user_pk}/profile/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileUpdate**](doc//ForWorkerApi.md#forworkeruserprofileupdate) | **PUT** /for_worker/user/{user_pk}/profile/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileCreate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilecreate) | **POST** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileDelete**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofiledelete) | **DELETE** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofilescreate) | **POST** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofilesdelete) | **DELETE** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofileslist) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofilespartialupdate) | **PATCH** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofilesread) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilefacilityworkerprofilesupdate) | **PUT** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileList**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilelist) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfilePartialUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilepartialupdate) | **PATCH** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileWorkerProfileUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofileupdate) | **PUT** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserRead**](doc//ForWorkerApi.md#forworkeruserread) | **GET** /for_worker/user/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserUpdate**](doc//ForWorkerApi.md#forworkeruserupdate) | **PUT** /for_worker/user/{id}/ | 
+*PrefecturesApi* | [**prefecturesCitiesCreate**](doc//PrefecturesApi.md#prefecturescitiescreate) | **POST** /prefectures/{prefecture_pk}/cities | 
+*PrefecturesApi* | [**prefecturesCitiesDelete**](doc//PrefecturesApi.md#prefecturescitiesdelete) | **DELETE** /prefectures/{prefecture_pk}/cities/{id} | 
+*PrefecturesApi* | [**prefecturesCitiesList**](doc//PrefecturesApi.md#prefecturescitieslist) | **GET** /prefectures/{prefecture_pk}/cities | 
+*PrefecturesApi* | [**prefecturesCitiesPartialUpdate**](doc//PrefecturesApi.md#prefecturescitiespartialupdate) | **PATCH** /prefectures/{prefecture_pk}/cities/{id} | 
+*PrefecturesApi* | [**prefecturesCitiesRead**](doc//PrefecturesApi.md#prefecturescitiesread) | **GET** /prefectures/{prefecture_pk}/cities/{id} | 
+*PrefecturesApi* | [**prefecturesCitiesUpdate**](doc//PrefecturesApi.md#prefecturescitiesupdate) | **PUT** /prefectures/{prefecture_pk}/cities/{id} | 
+*PrefecturesApi* | [**prefecturesCreate**](doc//PrefecturesApi.md#prefecturescreate) | **POST** /prefectures | 
+*PrefecturesApi* | [**prefecturesDelete**](doc//PrefecturesApi.md#prefecturesdelete) | **DELETE** /prefectures/{id} | 
+*PrefecturesApi* | [**prefecturesList**](doc//PrefecturesApi.md#prefectureslist) | **GET** /prefectures | 
+*PrefecturesApi* | [**prefecturesPartialUpdate**](doc//PrefecturesApi.md#prefecturespartialupdate) | **PATCH** /prefectures/{id} | 
+*PrefecturesApi* | [**prefecturesRead**](doc//PrefecturesApi.md#prefecturesread) | **GET** /prefectures/{id} | 
+*PrefecturesApi* | [**prefecturesUpdate**](doc//PrefecturesApi.md#prefecturesupdate) | **PUT** /prefectures/{id} | 
+*UsersApi* | [**usersCreate**](doc//UsersApi.md#userscreate) | **POST** /users | 
+*UsersApi* | [**usersDelete**](doc//UsersApi.md#usersdelete) | **DELETE** /users/{id} | 
+*UsersApi* | [**usersPartialUpdate**](doc//UsersApi.md#userspartialupdate) | **PATCH** /users/{id} | 
+*UsersApi* | [**usersProfileCreate**](doc//UsersApi.md#usersprofilecreate) | **POST** /users/{user_pk}/profile/ | 
+*UsersApi* | [**usersProfileDelete**](doc//UsersApi.md#usersprofiledelete) | **DELETE** /users/{user_pk}/profile/{id}/ | 
+*UsersApi* | [**usersProfileList**](doc//UsersApi.md#usersprofilelist) | **GET** /users/{user_pk}/profile/ | 
+*UsersApi* | [**usersProfilePartialUpdate**](doc//UsersApi.md#usersprofilepartialupdate) | **PATCH** /users/{user_pk}/profile/{id}/ | 
+*UsersApi* | [**usersProfileUpdate**](doc//UsersApi.md#usersprofileupdate) | **PUT** /users/{user_pk}/profile/{id}/ | 
+*UsersApi* | [**usersRead**](doc//UsersApi.md#usersread) | **GET** /users/{id} | 
+*UsersApi* | [**usersUpdate**](doc//UsersApi.md#usersupdate) | **PUT** /users/{id} | 
 
 
 ## Documentation For Models
@@ -214,6 +220,7 @@ Class | Method | HTTP request | Description
  - [FacilityForWrite](doc//FacilityForWrite.md)
  - [FacilityWorkerProfile](doc//FacilityWorkerProfile.md)
  - [FacilityWorkerProfileForWrite](doc//FacilityWorkerProfileForWrite.md)
+ - [Group](doc//Group.md)
  - [Prefecture](doc//Prefecture.md)
  - [PrefectureForWrite](doc//PrefectureForWrite.md)
  - [Role](doc//Role.md)
@@ -225,6 +232,11 @@ Class | Method | HTTP request | Description
  - [ShiftConfigForWrite](doc//ShiftConfigForWrite.md)
  - [ShiftPattern](doc//ShiftPattern.md)
  - [ShiftPatternForWrite](doc//ShiftPatternForWrite.md)
+ - [TokenRefresh](doc//TokenRefresh.md)
+ - [User](doc//User.md)
+ - [UserForWrite](doc//UserForWrite.md)
+ - [WelfarebrothersTokenClaims](doc//WelfarebrothersTokenClaims.md)
+ - [WelfarebrothersTokenClaimsForWrite](doc//WelfarebrothersTokenClaimsForWrite.md)
  - [WelfarebrothersUser](doc//WelfarebrothersUser.md)
  - [WelfarebrothersUserProfile](doc//WelfarebrothersUserProfile.md)
  - [WelfarebrothersUserProfileForWrite](doc//WelfarebrothersUserProfileForWrite.md)
@@ -241,9 +253,11 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## Basic
+## Bearer
 
-- **Type**: HTTP Basic authentication
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
 
 
 ## Author

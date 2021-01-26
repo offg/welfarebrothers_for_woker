@@ -12,9 +12,12 @@ part of welfarebrothers_for_worker_api_client;
 class WelfarebrothersUser {
   /// Returns a new [WelfarebrothersUser] instance.
   WelfarebrothersUser({
+    this.id,
     @required this.username,
     @required this.password,
   });
+
+  int id;
 
   /// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
   String username;
@@ -23,19 +26,24 @@ class WelfarebrothersUser {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is WelfarebrothersUser &&
+     other.id == id &&
      other.username == username &&
      other.password == password;
 
   @override
   int get hashCode =>
+    (id == null ? 0 : id.hashCode) +
     (username == null ? 0 : username.hashCode) +
     (password == null ? 0 : password.hashCode);
 
   @override
-  String toString() => 'WelfarebrothersUser[username=$username, password=$password]';
+  String toString() => 'WelfarebrothersUser[id=$id, username=$username, password=$password]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (id != null) {
+      json[r'id'] = id;
+    }
     if (username != null) {
       json[r'username'] = username;
     }
@@ -50,6 +58,7 @@ class WelfarebrothersUser {
   static WelfarebrothersUser fromJson(Map<String, dynamic> json) => json == null
     ? null
     : WelfarebrothersUser(
+        id: json[r'id'],
         username: json[r'username'],
         password: json[r'password'],
     );

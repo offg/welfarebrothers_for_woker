@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] [readonly] 
 **user** | [**WelfarebrothersUser**](WelfarebrothersUser.md) |  | [optional] 
-**userId** | **int** |  | 
+**userId** | **String** |  | 
 **firstName** | **String** |  | 
 **lastName** | **String** |  | 
 

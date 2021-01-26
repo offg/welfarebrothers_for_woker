@@ -2,11 +2,11 @@ import 'package:welfarebrothers_for_worker/domain/work_schedule/work_schedule_re
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
-class WorkScheduleViewModel extends WelfareBrothersViewModelBase {
+class WorkScheduleViewModel extends FacilityResourceViewModelBase {
   final IWorkScheduleRepository _repository;
   WorkScheduleViewModel(this._repository);
 
-  FacilityAdministration currentFacility;
+  FacilityAdministration get currentFacility => facilityAdministrationViewModel.currentFacilityAdministration;
 
   List<WorkScheduleSummary> workSchedules;
 
@@ -20,20 +20,16 @@ class WorkScheduleViewModel extends WelfareBrothersViewModelBase {
     loading = false;
   }
 
-  Future initializeWithFacilityAdministration(FacilityAdministration facilityAdministration) async {
+  @override
+  Future initialize() async {
     loading = true;
-    currentFacility = facilityAdministration;
-
+    await super.initialize();
     await _fetchWorkSchedules();
     loading = false;
   }
 
-  @override
-  Future initialize() {
-    return super.initialize();
-  }
-
   Future _fetchWorkSchedules() async {
+    if (!ready) return;
     loading = true;
     this.workSchedules = await _repository.fetchWorkSchedules(currentFacility.id);
     loading = false;

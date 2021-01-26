@@ -2,7 +2,7 @@ import 'package:welfarebrothers_for_worker/domain/facility_availability/facility
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
-class FacilityAvailabilityViewModel extends WelfareBrothersViewModelBase {
+class FacilityAvailabilityViewModel extends FacilityResourceViewModelBase {
   final IFacilityAvailabilityRepository _repository;
   FacilityAvailabilityViewModel(this._repository);
 
@@ -11,17 +11,14 @@ class FacilityAvailabilityViewModel extends WelfareBrothersViewModelBase {
 
   @override
   Future initialize() async {
-    return super.initialize();
-  }
-
-  Future initializeWithFacilityAdministration(FacilityAdministration facilityAdministration) async {
     loading = true;
-    this.facilityAdministration = facilityAdministration;
+    await super.initialize();
     await _fetchFacilityAvailability();
     loading = false;
   }
 
   Future _fetchFacilityAvailability() async {
+    if (!ready) return;
     loading = true;
     facilityAvailability = await _repository.fetchFacilityAvailability(facilityAdministration.facilityId);
     loading = false;

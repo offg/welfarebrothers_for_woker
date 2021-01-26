@@ -1,0 +1,2 @@
+const String JWT_ACCESS_TOKEN_KEY = "JWT_ACCESS";
+const String JWT_REFRESH_TOKEN_KEY = "JWT_REFRESH";

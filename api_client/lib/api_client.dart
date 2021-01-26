@@ -12,7 +12,7 @@ part of welfarebrothers_for_worker_api_client;
 class ApiClient {
   ApiClient({this.basePath = 'http://localhost:8000'}) {
     // Setup authentications (key: authentication name, value: authentication).
-    _authentications[r'Basic'] = HttpBasicAuth();
+    _authentications[r'Bearer'] = ApiKeyAuth('header', 'Authorization');
   }
 
   final String basePath;
@@ -200,6 +200,8 @@ class ApiClient {
           return FacilityWorkerProfile.fromJson(value);
         case 'FacilityWorkerProfileForWrite':
           return FacilityWorkerProfileForWrite.fromJson(value);
+        case 'Group':
+          return Group.fromJson(value);
         case 'Prefecture':
           return Prefecture.fromJson(value);
         case 'PrefectureForWrite':
@@ -222,6 +224,16 @@ class ApiClient {
           return ShiftPattern.fromJson(value);
         case 'ShiftPatternForWrite':
           return ShiftPatternForWrite.fromJson(value);
+        case 'TokenRefresh':
+          return TokenRefresh.fromJson(value);
+        case 'User':
+          return User.fromJson(value);
+        case 'UserForWrite':
+          return UserForWrite.fromJson(value);
+        case 'WelfarebrothersTokenClaims':
+          return WelfarebrothersTokenClaims.fromJson(value);
+        case 'WelfarebrothersTokenClaimsForWrite':
+          return WelfarebrothersTokenClaimsForWrite.fromJson(value);
         case 'WelfarebrothersUser':
           return WelfarebrothersUser.fromJson(value);
         case 'WelfarebrothersUserProfile':

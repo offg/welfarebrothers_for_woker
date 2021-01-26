@@ -75,24 +75,27 @@ Method | HTTP request | Description
 [**forWorkerRolesPartialUpdate**](ForWorkerApi.md#forWorkerRolesPartialUpdate) | **PATCH** /for_worker/roles/{id}/ | 
 [**forWorkerRolesRead**](ForWorkerApi.md#forWorkerRolesRead) | **GET** /for_worker/roles/{id}/ | 
 [**forWorkerRolesUpdate**](ForWorkerApi.md#forWorkerRolesUpdate) | **PUT** /for_worker/roles/{id}/ | 
-[**forWorkerUserProfileCreate**](ForWorkerApi.md#forWorkerUserProfileCreate) | **POST** /for_worker/user_profile/ | 
-[**forWorkerUserProfileDelete**](ForWorkerApi.md#forWorkerUserProfileDelete) | **DELETE** /for_worker/user_profile/{id}/ | 
-[**forWorkerUserProfileList**](ForWorkerApi.md#forWorkerUserProfileList) | **GET** /for_worker/user_profile/ | 
-[**forWorkerUserProfilePartialUpdate**](ForWorkerApi.md#forWorkerUserProfilePartialUpdate) | **PATCH** /for_worker/user_profile/{id}/ | 
-[**forWorkerUserProfileRead**](ForWorkerApi.md#forWorkerUserProfileRead) | **GET** /for_worker/user_profile/{id}/ | 
-[**forWorkerUserProfileUpdate**](ForWorkerApi.md#forWorkerUserProfileUpdate) | **PUT** /for_worker/user_profile/{id}/ | 
-[**forWorkerUserProfileWorkerProfileCreate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileCreate) | **POST** /for_worker/user_profile/{user_profile_pk}/worker_profile/ | 
-[**forWorkerUserProfileWorkerProfileDelete**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileDelete) | **DELETE** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
-[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate) | **POST** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/ | 
-[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete) | **DELETE** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
-[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/ | 
-[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate) | **PATCH** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
-[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
-[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate) | **PUT** /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
-[**forWorkerUserProfileWorkerProfileList**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileList) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/ | 
-[**forWorkerUserProfileWorkerProfilePartialUpdate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfilePartialUpdate) | **PATCH** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
-[**forWorkerUserProfileWorkerProfileRead**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileRead) | **GET** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
-[**forWorkerUserProfileWorkerProfileUpdate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileUpdate) | **PUT** /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/ | 
+[**forWorkerUserCreate**](ForWorkerApi.md#forWorkerUserCreate) | **POST** /for_worker/user/ | 
+[**forWorkerUserDelete**](ForWorkerApi.md#forWorkerUserDelete) | **DELETE** /for_worker/user/{id}/ | 
+[**forWorkerUserPartialUpdate**](ForWorkerApi.md#forWorkerUserPartialUpdate) | **PATCH** /for_worker/user/{id}/ | 
+[**forWorkerUserProfileCreate**](ForWorkerApi.md#forWorkerUserProfileCreate) | **POST** /for_worker/user/{user_pk}/profile/ | 
+[**forWorkerUserProfileDelete**](ForWorkerApi.md#forWorkerUserProfileDelete) | **DELETE** /for_worker/user/{user_pk}/profile/{id}/ | 
+[**forWorkerUserProfileList**](ForWorkerApi.md#forWorkerUserProfileList) | **GET** /for_worker/user/{user_pk}/profile/ | 
+[**forWorkerUserProfilePartialUpdate**](ForWorkerApi.md#forWorkerUserProfilePartialUpdate) | **PATCH** /for_worker/user/{user_pk}/profile/{id}/ | 
+[**forWorkerUserProfileUpdate**](ForWorkerApi.md#forWorkerUserProfileUpdate) | **PUT** /for_worker/user/{user_pk}/profile/{id}/ | 
+[**forWorkerUserProfileWorkerProfileCreate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileCreate) | **POST** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/ | 
+[**forWorkerUserProfileWorkerProfileDelete**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileDelete) | **DELETE** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
+[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate) | **POST** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/ | 
+[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete) | **DELETE** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
+[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/ | 
+[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate) | **PATCH** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
+[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
+[**forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate) | **PUT** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/ | 
+[**forWorkerUserProfileWorkerProfileList**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileList) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/ | 
+[**forWorkerUserProfileWorkerProfilePartialUpdate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfilePartialUpdate) | **PATCH** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
+[**forWorkerUserProfileWorkerProfileUpdate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileUpdate) | **PUT** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
+[**forWorkerUserRead**](ForWorkerApi.md#forWorkerUserRead) | **GET** /for_worker/user/{id}/ | 
+[**forWorkerUserUpdate**](ForWorkerApi.md#forWorkerUserUpdate) | **PUT** /for_worker/user/{id}/ | 
 
 
 # **forWorkerFacilitiesCreate**
@@ -103,9 +106,10 @@ Method | HTTP request | Description
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final data = FacilityForWorkerForWrite(); // FacilityForWorkerForWrite | 
@@ -130,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -147,9 +151,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
@@ -173,7 +178,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -190,9 +195,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final prefecture = prefecture_example; // String | 
@@ -225,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -242,9 +248,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
@@ -271,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -288,9 +295,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
@@ -315,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -332,9 +340,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
@@ -361,7 +370,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -378,9 +387,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -407,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -424,9 +434,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -452,7 +463,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -469,9 +480,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -496,7 +508,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -513,9 +525,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -544,7 +557,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -561,9 +574,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -590,7 +604,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -607,9 +621,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -638,7 +653,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -655,9 +670,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final data = FacilityAdministrationForWrite(); // FacilityAdministrationForWrite | 
@@ -682,7 +698,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -699,9 +715,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facility = facility_example; // String | A unique value identifying this facility administration.
@@ -725,7 +742,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -742,9 +759,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 
@@ -765,7 +783,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -782,9 +800,10 @@ This endpoint does not need any parameter.
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facility = facility_example; // String | A unique value identifying this facility administration.
@@ -811,7 +830,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -828,9 +847,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facility = facility_example; // String | A unique value identifying this facility administration.
@@ -855,7 +875,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -872,9 +892,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -901,7 +922,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -918,9 +939,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -946,7 +968,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -963,9 +985,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -990,7 +1013,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1007,9 +1030,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1038,7 +1062,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1055,9 +1079,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1084,7 +1109,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1101,9 +1126,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1132,7 +1158,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1149,9 +1175,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1179,7 +1206,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1196,9 +1223,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1225,7 +1253,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1242,9 +1270,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1275,7 +1304,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1292,9 +1321,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1323,7 +1353,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1340,9 +1370,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1373,7 +1404,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1390,9 +1421,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1421,7 +1453,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1438,9 +1470,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1468,7 +1501,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1485,9 +1518,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1514,7 +1548,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1531,9 +1565,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1564,7 +1599,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1581,9 +1616,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1612,7 +1648,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1629,9 +1665,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1662,7 +1699,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1679,9 +1716,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1710,7 +1748,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1727,9 +1765,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facility = facility_example; // String | A unique value identifying this facility administration.
@@ -1756,7 +1795,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1773,9 +1812,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1802,7 +1842,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1819,9 +1859,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1847,7 +1888,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1864,9 +1905,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationId = facilityAdministrationId_example; // String | 
@@ -1892,7 +1934,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1909,9 +1951,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationId = facilityAdministrationId_example; // String | 
@@ -1937,7 +1980,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1954,9 +1997,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -1981,7 +2025,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1998,9 +2042,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2027,7 +2072,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2044,9 +2089,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2073,7 +2119,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2090,9 +2136,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2121,7 +2168,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2138,9 +2185,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2168,7 +2216,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2185,9 +2233,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2214,7 +2263,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2231,9 +2280,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2264,7 +2314,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2281,9 +2331,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2312,7 +2363,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2329,9 +2380,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2362,7 +2414,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2379,9 +2431,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2407,7 +2460,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2424,9 +2477,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2451,7 +2505,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2468,9 +2522,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2499,7 +2554,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2516,9 +2571,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2545,7 +2601,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2562,9 +2618,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2593,7 +2650,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2610,9 +2667,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2641,7 +2699,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2658,9 +2716,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2688,7 +2747,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2705,9 +2764,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2734,7 +2794,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2751,9 +2811,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2784,7 +2845,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2801,9 +2862,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2832,7 +2894,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2849,9 +2911,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final facilityAdministrationPk = facilityAdministrationPk_example; // String | 
@@ -2882,7 +2945,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2899,9 +2962,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final data = RoleForWrite(); // RoleForWrite | 
@@ -2926,7 +2990,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2943,9 +3007,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = id_example; // String | A unique value identifying this role.
@@ -2969,7 +3034,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2986,9 +3051,10 @@ void (empty response body)
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 
@@ -3009,7 +3075,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3026,9 +3092,10 @@ This endpoint does not need any parameter.
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = id_example; // String | A unique value identifying this role.
@@ -3055,7 +3122,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3072,9 +3139,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = id_example; // String | A unique value identifying this role.
@@ -3099,7 +3167,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3116,9 +3184,10 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = id_example; // String | A unique value identifying this role.
@@ -3145,7 +3214,143 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserCreate**
+> User forWorkerUserCreate(data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final data = UserForWrite(); // UserForWrite | 
+
+try { 
+    final result = api_instance.forWorkerUserCreate(data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserCreate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**UserForWrite**](UserForWrite.md)|  | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserDelete**
+> forWorkerUserDelete(id)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this welfarebrothers_user.
+
+try { 
+    api_instance.forWorkerUserDelete(id);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this welfarebrothers_user. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserPartialUpdate**
+> User forWorkerUserPartialUpdate(id, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this welfarebrothers_user.
+final data = UserForWrite(); // UserForWrite | 
+
+try { 
+    final result = api_instance.forWorkerUserPartialUpdate(id, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserPartialUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this welfarebrothers_user. | 
+ **data** | [**UserForWrite**](UserForWrite.md)|  | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3155,22 +3360,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileCreate**
-> WelfarebrothersUserProfile forWorkerUserProfileCreate(data)
+> WelfarebrothersUserProfile forWorkerUserProfileCreate(userPk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
+final userPk = userPk_example; // String | 
 final data = WelfarebrothersUserProfileForWrite(); // WelfarebrothersUserProfileForWrite | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileCreate(data);
+    final result = api_instance.forWorkerUserProfileCreate(userPk, data);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileCreate: $e\n');
@@ -3181,6 +3388,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **userPk** | **String**|  | 
  **data** | [**WelfarebrothersUserProfileForWrite**](WelfarebrothersUserProfileForWrite.md)|  | 
 
 ### Return type
@@ -3189,7 +3397,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3199,22 +3407,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileDelete**
-> forWorkerUserProfileDelete(id)
+> forWorkerUserProfileDelete(id, userPk)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 56; // int | A unique integer value identifying this welfarebrothers user profile.
+final userPk = userPk_example; // String | 
 
 try { 
-    api_instance.forWorkerUserProfileDelete(id);
+    api_instance.forWorkerUserProfileDelete(id, userPk);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileDelete: $e\n');
 }
@@ -3225,6 +3435,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this welfarebrothers user profile. | 
+ **userPk** | **String**|  | 
 
 ### Return type
 
@@ -3232,7 +3443,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3242,21 +3453,23 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileList**
-> List<WelfarebrothersUserProfile> forWorkerUserProfileList()
+> List<WelfarebrothersUserProfile> forWorkerUserProfileList(userPk)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
+final userPk = userPk_example; // String | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileList();
+    final result = api_instance.forWorkerUserProfileList(userPk);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileList: $e\n');
@@ -3264,7 +3477,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userPk** | **String**|  | 
 
 ### Return type
 
@@ -3272,7 +3488,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3282,23 +3498,25 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfilePartialUpdate**
-> WelfarebrothersUserProfile forWorkerUserProfilePartialUpdate(id, data)
+> WelfarebrothersUserProfile forWorkerUserProfilePartialUpdate(id, userPk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 56; // int | A unique integer value identifying this welfarebrothers user profile.
+final userPk = userPk_example; // String | 
 final data = WelfarebrothersUserProfileForWrite(); // WelfarebrothersUserProfileForWrite | 
 
 try { 
-    final result = api_instance.forWorkerUserProfilePartialUpdate(id, data);
+    final result = api_instance.forWorkerUserProfilePartialUpdate(id, userPk, data);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfilePartialUpdate: $e\n');
@@ -3310,6 +3528,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this welfarebrothers user profile. | 
+ **userPk** | **String**|  | 
  **data** | [**WelfarebrothersUserProfileForWrite**](WelfarebrothersUserProfileForWrite.md)|  | 
 
 ### Return type
@@ -3318,7 +3537,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3327,68 +3546,26 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **forWorkerUserProfileRead**
-> WelfarebrothersUserProfile forWorkerUserProfileRead(id)
-
-
-
-### Example 
-```dart
-import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
-
-final api_instance = ForWorkerApi();
-final id = 56; // int | A unique integer value identifying this welfarebrothers user profile.
-
-try { 
-    final result = api_instance.forWorkerUserProfileRead(id);
-    print(result);
-} catch (e) {
-    print('Exception when calling ForWorkerApi->forWorkerUserProfileRead: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| A unique integer value identifying this welfarebrothers user profile. | 
-
-### Return type
-
-[**WelfarebrothersUserProfile**](WelfarebrothersUserProfile.md)
-
-### Authorization
-
-[Basic](../README.md#Basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **forWorkerUserProfileUpdate**
-> WelfarebrothersUserProfile forWorkerUserProfileUpdate(id, data)
+> WelfarebrothersUserProfile forWorkerUserProfileUpdate(id, userPk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 56; // int | A unique integer value identifying this welfarebrothers user profile.
+final userPk = userPk_example; // String | 
 final data = WelfarebrothersUserProfileForWrite(); // WelfarebrothersUserProfileForWrite | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileUpdate(id, data);
+    final result = api_instance.forWorkerUserProfileUpdate(id, userPk, data);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileUpdate: $e\n');
@@ -3400,6 +3577,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this welfarebrothers user profile. | 
+ **userPk** | **String**|  | 
  **data** | [**WelfarebrothersUserProfileForWrite**](WelfarebrothersUserProfileForWrite.md)|  | 
 
 ### Return type
@@ -3408,7 +3586,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3418,23 +3596,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileWorkerProfileCreate**
-> WorkerProfile forWorkerUserProfileWorkerProfileCreate(userProfilePk, data)
+> WorkerProfile forWorkerUserProfileWorkerProfileCreate(userPk, userProfilePk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 final data = WorkerProfileForWrite(); // WorkerProfileForWrite | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileWorkerProfileCreate(userProfilePk, data);
+    final result = api_instance.forWorkerUserProfileWorkerProfileCreate(userPk, userProfilePk, data);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileCreate: $e\n');
@@ -3445,6 +3625,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
  **data** | [**WorkerProfileForWrite**](WorkerProfileForWrite.md)|  | 
 
@@ -3454,7 +3635,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3464,23 +3645,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileWorkerProfileDelete**
-> forWorkerUserProfileWorkerProfileDelete(id, userProfilePk)
+> forWorkerUserProfileWorkerProfileDelete(id, userPk, userProfilePk)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 56; // int | A unique integer value identifying this worker profile.
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 
 try { 
-    api_instance.forWorkerUserProfileWorkerProfileDelete(id, userProfilePk);
+    api_instance.forWorkerUserProfileWorkerProfileDelete(id, userPk, userProfilePk);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileDelete: $e\n');
 }
@@ -3491,6 +3674,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this worker profile. | 
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
 
 ### Return type
@@ -3499,7 +3683,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3509,24 +3693,26 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate**
-> FacilityWorkerProfile forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate(userProfilePk, workerProfilePk, data)
+> FacilityWorkerProfile forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate(userPk, userProfilePk, workerProfilePk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 final workerProfilePk = workerProfilePk_example; // String | 
 final data = FacilityWorkerProfileForWrite(); // FacilityWorkerProfileForWrite | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate(userProfilePk, workerProfilePk, data);
+    final result = api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate(userPk, userProfilePk, workerProfilePk, data);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate: $e\n');
@@ -3537,6 +3723,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
  **workerProfilePk** | **String**|  | 
  **data** | [**FacilityWorkerProfileForWrite**](FacilityWorkerProfileForWrite.md)|  | 
@@ -3547,7 +3734,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3557,24 +3744,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete**
-> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete(id, userProfilePk, workerProfilePk)
+> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete(id, userPk, userProfilePk, workerProfilePk)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 56; // int | A unique integer value identifying this facility worker profile.
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 final workerProfilePk = workerProfilePk_example; // String | 
 
 try { 
-    api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete(id, userProfilePk, workerProfilePk);
+    api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete(id, userPk, userProfilePk, workerProfilePk);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete: $e\n');
 }
@@ -3585,6 +3774,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this facility worker profile. | 
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
  **workerProfilePk** | **String**|  | 
 
@@ -3594,7 +3784,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3604,23 +3794,25 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList**
-> List<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList(userProfilePk, workerProfilePk)
+> List<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList(userPk, userProfilePk, workerProfilePk)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 final workerProfilePk = workerProfilePk_example; // String | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList(userProfilePk, workerProfilePk);
+    final result = api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList(userPk, userProfilePk, workerProfilePk);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList: $e\n');
@@ -3631,6 +3823,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
  **workerProfilePk** | **String**|  | 
 
@@ -3640,7 +3833,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3650,25 +3843,27 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate**
-> FacilityWorkerProfile forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate(id, userProfilePk, workerProfilePk, data)
+> FacilityWorkerProfile forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate(id, userPk, userProfilePk, workerProfilePk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 56; // int | A unique integer value identifying this facility worker profile.
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 final workerProfilePk = workerProfilePk_example; // String | 
 final data = FacilityWorkerProfileForWrite(); // FacilityWorkerProfileForWrite | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate(id, userProfilePk, workerProfilePk, data);
+    final result = api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate(id, userPk, userProfilePk, workerProfilePk, data);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate: $e\n');
@@ -3680,6 +3875,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this facility worker profile. | 
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
  **workerProfilePk** | **String**|  | 
  **data** | [**FacilityWorkerProfileForWrite**](FacilityWorkerProfileForWrite.md)|  | 
@@ -3690,7 +3886,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3700,24 +3896,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead**
-> FacilityWorkerProfile forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead(id, userProfilePk, workerProfilePk)
+> FacilityWorkerProfile forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead(id, userPk, userProfilePk, workerProfilePk)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 56; // int | A unique integer value identifying this facility worker profile.
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 final workerProfilePk = workerProfilePk_example; // String | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead(id, userProfilePk, workerProfilePk);
+    final result = api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead(id, userPk, userProfilePk, workerProfilePk);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead: $e\n');
@@ -3729,6 +3927,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this facility worker profile. | 
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
  **workerProfilePk** | **String**|  | 
 
@@ -3738,7 +3937,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3748,25 +3947,27 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate**
-> FacilityWorkerProfile forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate(id, userProfilePk, workerProfilePk, data)
+> FacilityWorkerProfile forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate(id, userPk, userProfilePk, workerProfilePk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 56; // int | A unique integer value identifying this facility worker profile.
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 final workerProfilePk = workerProfilePk_example; // String | 
 final data = FacilityWorkerProfileForWrite(); // FacilityWorkerProfileForWrite | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate(id, userProfilePk, workerProfilePk, data);
+    final result = api_instance.forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate(id, userPk, userProfilePk, workerProfilePk, data);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate: $e\n');
@@ -3778,6 +3979,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this facility worker profile. | 
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
  **workerProfilePk** | **String**|  | 
  **data** | [**FacilityWorkerProfileForWrite**](FacilityWorkerProfileForWrite.md)|  | 
@@ -3788,7 +3990,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3798,22 +4000,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileWorkerProfileList**
-> List<WorkerProfile> forWorkerUserProfileWorkerProfileList(userProfilePk)
+> List<WorkerProfile> forWorkerUserProfileWorkerProfileList(userPk, userProfilePk)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileWorkerProfileList(userProfilePk);
+    final result = api_instance.forWorkerUserProfileWorkerProfileList(userPk, userProfilePk);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileList: $e\n');
@@ -3824,6 +4028,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
 
 ### Return type
@@ -3832,7 +4037,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3842,24 +4047,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forWorkerUserProfileWorkerProfilePartialUpdate**
-> WorkerProfile forWorkerUserProfileWorkerProfilePartialUpdate(id, userProfilePk, data)
+> WorkerProfile forWorkerUserProfileWorkerProfilePartialUpdate(id, userPk, userProfilePk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 56; // int | A unique integer value identifying this worker profile.
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 final data = WorkerProfileForWrite(); // WorkerProfileForWrite | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileWorkerProfilePartialUpdate(id, userProfilePk, data);
+    final result = api_instance.forWorkerUserProfileWorkerProfilePartialUpdate(id, userPk, userProfilePk, data);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfilePartialUpdate: $e\n');
@@ -3871,6 +4078,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this worker profile. | 
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
  **data** | [**WorkerProfileForWrite**](WorkerProfileForWrite.md)|  | 
 
@@ -3880,7 +4088,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -3889,71 +4097,27 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **forWorkerUserProfileWorkerProfileRead**
-> WorkerProfile forWorkerUserProfileWorkerProfileRead(id, userProfilePk)
-
-
-
-### Example 
-```dart
-import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
-
-final api_instance = ForWorkerApi();
-final id = 56; // int | A unique integer value identifying this worker profile.
-final userProfilePk = userProfilePk_example; // String | 
-
-try { 
-    final result = api_instance.forWorkerUserProfileWorkerProfileRead(id, userProfilePk);
-    print(result);
-} catch (e) {
-    print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileRead: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| A unique integer value identifying this worker profile. | 
- **userProfilePk** | **String**|  | 
-
-### Return type
-
-[**WorkerProfile**](WorkerProfile.md)
-
-### Authorization
-
-[Basic](../README.md#Basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **forWorkerUserProfileWorkerProfileUpdate**
-> WorkerProfile forWorkerUserProfileWorkerProfileUpdate(id, userProfilePk, data)
+> WorkerProfile forWorkerUserProfileWorkerProfileUpdate(id, userPk, userProfilePk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = ForWorkerApi();
 final id = 56; // int | A unique integer value identifying this worker profile.
+final userPk = userPk_example; // String | 
 final userProfilePk = userProfilePk_example; // String | 
 final data = WorkerProfileForWrite(); // WorkerProfileForWrite | 
 
 try { 
-    final result = api_instance.forWorkerUserProfileWorkerProfileUpdate(id, userProfilePk, data);
+    final result = api_instance.forWorkerUserProfileWorkerProfileUpdate(id, userPk, userProfilePk, data);
     print(result);
 } catch (e) {
     print('Exception when calling ForWorkerApi->forWorkerUserProfileWorkerProfileUpdate: $e\n');
@@ -3965,6 +4129,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique integer value identifying this worker profile. | 
+ **userPk** | **String**|  | 
  **userProfilePk** | **String**|  | 
  **data** | [**WorkerProfileForWrite**](WorkerProfileForWrite.md)|  | 
 
@@ -3974,7 +4139,99 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserRead**
+> User forWorkerUserRead(id)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this welfarebrothers_user.
+
+try { 
+    final result = api_instance.forWorkerUserRead(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserRead: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this welfarebrothers_user. | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserUpdate**
+> User forWorkerUserUpdate(id, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this welfarebrothers_user.
+final data = UserForWrite(); // UserForWrite | 
+
+try { 
+    final result = api_instance.forWorkerUserUpdate(id, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this welfarebrothers_user. | 
+ **data** | [**UserForWrite**](UserForWrite.md)|  | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

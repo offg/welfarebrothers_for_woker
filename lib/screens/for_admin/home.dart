@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/tab_navigator.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/facility_config/facility_config.dart';
@@ -9,7 +8,6 @@ import 'package:welfarebrothers_for_worker/screens/for_admin/shift_config.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/work_schedule/work_schedule_detail.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/work_schedule/work_schedule_list.dart';
 import 'package:welfarebrothers_for_worker/screens/me.dart';
-import 'package:welfarebrothers_for_worker/view_models/me.dart';
 
 enum TabItem {
   facility_administration,
@@ -101,10 +99,7 @@ class _ForAdminHomeScreenState extends State<ForAdminHomeScreen> {
   };
   Map<TabItem, Function> navigatorBuilderByTab = {
     TabItem.facility_administration: (navigator) => navigator,
-    TabItem.me: (navigator) => ChangeNotifierProvider(
-          create: (_) => MeViewModel()..initialize(),
-          child: navigator,
-        ),
+    TabItem.me: (navigator) => navigator,
   };
   Widget _buildTabItem(
     TabItem tabItem,

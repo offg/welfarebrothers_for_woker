@@ -15,7 +15,7 @@ class FacilitiesApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /facilities/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /facilities' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [FacilityForWrite] data (required):
@@ -25,7 +25,7 @@ class FacilitiesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/facilities/'.replaceAll('{format}', 'json');
+    final path = '/facilities'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -35,7 +35,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -78,7 +78,7 @@ class FacilitiesApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -89,7 +89,7 @@ class FacilitiesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -100,7 +100,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -137,7 +137,7 @@ class FacilitiesApi {
     }
   }
 
-  /// Performs an HTTP 'GET /facilities/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /facilities' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] prefecture:
@@ -152,7 +152,7 @@ class FacilitiesApi {
   Future<Response> facilitiesListWithHttpInfo({ String prefecture, String city, String careServiceGroup, String careServiceGroupCategory, String keywordContains }) async {
     // Verify required params are set.
 
-    final path = '/facilities/'.replaceAll('{format}', 'json');
+    final path = '/facilities'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -178,7 +178,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -231,7 +231,7 @@ class FacilitiesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -247,7 +247,7 @@ class FacilitiesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -258,7 +258,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -304,7 +304,7 @@ class FacilitiesApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -315,7 +315,7 @@ class FacilitiesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -326,7 +326,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -370,7 +370,7 @@ class FacilitiesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -386,7 +386,7 @@ class FacilitiesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -397,7 +397,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&

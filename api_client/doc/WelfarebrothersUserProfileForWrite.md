@@ -8,7 +8,7 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **int** |  | 
+**userId** | **String** |  | 
 **firstName** | **String** |  | 
 **lastName** | **String** |  | 
 

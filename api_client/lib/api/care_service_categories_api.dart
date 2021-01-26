@@ -15,7 +15,7 @@ class CareServiceCategoriesApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /care_service_categories/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /care_service_categories' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [CareServiceCategoryForWrite] data (required):
@@ -25,7 +25,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/care_service_categories/'.replaceAll('{format}', 'json');
+    final path = '/care_service_categories'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -35,7 +35,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -78,7 +78,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /care_service_categories/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /care_service_categories/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -89,7 +89,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/care_service_categories/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -100,7 +100,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -137,7 +137,7 @@ class CareServiceCategoriesApi {
     }
   }
 
-  /// Performs an HTTP 'POST /care_service_categories/{category_pk}/groups/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /care_service_categories/{category_pk}/groups' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -152,7 +152,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString());
 
     Object postBody = data;
@@ -163,7 +163,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -208,7 +208,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /care_service_categories/{category_pk}/groups/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /care_service_categories/{category_pk}/groups/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -224,7 +224,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString())
       .replaceAll('{' + 'id' + '}', id.toString());
 
@@ -236,7 +236,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -275,7 +275,7 @@ class CareServiceCategoriesApi {
     }
   }
 
-  /// Performs an HTTP 'GET /care_service_categories/{category_pk}/groups/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /care_service_categories/{category_pk}/groups' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -285,7 +285,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: categoryPk');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString());
 
     Object postBody;
@@ -296,7 +296,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -341,7 +341,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /care_service_categories/{category_pk}/groups/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /care_service_categories/{category_pk}/groups/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -362,7 +362,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString())
       .replaceAll('{' + 'id' + '}', id.toString());
 
@@ -374,7 +374,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -422,7 +422,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /care_service_categories/{category_pk}/groups/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /care_service_categories/{category_pk}/groups/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -438,7 +438,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString())
       .replaceAll('{' + 'id' + '}', id.toString());
 
@@ -450,7 +450,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -496,7 +496,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /care_service_categories/{category_pk}/groups/{group_pk}/services/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /care_service_categories/{category_pk}/groups/{group_pk}/services' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -516,7 +516,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString())
       .replaceAll('{' + 'group_pk' + '}', groupPk.toString());
 
@@ -528,7 +528,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -575,7 +575,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -596,7 +596,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString())
       .replaceAll('{' + 'group_pk' + '}', groupPk.toString())
       .replaceAll('{' + 'id' + '}', id.toString());
@@ -609,7 +609,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -650,7 +650,7 @@ class CareServiceCategoriesApi {
     }
   }
 
-  /// Performs an HTTP 'GET /care_service_categories/{category_pk}/groups/{group_pk}/services/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /care_service_categories/{category_pk}/groups/{group_pk}/services' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -665,7 +665,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: groupPk');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString())
       .replaceAll('{' + 'group_pk' + '}', groupPk.toString());
 
@@ -677,7 +677,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -724,7 +724,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -750,7 +750,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString())
       .replaceAll('{' + 'group_pk' + '}', groupPk.toString())
       .replaceAll('{' + 'id' + '}', id.toString());
@@ -763,7 +763,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -813,7 +813,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -834,7 +834,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString())
       .replaceAll('{' + 'group_pk' + '}', groupPk.toString())
       .replaceAll('{' + 'id' + '}', id.toString());
@@ -847,7 +847,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -895,7 +895,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -921,7 +921,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups/{group_pk}/services/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString())
       .replaceAll('{' + 'group_pk' + '}', groupPk.toString())
       .replaceAll('{' + 'id' + '}', id.toString());
@@ -934,7 +934,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -984,7 +984,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /care_service_categories/{category_pk}/groups/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /care_service_categories/{category_pk}/groups/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] categoryPk (required):
@@ -1005,7 +1005,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/care_service_categories/{category_pk}/groups/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{category_pk}/groups/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'category_pk' + '}', categoryPk.toString())
       .replaceAll('{' + 'id' + '}', id.toString());
 
@@ -1017,7 +1017,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1065,9 +1065,9 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /care_service_categories/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /care_service_categories' operation and returns the [Response].
   Future<Response> careServiceCategoriesListWithHttpInfo() async {
-    final path = '/care_service_categories/'.replaceAll('{format}', 'json');
+    final path = '/care_service_categories'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -1077,7 +1077,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1119,7 +1119,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /care_service_categories/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /care_service_categories/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -1135,7 +1135,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/care_service_categories/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -1146,7 +1146,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1192,7 +1192,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /care_service_categories/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /care_service_categories/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -1203,7 +1203,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/care_service_categories/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -1214,7 +1214,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1258,7 +1258,7 @@ class CareServiceCategoriesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /care_service_categories/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /care_service_categories/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -1274,7 +1274,7 @@ class CareServiceCategoriesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/care_service_categories/{id}/'.replaceAll('{format}', 'json')
+    final path = '/care_service_categories/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -1285,7 +1285,7 @@ class CareServiceCategoriesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&

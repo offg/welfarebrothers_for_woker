@@ -2,26 +2,22 @@ import 'package:welfarebrothers_for_worker/domain/shift_config/shift_config_repo
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
-class ShiftConfigViewModel extends WelfareBrothersViewModelBase {
-  FacilityAdministration facilityAdministration;
+class ShiftConfigViewModel extends FacilityResourceViewModelBase {
+  FacilityAdministration get facilityAdministration => facilityAdministrationViewModel.currentFacilityAdministration;
   ShiftConfig shiftConfig;
   IShiftConfigRepository _repository;
   ShiftConfigViewModel(this._repository);
 
   @override
   Future initialize() async {
-    return super.initialize();
-  }
-
-  Future initializeWithFacilityAdministration(FacilityAdministration facilityAdministration) async {
     loading = true;
-    this.facilityAdministration = facilityAdministration;
+    await super.initialize();
     await _fetchShiftConfig();
     loading = false;
   }
 
   Future _fetchShiftConfig() async {
-    if (facilityAdministration == null) return;
+    if (!ready) return;
     loading = true;
     shiftConfig = await _repository.fetchShiftConfigForFacility(facilityAdministration.id);
     loading = false;
