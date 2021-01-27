@@ -9,6 +9,8 @@ mixin HomeScreenStateMixin<T extends StatefulWidget> on State<T> {
   Map<TabItem, Function> routerBuilderByTab;
   Map<TabItem, Function> navigatorBuilderByTab;
 
+  Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys;
+
   buildBody(currentTab, navigatorKeys) {
     return Column(children: [
       Expanded(

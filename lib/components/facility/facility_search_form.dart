@@ -9,13 +9,20 @@ import 'package:welfarebrothers_for_worker/view_models/facility_search_form.dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 typedef Function OnFacilityTap(FacilityForWorker facility);
+typedef Widget FacilityRenderer(FacilityForWorker facility);
 
 class FacilitySearchForm extends StatelessWidget {
   final OnFacilityTap onFacilityTap;
-  FacilitySearchForm({OnFacilityTap onFacilityTap}) : onFacilityTap = onFacilityTap;
+  final FacilityRenderer facilityRenderer;
+  FacilitySearchForm({
+    @required OnFacilityTap onFacilityTap,
+    FacilityRenderer facilityRenderer,
+  })  : onFacilityTap = onFacilityTap,
+        facilityRenderer = facilityRenderer;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var _facilityRenderer = facilityRenderer ?? _renderFacility;
     return Consumer<FacilitySearchFormViewModel>(
       builder: (_context, model, child) => Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -54,7 +61,7 @@ class FacilitySearchForm extends StatelessWidget {
                 : ListView(
                     // shrinkWrap: true,
                     // physics: NeverScrollableScrollPhysics(),
-                    children: model.facilities.map((e) => _renderFacility(e)).toList(),
+                    children: model.facilities.map((e) => _facilityRenderer(e)).toList(),
                   ),
           ),
         ],
