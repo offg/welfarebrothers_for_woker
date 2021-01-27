@@ -11,6 +11,7 @@ import 'package:welfarebrothers_for_worker/domain/user/user_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/worker_profile/worker_profile_repository.dart';
 import 'package:welfarebrothers_for_worker/screens/facility_registration.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/home.dart';
+import 'package:welfarebrothers_for_worker/screens/home.dart';
 import 'package:welfarebrothers_for_worker/screens/sign_in.dart';
 import 'package:welfarebrothers_for_worker/screens/sign_up.dart';
 import 'package:welfarebrothers_for_worker/view_models/app.dart';
@@ -72,10 +73,10 @@ Future main() async {
       _initRootProvider<FacilityCoordinationViewModel>(
         create: (_) => FacilityCoordinationViewModel()..initialize(),
       ),
-      _initRootProvider(
+      _initRootProvider<FacilityWorkerProfileViewModel>(
         create: (_) => FacilityWorkerProfileViewModel(locator<IFacilityWorkerProfileRepository>())..initialize(),
       ),
-      _initRootProvider(
+      _initRootProvider<MeViewModel>(
         create: (_) => MeViewModel(
           locator<IUserRepository>(),
           locator<IWorkerProfileRepository>(),
@@ -83,24 +84,24 @@ Future main() async {
         ),
       ),
 
-      _initFacilityResourceProvider(
+      _initFacilityResourceProvider<ShiftConfigViewModel>(
         create: (_) => ShiftConfigViewModel(locator<IShiftConfigRepository>())..initialize(),
       ),
-      _initFacilityResourceProvider(
+      _initFacilityResourceProvider<WorkScheduleViewModel>(
         create: (_) => WorkScheduleViewModel(locator<IWorkScheduleRepository>())..initialize(),
       ),
-      _initFacilityResourceProvider(
+      _initFacilityResourceProvider<FacilityAvailabilityViewModel>(
         create: (_) => FacilityAvailabilityViewModel(locator<IFacilityAvailabilityRepository>())..initialize(),
       ),
 
       // for care manager
-      _initRootProvider(
+      _initRootProvider<FacilitySearchViewModel>(
         create: (_) => FacilitySearchViewModel(locator<IFacilityRepository>())..initialize(),
       ),
-      _initRootProvider(
+      _initRootProvider<CoordinationRequestViewModel>(
         create: (_) => CoordinationRequestViewModel()..initialize(),
       ),
-      _initRootProvider(
+      _initRootProvider<FacilitySearchFormViewModel>(
         create: (_) => FacilitySearchFormViewModel(
           locator<IAreaRepository>(),
           locator<ICareServiceRepository>(),
@@ -137,7 +138,7 @@ class WelfareBrothersForWorkerApp extends StatelessWidget {
           if (model.authenticated)
             return ForAdminHomeScreen();
           else
-            return SignInScreen();
+            return HomeScreen();
         }));
   }
 }

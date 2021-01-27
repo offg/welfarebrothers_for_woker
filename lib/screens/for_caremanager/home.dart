@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:welfarebrothers_for_worker/components/app/tab_navigator.dart';
+import 'package:welfarebrothers_for_worker/constants/page.dart';
 import 'package:welfarebrothers_for_worker/screens/for_caremanager/facility_coordination/facility_coordination.dart';
 import 'package:welfarebrothers_for_worker/screens/for_caremanager/facility_coordination/facility_search.dart';
 import 'package:welfarebrothers_for_worker/screens/for_caremanager/facility_coordination/request.dart';
 import 'package:welfarebrothers_for_worker/screens/me.dart';
-
-enum TabItem { facility_coordination, me }
 
 class ForCaremanagerHomeScreen extends StatefulWidget {
   @override

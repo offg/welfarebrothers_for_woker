@@ -32,7 +32,9 @@ class AppViewModel extends ChangeNotifier {
 
   Future _tryInitializeAuthToken() async {
     token = await _authRepository.loadAuthToken();
-    _setToken();
+    if (token != null) {
+      _setToken();
+    }
   }
 
   Future _initializeDataWithAuth() async {

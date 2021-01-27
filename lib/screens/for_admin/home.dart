@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:welfarebrothers_for_worker/components/app/tab_navigator.dart';
+import 'package:welfarebrothers_for_worker/constants/page.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/facility_config/facility_config.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_profile/facility_worker_profile_detail.dart';
@@ -8,11 +9,6 @@ import 'package:welfarebrothers_for_worker/screens/for_admin/shift_config.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/work_schedule/work_schedule_detail.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/work_schedule/work_schedule_list.dart';
 import 'package:welfarebrothers_for_worker/screens/me.dart';
-
-enum TabItem {
-  facility_administration,
-  me,
-}
 
 class ForAdminHomeScreen extends StatefulWidget {
   @override
