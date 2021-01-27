@@ -28,30 +28,39 @@ class FacilitySearchForm extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            child: AreaForm(),
-            padding: EdgeInsets.only(left: 20),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: CareServiceForm(),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            child: TextField(
-              controller: model.textEditingController,
-              decoration: inputDecoration(context, "キーワード (施設名等)"),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-            child: RaisedButton(
-              child: Text("検索"),
-              onPressed: model.searchable
-                  ? () async {
-                      await LoadingOverlay.of(context).during(model.searchFacilities());
-                    }
-                  : null,
+          Theme(
+            data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+            child: ExpansionTile(
+              initiallyExpanded: true,
+              title: Text("検索条件"),
+              children: [
+                Padding(
+                  child: AreaForm(),
+                  padding: EdgeInsets.only(left: 20),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: CareServiceForm(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  child: TextField(
+                    controller: model.textEditingController,
+                    decoration: inputDecoration(context, "キーワード (施設名等)"),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+                  child: RaisedButton(
+                    child: Text("検索"),
+                    onPressed: model.searchable
+                        ? () async {
+                            await LoadingOverlay.of(context).during(model.searchFacilities());
+                          }
+                        : null,
+                  ),
+                ),
+              ],
             ),
           ),
           verticalSpace(size: 20),
