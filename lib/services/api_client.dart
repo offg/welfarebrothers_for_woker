@@ -6,14 +6,14 @@ class WelfarebrothersApiClient {
   AuthApi _authApi;
   FacilitiesApi _facilitiesApi;
   ForWorkerApi _forWorkerApi;
-  UsersApi _usersApi;
+  MeApi _meApi;
   CareServiceCategoriesApi _careServiceCategoriesApi;
   PrefecturesApi _prefecturesApi;
 
   AuthApi get authApi => _authApi;
   FacilitiesApi get facilitiesApi => _facilitiesApi;
   ForWorkerApi get forWorkerApi => _forWorkerApi;
-  UsersApi get usersApi => _usersApi;
+  MeApi get meApi => _meApi;
   CareServiceCategoriesApi get careServiceCategoriesApi => _careServiceCategoriesApi;
   PrefecturesApi get prefecturesApi => _prefecturesApi;
   ApiClient get apiClient => _apiClient;
@@ -23,7 +23,7 @@ class WelfarebrothersApiClient {
     _authApi = AuthApi(_apiClient);
     _facilitiesApi = FacilitiesApi(_apiClient);
     _forWorkerApi = ForWorkerApi(_apiClient);
-    _usersApi = UsersApi(_apiClient);
+    _meApi = MeApi(_apiClient);
     _careServiceCategoriesApi = CareServiceCategoriesApi(_apiClient);
     _prefecturesApi = PrefecturesApi(_apiClient);
   }

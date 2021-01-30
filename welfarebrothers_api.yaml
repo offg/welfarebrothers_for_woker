@@ -1959,6 +1959,182 @@ paths:
         in: path
         required: true
         type: string
+  /me:
+    post:
+      operationId: me_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - me
+    parameters: []
+  /me/{id}:
+    get:
+      operationId: me_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - me
+    put:
+      operationId: me_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - me
+    patch:
+      operationId: me_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - me
+    delete:
+      operationId: me_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - me
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this welfarebrothers_user.
+        required: true
+        type: integer
+  /me/{user_pk}/profile/:
+    get:
+      operationId: me_profile_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - me
+    post:
+      operationId: me_profile_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - me
+    parameters:
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+  /me/{user_pk}/profile/{id}/:
+    get:
+      operationId: me_profile_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - me
+    put:
+      operationId: me_profile_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - me
+    patch:
+      operationId: me_profile_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - me
+    delete:
+      operationId: me_profile_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - me
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this welfarebrothers user
+          profile.
+        required: true
+        type: integer
+      - name: user_pk
+        in: path
+        required: true
+        type: string
   /prefectures:
     get:
       operationId: prefectures_list
@@ -2144,171 +2320,6 @@ paths:
         required: true
         type: string
       - name: prefecture_pk
-        in: path
-        required: true
-        type: string
-  /users:
-    post:
-      operationId: users_create
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/UserForWrite'
-      responses:
-        '201':
-          description: ''
-          schema:
-            $ref: '#/definitions/User'
-      tags:
-        - users
-    parameters: []
-  /users/{id}:
-    get:
-      operationId: users_read
-      description: ''
-      parameters: []
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/User'
-      tags:
-        - users
-    put:
-      operationId: users_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/UserForWrite'
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/User'
-      tags:
-        - users
-    patch:
-      operationId: users_partial_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/UserForWrite'
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/User'
-      tags:
-        - users
-    delete:
-      operationId: users_delete
-      description: ''
-      parameters: []
-      responses:
-        '204':
-          description: ''
-      tags:
-        - users
-    parameters:
-      - name: id
-        in: path
-        description: A unique integer value identifying this welfarebrothers_user.
-        required: true
-        type: integer
-  /users/{user_pk}/profile/:
-    get:
-      operationId: users_profile_list
-      description: ''
-      parameters: []
-      responses:
-        '200':
-          description: ''
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/WelfarebrothersUserProfile'
-      tags:
-        - users
-    post:
-      operationId: users_profile_create
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
-      responses:
-        '201':
-          description: ''
-          schema:
-            $ref: '#/definitions/WelfarebrothersUserProfile'
-      tags:
-        - users
-    parameters:
-      - name: user_pk
-        in: path
-        required: true
-        type: string
-  /users/{user_pk}/profile/{id}/:
-    put:
-      operationId: users_profile_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/WelfarebrothersUserProfile'
-      tags:
-        - users
-    patch:
-      operationId: users_profile_partial_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/WelfarebrothersUserProfile'
-      tags:
-        - users
-    delete:
-      operationId: users_profile_delete
-      description: ''
-      parameters: []
-      responses:
-        '204':
-          description: ''
-      tags:
-        - users
-    parameters:
-      - name: id
-        in: path
-        description: A unique integer value identifying this welfarebrothers user
-          profile.
-        required: true
-        type: integer
-      - name: user_pk
         in: path
         required: true
         type: string
@@ -3286,6 +3297,10 @@ definitions:
       - username
     type: object
     properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
       username:
         title: Username
         description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_

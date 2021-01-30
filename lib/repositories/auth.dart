@@ -44,6 +44,14 @@ class AuthApiRepository implements IAuthRepository {
   }
 
   @override
+  Future removeAuthToken() async {
+    if (window.localStorage.containsKey(JWT_ACCESS_TOKEN_KEY) && window.localStorage.containsKey(JWT_REFRESH_TOKEN_KEY)) {
+      window.localStorage.remove(JWT_ACCESS_TOKEN_KEY);
+      window.localStorage.remove(JWT_REFRESH_TOKEN_KEY);
+    }
+  }
+
+  @override
   Future<WelfarebrothersTokenClaims> loadAuthToken() async {
     if (kIsWeb)
       return await _loadAuthTokenFromLocalStorage();

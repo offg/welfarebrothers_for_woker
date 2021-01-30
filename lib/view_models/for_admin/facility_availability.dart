@@ -6,7 +6,7 @@ class FacilityAvailabilityViewModel extends FacilityResourceViewModelBase {
   final IFacilityAvailabilityRepository _repository;
   FacilityAvailabilityViewModel(this._repository);
 
-  FacilityAdministration facilityAdministration;
+  FacilityAdministration get facilityAdministration => facilityAdministrationViewModel.currentFacilityAdministration;
   FacilityAvailability facilityAvailability;
 
   @override

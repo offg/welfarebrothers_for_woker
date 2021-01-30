@@ -30,8 +30,8 @@ part 'api/auth_api.dart';
 part 'api/care_service_categories_api.dart';
 part 'api/facilities_api.dart';
 part 'api/for_worker_api.dart';
+part 'api/me_api.dart';
 part 'api/prefectures_api.dart';
-part 'api/users_api.dart';
 
 part 'model/care_service.dart';
 part 'model/care_service_category.dart';

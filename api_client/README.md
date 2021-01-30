@@ -174,6 +174,17 @@ Class | Method | HTTP request | Description
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfileUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofileupdate) | **PUT** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserRead**](doc//ForWorkerApi.md#forworkeruserread) | **GET** /for_worker/user/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserUpdate**](doc//ForWorkerApi.md#forworkeruserupdate) | **PUT** /for_worker/user/{id}/ | 
+*MeApi* | [**meCreate**](doc//MeApi.md#mecreate) | **POST** /me | 
+*MeApi* | [**meDelete**](doc//MeApi.md#medelete) | **DELETE** /me/{id} | 
+*MeApi* | [**mePartialUpdate**](doc//MeApi.md#mepartialupdate) | **PATCH** /me/{id} | 
+*MeApi* | [**meProfileCreate**](doc//MeApi.md#meprofilecreate) | **POST** /me/{user_pk}/profile/ | 
+*MeApi* | [**meProfileDelete**](doc//MeApi.md#meprofiledelete) | **DELETE** /me/{user_pk}/profile/{id}/ | 
+*MeApi* | [**meProfileList**](doc//MeApi.md#meprofilelist) | **GET** /me/{user_pk}/profile/ | 
+*MeApi* | [**meProfilePartialUpdate**](doc//MeApi.md#meprofilepartialupdate) | **PATCH** /me/{user_pk}/profile/{id}/ | 
+*MeApi* | [**meProfileRead**](doc//MeApi.md#meprofileread) | **GET** /me/{user_pk}/profile/{id}/ | 
+*MeApi* | [**meProfileUpdate**](doc//MeApi.md#meprofileupdate) | **PUT** /me/{user_pk}/profile/{id}/ | 
+*MeApi* | [**meRead**](doc//MeApi.md#meread) | **GET** /me/{id} | 
+*MeApi* | [**meUpdate**](doc//MeApi.md#meupdate) | **PUT** /me/{id} | 
 *PrefecturesApi* | [**prefecturesCitiesCreate**](doc//PrefecturesApi.md#prefecturescitiescreate) | **POST** /prefectures/{prefecture_pk}/cities | 
 *PrefecturesApi* | [**prefecturesCitiesDelete**](doc//PrefecturesApi.md#prefecturescitiesdelete) | **DELETE** /prefectures/{prefecture_pk}/cities/{id} | 
 *PrefecturesApi* | [**prefecturesCitiesList**](doc//PrefecturesApi.md#prefecturescitieslist) | **GET** /prefectures/{prefecture_pk}/cities | 
@@ -186,16 +197,6 @@ Class | Method | HTTP request | Description
 *PrefecturesApi* | [**prefecturesPartialUpdate**](doc//PrefecturesApi.md#prefecturespartialupdate) | **PATCH** /prefectures/{id} | 
 *PrefecturesApi* | [**prefecturesRead**](doc//PrefecturesApi.md#prefecturesread) | **GET** /prefectures/{id} | 
 *PrefecturesApi* | [**prefecturesUpdate**](doc//PrefecturesApi.md#prefecturesupdate) | **PUT** /prefectures/{id} | 
-*UsersApi* | [**usersCreate**](doc//UsersApi.md#userscreate) | **POST** /users | 
-*UsersApi* | [**usersDelete**](doc//UsersApi.md#usersdelete) | **DELETE** /users/{id} | 
-*UsersApi* | [**usersPartialUpdate**](doc//UsersApi.md#userspartialupdate) | **PATCH** /users/{id} | 
-*UsersApi* | [**usersProfileCreate**](doc//UsersApi.md#usersprofilecreate) | **POST** /users/{user_pk}/profile/ | 
-*UsersApi* | [**usersProfileDelete**](doc//UsersApi.md#usersprofiledelete) | **DELETE** /users/{user_pk}/profile/{id}/ | 
-*UsersApi* | [**usersProfileList**](doc//UsersApi.md#usersprofilelist) | **GET** /users/{user_pk}/profile/ | 
-*UsersApi* | [**usersProfilePartialUpdate**](doc//UsersApi.md#usersprofilepartialupdate) | **PATCH** /users/{user_pk}/profile/{id}/ | 
-*UsersApi* | [**usersProfileUpdate**](doc//UsersApi.md#usersprofileupdate) | **PUT** /users/{user_pk}/profile/{id}/ | 
-*UsersApi* | [**usersRead**](doc//UsersApi.md#usersread) | **GET** /users/{id} | 
-*UsersApi* | [**usersUpdate**](doc//UsersApi.md#usersupdate) | **PUT** /users/{id} | 
 
 
 ## Documentation For Models

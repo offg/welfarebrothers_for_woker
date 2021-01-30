@@ -42,14 +42,15 @@ ListenableProxyProvider<AppViewModel, T> _initRootProvider<T extends WelfareBrot
 }) {
   return ListenableProxyProvider<AppViewModel, T>(
     create: create,
-    update: (context, appViewModel, viewModel) => viewModel..appViewModel = appViewModel,
+    update: (context, appViewModel, viewModel) => viewModel..setAppViewModel(appViewModel),
   );
 }
 
-ProxyProvider<FacilityAdministrationViewModel, T> _initFacilityResourceProvider<T extends FacilityResourceViewModelBase>({
+ListenableProxyProvider<FacilityAdministrationViewModel, T>
+    _initFacilityResourceProvider<T extends FacilityResourceViewModelBase>({
   @required ProviderCreator create,
 }) {
-  return ProxyProvider<FacilityAdministrationViewModel, T>(
+  return ListenableProxyProvider<FacilityAdministrationViewModel, T>(
     create: create,
     update: (context, facilityAdministrationViewModel, viewModel) =>
         viewModel..facilityAdministrationViewModel = facilityAdministrationViewModel,
@@ -73,9 +74,6 @@ Future main() async {
       _initRootProvider<FacilityCoordinationViewModel>(
         create: (_) => FacilityCoordinationViewModel()..initialize(),
       ),
-      _initRootProvider<FacilityWorkerProfileViewModel>(
-        create: (_) => FacilityWorkerProfileViewModel(locator<IFacilityWorkerProfileRepository>())..initialize(),
-      ),
       _initRootProvider<MeViewModel>(
         create: (_) => MeViewModel(
           locator<IUserRepository>(),
@@ -92,6 +90,9 @@ Future main() async {
       ),
       _initFacilityResourceProvider<FacilityAvailabilityViewModel>(
         create: (_) => FacilityAvailabilityViewModel(locator<IFacilityAvailabilityRepository>())..initialize(),
+      ),
+      _initFacilityResourceProvider<FacilityWorkerProfileViewModel>(
+        create: (_) => FacilityWorkerProfileViewModel(locator<IFacilityWorkerProfileRepository>())..initialize(),
       ),
 
       // for care manager
@@ -128,6 +129,7 @@ class WelfareBrothersForWorkerApp extends StatelessWidget {
           '/sign_up': (_) => SignUpScreen(),
           '/facility_registration': (_) => FacilityRegistrationScreen(),
           '/facility_admin': (_) => ForAdminHomeScreen(),
+          '/general': (_) => HomeScreen(),
         },
         locale: const Locale("ja"),
         supportedLocales: const [

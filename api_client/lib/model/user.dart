@@ -12,9 +12,12 @@ part of welfarebrothers_for_worker_api_client;
 class User {
   /// Returns a new [User] instance.
   User({
+    this.id,
     @required this.username,
     this.groups = const [],
   });
+
+  int id;
 
   /// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
   String username;
@@ -23,19 +26,24 @@ class User {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
+     other.id == id &&
      other.username == username &&
      other.groups == groups;
 
   @override
   int get hashCode =>
+    (id == null ? 0 : id.hashCode) +
     (username == null ? 0 : username.hashCode) +
     (groups == null ? 0 : groups.hashCode);
 
   @override
-  String toString() => 'User[username=$username, groups=$groups]';
+  String toString() => 'User[id=$id, username=$username, groups=$groups]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (id != null) {
+      json[r'id'] = id;
+    }
     if (username != null) {
       json[r'username'] = username;
     }
@@ -50,6 +58,7 @@ class User {
   static User fromJson(Map<String, dynamic> json) => json == null
     ? null
     : User(
+        id: json[r'id'],
         username: json[r'username'],
         groups: Group.listFromJson(json[r'groups']),
     );

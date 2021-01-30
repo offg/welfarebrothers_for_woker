@@ -13,7 +13,7 @@ class AppViewModel extends ChangeNotifier {
   AppViewModel(this._roleRepository, this._authRepository, this._userRepository);
 
   WelfarebrothersTokenClaims token;
-  WelfarebrothersUser user;
+  User user;
   bool get authenticated => token?.access?.isNotEmpty ?? false;
 
   List<Role> roles = new List<Role>();
@@ -21,10 +21,7 @@ class AppViewModel extends ChangeNotifier {
 
   Future initialize() async {
     loading = true;
-    _tryInitializeAuthToken();
-    if (token != null) {
-      _initializeDataWithAuth();
-    }
+    await _tryInitializeAuthToken();
     this.roles = await _roleRepository.listRoles();
     this.roleById = Map<String, Role>.fromEntries(this.roles.map((e) => MapEntry(e.id, e)));
     loading = false;
@@ -34,15 +31,23 @@ class AppViewModel extends ChangeNotifier {
     token = await _authRepository.loadAuthToken();
     if (token != null) {
       _setToken();
+      await _initializeDataWithAuth();
     }
   }
 
   Future _initializeDataWithAuth() async {
-    await _userRepository.fetchUser();
+    this.user = await _userRepository.fetchUser();
   }
 
   _setToken() {
     locator<WelfarebrothersApiClient>().apiClient.addDefaultHeader("Authorization", "Bearer ${token.access}");
+  }
+
+  Future<bool> signOut() async {
+    token = null;
+    await _authRepository.removeAuthToken();
+    notifyListeners();
+    return true;
   }
 
   Future<bool> signIn(String username, String password) async {
@@ -52,6 +57,7 @@ class AppViewModel extends ChangeNotifier {
     _setToken();
     await _authRepository.saveAuthToken(token);
     await _initializeDataWithAuth();
+    user = await _userRepository.fetchUser();
     loading = false;
     return true;
   }

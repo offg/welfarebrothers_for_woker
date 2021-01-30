@@ -12,12 +12,14 @@ class WelfareBrothersViewModelBase extends ChangeNotifier {
 
   AppViewModel _appViewModel;
   AppViewModel get appViewModel => _appViewModel;
-  set appViewModel(AppViewModel vm) {
-    _appViewModel = vm;
+  Future setAppViewModel(AppViewModel vm) async {
+    this._appViewModel = vm;
+    await initialize();
     notifyListeners();
   }
 
   bool get authenticated => _appViewModel?.token?.access?.isNotEmpty ?? false;
+  bool get ready => (authenticated && appViewModel?.user != null) || (!authenticated);
 
   WelfareBrothersViewModelBase();
 
@@ -29,9 +31,10 @@ class FacilityResourceViewModelBase extends WelfareBrothersViewModelBase {
 
   set facilityAdministrationViewModel(FacilityAdministrationViewModel value) {
     _facilityAdministrationViewModel = value;
+    initialize();
     notifyListeners();
   }
 
   FacilityAdministrationViewModel get facilityAdministrationViewModel => _facilityAdministrationViewModel;
-  bool get ready => facilityAdministrationViewModel.currentFacilityAdministration != null;
+  bool get ready => facilityAdministrationViewModel?.currentFacilityAdministration != null;
 }

@@ -96,10 +96,12 @@ class FacilitySearchScreen extends StatelessWidget {
                                   children: [
                                     Text("この機能を利用するには"),
                                     Text("ログインする必要があります"),
-                                    verticalSpace(size: 25),
+                                    verticalSpace(size: 30),
                                     RaisedButton(
                                       child: Text("ログインする"),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.of(context).pushNamed("/sign_in");
+                                      },
                                     ),
                                     FlatButton(
                                       child: Text("新規登録する"),

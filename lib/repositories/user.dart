@@ -10,10 +10,16 @@ class UserApiRepository implements IUserRepository {
   Future<WelfarebrothersUserProfile> createProfile(WelfarebrothersUserProfile profile) async {}
 
   @override
-  Future<WelfarebrothersUserProfile> fetchProfile(int userId) async {}
+  Future<WelfarebrothersUserProfile> fetchProfile(int userId) async {
+    var res = await _client.meApi.meProfileList(userId.toString());
+    return res.first;
+  }
 
   @override
-  Future<WelfarebrothersUser> fetchUser() async {}
+  Future<User> fetchUser() async {
+    var result = await _client.meApi.meRead(0);
+    return result;
+  }
 
   @override
   Future<WelfarebrothersUserProfile> updateProfile(WelfarebrothersUserProfile profile) async {}

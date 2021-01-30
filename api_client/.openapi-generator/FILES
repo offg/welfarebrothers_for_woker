@@ -26,6 +26,7 @@ doc/FacilityWorkerProfile.md
 doc/FacilityWorkerProfileForWrite.md
 doc/ForWorkerApi.md
 doc/Group.md
+doc/MeApi.md
 doc/Prefecture.md
 doc/PrefectureForWrite.md
 doc/PrefecturesApi.md
@@ -41,7 +42,6 @@ doc/ShiftPatternForWrite.md
 doc/TokenRefresh.md
 doc/User.md
 doc/UserForWrite.md
-doc/UsersApi.md
 doc/WelfarebrothersTokenClaims.md
 doc/WelfarebrothersTokenClaimsForWrite.md
 doc/WelfarebrothersUser.md
@@ -61,8 +61,8 @@ lib/api/auth_api.dart
 lib/api/care_service_categories_api.dart
 lib/api/facilities_api.dart
 lib/api/for_worker_api.dart
+lib/api/me_api.dart
 lib/api/prefectures_api.dart
-lib/api/users_api.dart
 lib/api_client.dart
 lib/api_exception.dart
 lib/api_helper.dart

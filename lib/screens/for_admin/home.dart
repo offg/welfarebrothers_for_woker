@@ -44,6 +44,10 @@ class _ForAdminHomeScreenState extends State<ForAdminHomeScreen> with HomeScreen
     TabItem.facility_administration: (navigator) => navigator,
     TabItem.me: (navigator) => navigator,
   };
+  final Map<TabItem, String> rootPathByTab = {
+    TabItem.facility_administration: "/facility_admin",
+    TabItem.me: "/me",
+  };
   TabItem _currentTab = TabItem.facility_administration;
   @override
   Widget build(BuildContext context) {
@@ -55,7 +59,7 @@ class _ForAdminHomeScreenState extends State<ForAdminHomeScreen> with HomeScreen
   }
 
   void onSelect(int index) {
-    TabItem tabItem = TabItem.values[index];
+    TabItem tabItem = tabIcons.keys.toList()[index];
     if (_currentTab == tabItem) {
       navigatorKeys[tabItem].currentState.popUntil((route) => route.isFirst);
     } else {

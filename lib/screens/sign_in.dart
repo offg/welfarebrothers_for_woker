@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/components/logo.dart';
 import 'package:welfarebrothers_for_worker/utils/design.dart';
 import 'package:welfarebrothers_for_worker/utils/input_decoration.dart';
+import 'package:welfarebrothers_for_worker/view_models/me.dart';
 import 'package:welfarebrothers_for_worker/view_models/sign_in.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -38,7 +40,7 @@ class SignInScreen extends StatelessWidget {
                         onPressed: () async {
                           bool succeed = await model.signIn();
                           if (succeed) {
-                            print('succeed');
+                            await LoadingOverlay.of(context).during(context.read<MeViewModel>().initialize());
                             Navigator.of(context).pushNamed("/facility_admin");
                           }
                         },
