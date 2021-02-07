@@ -18,7 +18,6 @@ import 'package:welfarebrothers_for_worker/screens/for_admin/home.dart';
 import 'package:welfarebrothers_for_worker/screens/general/home.dart';
 import 'package:welfarebrothers_for_worker/utils/dynamic_route.dart';
 import 'package:welfarebrothers_for_worker/view_models/app.dart';
-import 'package:welfarebrothers_for_worker/view_models/auth/facility_linking.dart';
 import 'package:welfarebrothers_for_worker/view_models/auth/sign_in.dart';
 import 'package:welfarebrothers_for_worker/view_models/auth/sign_up.dart';
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
@@ -69,6 +68,8 @@ Future main() async {
           locator<IRoleRepository>(),
           locator<IAuthRepository>(),
           locator<IUserRepository>(),
+          locator<IWorkerProfileRepository>(),
+          locator<IFacilityUserLinkRepository>(),
         )..initialize(),
       ),
       _initRootProvider<FacilityAdministrationViewModel>(
@@ -104,8 +105,6 @@ Future main() async {
       _initRootProvider<SignInViewModel>(create: (_) => SignInViewModel()..initialize()),
       _initRootProvider<FavoriteFacilityViewModel>(
           create: (_) => FavoriteFacilityViewModel(locator<IFavoriteFacilityRepository>())),
-      _initRootProvider<FacilityLinkingViewModel>(
-          create: (_) => FacilityLinkingViewModel(locator<IFacilityUserLinkRepository>())..initialize()),
     ], child: WelfareBrothersForWorkerApp()),
   );
 }

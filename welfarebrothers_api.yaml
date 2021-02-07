@@ -19,33 +19,25 @@ security:
   - Bearer: []
 paths:
   /auth/facility_linking:
-    post:
-      operationId: auth_facility_linking_create
+    get:
+      operationId: auth_facility_linking_list
       description: ''
       parameters:
-        - name: facility_id
-          in: query
-          description: facility id for linking
-          type: string
-        - name: user_id
+        - name: facility_user_link_id
           in: query
           type: string
       responses:
-        '201':
+        '200':
           description: ''
       tags:
         - auth
     parameters: []
-  /auth/facility_linking/_finish:
+  /auth/facility_linking/_finish_flow:
     post:
-      operationId: auth_facility_linking__finish_create
+      operationId: auth_facility_linking__finish_flow_create
       description: ''
       parameters:
-        - name: facility_id
-          in: query
-          description: facility id for linking
-          type: string
-        - name: user_id
+        - name: facility_user_link_id
           in: query
           type: string
       responses:
@@ -59,11 +51,7 @@ paths:
       operationId: auth_facility_linking__greet_create
       description: ''
       parameters:
-        - name: facility_id
-          in: query
-          description: facility id for linking
-          type: string
-        - name: user_id
+        - name: facility_user_link_id
           in: query
           type: string
       responses:
@@ -77,11 +65,7 @@ paths:
       operationId: auth_facility_linking__start_flow_create
       description: ''
       parameters:
-        - name: facility_id
-          in: query
-          description: facility id for linking
-          type: string
-        - name: user_id
+        - name: facility_user_link_id
           in: query
           type: string
       responses:
@@ -95,11 +79,7 @@ paths:
       operationId: auth_facility_linking__verify_create
       description: ''
       parameters:
-        - name: facility_id
-          in: query
-          description: facility id for linking
-          type: string
-        - name: user_id
+        - name: facility_user_link_id
           in: query
           type: string
       responses:
@@ -556,7 +536,7 @@ paths:
         required: true
         type: string
         format: uuid
-  /for_worker/facilities/:
+  /for_worker/facilities:
     get:
       operationId: for_worker_facilities_list
       description: ''
@@ -612,7 +592,7 @@ paths:
       tags:
         - for_worker
     parameters: []
-  /for_worker/facilities/{id}/:
+  /for_worker/facilities/{id}:
     get:
       operationId: for_worker_facilities_read
       description: ''
@@ -672,7 +652,7 @@ paths:
         required: true
         type: string
         format: uuid
-  /for_worker/facility_administrations/:
+  /for_worker/facility_administrations:
     get:
       operationId: for_worker_facility_administrations_list
       description: ''
@@ -1515,7 +1495,7 @@ paths:
         description: A unique integer value identifying this facility worker profile.
         required: true
         type: integer
-  /for_worker/facility_administrations/{facility}/:
+  /for_worker/facility_administrations/{facility}:
     get:
       operationId: for_worker_facility_administrations_read
       description: ''
@@ -1574,7 +1554,7 @@ paths:
         description: A unique value identifying this facility administration.
         required: true
         type: string
-  /for_worker/facility_user_link_types/:
+  /for_worker/facility_user_link_types:
     get:
       operationId: for_worker_facility_user_link_types_list
       description: ''
@@ -1589,12 +1569,17 @@ paths:
       tags:
         - for_worker
     parameters: []
-  /for_worker/facility_user_links/:
+  /for_worker/facility_user_links:
     get:
       operationId: for_worker_facility_user_links_list
       description: ''
       parameters:
         - name: facility_administration_id
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: worker_profile_id
           in: query
           description: ''
           required: false
@@ -1625,7 +1610,7 @@ paths:
       tags:
         - for_worker
     parameters: []
-  /for_worker/facility_user_links/{id}/:
+  /for_worker/facility_user_links/{id}:
     get:
       operationId: for_worker_facility_user_links_read
       description: ''
@@ -1684,7 +1669,7 @@ paths:
         description: A unique integer value identifying this facility user link.
         required: true
         type: integer
-  /for_worker/roles/:
+  /for_worker/roles:
     get:
       operationId: for_worker_roles_list
       description: ''
@@ -1715,7 +1700,7 @@ paths:
       tags:
         - for_worker
     parameters: []
-  /for_worker/roles/{id}/:
+  /for_worker/roles/{id}:
     get:
       operationId: for_worker_roles_read
       description: ''
@@ -1774,7 +1759,7 @@ paths:
         description: A unique value identifying this role.
         required: true
         type: string
-  /for_worker/user/:
+  /for_worker/user:
     post:
       operationId: for_worker_user_create
       description: ''
@@ -1792,7 +1777,7 @@ paths:
       tags:
         - for_worker
     parameters: []
-  /for_worker/user/{id}/:
+  /for_worker/user/{id}:
     get:
       operationId: for_worker_user_read
       description: ''
@@ -3645,7 +3630,6 @@ definitions:
       - state_id
       - type_id
       - facility_administration_id
-      - verified_by_id
     type: object
     properties:
       worker_profile_id:
@@ -3666,6 +3650,7 @@ definitions:
       verified_by_id:
         title: Verified by id
         type: integer
+        x-nullable: true
       verified_at:
         title: Verified at
         type: string

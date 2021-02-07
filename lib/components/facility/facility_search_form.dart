@@ -31,57 +31,43 @@ class _FacilitySearchFormState extends State<FacilitySearchForm> {
     var customRenderer = widget.facilityRenderer != null;
     var _facilityRenderer = widget.facilityRenderer ?? _renderFacility;
     return Consumer<FacilitySearchFormViewModel>(
-      builder: (_context, model, child) => CustomScrollView(
-        key: widget._abcKey,
-        slivers: [
-          SliverAppBar(
-            floating: true,
-            pinned: true,
-            leading: Container(),
-            snap: true,
-            expandedHeight: 200,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Column(
-                children: [
-                  Padding(
-                    child: AreaForm(),
-                    padding: EdgeInsets.only(left: 20),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: CareServiceForm(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child: TextField(
-                      controller: model.textEditingController,
-                      decoration: inputDecoration(context, "キーワード (施設名等)"),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-                    child: RaisedButton(
-                      child: Text("検索"),
-                      onPressed: model.searchable
-                          ? () async {
-                              await LoadingOverlay.of(context).during(model.searchFacilities());
-                            }
-                          : null,
-                    ),
-                  ),
-                ],
+      builder: (_context, model, child) => SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              child: AreaForm(),
+              padding: EdgeInsets.only(left: 20),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: CareServiceForm(),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              child: TextField(
+                controller: model.textEditingController,
+                decoration: inputDecoration(context, "キーワード (施設名等)"),
               ),
             ),
-          ),
-          SliverFixedExtentList(
-            itemExtent: customRenderer ? 200 : 100,
-            delegate: (model.facilities?.isEmpty ?? true)
-                ? SliverChildListDelegate([Container()])
-                : SliverChildBuilderDelegate(
-                    (context, i) => _facilityRenderer(model.facilities[i]),
-                  ),
-          )
-        ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+              child: RaisedButton(
+                child: Text("検索"),
+                onPressed: model.searchable
+                    ? () async {
+                        await LoadingOverlay.of(context).during(model.searchFacilities());
+                      }
+                    : null,
+              ),
+            ),
+            model.facilities?.isEmpty ?? true
+                ? Container()
+                : ListView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    children: model.facilities.map((e) => _facilityRenderer(e)).toList())
+          ],
+        ),
       ),
     );
   }
@@ -103,7 +89,7 @@ class _FacilitySearchFormState extends State<FacilitySearchForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              facility.name,
+              facility.name ?? "",
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 15,
@@ -111,7 +97,7 @@ class _FacilitySearchFormState extends State<FacilitySearchForm> {
             ),
             verticalSpace(size: 15),
             Text(
-              facility.address,
+              facility.address ?? "",
               style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 13,
