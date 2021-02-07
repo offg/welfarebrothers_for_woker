@@ -17,6 +17,7 @@ class FacilityForWorker {
     @required this.category,
     @required this.group,
     @required this.careService,
+    @required this.tel,
     @required this.city,
     @required this.prefecture,
     @required this.address,
@@ -33,6 +34,8 @@ class FacilityForWorker {
   CareServiceGroup group;
 
   CareService careService;
+
+  String tel;
 
   City city;
 
@@ -51,6 +54,7 @@ class FacilityForWorker {
      other.category == category &&
      other.group == group &&
      other.careService == careService &&
+     other.tel == tel &&
      other.city == city &&
      other.prefecture == prefecture &&
      other.address == address &&
@@ -64,6 +68,7 @@ class FacilityForWorker {
     (category == null ? 0 : category.hashCode) +
     (group == null ? 0 : group.hashCode) +
     (careService == null ? 0 : careService.hashCode) +
+    (tel == null ? 0 : tel.hashCode) +
     (city == null ? 0 : city.hashCode) +
     (prefecture == null ? 0 : prefecture.hashCode) +
     (address == null ? 0 : address.hashCode) +
@@ -71,7 +76,7 @@ class FacilityForWorker {
     (availableDaysOfTheWeek == null ? 0 : availableDaysOfTheWeek.hashCode);
 
   @override
-  String toString() => 'FacilityForWorker[id=$id, name=$name, category=$category, group=$group, careService=$careService, city=$city, prefecture=$prefecture, address=$address, building=$building, availableDaysOfTheWeek=$availableDaysOfTheWeek]';
+  String toString() => 'FacilityForWorker[id=$id, name=$name, category=$category, group=$group, careService=$careService, tel=$tel, city=$city, prefecture=$prefecture, address=$address, building=$building, availableDaysOfTheWeek=$availableDaysOfTheWeek]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -89,6 +94,9 @@ class FacilityForWorker {
     }
     if (careService != null) {
       json[r'care_service'] = careService;
+    }
+    if (tel != null) {
+      json[r'tel'] = tel;
     }
     if (city != null) {
       json[r'city'] = city;
@@ -118,6 +126,7 @@ class FacilityForWorker {
         category: CareServiceCategory.fromJson(json[r'category']),
         group: CareServiceGroup.fromJson(json[r'group']),
         careService: CareService.fromJson(json[r'care_service']),
+        tel: json[r'tel'],
         city: City.fromJson(json[r'city']),
         prefecture: Prefecture.fromJson(json[r'prefecture']),
         address: json[r'address'],

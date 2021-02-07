@@ -19,7 +19,7 @@ class WelfareBrothersViewModelBase extends ChangeNotifier {
   }
 
   bool get authenticated => _appViewModel?.token?.access?.isNotEmpty ?? false;
-  bool get ready => (authenticated && appViewModel?.user != null) || (!authenticated);
+  bool get ready => (authenticated && appViewModel?.user != null && appViewModel?.profile != null) || (!authenticated);
 
   WelfareBrothersViewModelBase();
 

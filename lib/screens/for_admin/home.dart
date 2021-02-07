@@ -8,7 +8,8 @@ import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_pro
 import 'package:welfarebrothers_for_worker/screens/for_admin/shift_config.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/work_schedule/work_schedule_detail.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/work_schedule/work_schedule_list.dart';
-import 'package:welfarebrothers_for_worker/screens/me.dart';
+import 'package:welfarebrothers_for_worker/screens/general/favorite_facility.dart';
+import 'package:welfarebrothers_for_worker/screens/general/me.dart';
 
 class ForAdminHomeScreen extends StatefulWidget {
   @override
@@ -38,6 +39,7 @@ class _ForAdminHomeScreenState extends State<ForAdminHomeScreen> with HomeScreen
         },
     TabItem.me: (context) => {
           '/': (context) => MeScreen(),
+          '/favorite_facility': (context) => FavoriteFacilityScreen(),
         }
   };
   final Map<TabItem, Function> navigatorBuilderByTab = {

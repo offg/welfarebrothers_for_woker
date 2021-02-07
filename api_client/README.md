@@ -45,11 +45,13 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AuthApi();
+final facilityId = facilityId_example; // String | facility id for linking
+final userId = userId_example; // String | 
 
 try {
-    api_instance.authMessageList();
+    api_instance.authFacilityLinkingCreate(facilityId, userId);
 } catch (e) {
-    print('Exception when calling AuthApi->authMessageList: $e\n');
+    print('Exception when calling AuthApi->authFacilityLinkingCreate: $e\n');
 }
 
 ```
@@ -60,7 +62,11 @@ All URIs are relative to *http://localhost:8000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AuthApi* | [**authMessageList**](doc//AuthApi.md#authmessagelist) | **GET** /auth/message | 
+*AuthApi* | [**authFacilityLinkingCreate**](doc//AuthApi.md#authfacilitylinkingcreate) | **POST** /auth/facility_linking | 
+*AuthApi* | [**authFacilityLinkingFinishCreate**](doc//AuthApi.md#authfacilitylinkingfinishcreate) | **POST** /auth/facility_linking/_finish | 
+*AuthApi* | [**authFacilityLinkingGreetCreate**](doc//AuthApi.md#authfacilitylinkinggreetcreate) | **POST** /auth/facility_linking/_greet | 
+*AuthApi* | [**authFacilityLinkingStartFlowCreate**](doc//AuthApi.md#authfacilitylinkingstartflowcreate) | **POST** /auth/facility_linking/_start_flow | 
+*AuthApi* | [**authFacilityLinkingVerifyCreate**](doc//AuthApi.md#authfacilitylinkingverifycreate) | **POST** /auth/facility_linking/_verify | 
 *AuthApi* | [**authTokenCreate**](doc//AuthApi.md#authtokencreate) | **POST** /auth/token | 
 *AuthApi* | [**authTokenRefreshCreate**](doc//AuthApi.md#authtokenrefreshcreate) | **POST** /auth/token/refresh/ | 
 *CareServiceCategoriesApi* | [**careServiceCategoriesCreate**](doc//CareServiceCategoriesApi.md#careservicecategoriescreate) | **POST** /care_service_categories | 
@@ -147,6 +153,13 @@ Class | Method | HTTP request | Description
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsworkerprofilesworkinghoursconfigpartialupdate) | **PATCH** /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigRead**](doc//ForWorkerApi.md#forworkerfacilityadministrationsworkerprofilesworkinghoursconfigread) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsworkerprofilesworkinghoursconfigupdate) | **PUT** /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinkTypesList**](doc//ForWorkerApi.md#forworkerfacilityuserlinktypeslist) | **GET** /for_worker/facility_user_link_types/ | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksCreate**](doc//ForWorkerApi.md#forworkerfacilityuserlinkscreate) | **POST** /for_worker/facility_user_links/ | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksDelete**](doc//ForWorkerApi.md#forworkerfacilityuserlinksdelete) | **DELETE** /for_worker/facility_user_links/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksList**](doc//ForWorkerApi.md#forworkerfacilityuserlinkslist) | **GET** /for_worker/facility_user_links/ | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilityuserlinkspartialupdate) | **PATCH** /for_worker/facility_user_links/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksRead**](doc//ForWorkerApi.md#forworkerfacilityuserlinksread) | **GET** /for_worker/facility_user_links/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksUpdate**](doc//ForWorkerApi.md#forworkerfacilityuserlinksupdate) | **PUT** /for_worker/facility_user_links/{id}/ | 
 *ForWorkerApi* | [**forWorkerRolesCreate**](doc//ForWorkerApi.md#forworkerrolescreate) | **POST** /for_worker/roles/ | 
 *ForWorkerApi* | [**forWorkerRolesDelete**](doc//ForWorkerApi.md#forworkerrolesdelete) | **DELETE** /for_worker/roles/{id}/ | 
 *ForWorkerApi* | [**forWorkerRolesList**](doc//ForWorkerApi.md#forworkerroleslist) | **GET** /for_worker/roles/ | 
@@ -158,8 +171,15 @@ Class | Method | HTTP request | Description
 *ForWorkerApi* | [**forWorkerUserPartialUpdate**](doc//ForWorkerApi.md#forworkeruserpartialupdate) | **PATCH** /for_worker/user/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserProfileCreate**](doc//ForWorkerApi.md#forworkeruserprofilecreate) | **POST** /for_worker/user/{user_pk}/profile/ | 
 *ForWorkerApi* | [**forWorkerUserProfileDelete**](doc//ForWorkerApi.md#forworkeruserprofiledelete) | **DELETE** /for_worker/user/{user_pk}/profile/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileFavoriteFacilitiesCreate**](doc//ForWorkerApi.md#forworkeruserprofilefavoritefacilitiescreate) | **POST** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/ | 
+*ForWorkerApi* | [**forWorkerUserProfileFavoriteFacilitiesDelete**](doc//ForWorkerApi.md#forworkeruserprofilefavoritefacilitiesdelete) | **DELETE** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileFavoriteFacilitiesList**](doc//ForWorkerApi.md#forworkeruserprofilefavoritefacilitieslist) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/ | 
+*ForWorkerApi* | [**forWorkerUserProfileFavoriteFacilitiesPartialUpdate**](doc//ForWorkerApi.md#forworkeruserprofilefavoritefacilitiespartialupdate) | **PATCH** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileFavoriteFacilitiesRead**](doc//ForWorkerApi.md#forworkeruserprofilefavoritefacilitiesread) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileFavoriteFacilitiesUpdate**](doc//ForWorkerApi.md#forworkeruserprofilefavoritefacilitiesupdate) | **PUT** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserProfileList**](doc//ForWorkerApi.md#forworkeruserprofilelist) | **GET** /for_worker/user/{user_pk}/profile/ | 
 *ForWorkerApi* | [**forWorkerUserProfilePartialUpdate**](doc//ForWorkerApi.md#forworkeruserprofilepartialupdate) | **PATCH** /for_worker/user/{user_pk}/profile/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserProfileRead**](doc//ForWorkerApi.md#forworkeruserprofileread) | **GET** /for_worker/user/{user_pk}/profile/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserProfileUpdate**](doc//ForWorkerApi.md#forworkeruserprofileupdate) | **PUT** /for_worker/user/{user_pk}/profile/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfileCreate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilecreate) | **POST** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/ | 
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfileDelete**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofiledelete) | **DELETE** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
@@ -177,12 +197,12 @@ Class | Method | HTTP request | Description
 *MeApi* | [**meCreate**](doc//MeApi.md#mecreate) | **POST** /me | 
 *MeApi* | [**meDelete**](doc//MeApi.md#medelete) | **DELETE** /me/{id} | 
 *MeApi* | [**mePartialUpdate**](doc//MeApi.md#mepartialupdate) | **PATCH** /me/{id} | 
-*MeApi* | [**meProfileCreate**](doc//MeApi.md#meprofilecreate) | **POST** /me/{user_pk}/profile/ | 
-*MeApi* | [**meProfileDelete**](doc//MeApi.md#meprofiledelete) | **DELETE** /me/{user_pk}/profile/{id}/ | 
-*MeApi* | [**meProfileList**](doc//MeApi.md#meprofilelist) | **GET** /me/{user_pk}/profile/ | 
-*MeApi* | [**meProfilePartialUpdate**](doc//MeApi.md#meprofilepartialupdate) | **PATCH** /me/{user_pk}/profile/{id}/ | 
-*MeApi* | [**meProfileRead**](doc//MeApi.md#meprofileread) | **GET** /me/{user_pk}/profile/{id}/ | 
-*MeApi* | [**meProfileUpdate**](doc//MeApi.md#meprofileupdate) | **PUT** /me/{user_pk}/profile/{id}/ | 
+*MeApi* | [**meProfileCreate**](doc//MeApi.md#meprofilecreate) | **POST** /me/{user_pk}/profile | 
+*MeApi* | [**meProfileDelete**](doc//MeApi.md#meprofiledelete) | **DELETE** /me/{user_pk}/profile/{id} | 
+*MeApi* | [**meProfileList**](doc//MeApi.md#meprofilelist) | **GET** /me/{user_pk}/profile | 
+*MeApi* | [**meProfilePartialUpdate**](doc//MeApi.md#meprofilepartialupdate) | **PATCH** /me/{user_pk}/profile/{id} | 
+*MeApi* | [**meProfileRead**](doc//MeApi.md#meprofileread) | **GET** /me/{user_pk}/profile/{id} | 
+*MeApi* | [**meProfileUpdate**](doc//MeApi.md#meprofileupdate) | **PUT** /me/{user_pk}/profile/{id} | 
 *MeApi* | [**meRead**](doc//MeApi.md#meread) | **GET** /me/{id} | 
 *MeApi* | [**meUpdate**](doc//MeApi.md#meupdate) | **PUT** /me/{id} | 
 *PrefecturesApi* | [**prefecturesCitiesCreate**](doc//PrefecturesApi.md#prefecturescitiescreate) | **POST** /prefectures/{prefecture_pk}/cities | 
@@ -219,8 +239,14 @@ Class | Method | HTTP request | Description
  - [FacilityForWorker](doc//FacilityForWorker.md)
  - [FacilityForWorkerForWrite](doc//FacilityForWorkerForWrite.md)
  - [FacilityForWrite](doc//FacilityForWrite.md)
+ - [FacilityUserLink](doc//FacilityUserLink.md)
+ - [FacilityUserLinkForWrite](doc//FacilityUserLinkForWrite.md)
+ - [FacilityUserLinkState](doc//FacilityUserLinkState.md)
+ - [FacilityUserLinkType](doc//FacilityUserLinkType.md)
  - [FacilityWorkerProfile](doc//FacilityWorkerProfile.md)
  - [FacilityWorkerProfileForWrite](doc//FacilityWorkerProfileForWrite.md)
+ - [FavoriteFacility](doc//FavoriteFacility.md)
+ - [FavoriteFacilityForWrite](doc//FavoriteFacilityForWrite.md)
  - [Group](doc//Group.md)
  - [Prefecture](doc//Prefecture.md)
  - [PrefectureForWrite](doc//PrefectureForWrite.md)
@@ -238,7 +264,6 @@ Class | Method | HTTP request | Description
  - [UserForWrite](doc//UserForWrite.md)
  - [WelfarebrothersTokenClaims](doc//WelfarebrothersTokenClaims.md)
  - [WelfarebrothersTokenClaimsForWrite](doc//WelfarebrothersTokenClaimsForWrite.md)
- - [WelfarebrothersUser](doc//WelfarebrothersUser.md)
  - [WelfarebrothersUserProfile](doc//WelfarebrothersUserProfile.md)
  - [WelfarebrothersUserProfileForWrite](doc//WelfarebrothersUserProfileForWrite.md)
  - [WorkSchedule](doc//WorkSchedule.md)

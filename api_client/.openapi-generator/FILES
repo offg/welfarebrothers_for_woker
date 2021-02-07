@@ -22,8 +22,14 @@ doc/FacilityAvailabilityForWrite.md
 doc/FacilityForWorker.md
 doc/FacilityForWorkerForWrite.md
 doc/FacilityForWrite.md
+doc/FacilityUserLink.md
+doc/FacilityUserLinkForWrite.md
+doc/FacilityUserLinkState.md
+doc/FacilityUserLinkType.md
 doc/FacilityWorkerProfile.md
 doc/FacilityWorkerProfileForWrite.md
+doc/FavoriteFacility.md
+doc/FavoriteFacilityForWrite.md
 doc/ForWorkerApi.md
 doc/Group.md
 doc/MeApi.md
@@ -44,7 +50,6 @@ doc/User.md
 doc/UserForWrite.md
 doc/WelfarebrothersTokenClaims.md
 doc/WelfarebrothersTokenClaimsForWrite.md
-doc/WelfarebrothersUser.md
 doc/WelfarebrothersUserProfile.md
 doc/WelfarebrothersUserProfileForWrite.md
 doc/WorkSchedule.md
@@ -89,8 +94,14 @@ lib/model/facility_availability_for_write.dart
 lib/model/facility_for_worker.dart
 lib/model/facility_for_worker_for_write.dart
 lib/model/facility_for_write.dart
+lib/model/facility_user_link.dart
+lib/model/facility_user_link_for_write.dart
+lib/model/facility_user_link_state.dart
+lib/model/facility_user_link_type.dart
 lib/model/facility_worker_profile.dart
 lib/model/facility_worker_profile_for_write.dart
+lib/model/favorite_facility.dart
+lib/model/favorite_facility_for_write.dart
 lib/model/group.dart
 lib/model/prefecture.dart
 lib/model/prefecture_for_write.dart
@@ -108,7 +119,6 @@ lib/model/user.dart
 lib/model/user_for_write.dart
 lib/model/welfarebrothers_token_claims.dart
 lib/model/welfarebrothers_token_claims_for_write.dart
-lib/model/welfarebrothers_user.dart
 lib/model/welfarebrothers_user_profile.dart
 lib/model/welfarebrothers_user_profile_for_write.dart
 lib/model/work_schedule.dart

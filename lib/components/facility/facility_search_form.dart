@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/components/facility/area_form.dart';
 import 'package:welfarebrothers_for_worker/components/facility/care_service_form.dart';
+import 'package:welfarebrothers_for_worker/utils/design.dart';
 import 'package:welfarebrothers_for_worker/utils/input_decoration.dart';
 import 'package:welfarebrothers_for_worker/view_models/facility_search_form.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
@@ -27,6 +28,7 @@ class _FacilitySearchFormState extends State<FacilitySearchForm> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var customRenderer = widget.facilityRenderer != null;
     var _facilityRenderer = widget.facilityRenderer ?? _renderFacility;
     return Consumer<FacilitySearchFormViewModel>(
       builder: (_context, model, child) => CustomScrollView(
@@ -35,6 +37,7 @@ class _FacilitySearchFormState extends State<FacilitySearchForm> {
           SliverAppBar(
             floating: true,
             pinned: true,
+            leading: Container(),
             snap: true,
             expandedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
@@ -71,7 +74,7 @@ class _FacilitySearchFormState extends State<FacilitySearchForm> {
             ),
           ),
           SliverFixedExtentList(
-            itemExtent: 200,
+            itemExtent: customRenderer ? 200 : 100,
             delegate: (model.facilities?.isEmpty ?? true)
                 ? SliverChildListDelegate([Container()])
                 : SliverChildBuilderDelegate(
@@ -96,12 +99,26 @@ class _FacilitySearchFormState extends State<FacilitySearchForm> {
       ),
       subtitle: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),
-        child: Text(
-          facility.name,
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 15,
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              facility.name,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 15,
+              ),
+            ),
+            verticalSpace(size: 15),
+            Text(
+              facility.address,
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 13,
+                color: Colors.grey.shade500,
+              ),
+            )
+          ],
         ),
       ),
       dense: true,

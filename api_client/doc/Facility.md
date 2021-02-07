@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **category** | [**CareServiceCategory**](CareServiceCategory.md) |  | 
 **group** | [**CareServiceGroup**](CareServiceGroup.md) |  | 
 **careService** | [**CareService**](CareService.md) |  | 
+**tel** | **String** |  | 
 **city** | [**City**](City.md) |  | 
 **prefecture** | [**Prefecture**](Prefecture.md) |  | 
 **address** | **String** |  | 

@@ -18,7 +18,11 @@ class MeViewModel extends WelfareBrothersViewModelBase {
     loading = true;
     if (appViewModel != null && authenticated && ready) {
       profile = await _userRepository.fetchProfile(appViewModel?.user?.id);
-      if (profile != null) workerProfile = await _workerProfileRepository.fetchMyWorkerProfile(profile.user.id, profile.id);
+      if (profile != null) {
+        try {
+          workerProfile = await _workerProfileRepository.fetchMyWorkerProfile(profile.user.id, profile.id);
+        } on ApiException {}
+      }
     }
     loading = false;
   }

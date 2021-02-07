@@ -14,6 +14,9 @@ class AppViewModel extends ChangeNotifier {
 
   WelfarebrothersTokenClaims token;
   User user;
+  WelfarebrothersUserProfile profile;
+  WorkerProfile workerProfile;
+
   bool get authenticated => token?.access?.isNotEmpty ?? false;
 
   List<Role> roles = new List<Role>();
@@ -37,6 +40,7 @@ class AppViewModel extends ChangeNotifier {
 
   Future _initializeDataWithAuth() async {
     this.user = await _userRepository.fetchUser();
+    this.profile = await _userRepository.fetchProfile(user.id);
   }
 
   _setToken() {
@@ -48,6 +52,18 @@ class AppViewModel extends ChangeNotifier {
     await _authRepository.removeAuthToken();
     notifyListeners();
     return true;
+  }
+
+  Future<bool> signUp(String username, String password, String firstName, String lastName) async {
+    loading = true;
+    var user = await _userRepository.createUser(username, password);
+    var userProfile = await _userRepository
+        .createProfile(WelfarebrothersUserProfile(userId: user.id.toString(), firstName: firstName, lastName: lastName));
+    this.user = user;
+    this.profile = userProfile;
+    await this.signIn(username, password);
+    loading = false;
+    return this.user != null && this.profile != null;
   }
 
   Future<bool> signIn(String username, String password) async {

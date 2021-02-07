@@ -15,15 +15,30 @@ class AuthApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'GET /auth/message' operation and returns the [Response].
-  Future<Response> authMessageListWithHttpInfo() async {
-    final path = '/auth/message'.replaceAll('{format}', 'json');
+  /// Performs an HTTP 'POST /auth/facility_linking' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityId:
+  ///   facility id for linking
+  ///
+  /// * [String] userId:
+  Future<Response> authFacilityLinkingCreateWithHttpInfo({ String facilityId, String userId }) async {
+    // Verify required params are set.
+
+    final path = '/auth/facility_linking'.replaceAll('{format}', 'json');
 
     Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (facilityId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'facility_id', facilityId));
+    }
+    if (userId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'user_id', userId));
+    }
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
@@ -43,7 +58,7 @@ class AuthApi {
 
     return await apiClient.invokeAPI(
       path,
-      'GET',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -53,8 +68,278 @@ class AuthApi {
     );
   }
 
-  Future<void> authMessageList() async {
-    final response = await authMessageListWithHttpInfo();
+  /// Parameters:
+  ///
+  /// * [String] facilityId:
+  ///   facility id for linking
+  ///
+  /// * [String] userId:
+  Future<void> authFacilityLinkingCreate({ String facilityId, String userId }) async {
+    final response = await authFacilityLinkingCreateWithHttpInfo( facilityId: facilityId, userId: userId );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'POST /auth/facility_linking/_finish' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityId:
+  ///   facility id for linking
+  ///
+  /// * [String] userId:
+  Future<Response> authFacilityLinkingFinishCreateWithHttpInfo({ String facilityId, String userId }) async {
+    // Verify required params are set.
+
+    final path = '/auth/facility_linking/_finish'.replaceAll('{format}', 'json');
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (facilityId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'facility_id', facilityId));
+    }
+    if (userId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'user_id', userId));
+    }
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityId:
+  ///   facility id for linking
+  ///
+  /// * [String] userId:
+  Future<void> authFacilityLinkingFinishCreate({ String facilityId, String userId }) async {
+    final response = await authFacilityLinkingFinishCreateWithHttpInfo( facilityId: facilityId, userId: userId );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'POST /auth/facility_linking/_greet' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityId:
+  ///   facility id for linking
+  ///
+  /// * [String] userId:
+  Future<Response> authFacilityLinkingGreetCreateWithHttpInfo({ String facilityId, String userId }) async {
+    // Verify required params are set.
+
+    final path = '/auth/facility_linking/_greet'.replaceAll('{format}', 'json');
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (facilityId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'facility_id', facilityId));
+    }
+    if (userId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'user_id', userId));
+    }
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityId:
+  ///   facility id for linking
+  ///
+  /// * [String] userId:
+  Future<void> authFacilityLinkingGreetCreate({ String facilityId, String userId }) async {
+    final response = await authFacilityLinkingGreetCreateWithHttpInfo( facilityId: facilityId, userId: userId );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'POST /auth/facility_linking/_start_flow' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityId:
+  ///   facility id for linking
+  ///
+  /// * [String] userId:
+  Future<Response> authFacilityLinkingStartFlowCreateWithHttpInfo({ String facilityId, String userId }) async {
+    // Verify required params are set.
+
+    final path = '/auth/facility_linking/_start_flow'.replaceAll('{format}', 'json');
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (facilityId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'facility_id', facilityId));
+    }
+    if (userId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'user_id', userId));
+    }
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityId:
+  ///   facility id for linking
+  ///
+  /// * [String] userId:
+  Future<void> authFacilityLinkingStartFlowCreate({ String facilityId, String userId }) async {
+    final response = await authFacilityLinkingStartFlowCreateWithHttpInfo( facilityId: facilityId, userId: userId );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'POST /auth/facility_linking/_verify' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityId:
+  ///   facility id for linking
+  ///
+  /// * [String] userId:
+  Future<Response> authFacilityLinkingVerifyCreateWithHttpInfo({ String facilityId, String userId }) async {
+    // Verify required params are set.
+
+    final path = '/auth/facility_linking/_verify'.replaceAll('{format}', 'json');
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (facilityId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'facility_id', facilityId));
+    }
+    if (userId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'user_id', userId));
+    }
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityId:
+  ///   facility id for linking
+  ///
+  /// * [String] userId:
+  Future<void> authFacilityLinkingVerifyCreate({ String facilityId, String userId }) async {
+    final response = await authFacilityLinkingVerifyCreateWithHttpInfo( facilityId: facilityId, userId: userId );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }

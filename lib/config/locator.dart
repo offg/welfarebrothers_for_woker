@@ -8,7 +8,9 @@ import 'package:welfarebrothers_for_worker/domain/facility/care_service_reposito
 import 'package:welfarebrothers_for_worker/domain/facility/facility_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_administration/facility_administration_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_availability/facility_availability_repository.dart';
+import 'package:welfarebrothers_for_worker/domain/facility_user_link/repository.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facility_worker_profile_repository.dart';
+import 'package:welfarebrothers_for_worker/domain/favorite_facility/repository.dart';
 import 'package:welfarebrothers_for_worker/domain/role/role_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/shift_config/shift_config_repository.dart';
 import 'package:welfarebrothers_for_worker/domain/user/user_repository.dart';
@@ -20,7 +22,9 @@ import 'package:welfarebrothers_for_worker/repositories/care_service.dart';
 import 'package:welfarebrothers_for_worker/repositories/facility.dart';
 import 'package:welfarebrothers_for_worker/repositories/facility_administration.dart';
 import 'package:welfarebrothers_for_worker/repositories/facility_availability.dart';
+import 'package:welfarebrothers_for_worker/repositories/facility_user_link.dart';
 import 'package:welfarebrothers_for_worker/repositories/facility_worker_profile.dart';
+import 'package:welfarebrothers_for_worker/repositories/favorite_facility.dart';
 import 'package:welfarebrothers_for_worker/repositories/role.dart';
 import 'package:welfarebrothers_for_worker/repositories/shift_config.dart';
 import 'package:welfarebrothers_for_worker/repositories/user.dart';
@@ -59,4 +63,6 @@ Future setUp() async {
   locator.registerSingleton<IAreaRepository>(AreaApiRepository(apiClient));
   locator.registerSingleton<ICareServiceRepository>(CareServiceApiRepository(apiClient));
   locator.registerSingleton<IWorkerProfileRepository>(WorkerProfileApiRepository(apiClient));
+  locator.registerSingleton<IFacilityUserLinkRepository>(FacilityUserLinkApiRepository(apiClient));
+  locator.registerSingleton<IFavoriteFacilityRepository>(FavoriteFacilityApiRepository(apiClient));
 }
