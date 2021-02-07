@@ -12,32 +12,48 @@ part of welfarebrothers_for_worker_api_client;
 class User {
   /// Returns a new [User] instance.
   User({
+    this.id,
     @required this.username,
+    @required this.password,
     this.groups = const [],
   });
 
+  int id;
+
   /// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
   String username;
+
+  String password;
 
   List<Group> groups;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
+     other.id == id &&
      other.username == username &&
+     other.password == password &&
      other.groups == groups;
 
   @override
   int get hashCode =>
+    (id == null ? 0 : id.hashCode) +
     (username == null ? 0 : username.hashCode) +
+    (password == null ? 0 : password.hashCode) +
     (groups == null ? 0 : groups.hashCode);
 
   @override
-  String toString() => 'User[username=$username, groups=$groups]';
+  String toString() => 'User[id=$id, username=$username, password=$password, groups=$groups]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (id != null) {
+      json[r'id'] = id;
+    }
     if (username != null) {
       json[r'username'] = username;
+    }
+    if (password != null) {
+      json[r'password'] = password;
     }
     if (groups != null) {
       json[r'groups'] = groups;
@@ -50,7 +66,9 @@ class User {
   static User fromJson(Map<String, dynamic> json) => json == null
     ? null
     : User(
+        id: json[r'id'],
         username: json[r'username'],
+        password: json[r'password'],
         groups: Group.listFromJson(json[r'groups']),
     );
 

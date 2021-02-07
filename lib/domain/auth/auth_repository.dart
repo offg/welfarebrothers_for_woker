@@ -5,5 +5,6 @@ abstract class IAuthRepository implements IRepository {
   Future saveAuthToken(WelfarebrothersTokenClaims token);
   Future<WelfarebrothersTokenClaims> loadAuthToken();
   Future<WelfarebrothersTokenClaims> createAuthToken(WelfarebrothersTokenClaimsForWrite tokenClaims);
+  Future removeAuthToken();
   Future<TokenRefresh> refreshAuthToken(TokenRefresh data);
 }

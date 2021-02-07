@@ -13,7 +13,10 @@ class AppViewModel extends ChangeNotifier {
   AppViewModel(this._roleRepository, this._authRepository, this._userRepository);
 
   WelfarebrothersTokenClaims token;
-  WelfarebrothersUser user;
+  User user;
+  WelfarebrothersUserProfile profile;
+  WorkerProfile workerProfile;
+
   bool get authenticated => token?.access?.isNotEmpty ?? false;
 
   List<Role> roles = new List<Role>();
@@ -21,10 +24,7 @@ class AppViewModel extends ChangeNotifier {
 
   Future initialize() async {
     loading = true;
-    _tryInitializeAuthToken();
-    if (token != null) {
-      _initializeDataWithAuth();
-    }
+    await _tryInitializeAuthToken();
     this.roles = await _roleRepository.listRoles();
     this.roleById = Map<String, Role>.fromEntries(this.roles.map((e) => MapEntry(e.id, e)));
     loading = false;
@@ -34,15 +34,36 @@ class AppViewModel extends ChangeNotifier {
     token = await _authRepository.loadAuthToken();
     if (token != null) {
       _setToken();
+      await _initializeDataWithAuth();
     }
   }
 
   Future _initializeDataWithAuth() async {
-    await _userRepository.fetchUser();
+    this.user = await _userRepository.fetchUser();
+    this.profile = await _userRepository.fetchProfile(user.id);
   }
 
   _setToken() {
     locator<WelfarebrothersApiClient>().apiClient.addDefaultHeader("Authorization", "Bearer ${token.access}");
+  }
+
+  Future<bool> signOut() async {
+    token = null;
+    await _authRepository.removeAuthToken();
+    notifyListeners();
+    return true;
+  }
+
+  Future<bool> signUp(String username, String password, String firstName, String lastName) async {
+    loading = true;
+    var user = await _userRepository.createUser(username, password);
+    var userProfile = await _userRepository
+        .createProfile(WelfarebrothersUserProfile(userId: user.id.toString(), firstName: firstName, lastName: lastName));
+    this.user = user;
+    this.profile = userProfile;
+    await this.signIn(username, password);
+    loading = false;
+    return this.user != null && this.profile != null;
   }
 
   Future<bool> signIn(String username, String password) async {
@@ -52,6 +73,7 @@ class AppViewModel extends ChangeNotifier {
     _setToken();
     await _authRepository.saveAuthToken(token);
     await _initializeDataWithAuth();
+    user = await _userRepository.fetchUser();
     loading = false;
     return true;
   }

@@ -11,7 +11,8 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 typedef Function OnFacilityTap(FacilityForWorker facility);
 typedef Widget FacilityRenderer(FacilityForWorker facility);
 
-class FacilitySearchForm extends StatelessWidget {
+class FacilitySearchForm extends StatefulWidget {
+  GlobalKey<FormState> _abcKey = GlobalKey<FormState>();
   final OnFacilityTap onFacilityTap;
   final FacilityRenderer facilityRenderer;
   FacilitySearchForm({
@@ -20,59 +21,66 @@ class FacilitySearchForm extends StatelessWidget {
   })  : onFacilityTap = onFacilityTap,
         facilityRenderer = facilityRenderer;
   @override
+  _FacilitySearchFormState createState() => _FacilitySearchFormState();
+}
+
+class _FacilitySearchFormState extends State<FacilitySearchForm> {
+  @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var _facilityRenderer = facilityRenderer ?? _renderFacility;
+    var customRenderer = widget.facilityRenderer != null;
+    var _facilityRenderer = widget.facilityRenderer ?? _renderFacility;
     return Consumer<FacilitySearchFormViewModel>(
-      builder: (_context, model, child) => Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Theme(
-            data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-            child: ExpansionTile(
-              initiallyExpanded: true,
-              title: Text("検索条件"),
-              children: [
-                Padding(
-                  child: AreaForm(),
-                  padding: EdgeInsets.only(left: 20),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: CareServiceForm(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  child: TextField(
-                    controller: model.textEditingController,
-                    decoration: inputDecoration(context, "キーワード (施設名等)"),
+      builder: (_context, model, child) => CustomScrollView(
+        key: widget._abcKey,
+        slivers: [
+          SliverAppBar(
+            floating: true,
+            pinned: true,
+            leading: Container(),
+            snap: true,
+            expandedHeight: 200,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Column(
+                children: [
+                  Padding(
+                    child: AreaForm(),
+                    padding: EdgeInsets.only(left: 20),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-                  child: RaisedButton(
-                    child: Text("検索"),
-                    onPressed: model.searchable
-                        ? () async {
-                            await LoadingOverlay.of(context).during(model.searchFacilities());
-                          }
-                        : null,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: CareServiceForm(),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    child: TextField(
+                      controller: model.textEditingController,
+                      decoration: inputDecoration(context, "キーワード (施設名等)"),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+                    child: RaisedButton(
+                      child: Text("検索"),
+                      onPressed: model.searchable
+                          ? () async {
+                              await LoadingOverlay.of(context).during(model.searchFacilities());
+                            }
+                          : null,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          verticalSpace(size: 20),
-          Expanded(
-            child: (model.facilities == null || model.facilities.isEmpty)
-                ? Container()
-                : ListView(
-                    // shrinkWrap: true,
-                    // physics: NeverScrollableScrollPhysics(),
-                    children: model.facilities.map((e) => _facilityRenderer(e)).toList(),
+          SliverFixedExtentList(
+            itemExtent: customRenderer ? 200 : 100,
+            delegate: (model.facilities?.isEmpty ?? true)
+                ? SliverChildListDelegate([Container()])
+                : SliverChildBuilderDelegate(
+                    (context, i) => _facilityRenderer(model.facilities[i]),
                   ),
-          ),
+          )
         ],
       ),
     );
@@ -91,17 +99,31 @@ class FacilitySearchForm extends StatelessWidget {
       ),
       subtitle: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),
-        child: Text(
-          facility.name,
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 15,
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              facility.name,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 15,
+              ),
+            ),
+            verticalSpace(size: 15),
+            Text(
+              facility.address,
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 13,
+                color: Colors.grey.shade500,
+              ),
+            )
+          ],
         ),
       ),
       dense: true,
       trailing: Icon(Icons.navigate_next_sharp),
-      onTap: onFacilityTap(facility),
+      onTap: widget.onFacilityTap(facility),
     );
   }
 }

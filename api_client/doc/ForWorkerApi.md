@@ -69,6 +69,13 @@ Method | HTTP request | Description
 [**forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigPartialUpdate**](ForWorkerApi.md#forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigPartialUpdate) | **PATCH** /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/{id}/ | 
 [**forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigRead**](ForWorkerApi.md#forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigRead) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/{id}/ | 
 [**forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigUpdate**](ForWorkerApi.md#forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigUpdate) | **PUT** /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/{id}/ | 
+[**forWorkerFacilityUserLinkTypesList**](ForWorkerApi.md#forWorkerFacilityUserLinkTypesList) | **GET** /for_worker/facility_user_link_types/ | 
+[**forWorkerFacilityUserLinksCreate**](ForWorkerApi.md#forWorkerFacilityUserLinksCreate) | **POST** /for_worker/facility_user_links/ | 
+[**forWorkerFacilityUserLinksDelete**](ForWorkerApi.md#forWorkerFacilityUserLinksDelete) | **DELETE** /for_worker/facility_user_links/{id}/ | 
+[**forWorkerFacilityUserLinksList**](ForWorkerApi.md#forWorkerFacilityUserLinksList) | **GET** /for_worker/facility_user_links/ | 
+[**forWorkerFacilityUserLinksPartialUpdate**](ForWorkerApi.md#forWorkerFacilityUserLinksPartialUpdate) | **PATCH** /for_worker/facility_user_links/{id}/ | 
+[**forWorkerFacilityUserLinksRead**](ForWorkerApi.md#forWorkerFacilityUserLinksRead) | **GET** /for_worker/facility_user_links/{id}/ | 
+[**forWorkerFacilityUserLinksUpdate**](ForWorkerApi.md#forWorkerFacilityUserLinksUpdate) | **PUT** /for_worker/facility_user_links/{id}/ | 
 [**forWorkerRolesCreate**](ForWorkerApi.md#forWorkerRolesCreate) | **POST** /for_worker/roles/ | 
 [**forWorkerRolesDelete**](ForWorkerApi.md#forWorkerRolesDelete) | **DELETE** /for_worker/roles/{id}/ | 
 [**forWorkerRolesList**](ForWorkerApi.md#forWorkerRolesList) | **GET** /for_worker/roles/ | 
@@ -80,8 +87,15 @@ Method | HTTP request | Description
 [**forWorkerUserPartialUpdate**](ForWorkerApi.md#forWorkerUserPartialUpdate) | **PATCH** /for_worker/user/{id}/ | 
 [**forWorkerUserProfileCreate**](ForWorkerApi.md#forWorkerUserProfileCreate) | **POST** /for_worker/user/{user_pk}/profile/ | 
 [**forWorkerUserProfileDelete**](ForWorkerApi.md#forWorkerUserProfileDelete) | **DELETE** /for_worker/user/{user_pk}/profile/{id}/ | 
+[**forWorkerUserProfileFavoriteFacilitiesCreate**](ForWorkerApi.md#forWorkerUserProfileFavoriteFacilitiesCreate) | **POST** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/ | 
+[**forWorkerUserProfileFavoriteFacilitiesDelete**](ForWorkerApi.md#forWorkerUserProfileFavoriteFacilitiesDelete) | **DELETE** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/ | 
+[**forWorkerUserProfileFavoriteFacilitiesList**](ForWorkerApi.md#forWorkerUserProfileFavoriteFacilitiesList) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/ | 
+[**forWorkerUserProfileFavoriteFacilitiesPartialUpdate**](ForWorkerApi.md#forWorkerUserProfileFavoriteFacilitiesPartialUpdate) | **PATCH** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/ | 
+[**forWorkerUserProfileFavoriteFacilitiesRead**](ForWorkerApi.md#forWorkerUserProfileFavoriteFacilitiesRead) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/ | 
+[**forWorkerUserProfileFavoriteFacilitiesUpdate**](ForWorkerApi.md#forWorkerUserProfileFavoriteFacilitiesUpdate) | **PUT** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/ | 
 [**forWorkerUserProfileList**](ForWorkerApi.md#forWorkerUserProfileList) | **GET** /for_worker/user/{user_pk}/profile/ | 
 [**forWorkerUserProfilePartialUpdate**](ForWorkerApi.md#forWorkerUserProfilePartialUpdate) | **PATCH** /for_worker/user/{user_pk}/profile/{id}/ | 
+[**forWorkerUserProfileRead**](ForWorkerApi.md#forWorkerUserProfileRead) | **GET** /for_worker/user/{user_pk}/profile/{id}/ | 
 [**forWorkerUserProfileUpdate**](ForWorkerApi.md#forWorkerUserProfileUpdate) | **PUT** /for_worker/user/{user_pk}/profile/{id}/ | 
 [**forWorkerUserProfileWorkerProfileCreate**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileCreate) | **POST** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/ | 
 [**forWorkerUserProfileWorkerProfileDelete**](ForWorkerApi.md#forWorkerUserProfileWorkerProfileDelete) | **DELETE** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
@@ -2954,6 +2968,320 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **forWorkerFacilityUserLinkTypesList**
+> List<FacilityUserLinkType> forWorkerFacilityUserLinkTypesList()
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+
+try { 
+    final result = api_instance.forWorkerFacilityUserLinkTypesList();
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityUserLinkTypesList: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<FacilityUserLinkType>**](FacilityUserLinkType.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityUserLinksCreate**
+> FacilityUserLink forWorkerFacilityUserLinksCreate(data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final data = FacilityUserLinkForWrite(); // FacilityUserLinkForWrite | 
+
+try { 
+    final result = api_instance.forWorkerFacilityUserLinksCreate(data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityUserLinksCreate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**FacilityUserLinkForWrite**](FacilityUserLinkForWrite.md)|  | 
+
+### Return type
+
+[**FacilityUserLink**](FacilityUserLink.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityUserLinksDelete**
+> forWorkerFacilityUserLinksDelete(id)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this facility user link.
+
+try { 
+    api_instance.forWorkerFacilityUserLinksDelete(id);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityUserLinksDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this facility user link. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityUserLinksList**
+> List<FacilityUserLink> forWorkerFacilityUserLinksList(facilityAdministrationId)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final facilityAdministrationId = facilityAdministrationId_example; // String | 
+
+try { 
+    final result = api_instance.forWorkerFacilityUserLinksList(facilityAdministrationId);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityUserLinksList: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **facilityAdministrationId** | **String**|  | [optional] 
+
+### Return type
+
+[**List<FacilityUserLink>**](FacilityUserLink.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityUserLinksPartialUpdate**
+> FacilityUserLink forWorkerFacilityUserLinksPartialUpdate(id, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this facility user link.
+final data = FacilityUserLinkForWrite(); // FacilityUserLinkForWrite | 
+
+try { 
+    final result = api_instance.forWorkerFacilityUserLinksPartialUpdate(id, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityUserLinksPartialUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this facility user link. | 
+ **data** | [**FacilityUserLinkForWrite**](FacilityUserLinkForWrite.md)|  | 
+
+### Return type
+
+[**FacilityUserLink**](FacilityUserLink.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityUserLinksRead**
+> FacilityUserLink forWorkerFacilityUserLinksRead(id)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this facility user link.
+
+try { 
+    final result = api_instance.forWorkerFacilityUserLinksRead(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityUserLinksRead: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this facility user link. | 
+
+### Return type
+
+[**FacilityUserLink**](FacilityUserLink.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerFacilityUserLinksUpdate**
+> FacilityUserLink forWorkerFacilityUserLinksUpdate(id, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this facility user link.
+final data = FacilityUserLinkForWrite(); // FacilityUserLinkForWrite | 
+
+try { 
+    final result = api_instance.forWorkerFacilityUserLinksUpdate(id, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerFacilityUserLinksUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this facility user link. | 
+ **data** | [**FacilityUserLinkForWrite**](FacilityUserLinkForWrite.md)|  | 
+
+### Return type
+
+[**FacilityUserLink**](FacilityUserLink.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **forWorkerRolesCreate**
 > Role forWorkerRolesCreate(data)
 
@@ -3452,6 +3780,301 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **forWorkerUserProfileFavoriteFacilitiesCreate**
+> FavoriteFacility forWorkerUserProfileFavoriteFacilitiesCreate(userPk, userProfilePk, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final userPk = userPk_example; // String | 
+final userProfilePk = userProfilePk_example; // String | 
+final data = FavoriteFacilityForWrite(); // FavoriteFacilityForWrite | 
+
+try { 
+    final result = api_instance.forWorkerUserProfileFavoriteFacilitiesCreate(userPk, userProfilePk, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserProfileFavoriteFacilitiesCreate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userPk** | **String**|  | 
+ **userProfilePk** | **String**|  | 
+ **data** | [**FavoriteFacilityForWrite**](FavoriteFacilityForWrite.md)|  | 
+
+### Return type
+
+[**FavoriteFacility**](FavoriteFacility.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserProfileFavoriteFacilitiesDelete**
+> forWorkerUserProfileFavoriteFacilitiesDelete(id, userPk, userProfilePk)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this favorite facility.
+final userPk = userPk_example; // String | 
+final userProfilePk = userProfilePk_example; // String | 
+
+try { 
+    api_instance.forWorkerUserProfileFavoriteFacilitiesDelete(id, userPk, userProfilePk);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserProfileFavoriteFacilitiesDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this favorite facility. | 
+ **userPk** | **String**|  | 
+ **userProfilePk** | **String**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserProfileFavoriteFacilitiesList**
+> List<FavoriteFacility> forWorkerUserProfileFavoriteFacilitiesList(userPk, userProfilePk)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final userPk = userPk_example; // String | 
+final userProfilePk = userProfilePk_example; // String | 
+
+try { 
+    final result = api_instance.forWorkerUserProfileFavoriteFacilitiesList(userPk, userProfilePk);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserProfileFavoriteFacilitiesList: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userPk** | **String**|  | 
+ **userProfilePk** | **String**|  | 
+
+### Return type
+
+[**List<FavoriteFacility>**](FavoriteFacility.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserProfileFavoriteFacilitiesPartialUpdate**
+> FavoriteFacility forWorkerUserProfileFavoriteFacilitiesPartialUpdate(id, userPk, userProfilePk, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this favorite facility.
+final userPk = userPk_example; // String | 
+final userProfilePk = userProfilePk_example; // String | 
+final data = FavoriteFacilityForWrite(); // FavoriteFacilityForWrite | 
+
+try { 
+    final result = api_instance.forWorkerUserProfileFavoriteFacilitiesPartialUpdate(id, userPk, userProfilePk, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserProfileFavoriteFacilitiesPartialUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this favorite facility. | 
+ **userPk** | **String**|  | 
+ **userProfilePk** | **String**|  | 
+ **data** | [**FavoriteFacilityForWrite**](FavoriteFacilityForWrite.md)|  | 
+
+### Return type
+
+[**FavoriteFacility**](FavoriteFacility.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserProfileFavoriteFacilitiesRead**
+> FavoriteFacility forWorkerUserProfileFavoriteFacilitiesRead(id, userPk, userProfilePk)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this favorite facility.
+final userPk = userPk_example; // String | 
+final userProfilePk = userProfilePk_example; // String | 
+
+try { 
+    final result = api_instance.forWorkerUserProfileFavoriteFacilitiesRead(id, userPk, userProfilePk);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserProfileFavoriteFacilitiesRead: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this favorite facility. | 
+ **userPk** | **String**|  | 
+ **userProfilePk** | **String**|  | 
+
+### Return type
+
+[**FavoriteFacility**](FavoriteFacility.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserProfileFavoriteFacilitiesUpdate**
+> FavoriteFacility forWorkerUserProfileFavoriteFacilitiesUpdate(id, userPk, userProfilePk, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this favorite facility.
+final userPk = userPk_example; // String | 
+final userProfilePk = userProfilePk_example; // String | 
+final data = FavoriteFacilityForWrite(); // FavoriteFacilityForWrite | 
+
+try { 
+    final result = api_instance.forWorkerUserProfileFavoriteFacilitiesUpdate(id, userPk, userProfilePk, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserProfileFavoriteFacilitiesUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this favorite facility. | 
+ **userPk** | **String**|  | 
+ **userProfilePk** | **String**|  | 
+ **data** | [**FavoriteFacilityForWrite**](FavoriteFacilityForWrite.md)|  | 
+
+### Return type
+
+[**FavoriteFacility**](FavoriteFacility.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **forWorkerUserProfileList**
 > List<WelfarebrothersUserProfile> forWorkerUserProfileList(userPk)
 
@@ -3542,6 +4165,53 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **forWorkerUserProfileRead**
+> WelfarebrothersUserProfile forWorkerUserProfileRead(id, userPk)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = ForWorkerApi();
+final id = 56; // int | A unique integer value identifying this welfarebrothers user profile.
+final userPk = userPk_example; // String | 
+
+try { 
+    final result = api_instance.forWorkerUserProfileRead(id, userPk);
+    print(result);
+} catch (e) {
+    print('Exception when calling ForWorkerApi->forWorkerUserProfileRead: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this welfarebrothers user profile. | 
+ **userPk** | **String**|  | 
+
+### Return type
+
+[**WelfarebrothersUserProfile**](WelfarebrothersUserProfile.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

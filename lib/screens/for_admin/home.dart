@@ -8,7 +8,8 @@ import 'package:welfarebrothers_for_worker/screens/for_admin/facility_worker_pro
 import 'package:welfarebrothers_for_worker/screens/for_admin/shift_config.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/work_schedule/work_schedule_detail.dart';
 import 'package:welfarebrothers_for_worker/screens/for_admin/work_schedule/work_schedule_list.dart';
-import 'package:welfarebrothers_for_worker/screens/me.dart';
+import 'package:welfarebrothers_for_worker/screens/general/favorite_facility.dart';
+import 'package:welfarebrothers_for_worker/screens/general/me.dart';
 
 class ForAdminHomeScreen extends StatefulWidget {
   @override
@@ -38,11 +39,16 @@ class _ForAdminHomeScreenState extends State<ForAdminHomeScreen> with HomeScreen
         },
     TabItem.me: (context) => {
           '/': (context) => MeScreen(),
+          '/favorite_facility': (context) => FavoriteFacilityScreen(),
         }
   };
   final Map<TabItem, Function> navigatorBuilderByTab = {
     TabItem.facility_administration: (navigator) => navigator,
     TabItem.me: (navigator) => navigator,
+  };
+  final Map<TabItem, String> rootPathByTab = {
+    TabItem.facility_administration: "/facility_admin",
+    TabItem.me: "/me",
   };
   TabItem _currentTab = TabItem.facility_administration;
   @override
@@ -55,7 +61,7 @@ class _ForAdminHomeScreenState extends State<ForAdminHomeScreen> with HomeScreen
   }
 
   void onSelect(int index) {
-    TabItem tabItem = TabItem.values[index];
+    TabItem tabItem = tabIcons.keys.toList()[index];
     if (_currentTab == tabItem) {
       navigatorKeys[tabItem].currentState.popUntil((route) => route.isFirst);
     } else {

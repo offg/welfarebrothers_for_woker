@@ -4511,6 +4511,460 @@ class ForWorkerApi {
     return null;
   }
 
+  /// Performs an HTTP 'GET /for_worker/facility_user_link_types/' operation and returns the [Response].
+  Future<Response> forWorkerFacilityUserLinkTypesListWithHttpInfo() async {
+    final path = '/for_worker/facility_user_link_types/'.replaceAll('{format}', 'json');
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  Future<List<FacilityUserLinkType>> forWorkerFacilityUserLinkTypesList() async {
+    final response = await forWorkerFacilityUserLinkTypesListWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<FacilityUserLinkType>') as List)
+        .map((item) => item as FacilityUserLinkType)
+        .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /for_worker/facility_user_links/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<Response> forWorkerFacilityUserLinksCreateWithHttpInfo(FacilityUserLinkForWrite data) async {
+    // Verify required params are set.
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_user_links/'.replaceAll('{format}', 'json');
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<FacilityUserLink> forWorkerFacilityUserLinksCreate(FacilityUserLinkForWrite data) async {
+    final response = await forWorkerFacilityUserLinksCreateWithHttpInfo(data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityUserLink') as FacilityUserLink;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'DELETE /for_worker/facility_user_links/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  Future<Response> forWorkerFacilityUserLinksDeleteWithHttpInfo(int id) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facility_user_links/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  Future<void> forWorkerFacilityUserLinksDelete(int id) async {
+    final response = await forWorkerFacilityUserLinksDeleteWithHttpInfo(id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facility_user_links/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationId:
+  Future<Response> forWorkerFacilityUserLinksListWithHttpInfo({ String facilityAdministrationId }) async {
+    // Verify required params are set.
+
+    final path = '/for_worker/facility_user_links/'.replaceAll('{format}', 'json');
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (facilityAdministrationId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'facility_administration_id', facilityAdministrationId));
+    }
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationId:
+  Future<List<FacilityUserLink>> forWorkerFacilityUserLinksList({ String facilityAdministrationId }) async {
+    final response = await forWorkerFacilityUserLinksListWithHttpInfo( facilityAdministrationId: facilityAdministrationId );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<FacilityUserLink>') as List)
+        .map((item) => item as FacilityUserLink)
+        .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PATCH /for_worker/facility_user_links/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<Response> forWorkerFacilityUserLinksPartialUpdateWithHttpInfo(int id, FacilityUserLinkForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_user_links/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<FacilityUserLink> forWorkerFacilityUserLinksPartialUpdate(int id, FacilityUserLinkForWrite data) async {
+    final response = await forWorkerFacilityUserLinksPartialUpdateWithHttpInfo(id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityUserLink') as FacilityUserLink;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facility_user_links/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  Future<Response> forWorkerFacilityUserLinksReadWithHttpInfo(int id) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facility_user_links/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  Future<FacilityUserLink> forWorkerFacilityUserLinksRead(int id) async {
+    final response = await forWorkerFacilityUserLinksReadWithHttpInfo(id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityUserLink') as FacilityUserLink;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PUT /for_worker/facility_user_links/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<Response> forWorkerFacilityUserLinksUpdateWithHttpInfo(int id, FacilityUserLinkForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_user_links/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<FacilityUserLink> forWorkerFacilityUserLinksUpdate(int id, FacilityUserLinkForWrite data) async {
+    final response = await forWorkerFacilityUserLinksUpdateWithHttpInfo(id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityUserLink') as FacilityUserLink;
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'POST /for_worker/roles/' operation and returns the [Response].
   /// Parameters:
   ///
@@ -5232,6 +5686,494 @@ class ForWorkerApi {
     }
   }
 
+  /// Performs an HTTP 'POST /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesCreateWithHttpInfo(String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    // Verify required params are set.
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<FavoriteFacility> forWorkerUserProfileFavoriteFacilitiesCreate(String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesCreateWithHttpInfo(userPk, userProfilePk, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FavoriteFacility') as FavoriteFacility;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'DELETE /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesDeleteWithHttpInfo(int id, String userPk, String userProfilePk) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<void> forWorkerUserProfileFavoriteFacilitiesDelete(int id, String userPk, String userProfilePk) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesDeleteWithHttpInfo(id, userPk, userProfilePk);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesListWithHttpInfo(String userPk, String userProfilePk) async {
+    // Verify required params are set.
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<List<FavoriteFacility>> forWorkerUserProfileFavoriteFacilitiesList(String userPk, String userProfilePk) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesListWithHttpInfo(userPk, userProfilePk);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<FavoriteFacility>') as List)
+        .map((item) => item as FavoriteFacility)
+        .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PATCH /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesPartialUpdateWithHttpInfo(int id, String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<FavoriteFacility> forWorkerUserProfileFavoriteFacilitiesPartialUpdate(int id, String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesPartialUpdateWithHttpInfo(id, userPk, userProfilePk, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FavoriteFacility') as FavoriteFacility;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesReadWithHttpInfo(int id, String userPk, String userProfilePk) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<FavoriteFacility> forWorkerUserProfileFavoriteFacilitiesRead(int id, String userPk, String userProfilePk) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesReadWithHttpInfo(id, userPk, userProfilePk);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FavoriteFacility') as FavoriteFacility;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PUT /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesUpdateWithHttpInfo(int id, String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<FavoriteFacility> forWorkerUserProfileFavoriteFacilitiesUpdate(int id, String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesUpdateWithHttpInfo(id, userPk, userProfilePk, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FavoriteFacility') as FavoriteFacility;
+    }
+    return null;
+  }
+
   /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/' operation and returns the [Response].
   /// Parameters:
   ///
@@ -5367,6 +6309,80 @@ class ForWorkerApi {
   /// * [WelfarebrothersUserProfileForWrite] data (required):
   Future<WelfarebrothersUserProfile> forWorkerUserProfilePartialUpdate(int id, String userPk, WelfarebrothersUserProfileForWrite data) async {
     final response = await forWorkerUserProfilePartialUpdateWithHttpInfo(id, userPk, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'WelfarebrothersUserProfile') as WelfarebrothersUserProfile;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this welfarebrothers user profile.
+  ///
+  /// * [String] userPk (required):
+  Future<Response> forWorkerUserProfileReadWithHttpInfo(int id, String userPk) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this welfarebrothers user profile.
+  ///
+  /// * [String] userPk (required):
+  Future<WelfarebrothersUserProfile> forWorkerUserProfileRead(int id, String userPk) async {
+    final response = await forWorkerUserProfileReadWithHttpInfo(id, userPk);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }

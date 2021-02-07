@@ -196,10 +196,22 @@ class ApiClient {
           return FacilityForWorkerForWrite.fromJson(value);
         case 'FacilityForWrite':
           return FacilityForWrite.fromJson(value);
+        case 'FacilityUserLink':
+          return FacilityUserLink.fromJson(value);
+        case 'FacilityUserLinkForWrite':
+          return FacilityUserLinkForWrite.fromJson(value);
+        case 'FacilityUserLinkState':
+          return FacilityUserLinkState.fromJson(value);
+        case 'FacilityUserLinkType':
+          return FacilityUserLinkType.fromJson(value);
         case 'FacilityWorkerProfile':
           return FacilityWorkerProfile.fromJson(value);
         case 'FacilityWorkerProfileForWrite':
           return FacilityWorkerProfileForWrite.fromJson(value);
+        case 'FavoriteFacility':
+          return FavoriteFacility.fromJson(value);
+        case 'FavoriteFacilityForWrite':
+          return FavoriteFacilityForWrite.fromJson(value);
         case 'Group':
           return Group.fromJson(value);
         case 'Prefecture':
@@ -234,8 +246,6 @@ class ApiClient {
           return WelfarebrothersTokenClaims.fromJson(value);
         case 'WelfarebrothersTokenClaimsForWrite':
           return WelfarebrothersTokenClaimsForWrite.fromJson(value);
-        case 'WelfarebrothersUser':
-          return WelfarebrothersUser.fromJson(value);
         case 'WelfarebrothersUserProfile':
           return WelfarebrothersUserProfile.fromJson(value);
         case 'WelfarebrothersUserProfileForWrite':

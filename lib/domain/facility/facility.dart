@@ -11,3 +11,18 @@ extension CareServiceExtension on CareService {
     return [this.name, this.group.displayName()].join(' / ');
   }
 }
+
+extension FacilityForWorkerExtension on FacilityForWorker {
+  Facility asNormal() => Facility(
+        id: this.id,
+        name: this.name,
+        category: this.category,
+        group: this.group,
+        careService: this.careService,
+        tel: this.tel,
+        city: this.city,
+        prefecture: this.prefecture,
+        address: this.address,
+        building: this.building,
+      );
+}
