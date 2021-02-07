@@ -8,9 +8,9 @@ class WorkerProfileApiRepository implements IWorkerProfileRepository {
   WorkerProfileApiRepository(this._client);
 
   @override
-  Future<WorkerProfile> createMyWorkerProfile(int userId, WorkerProfile workerProfile) async {
+  Future<WorkerProfile> createMyWorkerProfile(int userId, int userProfileId) async {
     return await _client.forWorkerApi.forWorkerUserProfileWorkerProfileCreate(
-        userId.toString(), workerProfile.userProfile.id.toString(), workerProfile.toWritable());
+        userId.toString(), userProfileId.toString(), WorkerProfileForWrite(userProfileId: userProfileId));
   }
 
   @override

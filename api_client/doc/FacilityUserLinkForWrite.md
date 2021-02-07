@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **stateId** | **String** |  | 
 **typeId** | **String** |  | 
 **facilityAdministrationId** | **String** |  | 
-**verifiedById** | **int** |  | 
+**verifiedById** | **int** |  | [optional] 
 **verifiedAt** | [**DateTime**](DateTime.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

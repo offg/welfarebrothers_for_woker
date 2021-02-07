@@ -19,7 +19,7 @@ class FavoriteFacilityViewModel extends WelfareBrothersViewModelBase {
   }
 
   Future fetchFavoriteFacilities() async {
-    if (!ready && !authenticated) {
+    if (!ready || !authenticated) {
       return;
     }
     loading = true;

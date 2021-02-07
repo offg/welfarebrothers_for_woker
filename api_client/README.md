@@ -45,13 +45,12 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AuthApi();
-final facilityId = facilityId_example; // String | facility id for linking
-final userId = userId_example; // String | 
+final facilityUserLinkId = facilityUserLinkId_example; // String | 
 
 try {
-    api_instance.authFacilityLinkingCreate(facilityId, userId);
+    api_instance.authFacilityLinkingFinishFlowCreate(facilityUserLinkId);
 } catch (e) {
-    print('Exception when calling AuthApi->authFacilityLinkingCreate: $e\n');
+    print('Exception when calling AuthApi->authFacilityLinkingFinishFlowCreate: $e\n');
 }
 
 ```
@@ -62,9 +61,9 @@ All URIs are relative to *http://localhost:8000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AuthApi* | [**authFacilityLinkingCreate**](doc//AuthApi.md#authfacilitylinkingcreate) | **POST** /auth/facility_linking | 
-*AuthApi* | [**authFacilityLinkingFinishCreate**](doc//AuthApi.md#authfacilitylinkingfinishcreate) | **POST** /auth/facility_linking/_finish | 
+*AuthApi* | [**authFacilityLinkingFinishFlowCreate**](doc//AuthApi.md#authfacilitylinkingfinishflowcreate) | **POST** /auth/facility_linking/_finish_flow | 
 *AuthApi* | [**authFacilityLinkingGreetCreate**](doc//AuthApi.md#authfacilitylinkinggreetcreate) | **POST** /auth/facility_linking/_greet | 
+*AuthApi* | [**authFacilityLinkingList**](doc//AuthApi.md#authfacilitylinkinglist) | **GET** /auth/facility_linking | 
 *AuthApi* | [**authFacilityLinkingStartFlowCreate**](doc//AuthApi.md#authfacilitylinkingstartflowcreate) | **POST** /auth/facility_linking/_start_flow | 
 *AuthApi* | [**authFacilityLinkingVerifyCreate**](doc//AuthApi.md#authfacilitylinkingverifycreate) | **POST** /auth/facility_linking/_verify | 
 *AuthApi* | [**authTokenCreate**](doc//AuthApi.md#authtokencreate) | **POST** /auth/token | 
@@ -93,23 +92,23 @@ Class | Method | HTTP request | Description
 *FacilitiesApi* | [**facilitiesPartialUpdate**](doc//FacilitiesApi.md#facilitiespartialupdate) | **PATCH** /facilities/{id} | 
 *FacilitiesApi* | [**facilitiesRead**](doc//FacilitiesApi.md#facilitiesread) | **GET** /facilities/{id} | 
 *FacilitiesApi* | [**facilitiesUpdate**](doc//FacilitiesApi.md#facilitiesupdate) | **PUT** /facilities/{id} | 
-*ForWorkerApi* | [**forWorkerFacilitiesCreate**](doc//ForWorkerApi.md#forworkerfacilitiescreate) | **POST** /for_worker/facilities/ | 
-*ForWorkerApi* | [**forWorkerFacilitiesDelete**](doc//ForWorkerApi.md#forworkerfacilitiesdelete) | **DELETE** /for_worker/facilities/{id}/ | 
-*ForWorkerApi* | [**forWorkerFacilitiesList**](doc//ForWorkerApi.md#forworkerfacilitieslist) | **GET** /for_worker/facilities/ | 
-*ForWorkerApi* | [**forWorkerFacilitiesPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilitiespartialupdate) | **PATCH** /for_worker/facilities/{id}/ | 
-*ForWorkerApi* | [**forWorkerFacilitiesRead**](doc//ForWorkerApi.md#forworkerfacilitiesread) | **GET** /for_worker/facilities/{id}/ | 
-*ForWorkerApi* | [**forWorkerFacilitiesUpdate**](doc//ForWorkerApi.md#forworkerfacilitiesupdate) | **PUT** /for_worker/facilities/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilitiesCreate**](doc//ForWorkerApi.md#forworkerfacilitiescreate) | **POST** /for_worker/facilities | 
+*ForWorkerApi* | [**forWorkerFacilitiesDelete**](doc//ForWorkerApi.md#forworkerfacilitiesdelete) | **DELETE** /for_worker/facilities/{id} | 
+*ForWorkerApi* | [**forWorkerFacilitiesList**](doc//ForWorkerApi.md#forworkerfacilitieslist) | **GET** /for_worker/facilities | 
+*ForWorkerApi* | [**forWorkerFacilitiesPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilitiespartialupdate) | **PATCH** /for_worker/facilities/{id} | 
+*ForWorkerApi* | [**forWorkerFacilitiesRead**](doc//ForWorkerApi.md#forworkerfacilitiesread) | **GET** /for_worker/facilities/{id} | 
+*ForWorkerApi* | [**forWorkerFacilitiesUpdate**](doc//ForWorkerApi.md#forworkerfacilitiesupdate) | **PUT** /for_worker/facilities/{id} | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityCreate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilitycreate) | **POST** /for_worker/facility_administrations/{facility_administration_pk}/availability/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityDelete**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilitydelete) | **DELETE** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityList**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilitylist) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/availability/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilitypartialupdate) | **PATCH** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityRead**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilityread) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsAvailabilityUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsavailabilityupdate) | **PUT** /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/ | 
-*ForWorkerApi* | [**forWorkerFacilityAdministrationsCreate**](doc//ForWorkerApi.md#forworkerfacilityadministrationscreate) | **POST** /for_worker/facility_administrations/ | 
-*ForWorkerApi* | [**forWorkerFacilityAdministrationsDelete**](doc//ForWorkerApi.md#forworkerfacilityadministrationsdelete) | **DELETE** /for_worker/facility_administrations/{facility}/ | 
-*ForWorkerApi* | [**forWorkerFacilityAdministrationsList**](doc//ForWorkerApi.md#forworkerfacilityadministrationslist) | **GET** /for_worker/facility_administrations/ | 
-*ForWorkerApi* | [**forWorkerFacilityAdministrationsPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationspartialupdate) | **PATCH** /for_worker/facility_administrations/{facility}/ | 
-*ForWorkerApi* | [**forWorkerFacilityAdministrationsRead**](doc//ForWorkerApi.md#forworkerfacilityadministrationsread) | **GET** /for_worker/facility_administrations/{facility}/ | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsCreate**](doc//ForWorkerApi.md#forworkerfacilityadministrationscreate) | **POST** /for_worker/facility_administrations | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsDelete**](doc//ForWorkerApi.md#forworkerfacilityadministrationsdelete) | **DELETE** /for_worker/facility_administrations/{facility} | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsList**](doc//ForWorkerApi.md#forworkerfacilityadministrationslist) | **GET** /for_worker/facility_administrations | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationspartialupdate) | **PATCH** /for_worker/facility_administrations/{facility} | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsRead**](doc//ForWorkerApi.md#forworkerfacilityadministrationsread) | **GET** /for_worker/facility_administrations/{facility} | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsShiftConfigCreate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsshiftconfigcreate) | **POST** /for_worker/facility_administrations/{facility_administration_pk}/shift_config/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsShiftConfigDelete**](doc//ForWorkerApi.md#forworkerfacilityadministrationsshiftconfigdelete) | **DELETE** /for_worker/facility_administrations/{facility_administration_pk}/shift_config/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsShiftConfigList**](doc//ForWorkerApi.md#forworkerfacilityadministrationsshiftconfiglist) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/shift_config/ | 
@@ -128,7 +127,7 @@ Class | Method | HTTP request | Description
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsShiftConfigShiftPatternsRead**](doc//ForWorkerApi.md#forworkerfacilityadministrationsshiftconfigshiftpatternsread) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/shift_config/{shift_config_pk}/shift_patterns/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsShiftConfigShiftPatternsUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsshiftconfigshiftpatternsupdate) | **PUT** /for_worker/facility_administrations/{facility_administration_pk}/shift_config/{shift_config_pk}/shift_patterns/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsShiftConfigUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsshiftconfigupdate) | **PUT** /for_worker/facility_administrations/{facility_administration_pk}/shift_config/{id}/ | 
-*ForWorkerApi* | [**forWorkerFacilityAdministrationsUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsupdate) | **PUT** /for_worker/facility_administrations/{facility}/ | 
+*ForWorkerApi* | [**forWorkerFacilityAdministrationsUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsupdate) | **PUT** /for_worker/facility_administrations/{facility} | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsWorkSchedulesCreate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsworkschedulescreate) | **POST** /for_worker/facility_administrations/{facility_administration_pk}/work_schedules/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsWorkSchedulesDelete**](doc//ForWorkerApi.md#forworkerfacilityadministrationsworkschedulesdelete) | **DELETE** /for_worker/facility_administrations/{facility_administration_pk}/work_schedules/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsWorkSchedulesExportCreate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsworkschedulesexportcreate) | **POST** /for_worker/facility_administrations/{facility_administration_id}/work_schedules/{work_schedule_id}/_export | 
@@ -153,22 +152,22 @@ Class | Method | HTTP request | Description
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsworkerprofilesworkinghoursconfigpartialupdate) | **PATCH** /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigRead**](doc//ForWorkerApi.md#forworkerfacilityadministrationsworkerprofilesworkinghoursconfigread) | **GET** /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/{id}/ | 
 *ForWorkerApi* | [**forWorkerFacilityAdministrationsWorkerProfilesWorkingHoursConfigUpdate**](doc//ForWorkerApi.md#forworkerfacilityadministrationsworkerprofilesworkinghoursconfigupdate) | **PUT** /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/{id}/ | 
-*ForWorkerApi* | [**forWorkerFacilityUserLinkTypesList**](doc//ForWorkerApi.md#forworkerfacilityuserlinktypeslist) | **GET** /for_worker/facility_user_link_types/ | 
-*ForWorkerApi* | [**forWorkerFacilityUserLinksCreate**](doc//ForWorkerApi.md#forworkerfacilityuserlinkscreate) | **POST** /for_worker/facility_user_links/ | 
-*ForWorkerApi* | [**forWorkerFacilityUserLinksDelete**](doc//ForWorkerApi.md#forworkerfacilityuserlinksdelete) | **DELETE** /for_worker/facility_user_links/{id}/ | 
-*ForWorkerApi* | [**forWorkerFacilityUserLinksList**](doc//ForWorkerApi.md#forworkerfacilityuserlinkslist) | **GET** /for_worker/facility_user_links/ | 
-*ForWorkerApi* | [**forWorkerFacilityUserLinksPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilityuserlinkspartialupdate) | **PATCH** /for_worker/facility_user_links/{id}/ | 
-*ForWorkerApi* | [**forWorkerFacilityUserLinksRead**](doc//ForWorkerApi.md#forworkerfacilityuserlinksread) | **GET** /for_worker/facility_user_links/{id}/ | 
-*ForWorkerApi* | [**forWorkerFacilityUserLinksUpdate**](doc//ForWorkerApi.md#forworkerfacilityuserlinksupdate) | **PUT** /for_worker/facility_user_links/{id}/ | 
-*ForWorkerApi* | [**forWorkerRolesCreate**](doc//ForWorkerApi.md#forworkerrolescreate) | **POST** /for_worker/roles/ | 
-*ForWorkerApi* | [**forWorkerRolesDelete**](doc//ForWorkerApi.md#forworkerrolesdelete) | **DELETE** /for_worker/roles/{id}/ | 
-*ForWorkerApi* | [**forWorkerRolesList**](doc//ForWorkerApi.md#forworkerroleslist) | **GET** /for_worker/roles/ | 
-*ForWorkerApi* | [**forWorkerRolesPartialUpdate**](doc//ForWorkerApi.md#forworkerrolespartialupdate) | **PATCH** /for_worker/roles/{id}/ | 
-*ForWorkerApi* | [**forWorkerRolesRead**](doc//ForWorkerApi.md#forworkerrolesread) | **GET** /for_worker/roles/{id}/ | 
-*ForWorkerApi* | [**forWorkerRolesUpdate**](doc//ForWorkerApi.md#forworkerrolesupdate) | **PUT** /for_worker/roles/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserCreate**](doc//ForWorkerApi.md#forworkerusercreate) | **POST** /for_worker/user/ | 
-*ForWorkerApi* | [**forWorkerUserDelete**](doc//ForWorkerApi.md#forworkeruserdelete) | **DELETE** /for_worker/user/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserPartialUpdate**](doc//ForWorkerApi.md#forworkeruserpartialupdate) | **PATCH** /for_worker/user/{id}/ | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinkTypesList**](doc//ForWorkerApi.md#forworkerfacilityuserlinktypeslist) | **GET** /for_worker/facility_user_link_types | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksCreate**](doc//ForWorkerApi.md#forworkerfacilityuserlinkscreate) | **POST** /for_worker/facility_user_links | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksDelete**](doc//ForWorkerApi.md#forworkerfacilityuserlinksdelete) | **DELETE** /for_worker/facility_user_links/{id} | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksList**](doc//ForWorkerApi.md#forworkerfacilityuserlinkslist) | **GET** /for_worker/facility_user_links | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksPartialUpdate**](doc//ForWorkerApi.md#forworkerfacilityuserlinkspartialupdate) | **PATCH** /for_worker/facility_user_links/{id} | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksRead**](doc//ForWorkerApi.md#forworkerfacilityuserlinksread) | **GET** /for_worker/facility_user_links/{id} | 
+*ForWorkerApi* | [**forWorkerFacilityUserLinksUpdate**](doc//ForWorkerApi.md#forworkerfacilityuserlinksupdate) | **PUT** /for_worker/facility_user_links/{id} | 
+*ForWorkerApi* | [**forWorkerRolesCreate**](doc//ForWorkerApi.md#forworkerrolescreate) | **POST** /for_worker/roles | 
+*ForWorkerApi* | [**forWorkerRolesDelete**](doc//ForWorkerApi.md#forworkerrolesdelete) | **DELETE** /for_worker/roles/{id} | 
+*ForWorkerApi* | [**forWorkerRolesList**](doc//ForWorkerApi.md#forworkerroleslist) | **GET** /for_worker/roles | 
+*ForWorkerApi* | [**forWorkerRolesPartialUpdate**](doc//ForWorkerApi.md#forworkerrolespartialupdate) | **PATCH** /for_worker/roles/{id} | 
+*ForWorkerApi* | [**forWorkerRolesRead**](doc//ForWorkerApi.md#forworkerrolesread) | **GET** /for_worker/roles/{id} | 
+*ForWorkerApi* | [**forWorkerRolesUpdate**](doc//ForWorkerApi.md#forworkerrolesupdate) | **PUT** /for_worker/roles/{id} | 
+*ForWorkerApi* | [**forWorkerUserCreate**](doc//ForWorkerApi.md#forworkerusercreate) | **POST** /for_worker/user | 
+*ForWorkerApi* | [**forWorkerUserDelete**](doc//ForWorkerApi.md#forworkeruserdelete) | **DELETE** /for_worker/user/{id} | 
+*ForWorkerApi* | [**forWorkerUserPartialUpdate**](doc//ForWorkerApi.md#forworkeruserpartialupdate) | **PATCH** /for_worker/user/{id} | 
 *ForWorkerApi* | [**forWorkerUserProfileCreate**](doc//ForWorkerApi.md#forworkeruserprofilecreate) | **POST** /for_worker/user/{user_pk}/profile/ | 
 *ForWorkerApi* | [**forWorkerUserProfileDelete**](doc//ForWorkerApi.md#forworkeruserprofiledelete) | **DELETE** /for_worker/user/{user_pk}/profile/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserProfileFavoriteFacilitiesCreate**](doc//ForWorkerApi.md#forworkeruserprofilefavoritefacilitiescreate) | **POST** /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/ | 
@@ -192,8 +191,8 @@ Class | Method | HTTP request | Description
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfileList**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilelist) | **GET** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/ | 
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfilePartialUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofilepartialupdate) | **PATCH** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
 *ForWorkerApi* | [**forWorkerUserProfileWorkerProfileUpdate**](doc//ForWorkerApi.md#forworkeruserprofileworkerprofileupdate) | **PUT** /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserRead**](doc//ForWorkerApi.md#forworkeruserread) | **GET** /for_worker/user/{id}/ | 
-*ForWorkerApi* | [**forWorkerUserUpdate**](doc//ForWorkerApi.md#forworkeruserupdate) | **PUT** /for_worker/user/{id}/ | 
+*ForWorkerApi* | [**forWorkerUserRead**](doc//ForWorkerApi.md#forworkeruserread) | **GET** /for_worker/user/{id} | 
+*ForWorkerApi* | [**forWorkerUserUpdate**](doc//ForWorkerApi.md#forworkeruserupdate) | **PUT** /for_worker/user/{id} | 
 *MeApi* | [**meCreate**](doc//MeApi.md#mecreate) | **POST** /me | 
 *MeApi* | [**meDelete**](doc//MeApi.md#medelete) | **DELETE** /me/{id} | 
 *MeApi* | [**mePartialUpdate**](doc//MeApi.md#mepartialupdate) | **PATCH** /me/{id} | 

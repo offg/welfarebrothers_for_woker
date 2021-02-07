@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
+import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
 import 'package:welfarebrothers_for_worker/components/default_avatar.dart';
 import 'package:welfarebrothers_for_worker/components/logo.dart';
 import 'package:welfarebrothers_for_worker/utils/design.dart';
@@ -94,6 +95,7 @@ class MeScreen extends StatelessWidget {
     return [
       _buildNames(meModel.profile?.lastName, meModel.profile?.firstName),
       verticalSpace(size: 20),
+      SectionTitle("会員メニュー"),
       SingleChildScrollView(
         child: Wrap(
           alignment: WrapAlignment.center,
@@ -105,6 +107,29 @@ class MeScreen extends StatelessWidget {
               .toList(),
         ),
       ),
+      SectionTitle("登録中の施設"),
+      appModel.facilityUserLinksForWorker.isNotEmpty
+          ? ListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              children: appModel.facilityUserLinksForWorker
+                  .map((e) => ListTile(
+                        title: Text(e.facilityAdministration.facility.name),
+                        dense: true,
+                        trailing: Text(e.state.name),
+                      ))
+                  .toList(),
+            )
+          : Column(children: [
+              Center(child: Text("登録中の施設はありません")),
+              FlatButton(
+                child: Text("登録する"),
+                onPressed: () {
+                  Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil("/facility_linking", (route) => false);
+                },
+              )
+            ]),
+      verticalSpace(size: 40),
       RaisedButton(
         child: Text("ログアウト"),
         onPressed: () async {

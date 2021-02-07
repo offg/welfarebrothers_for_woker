@@ -16,7 +16,7 @@ class FacilityUserLinkForWrite {
     @required this.stateId,
     @required this.typeId,
     @required this.facilityAdministrationId,
-    @required this.verifiedById,
+    this.verifiedById,
     this.verifiedAt,
   });
 

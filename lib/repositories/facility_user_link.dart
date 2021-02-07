@@ -6,9 +6,14 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 class FacilityUserLinkApiRepository implements IFacilityUserLinkRepository {
   WelfarebrothersApiClient _client;
   FacilityUserLinkApiRepository(this._client);
+
   @override
   Future<FacilityUserLink> createFacilityUserLink(FacilityUserLink facilityUserLink) async {
-    return await _client.forWorkerApi.forWorkerFacilityUserLinksCreate(facilityUserLink.toWritable());
+    var created = await _client.forWorkerApi.forWorkerFacilityUserLinksCreate(facilityUserLink.toWritable());
+    await _client.authApi.authFacilityLinkingGreetCreate(
+      facilityUserLinkId: created.id.toString(),
+    );
+    return facilityUserLink;
   }
 
   @override
@@ -22,8 +27,15 @@ class FacilityUserLinkApiRepository implements IFacilityUserLinkRepository {
   }
 
   @override
-  Future<List<FacilityUserLink>> fetchFacilityUserLinks({String facilityId}) async {
-    return await _client.forWorkerApi.forWorkerFacilityUserLinksList(facilityAdministrationId: facilityId);
+  Future<List<FacilityUserLink>> fetchFacilityUserLinks({String facilityId, int workerProfileId}) async {
+    if (facilityId != null && workerProfileId == null) {
+      return await _client.forWorkerApi.forWorkerFacilityUserLinksList(facilityAdministrationId: facilityId);
+    } else if (facilityId == null && workerProfileId != null) {
+      return await _client.forWorkerApi.forWorkerFacilityUserLinksList(workerProfileId: workerProfileId.toString());
+    } else {
+      return await _client.forWorkerApi
+          .forWorkerFacilityUserLinksList(facilityAdministrationId: facilityId, workerProfileId: workerProfileId.toString());
+    }
   }
 
   @override

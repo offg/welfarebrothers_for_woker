@@ -15,7 +15,7 @@ class ForWorkerApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /for_worker/facilities/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /for_worker/facilities' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [FacilityForWorkerForWrite] data (required):
@@ -25,7 +25,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facilities/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/facilities'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -78,7 +78,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /for_worker/facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /for_worker/facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -89,7 +89,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/for_worker/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -137,7 +137,7 @@ class ForWorkerApi {
     }
   }
 
-  /// Performs an HTTP 'GET /for_worker/facilities/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/facilities' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] prefecture:
@@ -152,7 +152,7 @@ class ForWorkerApi {
   Future<Response> forWorkerFacilitiesListWithHttpInfo({ String prefecture, String city, String careServiceGroup, String careServiceGroupCategory, String keywordContains }) async {
     // Verify required params are set.
 
-    final path = '/for_worker/facilities/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/facilities'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -231,7 +231,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /for_worker/facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /for_worker/facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -247,7 +247,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -304,7 +304,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -315,7 +315,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/for_worker/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -370,7 +370,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /for_worker/facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /for_worker/facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -386,7 +386,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -883,7 +883,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /for_worker/facility_administrations/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /for_worker/facility_administrations' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [FacilityAdministrationForWrite] data (required):
@@ -893,7 +893,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facility_administrations/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/facility_administrations'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -946,7 +946,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /for_worker/facility_administrations/{facility}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /for_worker/facility_administrations/{facility}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] facility (required):
@@ -957,7 +957,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: facility');
     }
 
-    final path = '/for_worker/facility_administrations/{facility}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_administrations/{facility}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'facility' + '}', facility.toString());
 
     Object postBody;
@@ -1005,9 +1005,9 @@ class ForWorkerApi {
     }
   }
 
-  /// Performs an HTTP 'GET /for_worker/facility_administrations/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/facility_administrations' operation and returns the [Response].
   Future<Response> forWorkerFacilityAdministrationsListWithHttpInfo() async {
-    final path = '/for_worker/facility_administrations/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/facility_administrations'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -1059,7 +1059,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /for_worker/facility_administrations/{facility}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /for_worker/facility_administrations/{facility}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] facility (required):
@@ -1075,7 +1075,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facility_administrations/{facility}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_administrations/{facility}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'facility' + '}', facility.toString());
 
     Object postBody = data;
@@ -1132,7 +1132,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/facility_administrations/{facility}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/facility_administrations/{facility}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] facility (required):
@@ -1143,7 +1143,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: facility');
     }
 
-    final path = '/for_worker/facility_administrations/{facility}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_administrations/{facility}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'facility' + '}', facility.toString());
 
     Object postBody;
@@ -2614,7 +2614,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /for_worker/facility_administrations/{facility}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /for_worker/facility_administrations/{facility}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] facility (required):
@@ -2630,7 +2630,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facility_administrations/{facility}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_administrations/{facility}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'facility' + '}', facility.toString());
 
     Object postBody = data;
@@ -4511,9 +4511,9 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/facility_user_link_types/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/facility_user_link_types' operation and returns the [Response].
   Future<Response> forWorkerFacilityUserLinkTypesListWithHttpInfo() async {
-    final path = '/for_worker/facility_user_link_types/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/facility_user_link_types'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -4565,7 +4565,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /for_worker/facility_user_links/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /for_worker/facility_user_links' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [FacilityUserLinkForWrite] data (required):
@@ -4575,7 +4575,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facility_user_links/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/facility_user_links'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -4628,7 +4628,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /for_worker/facility_user_links/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /for_worker/facility_user_links/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
@@ -4639,7 +4639,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/for_worker/facility_user_links/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_user_links/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -4687,14 +4687,16 @@ class ForWorkerApi {
     }
   }
 
-  /// Performs an HTTP 'GET /for_worker/facility_user_links/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/facility_user_links' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] facilityAdministrationId:
-  Future<Response> forWorkerFacilityUserLinksListWithHttpInfo({ String facilityAdministrationId }) async {
+  ///
+  /// * [String] workerProfileId:
+  Future<Response> forWorkerFacilityUserLinksListWithHttpInfo({ String facilityAdministrationId, String workerProfileId }) async {
     // Verify required params are set.
 
-    final path = '/for_worker/facility_user_links/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/facility_user_links'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -4704,6 +4706,9 @@ class ForWorkerApi {
 
     if (facilityAdministrationId != null) {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'facility_administration_id', facilityAdministrationId));
+    }
+    if (workerProfileId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'worker_profile_id', workerProfileId));
     }
 
     final contentTypes = <String>[];
@@ -4737,8 +4742,10 @@ class ForWorkerApi {
   /// Parameters:
   ///
   /// * [String] facilityAdministrationId:
-  Future<List<FacilityUserLink>> forWorkerFacilityUserLinksList({ String facilityAdministrationId }) async {
-    final response = await forWorkerFacilityUserLinksListWithHttpInfo( facilityAdministrationId: facilityAdministrationId );
+  ///
+  /// * [String] workerProfileId:
+  Future<List<FacilityUserLink>> forWorkerFacilityUserLinksList({ String facilityAdministrationId, String workerProfileId }) async {
+    final response = await forWorkerFacilityUserLinksListWithHttpInfo( facilityAdministrationId: facilityAdministrationId, workerProfileId: workerProfileId );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4753,7 +4760,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /for_worker/facility_user_links/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /for_worker/facility_user_links/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
@@ -4769,7 +4776,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facility_user_links/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_user_links/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -4826,7 +4833,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/facility_user_links/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/facility_user_links/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
@@ -4837,7 +4844,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/for_worker/facility_user_links/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_user_links/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -4892,7 +4899,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /for_worker/facility_user_links/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /for_worker/facility_user_links/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
@@ -4908,7 +4915,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facility_user_links/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_user_links/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -4965,7 +4972,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /for_worker/roles/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /for_worker/roles' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [RoleForWrite] data (required):
@@ -4975,7 +4982,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/roles/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/roles'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -5028,7 +5035,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /for_worker/roles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /for_worker/roles/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -5039,7 +5046,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/for_worker/roles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/roles/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -5087,9 +5094,9 @@ class ForWorkerApi {
     }
   }
 
-  /// Performs an HTTP 'GET /for_worker/roles/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/roles' operation and returns the [Response].
   Future<Response> forWorkerRolesListWithHttpInfo() async {
-    final path = '/for_worker/roles/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/roles'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -5141,7 +5148,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /for_worker/roles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /for_worker/roles/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -5157,7 +5164,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/roles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/roles/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -5214,7 +5221,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/roles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/roles/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -5225,7 +5232,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/for_worker/roles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/roles/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -5280,7 +5287,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /for_worker/roles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /for_worker/roles/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -5296,7 +5303,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/roles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/roles/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -5353,7 +5360,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /for_worker/user/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /for_worker/user' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [UserForWrite] data (required):
@@ -5363,7 +5370,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/user'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -5416,7 +5423,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /for_worker/user/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /for_worker/user/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
@@ -5427,7 +5434,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/for_worker/user/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -5475,7 +5482,7 @@ class ForWorkerApi {
     }
   }
 
-  /// Performs an HTTP 'PATCH /for_worker/user/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /for_worker/user/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
@@ -5491,7 +5498,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -7418,7 +7425,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/user/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/user/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
@@ -7429,7 +7436,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/for_worker/user/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -7484,7 +7491,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /for_worker/user/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /for_worker/user/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
@@ -7500,7 +7507,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
