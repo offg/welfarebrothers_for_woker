@@ -10,16 +10,18 @@ class FacilityAdministrationViewModel extends WelfareBrothersViewModelBase {
 
   @override
   Future initialize() async {
-    facilityAdministrations = [
-      FacilityAdministration(facilityId: "a8488eb6-4fa2-42a8-acd3-284842b34fe4")
-        ..id = "a8488eb6-4fa2-42a8-acd3-284842b34fe4"
-        ..facility = Facility(id: "sample001", name: "サンプルデイ")
-    ];
-    currentFacilityAdministration = facilityAdministrations.first;
+    if (ready && authenticated) {
+      await fetchFacilityAdministrations();
+      setCurrentFacilityAdministration(facilityAdministrations.first);
+    }
+  }
+
+  setCurrentFacilityAdministration(FacilityAdministration facilityAdministration) {
+    this.currentFacilityAdministration = facilityAdministration;
     notifyListeners();
   }
 
   Future fetchFacilityAdministrations() async {
-    await _facilityAdministrationRepository.fetchFacilityAdministrations();
+    this.facilityAdministrations = await _facilityAdministrationRepository.fetchFacilityAdministrations();
   }
 }

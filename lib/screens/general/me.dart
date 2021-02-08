@@ -117,6 +117,7 @@ class MeScreen extends StatelessWidget {
                         title: Text(e.facilityAdministration.facility.name),
                         dense: true,
                         trailing: Text(e.state.name),
+                        onTap: () async {},
                       ))
                   .toList(),
             )

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
+import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
+import 'package:welfarebrothers_for_worker/components/facility/facility_for_worker_card.dart';
 import 'package:welfarebrothers_for_worker/components/logo.dart';
 import 'package:welfarebrothers_for_worker/utils/menu.dart';
 import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_administration.dart';
@@ -8,6 +10,7 @@ import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_availa
 import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/view_models/for_admin/shift_config.dart';
 import 'package:welfarebrothers_for_worker/view_models/for_admin/work_schedule.dart';
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class FacilityAdministrationScreen extends StatelessWidget {
   const FacilityAdministrationScreen();
@@ -59,23 +62,64 @@ class FacilityAdministrationScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Consumer<FacilityAdministrationViewModel>(
-              builder: (context, model, child) => RaisedButton(
-                  child: Text("Test"),
-                  onPressed: () async {
-                    await model.fetchFacilityAdministrations();
-                  })),
           Expanded(
-            flex: 2,
+            flex: 1,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(child: SectionTitle("選択中の施設")),
+                Consumer<FacilityAdministrationViewModel>(
+                  builder: (context, model, child) => Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: DropdownButton(
+                        hint: Text(""),
+                        isExpanded: false,
+                        iconSize: 0,
+                        value: model.currentFacilityAdministration,
+                        items: (model.facilityAdministrations ?? []).isEmpty
+                            ? null
+                            : model.facilityAdministrations
+                                .map((e) => DropdownMenuItem(
+                                      value: e,
+                                      child: Text(e.facility.name),
+                                    ))
+                                .toList(),
+                        onChanged: (value) async {
+                          model.setCurrentFacilityAdministration(value);
+                          await LoadingOverlay.of(context).during(model.initialize());
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Consumer<FacilityAdministrationViewModel>(
+              builder: (context, model, child) => FacilityForWorkerCard(
+                facility: model.currentFacilityAdministration?.facility ?? FacilityForWorker(id: "", name: ""),
+                header: Text(model.currentFacilityAdministration?.facility?.name ?? " "),
+                onFacilityTap: null,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 4,
             child: SingleChildScrollView(
-              child: Wrap(
-                alignment: WrapAlignment.center,
-                direction: Axis.horizontal,
-                children: menuList
-                    .map(
-                      (menu) => buildMenu<FacilityAdministrationViewModel>(context, menu),
-                    )
-                    .toList(),
+              child: Align(
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  direction: Axis.horizontal,
+                  children: menuList
+                      .map(
+                        (menu) => buildMenu<FacilityAdministrationViewModel>(context, menu),
+                      )
+                      .toList(),
+                ),
               ),
             ),
           )

@@ -14,11 +14,11 @@ class SectionTitle extends StatelessWidget {
             title,
             style: TextStyle(
               fontWeight: FontWeight.w400,
-              fontSize: 22,
+              fontSize: 18,
             ),
           )
         ]),
-        alignment: Alignment.centerLeft,
+        alignment: Alignment.topLeft,
       ),
     );
   }

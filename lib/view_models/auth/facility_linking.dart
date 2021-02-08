@@ -1,4 +1,3 @@
-import 'package:welfarebrothers_for_worker/domain/facility/facility.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_user_link/repository.dart';
 import 'package:welfarebrothers_for_worker/view_models/base.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
@@ -41,7 +40,7 @@ class FacilityLinkingViewModel extends WelfareBrothersViewModelBase {
         facilityAdministration: FacilityAdministration(
           id: facility.id,
           facilityId: facility.id,
-          facility: facility.asNormal(),
+          facility: facility,
         ),
         type: facilityUserLinkTypes.singleWhere((element) => element.id == type),
         state: FacilityUserLinkState(id: "pending"),

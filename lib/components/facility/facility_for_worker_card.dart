@@ -33,7 +33,7 @@ class FacilityForWorkerCard extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    facility.address,
+                    facility.address ?? "",
                     style: TextStyle(fontSize: 12),
                   ),
                 ),
@@ -45,7 +45,7 @@ class FacilityForWorkerCard extends StatelessWidget {
                       Icon(Icons.phone_sharp),
                       horizontalSpace(size: 10),
                       Text(
-                        facility.tel,
+                        facility.tel ?? "",
                         style: TextStyle(fontSize: 12),
                       )
                     ],
@@ -53,7 +53,7 @@ class FacilityForWorkerCard extends StatelessWidget {
                 ),
               ]),
               verticalSpace(size: 18),
-              Availabilities(availableDaysInWeek: facility.availableDaysOfTheWeek),
+              Availabilities(availableDaysInWeek: facility?.availableDaysOfTheWeek ?? List<int>()),
             ],
           ),
         ),

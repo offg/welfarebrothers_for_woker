@@ -2969,7 +2969,7 @@ definitions:
         readOnly: true
         minLength: 1
       facility:
-        $ref: '#/definitions/Facility'
+        $ref: '#/definitions/FacilityForWorker'
       facility_id:
         title: Facility id
         type: string
