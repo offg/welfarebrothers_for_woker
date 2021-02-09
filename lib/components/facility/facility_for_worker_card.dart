@@ -31,7 +31,7 @@ class FacilityForWorkerCard extends StatelessWidget {
               verticalSpace(size: 12),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: Text(
                     facility.address ?? "",
                     style: TextStyle(fontSize: 12),
@@ -39,6 +39,7 @@ class FacilityForWorkerCard extends StatelessWidget {
                 ),
                 horizontalSpace(size: 40),
                 Expanded(
+                  flex: 2,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -53,7 +54,7 @@ class FacilityForWorkerCard extends StatelessWidget {
                 ),
               ]),
               verticalSpace(size: 18),
-              Availabilities(availableDaysInWeek: facility?.availableDaysOfTheWeek ?? List<int>()),
+              Availabilities(availableDaysInWeek: facility?.availableDaysOfTheWeek),
             ],
           ),
         ),
