@@ -7,9 +7,9 @@ class Availabilities extends StatelessWidget {
   final List<int> availableDaysInWeek;
   final bool isNull;
 
-  const Availabilities({availableDaysInWeek})
-      : availableDaysInWeek = availableDaysInWeek ?? const [],
-        isNull = availableDaysInWeek == null;
+  const Availabilities({List<int> availableDaysInWeek})
+      : this.isNull = availableDaysInWeek == null,
+        this.availableDaysInWeek = availableDaysInWeek ?? const [];
   @override
   Widget build(BuildContext context) {
     return Table(
@@ -47,7 +47,7 @@ class Availabilities extends StatelessWidget {
         ),
       );
     var available = availableDaysInWeek.contains(day);
-    return !available
+    return available
         ? Icon(
             Icons.adjust_sharp,
             color: color,
