@@ -9,8 +9,8 @@ import 'package:welfarebrothers_for_worker_api_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] [readonly] 
-**user** | [**WelfarebrothersUser**](WelfarebrothersUser.md) |  | [optional] 
-**userId** | **int** |  | 
+**user** | [**User**](User.md) |  | [optional] 
+**userId** | **String** |  | 
 **firstName** | **String** |  | 
 **lastName** | **String** |  | 
 

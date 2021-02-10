@@ -15,7 +15,7 @@ class FacilitiesApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /facilities/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /facilities' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [FacilityForWrite] data (required):
@@ -25,7 +25,7 @@ class FacilitiesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/facilities/'.replaceAll('{format}', 'json');
+    final path = '/facilities'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -35,7 +35,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -78,18 +78,18 @@ class FacilitiesApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   Future<Response> facilitiesDeleteWithHttpInfo(String id) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -100,7 +100,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -129,7 +129,7 @@ class FacilitiesApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   Future<void> facilitiesDelete(String id) async {
     final response = await facilitiesDeleteWithHttpInfo(id);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -137,9 +137,22 @@ class FacilitiesApi {
     }
   }
 
-  /// Performs an HTTP 'GET /facilities/' operation and returns the [Response].
-  Future<Response> facilitiesListWithHttpInfo() async {
-    final path = '/facilities/'.replaceAll('{format}', 'json');
+  /// Performs an HTTP 'GET /facilities' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] prefecture:
+  ///
+  /// * [String] city:
+  ///
+  /// * [String] careServiceGroup:
+  ///
+  /// * [String] careServiceGroupCategory:
+  ///
+  /// * [String] keywordContains:
+  Future<Response> facilitiesListWithHttpInfo({ String prefecture, String city, String careServiceGroup, String careServiceGroupCategory, String keywordContains }) async {
+    // Verify required params are set.
+
+    final path = '/facilities'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -147,9 +160,25 @@ class FacilitiesApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (prefecture != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'prefecture', prefecture));
+    }
+    if (city != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'city', city));
+    }
+    if (careServiceGroup != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group', careServiceGroup));
+    }
+    if (careServiceGroupCategory != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group__category', careServiceGroupCategory));
+    }
+    if (keywordContains != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'keyword__contains', keywordContains));
+    }
+
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -175,8 +204,19 @@ class FacilitiesApi {
     );
   }
 
-  Future<List<Facility>> facilitiesList() async {
-    final response = await facilitiesListWithHttpInfo();
+  /// Parameters:
+  ///
+  /// * [String] prefecture:
+  ///
+  /// * [String] city:
+  ///
+  /// * [String] careServiceGroup:
+  ///
+  /// * [String] careServiceGroupCategory:
+  ///
+  /// * [String] keywordContains:
+  Future<List<Facility>> facilitiesList({ String prefecture, String city, String careServiceGroup, String careServiceGroupCategory, String keywordContains }) async {
+    final response = await facilitiesListWithHttpInfo( prefecture: prefecture, city: city, careServiceGroup: careServiceGroup, careServiceGroupCategory: careServiceGroupCategory, keywordContains: keywordContains );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -191,11 +231,11 @@ class FacilitiesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   ///
   /// * [FacilityForWrite] data (required):
   Future<Response> facilitiesPartialUpdateWithHttpInfo(String id, FacilityForWrite data) async {
@@ -207,7 +247,7 @@ class FacilitiesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -218,7 +258,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -247,7 +287,7 @@ class FacilitiesApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   ///
   /// * [FacilityForWrite] data (required):
   Future<Facility> facilitiesPartialUpdate(String id, FacilityForWrite data) async {
@@ -264,18 +304,18 @@ class FacilitiesApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   Future<Response> facilitiesReadWithHttpInfo(String id) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -286,7 +326,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -315,7 +355,7 @@ class FacilitiesApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   Future<Facility> facilitiesRead(String id) async {
     final response = await facilitiesReadWithHttpInfo(id);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -330,11 +370,11 @@ class FacilitiesApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /facilities/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /facilities/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   ///
   /// * [FacilityForWrite] data (required):
   Future<Response> facilitiesUpdateWithHttpInfo(String id, FacilityForWrite data) async {
@@ -346,7 +386,7 @@ class FacilitiesApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/facilities/{id}/'.replaceAll('{format}', 'json')
+    final path = '/facilities/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -357,7 +397,7 @@ class FacilitiesApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -386,7 +426,7 @@ class FacilitiesApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  ///   A unique value identifying this facility.
+  ///   A UUID string identifying this facility.
   ///
   /// * [FacilityForWrite] data (required):
   Future<Facility> facilitiesUpdate(String id, FacilityForWrite data) async {

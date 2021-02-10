@@ -17,7 +17,7 @@ class WelfarebrothersUserProfileForWrite {
     @required this.lastName,
   });
 
-  int userId;
+  String userId;
 
   String firstName;
 

@@ -12,7 +12,7 @@ part of welfarebrothers_for_worker_api_client;
 class ApiClient {
   ApiClient({this.basePath = 'http://localhost:8000'}) {
     // Setup authentications (key: authentication name, value: authentication).
-    _authentications[r'Basic'] = HttpBasicAuth();
+    _authentications[r'Bearer'] = ApiKeyAuth('header', 'Authorization');
   }
 
   final String basePath;
@@ -160,6 +160,22 @@ class ApiClient {
           break;
         case 'double':
           return value is double ? value : double.parse('$value');
+        case 'CareService':
+          return CareService.fromJson(value);
+        case 'CareServiceCategory':
+          return CareServiceCategory.fromJson(value);
+        case 'CareServiceCategoryForWrite':
+          return CareServiceCategoryForWrite.fromJson(value);
+        case 'CareServiceForWrite':
+          return CareServiceForWrite.fromJson(value);
+        case 'CareServiceGroup':
+          return CareServiceGroup.fromJson(value);
+        case 'CareServiceGroupForWrite':
+          return CareServiceGroupForWrite.fromJson(value);
+        case 'City':
+          return City.fromJson(value);
+        case 'CityForWrite':
+          return CityForWrite.fromJson(value);
         case 'DayOffRequest':
           return DayOffRequest.fromJson(value);
         case 'DayOffRequestForWrite':
@@ -170,12 +186,38 @@ class ApiClient {
           return FacilityAdministration.fromJson(value);
         case 'FacilityAdministrationForWrite':
           return FacilityAdministrationForWrite.fromJson(value);
+        case 'FacilityAvailability':
+          return FacilityAvailability.fromJson(value);
+        case 'FacilityAvailabilityForWrite':
+          return FacilityAvailabilityForWrite.fromJson(value);
+        case 'FacilityForWorker':
+          return FacilityForWorker.fromJson(value);
+        case 'FacilityForWorkerForWrite':
+          return FacilityForWorkerForWrite.fromJson(value);
         case 'FacilityForWrite':
           return FacilityForWrite.fromJson(value);
+        case 'FacilityUserLink':
+          return FacilityUserLink.fromJson(value);
+        case 'FacilityUserLinkForWrite':
+          return FacilityUserLinkForWrite.fromJson(value);
+        case 'FacilityUserLinkState':
+          return FacilityUserLinkState.fromJson(value);
+        case 'FacilityUserLinkType':
+          return FacilityUserLinkType.fromJson(value);
         case 'FacilityWorkerProfile':
           return FacilityWorkerProfile.fromJson(value);
         case 'FacilityWorkerProfileForWrite':
           return FacilityWorkerProfileForWrite.fromJson(value);
+        case 'FavoriteFacility':
+          return FavoriteFacility.fromJson(value);
+        case 'FavoriteFacilityForWrite':
+          return FavoriteFacilityForWrite.fromJson(value);
+        case 'Group':
+          return Group.fromJson(value);
+        case 'Prefecture':
+          return Prefecture.fromJson(value);
+        case 'PrefectureForWrite':
+          return PrefectureForWrite.fromJson(value);
         case 'Role':
           return Role.fromJson(value);
         case 'RoleAssignmentRequirement':
@@ -194,8 +236,16 @@ class ApiClient {
           return ShiftPattern.fromJson(value);
         case 'ShiftPatternForWrite':
           return ShiftPatternForWrite.fromJson(value);
-        case 'WelfarebrothersUser':
-          return WelfarebrothersUser.fromJson(value);
+        case 'TokenRefresh':
+          return TokenRefresh.fromJson(value);
+        case 'User':
+          return User.fromJson(value);
+        case 'UserForWrite':
+          return UserForWrite.fromJson(value);
+        case 'WelfarebrothersTokenClaims':
+          return WelfarebrothersTokenClaims.fromJson(value);
+        case 'WelfarebrothersTokenClaimsForWrite':
+          return WelfarebrothersTokenClaimsForWrite.fromJson(value);
         case 'WelfarebrothersUserProfile':
           return WelfarebrothersUserProfile.fromJson(value);
         case 'WelfarebrothersUserProfileForWrite':

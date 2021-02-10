@@ -63,6 +63,9 @@ class ShiftConfigApiRepository extends IShiftConfigRepository {
   @override
   Future<ShiftConfig> fetchShiftConfigForFacility(String facilityId) async {
     var result = await _client.forWorkerApi.forWorkerFacilityAdministrationsShiftConfigList(facilityId);
+    if (result.isEmpty) {
+      return await createShiftConfigForFacility(facilityId);
+    }
     return result.first;
   }
 

@@ -1,6 +1,16 @@
 import 'package:intl/intl.dart';
 import 'package:welfarebrothers_for_worker/domain/util.dart';
 
+Map<int, String> dayLabels = {
+  0: "月曜日",
+  1: "火曜日",
+  2: "水曜日",
+  3: "木曜日",
+  4: "金曜日",
+  5: "土曜日",
+  6: "日曜日",
+};
+
 bool dateTimeEq(DateTime dt1, DateTime dt2) {
   return dt1.difference(dt2).inDays.abs() <= 0;
 }

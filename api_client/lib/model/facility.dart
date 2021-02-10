@@ -12,26 +12,66 @@ part of welfarebrothers_for_worker_api_client;
 class Facility {
   /// Returns a new [Facility] instance.
   Facility({
-    @required this.id,
+    this.id,
     @required this.name,
+    @required this.category,
+    @required this.group,
+    @required this.careService,
+    @required this.tel,
+    @required this.city,
+    @required this.prefecture,
+    @required this.address,
+    @required this.building,
   });
 
   String id;
 
   String name;
 
+  CareServiceCategory category;
+
+  CareServiceGroup group;
+
+  CareService careService;
+
+  String tel;
+
+  City city;
+
+  Prefecture prefecture;
+
+  String address;
+
+  String building;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Facility &&
      other.id == id &&
-     other.name == name;
+     other.name == name &&
+     other.category == category &&
+     other.group == group &&
+     other.careService == careService &&
+     other.tel == tel &&
+     other.city == city &&
+     other.prefecture == prefecture &&
+     other.address == address &&
+     other.building == building;
 
   @override
   int get hashCode =>
     (id == null ? 0 : id.hashCode) +
-    (name == null ? 0 : name.hashCode);
+    (name == null ? 0 : name.hashCode) +
+    (category == null ? 0 : category.hashCode) +
+    (group == null ? 0 : group.hashCode) +
+    (careService == null ? 0 : careService.hashCode) +
+    (tel == null ? 0 : tel.hashCode) +
+    (city == null ? 0 : city.hashCode) +
+    (prefecture == null ? 0 : prefecture.hashCode) +
+    (address == null ? 0 : address.hashCode) +
+    (building == null ? 0 : building.hashCode);
 
   @override
-  String toString() => 'Facility[id=$id, name=$name]';
+  String toString() => 'Facility[id=$id, name=$name, category=$category, group=$group, careService=$careService, tel=$tel, city=$city, prefecture=$prefecture, address=$address, building=$building]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -40,6 +80,30 @@ class Facility {
     }
     if (name != null) {
       json[r'name'] = name;
+    }
+    if (category != null) {
+      json[r'category'] = category;
+    }
+    if (group != null) {
+      json[r'group'] = group;
+    }
+    if (careService != null) {
+      json[r'care_service'] = careService;
+    }
+    if (tel != null) {
+      json[r'tel'] = tel;
+    }
+    if (city != null) {
+      json[r'city'] = city;
+    }
+    if (prefecture != null) {
+      json[r'prefecture'] = prefecture;
+    }
+    if (address != null) {
+      json[r'address'] = address;
+    }
+    if (building != null) {
+      json[r'building'] = building;
     }
     return json;
   }
@@ -51,6 +115,14 @@ class Facility {
     : Facility(
         id: json[r'id'],
         name: json[r'name'],
+        category: CareServiceCategory.fromJson(json[r'category']),
+        group: CareServiceGroup.fromJson(json[r'group']),
+        careService: CareService.fromJson(json[r'care_service']),
+        tel: json[r'tel'],
+        city: City.fromJson(json[r'city']),
+        prefecture: Prefecture.fromJson(json[r'prefecture']),
+        address: json[r'address'],
+        building: json[r'building'],
     );
 
   static List<Facility> listFromJson(List<dynamic> json, {bool emptyIsNull, bool growable,}) =>

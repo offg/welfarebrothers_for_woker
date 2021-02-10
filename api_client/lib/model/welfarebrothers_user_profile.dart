@@ -21,9 +21,9 @@ class WelfarebrothersUserProfile {
 
   int id;
 
-  WelfarebrothersUser user;
+  User user;
 
-  int userId;
+  String userId;
 
   String firstName;
 
@@ -74,7 +74,7 @@ class WelfarebrothersUserProfile {
     ? null
     : WelfarebrothersUserProfile(
         id: json[r'id'],
-        user: WelfarebrothersUser.fromJson(json[r'user']),
+        user: User.fromJson(json[r'user']),
         userId: json[r'user_id'],
         firstName: json[r'first_name'],
         lastName: json[r'last_name'],

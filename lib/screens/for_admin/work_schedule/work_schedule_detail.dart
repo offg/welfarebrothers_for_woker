@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/role/role_chip.dart';
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
-import 'package:welfarebrothers_for_worker/view_models/work_schedule.dart';
+import 'package:welfarebrothers_for_worker/view_models/for_admin/work_schedule.dart';
 
 class WorkScheduleDetailScreen extends StatefulWidget {
   const WorkScheduleDetailScreen();

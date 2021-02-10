@@ -87,9 +87,9 @@ var _iconTheme = IconThemeData(
   color: _primaryColor,
 );
 var _buttonTheme = ButtonThemeData(
-  minWidth: 135.0,
+  minWidth: 50.0,
   height: 38,
-  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
   colorScheme: _colorScheme,
   textTheme: ButtonTextTheme.primary,
   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
@@ -102,6 +102,12 @@ var welfareBrothersTheme = ThemeData(
   backgroundColor: Colors.white,
   colorScheme: _colorScheme,
   buttonTheme: _buttonTheme,
+  sliderTheme: SliderThemeData(
+    showValueIndicator: ShowValueIndicator.always,
+    activeTickMarkColor: null,
+    inactiveTickMarkColor: null,
+    trackHeight: 1,
+  ),
 
   scaffoldBackgroundColor: Colors.white,
   canvasColor: Colors.white,

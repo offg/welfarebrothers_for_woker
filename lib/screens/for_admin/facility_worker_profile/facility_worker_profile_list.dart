@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
 import 'package:welfarebrothers_for_worker/components/facility_worker_profile/facility_worker_profile_card.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facility_worker_profile.dart';
-import 'package:welfarebrothers_for_worker/view_models/facility_administration.dart';
-import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
+import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_administration.dart';
+import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class FacilityWorkerProfileListScreen extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/work_schedule/work_schedule_summary_card.dart';
-import 'package:welfarebrothers_for_worker/view_models/work_schedule.dart';
+import 'package:welfarebrothers_for_worker/view_models/for_admin/work_schedule.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class WorkScheduleListScreen extends StatelessWidget {

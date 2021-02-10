@@ -1,0 +1,3776 @@
+swagger: '2.0'
+info:
+  title: welfarebrothers-api
+  version: v0
+host: localhost:8000
+schemes:
+  - http
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+security:
+  - Bearer: []
+paths:
+  /auth/facility_linking:
+    get:
+      operationId: auth_facility_linking_list
+      description: ''
+      parameters:
+        - name: facility_user_link_id
+          in: query
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+        - auth
+    parameters: []
+  /auth/facility_linking/_finish_flow:
+    post:
+      operationId: auth_facility_linking__finish_flow_create
+      description: ''
+      parameters:
+        - name: facility_user_link_id
+          in: query
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+        - auth
+    parameters: []
+  /auth/facility_linking/_greet:
+    post:
+      operationId: auth_facility_linking__greet_create
+      description: ''
+      parameters:
+        - name: facility_user_link_id
+          in: query
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+        - auth
+    parameters: []
+  /auth/facility_linking/_start_flow:
+    post:
+      operationId: auth_facility_linking__start_flow_create
+      description: ''
+      parameters:
+        - name: facility_user_link_id
+          in: query
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+        - auth
+    parameters: []
+  /auth/facility_linking/_verify:
+    post:
+      operationId: auth_facility_linking__verify_create
+      description: ''
+      parameters:
+        - name: facility_user_link_id
+          in: query
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+        - auth
+    parameters: []
+  /auth/token:
+    post:
+      operationId: auth_token_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersTokenClaimsForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersTokenClaims'
+      tags:
+        - auth
+    parameters: []
+  /auth/token/refresh/:
+    post:
+      operationId: auth_token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/TokenRefresh'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/TokenRefresh'
+      tags:
+        - auth
+    parameters: []
+  /care_service_categories:
+    get:
+      operationId: care_service_categories_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CareServiceCategory'
+      tags:
+        - care_service_categories
+    post:
+      operationId: care_service_categories_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceCategoryForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceCategory'
+      tags:
+        - care_service_categories
+    parameters: []
+  /care_service_categories/{category_pk}/groups:
+    get:
+      operationId: care_service_categories_groups_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CareServiceGroup'
+      tags:
+        - care_service_categories
+    post:
+      operationId: care_service_categories_groups_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceGroupForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceGroup'
+      tags:
+        - care_service_categories
+    parameters:
+      - name: category_pk
+        in: path
+        required: true
+        type: string
+  /care_service_categories/{category_pk}/groups/{group_pk}/services:
+    get:
+      operationId: care_service_categories_groups_services_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CareService'
+      tags:
+        - care_service_categories
+    post:
+      operationId: care_service_categories_groups_services_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareService'
+      tags:
+        - care_service_categories
+    parameters:
+      - name: category_pk
+        in: path
+        required: true
+        type: string
+      - name: group_pk
+        in: path
+        required: true
+        type: string
+  /care_service_categories/{category_pk}/groups/{group_pk}/services/{id}:
+    get:
+      operationId: care_service_categories_groups_services_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareService'
+      tags:
+        - care_service_categories
+    put:
+      operationId: care_service_categories_groups_services_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareService'
+      tags:
+        - care_service_categories
+    patch:
+      operationId: care_service_categories_groups_services_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareService'
+      tags:
+        - care_service_categories
+    delete:
+      operationId: care_service_categories_groups_services_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - care_service_categories
+    parameters:
+      - name: category_pk
+        in: path
+        required: true
+        type: string
+      - name: group_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique value identifying this care service.
+        required: true
+        type: string
+  /care_service_categories/{category_pk}/groups/{id}:
+    get:
+      operationId: care_service_categories_groups_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceGroup'
+      tags:
+        - care_service_categories
+    put:
+      operationId: care_service_categories_groups_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceGroupForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceGroup'
+      tags:
+        - care_service_categories
+    patch:
+      operationId: care_service_categories_groups_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceGroupForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceGroup'
+      tags:
+        - care_service_categories
+    delete:
+      operationId: care_service_categories_groups_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - care_service_categories
+    parameters:
+      - name: category_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique value identifying this care service group.
+        required: true
+        type: string
+  /care_service_categories/{id}:
+    get:
+      operationId: care_service_categories_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceCategory'
+      tags:
+        - care_service_categories
+    put:
+      operationId: care_service_categories_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceCategoryForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceCategory'
+      tags:
+        - care_service_categories
+    patch:
+      operationId: care_service_categories_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CareServiceCategoryForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CareServiceCategory'
+      tags:
+        - care_service_categories
+    delete:
+      operationId: care_service_categories_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - care_service_categories
+    parameters:
+      - name: id
+        in: path
+        description: A unique value identifying this care service category.
+        required: true
+        type: string
+  /facilities:
+    get:
+      operationId: facilities_list
+      description: ''
+      parameters:
+        - name: prefecture
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: city
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: care_service__group
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: care_service__group__category
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: keyword__contains
+          in: query
+          description: ''
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Facility'
+      tags:
+        - facilities
+    post:
+      operationId: facilities_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Facility'
+      tags:
+        - facilities
+    parameters: []
+  /facilities/{id}:
+    get:
+      operationId: facilities_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Facility'
+      tags:
+        - facilities
+    put:
+      operationId: facilities_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Facility'
+      tags:
+        - facilities
+    patch:
+      operationId: facilities_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Facility'
+      tags:
+        - facilities
+    delete:
+      operationId: facilities_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - facilities
+    parameters:
+      - name: id
+        in: path
+        description: A UUID string identifying this facility.
+        required: true
+        type: string
+        format: uuid
+  /for_worker/facilities:
+    get:
+      operationId: for_worker_facilities_list
+      description: ''
+      parameters:
+        - name: prefecture
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: city
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: care_service__group
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: care_service__group__category
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: keyword__contains
+          in: query
+          description: ''
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FacilityForWorker'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facilities_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityForWorkerForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityForWorker'
+      tags:
+        - for_worker
+    parameters: []
+  /for_worker/facilities/{id}:
+    get:
+      operationId: for_worker_facilities_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityForWorker'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facilities_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityForWorkerForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityForWorker'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facilities_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityForWorkerForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityForWorker'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facilities_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: id
+        in: path
+        description: A UUID string identifying this facility.
+        required: true
+        type: string
+        format: uuid
+  /for_worker/facility_administrations:
+    get:
+      operationId: for_worker_facility_administrations_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FacilityAdministration'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityAdministrationForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAdministration'
+      tags:
+        - for_worker
+    parameters: []
+  /for_worker/facility_administrations/{facility_administration_id}/work_schedules/{work_schedule_id}/_export:
+    get:
+      operationId: for_worker_facility_administrations_work_schedules__export_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_work_schedules__export_create
+      description: ''
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_id
+        in: path
+        required: true
+        type: string
+      - name: work_schedule_id
+        in: path
+        required: true
+        type: string
+  /for_worker/facility_administrations/{facility_administration_pk}/availability/:
+    get:
+      operationId: for_worker_facility_administrations_availability_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FacilityAvailability'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_availability_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityAvailabilityForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAvailability'
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/:
+    get:
+      operationId: for_worker_facility_administrations_availability_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAvailability'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facility_administrations_availability_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityAvailabilityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAvailability'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facility_administrations_availability_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityAvailabilityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAvailability'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_administrations_availability_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique integer value identifying this facility availability.
+        required: true
+        type: integer
+  /for_worker/facility_administrations/{facility_administration_pk}/shift_config/:
+    get:
+      operationId: for_worker_facility_administrations_shift_config_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ShiftConfig'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_shift_config_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ShiftConfigForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ShiftConfig'
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/facility_administrations/{facility_administration_pk}/shift_config/{id}/:
+    get:
+      operationId: for_worker_facility_administrations_shift_config_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ShiftConfig'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facility_administrations_shift_config_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ShiftConfigForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ShiftConfig'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facility_administrations_shift_config_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ShiftConfigForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ShiftConfig'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_administrations_shift_config_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique integer value identifying this shift config.
+        required: true
+        type: integer
+  ? /for_worker/facility_administrations/{facility_administration_pk}/shift_config/{shift_config_pk}/role_assignment_requirements/
+  : get:
+      operationId: for_worker_facility_administrations_shift_config_role_assignment_requirements_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/RoleAssignmentRequirement'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_shift_config_role_assignment_requirements_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RoleAssignmentRequirementForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/RoleAssignmentRequirement'
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: shift_config_pk
+        in: path
+        required: true
+        type: string
+  ? /for_worker/facility_administrations/{facility_administration_pk}/shift_config/{shift_config_pk}/role_assignment_requirements/{id}/
+  : get:
+      operationId: for_worker_facility_administrations_shift_config_role_assignment_requirements_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RoleAssignmentRequirement'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facility_administrations_shift_config_role_assignment_requirements_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RoleAssignmentRequirementForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RoleAssignmentRequirement'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facility_administrations_shift_config_role_assignment_requirements_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RoleAssignmentRequirementForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RoleAssignmentRequirement'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_administrations_shift_config_role_assignment_requirements_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique integer value identifying this role assignment requirement.
+        required: true
+        type: integer
+      - name: shift_config_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/facility_administrations/{facility_administration_pk}/shift_config/{shift_config_pk}/shift_patterns/:
+    get:
+      operationId: for_worker_facility_administrations_shift_config_shift_patterns_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ShiftPattern'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_shift_config_shift_patterns_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ShiftPatternForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ShiftPattern'
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: shift_config_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/facility_administrations/{facility_administration_pk}/shift_config/{shift_config_pk}/shift_patterns/{id}/:
+    get:
+      operationId: for_worker_facility_administrations_shift_config_shift_patterns_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ShiftPattern'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facility_administrations_shift_config_shift_patterns_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ShiftPatternForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ShiftPattern'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facility_administrations_shift_config_shift_patterns_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ShiftPatternForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ShiftPattern'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_administrations_shift_config_shift_patterns_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique integer value identifying this shift pattern.
+        required: true
+        type: integer
+      - name: shift_config_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/facility_administrations/{facility_administration_pk}/work_schedules/:
+    get:
+      operationId: for_worker_facility_administrations_work_schedules_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WorkScheduleSummary'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_work_schedules_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WorkScheduleForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WorkSchedule'
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/facility_administrations/{facility_administration_pk}/work_schedules/{id}/:
+    get:
+      operationId: for_worker_facility_administrations_work_schedules_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WorkSchedule'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_administrations_work_schedules_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique integer value identifying this work schedule.
+        required: true
+        type: integer
+  /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/:
+    get:
+      operationId: for_worker_facility_administrations_worker_profiles_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FacilityWorkerProfile'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_worker_profiles_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfileForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfile'
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+  ? /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/day_off_requests/
+  : get:
+      operationId: for_worker_facility_administrations_worker_profiles_day_off_requests_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DayOffRequest'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_worker_profiles_day_off_requests_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DayOffRequestForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/DayOffRequest'
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: facility_worker_profile_pk
+        in: path
+        required: true
+        type: string
+  ? /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/day_off_requests/{id}/
+  : get:
+      operationId: for_worker_facility_administrations_worker_profiles_day_off_requests_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/DayOffRequest'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facility_administrations_worker_profiles_day_off_requests_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DayOffRequestForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/DayOffRequest'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facility_administrations_worker_profiles_day_off_requests_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DayOffRequestForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/DayOffRequest'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_administrations_worker_profiles_day_off_requests_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: facility_worker_profile_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique integer value identifying this day off request.
+        required: true
+        type: integer
+  ? /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/
+  : get:
+      operationId: for_worker_facility_administrations_worker_profiles_working_hours_config_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WorkingHoursConfig'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_administrations_worker_profiles_working_hours_config_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WorkingHoursConfigForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WorkingHoursConfig'
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: facility_worker_profile_pk
+        in: path
+        required: true
+        type: string
+  ? /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{facility_worker_profile_pk}/working_hours_config/{id}/
+  : get:
+      operationId: for_worker_facility_administrations_worker_profiles_working_hours_config_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WorkingHoursConfig'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facility_administrations_worker_profiles_working_hours_config_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WorkingHoursConfigForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WorkingHoursConfig'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facility_administrations_worker_profiles_working_hours_config_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WorkingHoursConfigForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WorkingHoursConfig'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_administrations_worker_profiles_working_hours_config_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: facility_worker_profile_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique integer value identifying this working hours config.
+        required: true
+        type: integer
+  /for_worker/facility_administrations/{facility_administration_pk}/worker_profiles/{id}/:
+    get:
+      operationId: for_worker_facility_administrations_worker_profiles_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfile'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facility_administrations_worker_profiles_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfile'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facility_administrations_worker_profiles_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfile'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_administrations_worker_profiles_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility_administration_pk
+        in: path
+        required: true
+        type: string
+      - name: id
+        in: path
+        description: A unique integer value identifying this facility worker profile.
+        required: true
+        type: integer
+  /for_worker/facility_administrations/{facility}:
+    get:
+      operationId: for_worker_facility_administrations_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAdministration'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facility_administrations_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityAdministrationForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAdministration'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facility_administrations_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityAdministrationForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityAdministration'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_administrations_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: facility
+        in: path
+        description: A unique value identifying this facility administration.
+        required: true
+        type: string
+  /for_worker/facility_user_link_types:
+    get:
+      operationId: for_worker_facility_user_link_types_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FacilityUserLinkType'
+      tags:
+        - for_worker
+    parameters: []
+  /for_worker/facility_user_links:
+    get:
+      operationId: for_worker_facility_user_links_list
+      description: ''
+      parameters:
+        - name: facility_administration_id
+          in: query
+          description: ''
+          required: false
+          type: string
+        - name: worker_profile_id
+          in: query
+          description: ''
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FacilityUserLink'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_facility_user_links_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityUserLinkForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityUserLink'
+      tags:
+        - for_worker
+    parameters: []
+  /for_worker/facility_user_links/{id}:
+    get:
+      operationId: for_worker_facility_user_links_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityUserLink'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_facility_user_links_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityUserLinkForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityUserLink'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_facility_user_links_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityUserLinkForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityUserLink'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_facility_user_links_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this facility user link.
+        required: true
+        type: integer
+  /for_worker/roles:
+    get:
+      operationId: for_worker_roles_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Role'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_roles_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RoleForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Role'
+      tags:
+        - for_worker
+    parameters: []
+  /for_worker/roles/{id}:
+    get:
+      operationId: for_worker_roles_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Role'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_roles_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RoleForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Role'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_roles_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RoleForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Role'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_roles_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: id
+        in: path
+        description: A unique value identifying this role.
+        required: true
+        type: string
+  /for_worker/user:
+    post:
+      operationId: for_worker_user_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - for_worker
+    parameters: []
+  /for_worker/user/{id}:
+    get:
+      operationId: for_worker_user_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_user_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_user_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_user_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this welfarebrothers_user.
+        required: true
+        type: integer
+  /for_worker/user/{user_pk}/profile/:
+    get:
+      operationId: for_worker_user_profile_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_user_profile_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - for_worker
+    parameters:
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/user/{user_pk}/profile/{id}/:
+    get:
+      operationId: for_worker_user_profile_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_user_profile_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_user_profile_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_user_profile_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this welfarebrothers user
+          profile.
+        required: true
+        type: integer
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/:
+    get:
+      operationId: for_worker_user_profile_favorite_facilities_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FavoriteFacility'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_user_profile_favorite_facilities_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FavoriteFacilityForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FavoriteFacility'
+      tags:
+        - for_worker
+    parameters:
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+      - name: user_profile_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/:
+    get:
+      operationId: for_worker_user_profile_favorite_facilities_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FavoriteFacility'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_user_profile_favorite_facilities_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FavoriteFacilityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FavoriteFacility'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_user_profile_favorite_facilities_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FavoriteFacilityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FavoriteFacility'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_user_profile_favorite_facilities_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this favorite facility.
+        required: true
+        type: integer
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+      - name: user_profile_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/:
+    get:
+      operationId: for_worker_user_profile_worker_profile_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WorkerProfile'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_user_profile_worker_profile_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WorkerProfileForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WorkerProfile'
+      tags:
+        - for_worker
+    parameters:
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+      - name: user_profile_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/:
+    put:
+      operationId: for_worker_user_profile_worker_profile_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WorkerProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WorkerProfile'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_user_profile_worker_profile_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WorkerProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WorkerProfile'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_user_profile_worker_profile_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this worker profile.
+        required: true
+        type: integer
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+      - name: user_profile_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/:
+    get:
+      operationId: for_worker_user_profile_worker_profile_facility_worker_profiles_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FacilityWorkerProfile'
+      tags:
+        - for_worker
+    post:
+      operationId: for_worker_user_profile_worker_profile_facility_worker_profiles_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfileForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfile'
+      tags:
+        - for_worker
+    parameters:
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+      - name: user_profile_pk
+        in: path
+        required: true
+        type: string
+      - name: worker_profile_pk
+        in: path
+        required: true
+        type: string
+  /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/:
+    get:
+      operationId: for_worker_user_profile_worker_profile_facility_worker_profiles_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfile'
+      tags:
+        - for_worker
+    put:
+      operationId: for_worker_user_profile_worker_profile_facility_worker_profiles_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfile'
+      tags:
+        - for_worker
+    patch:
+      operationId: for_worker_user_profile_worker_profile_facility_worker_profiles_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FacilityWorkerProfile'
+      tags:
+        - for_worker
+    delete:
+      operationId: for_worker_user_profile_worker_profile_facility_worker_profiles_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - for_worker
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this facility worker profile.
+        required: true
+        type: integer
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+      - name: user_profile_pk
+        in: path
+        required: true
+        type: string
+      - name: worker_profile_pk
+        in: path
+        required: true
+        type: string
+  /me:
+    post:
+      operationId: me_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - me
+    parameters: []
+  /me/{id}:
+    get:
+      operationId: me_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - me
+    put:
+      operationId: me_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - me
+    patch:
+      operationId: me_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - me
+    delete:
+      operationId: me_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - me
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this welfarebrothers_user.
+        required: true
+        type: integer
+  /me/{user_pk}/profile:
+    get:
+      operationId: me_profile_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - me
+    post:
+      operationId: me_profile_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - me
+    parameters:
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+  /me/{user_pk}/profile/{id}:
+    get:
+      operationId: me_profile_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - me
+    put:
+      operationId: me_profile_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - me
+    patch:
+      operationId: me_profile_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfileForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WelfarebrothersUserProfile'
+      tags:
+        - me
+    delete:
+      operationId: me_profile_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - me
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this welfarebrothers user
+          profile.
+        required: true
+        type: integer
+      - name: user_pk
+        in: path
+        required: true
+        type: string
+  /prefectures:
+    get:
+      operationId: prefectures_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Prefecture'
+      tags:
+        - prefectures
+    post:
+      operationId: prefectures_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PrefectureForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Prefecture'
+      tags:
+        - prefectures
+    parameters: []
+  /prefectures/{id}:
+    get:
+      operationId: prefectures_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Prefecture'
+      tags:
+        - prefectures
+    put:
+      operationId: prefectures_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PrefectureForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Prefecture'
+      tags:
+        - prefectures
+    patch:
+      operationId: prefectures_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PrefectureForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Prefecture'
+      tags:
+        - prefectures
+    delete:
+      operationId: prefectures_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - prefectures
+    parameters:
+      - name: id
+        in: path
+        description: A unique value identifying this prefecture.
+        required: true
+        type: string
+  /prefectures/{prefecture_pk}/cities:
+    get:
+      operationId: prefectures_cities_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/City'
+      tags:
+        - prefectures
+    post:
+      operationId: prefectures_cities_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CityForWrite'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/City'
+      tags:
+        - prefectures
+    parameters:
+      - name: prefecture_pk
+        in: path
+        required: true
+        type: string
+  /prefectures/{prefecture_pk}/cities/{id}:
+    get:
+      operationId: prefectures_cities_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/City'
+      tags:
+        - prefectures
+    put:
+      operationId: prefectures_cities_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/City'
+      tags:
+        - prefectures
+    patch:
+      operationId: prefectures_cities_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CityForWrite'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/City'
+      tags:
+        - prefectures
+    delete:
+      operationId: prefectures_cities_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - prefectures
+    parameters:
+      - name: id
+        in: path
+        description: A unique value identifying this city.
+        required: true
+        type: string
+      - name: prefecture_pk
+        in: path
+        required: true
+        type: string
+definitions:
+  WelfarebrothersTokenClaimsForWrite:
+    required:
+      - username
+      - password
+    type: object
+    properties:
+      username:
+        title: Username
+        type: string
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  WelfarebrothersTokenClaims:
+    type: object
+    properties:
+      access:
+        title: Access
+        type: string
+        readOnly: true
+        minLength: 1
+      refresh:
+        title: Refresh
+        type: string
+        readOnly: true
+        minLength: 1
+  TokenRefresh:
+    required:
+      - refresh
+    type: object
+    properties:
+      refresh:
+        title: Refresh
+        type: string
+        minLength: 1
+  CareServiceCategory:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+  CareServiceCategoryForWrite:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+  CareServiceGroup:
+    required:
+      - id
+      - name
+      - category
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+  CareServiceGroupForWrite:
+    required:
+      - id
+      - name
+      - category
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+  CareService:
+    required:
+      - id
+      - name
+      - group
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+  CareServiceForWrite:
+    required:
+      - id
+      - name
+      - group
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+  Prefecture:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+  City:
+    required:
+      - id
+      - name
+      - prefecture
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      prefecture:
+        $ref: '#/definitions/Prefecture'
+  Facility:
+    required:
+      - name
+      - category
+      - group
+      - care_service
+      - tel
+      - city
+      - prefecture
+      - address
+      - building
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        format: uuid
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+      care_service:
+        $ref: '#/definitions/CareService'
+      tel:
+        title: Tel
+        type: string
+        minLength: 1
+      city:
+        $ref: '#/definitions/City'
+      prefecture:
+        $ref: '#/definitions/Prefecture'
+      address:
+        title: Address
+        type: string
+        minLength: 1
+      building:
+        title: Building
+        type: string
+        minLength: 1
+  FacilityForWrite:
+    required:
+      - name
+      - category
+      - group
+      - care_service
+      - tel
+      - city
+      - prefecture
+      - address
+      - building
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+      care_service:
+        $ref: '#/definitions/CareService'
+      tel:
+        title: Tel
+        type: string
+        minLength: 1
+      city:
+        $ref: '#/definitions/City'
+      prefecture:
+        $ref: '#/definitions/Prefecture'
+      address:
+        title: Address
+        type: string
+        minLength: 1
+      building:
+        title: Building
+        type: string
+        minLength: 1
+  FacilityForWorker:
+    required:
+      - name
+      - category
+      - group
+      - care_service
+      - tel
+      - city
+      - prefecture
+      - address
+      - building
+      - available_days_of_the_week
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        format: uuid
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+      care_service:
+        $ref: '#/definitions/CareService'
+      tel:
+        title: Tel
+        type: string
+        minLength: 1
+      city:
+        $ref: '#/definitions/City'
+      prefecture:
+        $ref: '#/definitions/Prefecture'
+      address:
+        title: Address
+        type: string
+        minLength: 1
+      building:
+        title: Building
+        type: string
+        minLength: 1
+      available_days_of_the_week:
+        type: array
+        items:
+          type: integer
+  FacilityForWorkerForWrite:
+    required:
+      - name
+      - category
+      - group
+      - care_service
+      - tel
+      - city
+      - prefecture
+      - address
+      - building
+      - available_days_of_the_week
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      category:
+        $ref: '#/definitions/CareServiceCategory'
+      group:
+        $ref: '#/definitions/CareServiceGroup'
+      care_service:
+        $ref: '#/definitions/CareService'
+      tel:
+        title: Tel
+        type: string
+        minLength: 1
+      city:
+        $ref: '#/definitions/City'
+      prefecture:
+        $ref: '#/definitions/Prefecture'
+      address:
+        title: Address
+        type: string
+        minLength: 1
+      building:
+        title: Building
+        type: string
+        minLength: 1
+      available_days_of_the_week:
+        type: array
+        items:
+          type: integer
+  FacilityAdministration:
+    required:
+      - facility_id
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        readOnly: true
+        minLength: 1
+      facility:
+        $ref: '#/definitions/FacilityForWorker'
+      facility_id:
+        title: Facility id
+        type: string
+        format: uuid
+  FacilityAdministrationForWrite:
+    required:
+      - facility_id
+    type: object
+    properties:
+      facility_id:
+        title: Facility id
+        type: string
+        format: uuid
+  FacilityAvailability:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      facility_administration:
+        $ref: '#/definitions/FacilityAdministration'
+      days_of_the_week:
+        type: array
+        items:
+          title: Days of the week
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+  FacilityAvailabilityForWrite:
+    required:
+      - facility_administration_id
+    type: object
+    properties:
+      facility_administration_id:
+        title: Facility administration id
+        type: string
+      days_of_the_week:
+        type: array
+        items:
+          title: Days of the week
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+  Role:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        maxLength: 40
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+  RoleAssignmentRequirement:
+    required:
+      - role_id
+      - shift_config_id
+      - time_from
+      - time_to
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      role:
+        $ref: '#/definitions/Role'
+      role_id:
+        title: Role id
+        type: string
+      shift_config_id:
+        title: Shift config id
+        type: integer
+      time_from:
+        title: Time from
+        type: string
+      time_to:
+        title: Time to
+        type: string
+      min_number_of_workers:
+        title: Min number of workers
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+      max_number_of_workers:
+        title: Max number of workers
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      days_of_the_week:
+        type: array
+        items:
+          title: Days of the week
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+  ShiftPattern:
+    required:
+      - shift_config_id
+      - time_from
+      - time_to
+      - symbol
+      - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      shift_config_id:
+        title: Shift config id
+        type: integer
+      time_from:
+        title: Time from
+        type: string
+      time_to:
+        title: Time to
+        type: string
+      symbol:
+        title: Symbol
+        type: string
+        maxLength: 10
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+  ShiftConfig:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      facility_administration:
+        $ref: '#/definitions/FacilityAdministration'
+      role_assignment_requirements:
+        type: array
+        items:
+          $ref: '#/definitions/RoleAssignmentRequirement'
+        readOnly: true
+      shift_patterns:
+        type: array
+        items:
+          $ref: '#/definitions/ShiftPattern'
+        readOnly: true
+  ShiftConfigForWrite:
+    required:
+      - facility_administration_id
+    type: object
+    properties:
+      facility_administration_id:
+        title: Facility administration id
+        type: string
+  RoleAssignmentRequirementForWrite:
+    required:
+      - role_id
+      - shift_config_id
+      - time_from
+      - time_to
+    type: object
+    properties:
+      role_id:
+        title: Role id
+        type: string
+      shift_config_id:
+        title: Shift config id
+        type: integer
+      time_from:
+        title: Time from
+        type: string
+      time_to:
+        title: Time to
+        type: string
+      min_number_of_workers:
+        title: Min number of workers
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+      max_number_of_workers:
+        title: Max number of workers
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      days_of_the_week:
+        type: array
+        items:
+          title: Days of the week
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+  ShiftPatternForWrite:
+    required:
+      - shift_config_id
+      - time_from
+      - time_to
+      - symbol
+      - name
+    type: object
+    properties:
+      shift_config_id:
+        title: Shift config id
+        type: integer
+      time_from:
+        title: Time from
+        type: string
+      time_to:
+        title: Time to
+        type: string
+      symbol:
+        title: Symbol
+        type: string
+        maxLength: 10
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+  Group:
+    required:
+      - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 150
+        minLength: 1
+  User:
+    required:
+      - username
+      - password
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      username:
+        title: Username
+        description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+          only.
+        type: string
+        pattern: ^[\w.@+-]+$
+        maxLength: 150
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+      groups:
+        type: array
+        items:
+          $ref: '#/definitions/Group'
+        readOnly: true
+  WelfarebrothersUserProfile:
+    required:
+      - user_id
+      - first_name
+      - last_name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      user:
+        $ref: '#/definitions/User'
+      user_id:
+        title: User id
+        type: string
+        minLength: 1
+      first_name:
+        title: First name
+        type: string
+        maxLength: 100
+        minLength: 1
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 100
+        minLength: 1
+  WorkerProfile:
+    required:
+      - user_profile_id
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      user_profile:
+        $ref: '#/definitions/WelfarebrothersUserProfile'
+      user_profile_id:
+        title: User profile id
+        type: integer
+  WorkingHoursConfig:
+    required:
+      - facility_worker_profile_id
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      facility_worker_profile_id:
+        title: Facility worker profile id
+        type: integer
+      monthly_max_working_hours:
+        title: Monthly max working hours
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      weekly_max_working_hours:
+        title: Weekly max working hours
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+  DayOffRequest:
+    required:
+      - facility_worker_profile_id
+      - date
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      facility_worker_profile_id:
+        title: Facility worker profile id
+        type: integer
+      date:
+        title: Date
+        type: string
+        format: date
+  FacilityWorkerProfile:
+    required:
+      - facility_administration_id
+      - capability_ids
+      - last_name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      facility_administration:
+        $ref: '#/definitions/FacilityAdministration'
+      facility_administration_id:
+        title: Facility administration id
+        type: string
+      worker_profile:
+        $ref: '#/definitions/WorkerProfile'
+      worker_profile_id:
+        title: Worker profile id
+        type: integer
+      capabilities:
+        type: array
+        items:
+          $ref: '#/definitions/Role'
+        readOnly: true
+      capability_ids:
+        type: array
+        items:
+          type: string
+        uniqueItems: true
+      working_hours_config:
+        $ref: '#/definitions/WorkingHoursConfig'
+      day_off_requests:
+        type: array
+        items:
+          $ref: '#/definitions/DayOffRequest'
+        readOnly: true
+      first_name:
+        title: First name
+        type: string
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 100
+        minLength: 1
+  WorkerStat:
+    required:
+      - work_schedule_id
+      - type
+      - value
+    type: object
+    properties:
+      work_schedule_id:
+        title: Work schedule id
+        type: integer
+      type:
+        title: Type
+        type: string
+        minLength: 1
+      facility_worker_profile:
+        $ref: '#/definitions/FacilityWorkerProfile'
+      value:
+        title: Value
+        type: number
+  WorkScheduleSummary:
+    required:
+      - date_from
+      - date_to
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      facility_administration:
+        $ref: '#/definitions/FacilityAdministration'
+      date_from:
+        title: Date from
+        type: string
+        format: date
+      date_to:
+        title: Date to
+        type: string
+        format: date
+      worker_stats:
+        type: array
+        items:
+          $ref: '#/definitions/WorkerStat'
+        readOnly: true
+  WorkScheduleForWrite:
+    required:
+      - facility_administration_id
+      - date_from
+      - date_to
+    type: object
+    properties:
+      facility_administration_id:
+        title: Facility administration id
+        type: string
+      date_from:
+        title: Date from
+        type: string
+        format: date
+      date_to:
+        title: Date to
+        type: string
+        format: date
+  Shift:
+    required:
+      - date
+      - work_schedule_id
+      - role_id
+      - shift_pattern_id
+      - facility_worker_profile_id
+    type: object
+    properties:
+      date:
+        title: Date
+        type: string
+        format: date
+      work_schedule_id:
+        title: Work schedule id
+        type: integer
+      role:
+        $ref: '#/definitions/Role'
+      role_id:
+        title: Role id
+        type: string
+      shift_pattern:
+        $ref: '#/definitions/ShiftPattern'
+      shift_pattern_id:
+        title: Shift pattern id
+        type: string
+      facility_worker_profile_id:
+        title: Facility worker profile id
+        type: integer
+      facility_worker_profile:
+        $ref: '#/definitions/FacilityWorkerProfile'
+  WorkSchedule:
+    required:
+      - date_from
+      - date_to
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      facility_administration:
+        $ref: '#/definitions/FacilityAdministration'
+      date_from:
+        title: Date from
+        type: string
+        format: date
+      date_to:
+        title: Date to
+        type: string
+        format: date
+      shifts:
+        type: array
+        items:
+          $ref: '#/definitions/Shift'
+        readOnly: true
+      worker_stats:
+        type: array
+        items:
+          $ref: '#/definitions/WorkerStat'
+        readOnly: true
+  FacilityWorkerProfileForWrite:
+    required:
+      - facility_administration_id
+      - capability_ids
+      - last_name
+    type: object
+    properties:
+      facility_administration_id:
+        title: Facility administration id
+        type: string
+      worker_profile_id:
+        title: Worker profile id
+        type: integer
+      capability_ids:
+        type: array
+        items:
+          type: string
+        uniqueItems: true
+      first_name:
+        title: First name
+        type: string
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 100
+        minLength: 1
+  DayOffRequestForWrite:
+    required:
+      - facility_worker_profile_id
+      - date
+    type: object
+    properties:
+      facility_worker_profile_id:
+        title: Facility worker profile id
+        type: integer
+      date:
+        title: Date
+        type: string
+        format: date
+  WorkingHoursConfigForWrite:
+    required:
+      - facility_worker_profile_id
+    type: object
+    properties:
+      facility_worker_profile_id:
+        title: Facility worker profile id
+        type: integer
+      monthly_max_working_hours:
+        title: Monthly max working hours
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      weekly_max_working_hours:
+        title: Weekly max working hours
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+  FacilityUserLinkType:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+  FacilityUserLinkState:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+  FacilityUserLink:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      worker_profile:
+        $ref: '#/definitions/WorkerProfile'
+      state:
+        $ref: '#/definitions/FacilityUserLinkState'
+      type:
+        $ref: '#/definitions/FacilityUserLinkType'
+      facility_administration:
+        $ref: '#/definitions/FacilityAdministration'
+      verified_by:
+        $ref: '#/definitions/FacilityWorkerProfile'
+      verified_at:
+        title: Verified at
+        type: string
+        format: date-time
+        x-nullable: true
+  FacilityUserLinkForWrite:
+    required:
+      - worker_profile_id
+      - state_id
+      - type_id
+      - facility_administration_id
+    type: object
+    properties:
+      worker_profile_id:
+        title: Worker profile id
+        type: integer
+      state_id:
+        title: State id
+        type: string
+        minLength: 1
+      type_id:
+        title: Type id
+        type: string
+        minLength: 1
+      facility_administration_id:
+        title: Facility administration id
+        type: string
+        minLength: 1
+      verified_by_id:
+        title: Verified by id
+        type: integer
+        x-nullable: true
+      verified_at:
+        title: Verified at
+        type: string
+        format: date-time
+        x-nullable: true
+  RoleForWrite:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        maxLength: 40
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+  UserForWrite:
+    required:
+      - username
+      - password
+    type: object
+    properties:
+      username:
+        title: Username
+        description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+          only.
+        type: string
+        pattern: ^[\w.@+-]+$
+        maxLength: 150
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  WelfarebrothersUserProfileForWrite:
+    required:
+      - user_id
+      - first_name
+      - last_name
+    type: object
+    properties:
+      user_id:
+        title: User id
+        type: string
+        minLength: 1
+      first_name:
+        title: First name
+        type: string
+        maxLength: 100
+        minLength: 1
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 100
+        minLength: 1
+  FavoriteFacility:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      facility:
+        $ref: '#/definitions/FacilityForWorker'
+      profile:
+        $ref: '#/definitions/WelfarebrothersUserProfile'
+  FavoriteFacilityForWrite:
+    required:
+      - facility_id
+      - profile_id
+    type: object
+    properties:
+      facility_id:
+        title: Facility id
+        type: string
+        minLength: 1
+      profile_id:
+        title: Profile id
+        type: integer
+  WorkerProfileForWrite:
+    required:
+      - user_profile_id
+    type: object
+    properties:
+      user_profile_id:
+        title: User profile id
+        type: integer
+  PrefectureForWrite:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+  CityForWrite:
+    required:
+      - id
+      - name
+      - prefecture
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
+      prefecture:
+        $ref: '#/definitions/Prefecture'

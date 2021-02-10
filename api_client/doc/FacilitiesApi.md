@@ -9,12 +9,12 @@ All URIs are relative to *http://localhost:8000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**facilitiesCreate**](FacilitiesApi.md#facilitiesCreate) | **POST** /facilities/ | 
-[**facilitiesDelete**](FacilitiesApi.md#facilitiesDelete) | **DELETE** /facilities/{id}/ | 
-[**facilitiesList**](FacilitiesApi.md#facilitiesList) | **GET** /facilities/ | 
-[**facilitiesPartialUpdate**](FacilitiesApi.md#facilitiesPartialUpdate) | **PATCH** /facilities/{id}/ | 
-[**facilitiesRead**](FacilitiesApi.md#facilitiesRead) | **GET** /facilities/{id}/ | 
-[**facilitiesUpdate**](FacilitiesApi.md#facilitiesUpdate) | **PUT** /facilities/{id}/ | 
+[**facilitiesCreate**](FacilitiesApi.md#facilitiesCreate) | **POST** /facilities | 
+[**facilitiesDelete**](FacilitiesApi.md#facilitiesDelete) | **DELETE** /facilities/{id} | 
+[**facilitiesList**](FacilitiesApi.md#facilitiesList) | **GET** /facilities | 
+[**facilitiesPartialUpdate**](FacilitiesApi.md#facilitiesPartialUpdate) | **PATCH** /facilities/{id} | 
+[**facilitiesRead**](FacilitiesApi.md#facilitiesRead) | **GET** /facilities/{id} | 
+[**facilitiesUpdate**](FacilitiesApi.md#facilitiesUpdate) | **PUT** /facilities/{id} | 
 
 
 # **facilitiesCreate**
@@ -25,9 +25,10 @@ Method | HTTP request | Description
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = FacilitiesApi();
 final data = FacilityForWrite(); // FacilityForWrite | 
@@ -52,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -69,12 +70,13 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = FacilitiesApi();
-final id = id_example; // String | A unique value identifying this facility.
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
 
 try { 
     api_instance.facilitiesDelete(id);
@@ -87,7 +89,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| A unique value identifying this facility. | 
+ **id** | [**String**](.md)| A UUID string identifying this facility. | 
 
 ### Return type
 
@@ -95,7 +97,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -105,21 +107,27 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **facilitiesList**
-> List<Facility> facilitiesList()
+> List<Facility> facilitiesList(prefecture, city, careServiceGroup, careServiceGroupCategory, keywordContains)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = FacilitiesApi();
+final prefecture = prefecture_example; // String | 
+final city = city_example; // String | 
+final careServiceGroup = careServiceGroup_example; // String | 
+final careServiceGroupCategory = careServiceGroupCategory_example; // String | 
+final keywordContains = keywordContains_example; // String | 
 
 try { 
-    final result = api_instance.facilitiesList();
+    final result = api_instance.facilitiesList(prefecture, city, careServiceGroup, careServiceGroupCategory, keywordContains);
     print(result);
 } catch (e) {
     print('Exception when calling FacilitiesApi->facilitiesList: $e\n');
@@ -127,7 +135,14 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **prefecture** | **String**|  | [optional] 
+ **city** | **String**|  | [optional] 
+ **careServiceGroup** | **String**|  | [optional] 
+ **careServiceGroupCategory** | **String**|  | [optional] 
+ **keywordContains** | **String**|  | [optional] 
 
 ### Return type
 
@@ -135,7 +150,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -152,12 +167,13 @@ This endpoint does not need any parameter.
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = FacilitiesApi();
-final id = id_example; // String | A unique value identifying this facility.
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
 final data = FacilityForWrite(); // FacilityForWrite | 
 
 try { 
@@ -172,7 +188,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| A unique value identifying this facility. | 
+ **id** | [**String**](.md)| A UUID string identifying this facility. | 
  **data** | [**FacilityForWrite**](FacilityForWrite.md)|  | 
 
 ### Return type
@@ -181,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -198,12 +214,13 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = FacilitiesApi();
-final id = id_example; // String | A unique value identifying this facility.
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
 
 try { 
     final result = api_instance.facilitiesRead(id);
@@ -217,7 +234,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| A unique value identifying this facility. | 
+ **id** | [**String**](.md)| A UUID string identifying this facility. | 
 
 ### Return type
 
@@ -225,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -242,12 +259,13 @@ Name | Type | Description  | Notes
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = FacilitiesApi();
-final id = id_example; // String | A unique value identifying this facility.
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this facility.
 final data = FacilityForWrite(); // FacilityForWrite | 
 
 try { 
@@ -262,7 +280,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| A unique value identifying this facility. | 
+ **id** | [**String**](.md)| A UUID string identifying this facility. | 
  **data** | [**FacilityForWrite**](FacilityForWrite.md)|  | 
 
 ### Return type
@@ -271,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

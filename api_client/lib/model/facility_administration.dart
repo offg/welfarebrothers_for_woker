@@ -19,7 +19,7 @@ class FacilityAdministration {
 
   String id;
 
-  Facility facility;
+  FacilityForWorker facility;
 
   String facilityId;
 
@@ -58,7 +58,7 @@ class FacilityAdministration {
     ? null
     : FacilityAdministration(
         id: json[r'id'],
-        facility: Facility.fromJson(json[r'facility']),
+        facility: FacilityForWorker.fromJson(json[r'facility']),
         facilityId: json[r'facility_id'],
     );
 

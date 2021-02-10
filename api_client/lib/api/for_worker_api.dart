@@ -15,17 +15,17 @@ class ForWorkerApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /for_worker/facility_administrations/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /for_worker/facilities' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [FacilityAdministrationForWrite] data (required):
-  Future<Response> forWorkerFacilityAdministrationsCreateWithHttpInfo(FacilityAdministrationForWrite data) async {
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<Response> forWorkerFacilitiesCreateWithHttpInfo(FacilityForWorkerForWrite data) async {
     // Verify required params are set.
     if (data == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facility_administrations/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/facilities'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -35,7 +35,875 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<FacilityForWorker> forWorkerFacilitiesCreate(FacilityForWorkerForWrite data) async {
+    final response = await forWorkerFacilitiesCreateWithHttpInfo(data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityForWorker') as FacilityForWorker;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'DELETE /for_worker/facilities/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A UUID string identifying this facility.
+  Future<Response> forWorkerFacilitiesDeleteWithHttpInfo(String id) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facilities/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A UUID string identifying this facility.
+  Future<void> forWorkerFacilitiesDelete(String id) async {
+    final response = await forWorkerFacilitiesDeleteWithHttpInfo(id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facilities' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] prefecture:
+  ///
+  /// * [String] city:
+  ///
+  /// * [String] careServiceGroup:
+  ///
+  /// * [String] careServiceGroupCategory:
+  ///
+  /// * [String] keywordContains:
+  Future<Response> forWorkerFacilitiesListWithHttpInfo({ String prefecture, String city, String careServiceGroup, String careServiceGroupCategory, String keywordContains }) async {
+    // Verify required params are set.
+
+    final path = '/for_worker/facilities'.replaceAll('{format}', 'json');
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (prefecture != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'prefecture', prefecture));
+    }
+    if (city != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'city', city));
+    }
+    if (careServiceGroup != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group', careServiceGroup));
+    }
+    if (careServiceGroupCategory != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'care_service__group__category', careServiceGroupCategory));
+    }
+    if (keywordContains != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'keyword__contains', keywordContains));
+    }
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] prefecture:
+  ///
+  /// * [String] city:
+  ///
+  /// * [String] careServiceGroup:
+  ///
+  /// * [String] careServiceGroupCategory:
+  ///
+  /// * [String] keywordContains:
+  Future<List<FacilityForWorker>> forWorkerFacilitiesList({ String prefecture, String city, String careServiceGroup, String careServiceGroupCategory, String keywordContains }) async {
+    final response = await forWorkerFacilitiesListWithHttpInfo( prefecture: prefecture, city: city, careServiceGroup: careServiceGroup, careServiceGroupCategory: careServiceGroupCategory, keywordContains: keywordContains );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<FacilityForWorker>') as List)
+        .map((item) => item as FacilityForWorker)
+        .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PATCH /for_worker/facilities/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A UUID string identifying this facility.
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<Response> forWorkerFacilitiesPartialUpdateWithHttpInfo(String id, FacilityForWorkerForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facilities/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A UUID string identifying this facility.
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<FacilityForWorker> forWorkerFacilitiesPartialUpdate(String id, FacilityForWorkerForWrite data) async {
+    final response = await forWorkerFacilitiesPartialUpdateWithHttpInfo(id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityForWorker') as FacilityForWorker;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facilities/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A UUID string identifying this facility.
+  Future<Response> forWorkerFacilitiesReadWithHttpInfo(String id) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facilities/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A UUID string identifying this facility.
+  Future<FacilityForWorker> forWorkerFacilitiesRead(String id) async {
+    final response = await forWorkerFacilitiesReadWithHttpInfo(id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityForWorker') as FacilityForWorker;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PUT /for_worker/facilities/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A UUID string identifying this facility.
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<Response> forWorkerFacilitiesUpdateWithHttpInfo(String id, FacilityForWorkerForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facilities/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   A UUID string identifying this facility.
+  ///
+  /// * [FacilityForWorkerForWrite] data (required):
+  Future<FacilityForWorker> forWorkerFacilitiesUpdate(String id, FacilityForWorkerForWrite data) async {
+    final response = await forWorkerFacilitiesUpdateWithHttpInfo(id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityForWorker') as FacilityForWorker;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /for_worker/facility_administrations/{facility_administration_pk}/availability/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityCreateWithHttpInfo(String facilityAdministrationPk, FacilityAvailabilityForWrite data) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<FacilityAvailability> forWorkerFacilityAdministrationsAvailabilityCreate(String facilityAdministrationPk, FacilityAvailabilityForWrite data) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityCreateWithHttpInfo(facilityAdministrationPk, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityAvailability') as FacilityAvailability;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'DELETE /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityDeleteWithHttpInfo(String facilityAdministrationPk, int id) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString())
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  Future<void> forWorkerFacilityAdministrationsAvailabilityDelete(String facilityAdministrationPk, int id) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityDeleteWithHttpInfo(facilityAdministrationPk, id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facility_administrations/{facility_administration_pk}/availability/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityListWithHttpInfo(String facilityAdministrationPk) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  Future<List<FacilityAvailability>> forWorkerFacilityAdministrationsAvailabilityList(String facilityAdministrationPk) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityListWithHttpInfo(facilityAdministrationPk);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<FacilityAvailability>') as List)
+        .map((item) => item as FacilityAvailability)
+        .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PATCH /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityPartialUpdateWithHttpInfo(String facilityAdministrationPk, int id, FacilityAvailabilityForWrite data) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString())
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<FacilityAvailability> forWorkerFacilityAdministrationsAvailabilityPartialUpdate(String facilityAdministrationPk, int id, FacilityAvailabilityForWrite data) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityPartialUpdateWithHttpInfo(facilityAdministrationPk, id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityAvailability') as FacilityAvailability;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityReadWithHttpInfo(String facilityAdministrationPk, int id) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString())
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  Future<FacilityAvailability> forWorkerFacilityAdministrationsAvailabilityRead(String facilityAdministrationPk, int id) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityReadWithHttpInfo(facilityAdministrationPk, id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityAvailability') as FacilityAvailability;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PUT /for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<Response> forWorkerFacilityAdministrationsAvailabilityUpdateWithHttpInfo(String facilityAdministrationPk, int id, FacilityAvailabilityForWrite data) async {
+    // Verify required params are set.
+    if (facilityAdministrationPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: facilityAdministrationPk');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_administrations/{facility_administration_pk}/availability/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'facility_administration_pk' + '}', facilityAdministrationPk.toString())
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationPk (required):
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility availability.
+  ///
+  /// * [FacilityAvailabilityForWrite] data (required):
+  Future<FacilityAvailability> forWorkerFacilityAdministrationsAvailabilityUpdate(String facilityAdministrationPk, int id, FacilityAvailabilityForWrite data) async {
+    final response = await forWorkerFacilityAdministrationsAvailabilityUpdateWithHttpInfo(facilityAdministrationPk, id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityAvailability') as FacilityAvailability;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /for_worker/facility_administrations' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [FacilityAdministrationForWrite] data (required):
+  Future<Response> forWorkerFacilityAdministrationsCreateWithHttpInfo(FacilityAdministrationForWrite data) async {
+    // Verify required params are set.
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_administrations'.replaceAll('{format}', 'json');
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -78,7 +946,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /for_worker/facility_administrations/{facility}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /for_worker/facility_administrations/{facility}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] facility (required):
@@ -89,7 +957,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: facility');
     }
 
-    final path = '/for_worker/facility_administrations/{facility}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_administrations/{facility}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'facility' + '}', facility.toString());
 
     Object postBody;
@@ -100,7 +968,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -137,9 +1005,9 @@ class ForWorkerApi {
     }
   }
 
-  /// Performs an HTTP 'GET /for_worker/facility_administrations/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/facility_administrations' operation and returns the [Response].
   Future<Response> forWorkerFacilityAdministrationsListWithHttpInfo() async {
-    final path = '/for_worker/facility_administrations/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/facility_administrations'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -149,7 +1017,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -191,7 +1059,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /for_worker/facility_administrations/{facility}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /for_worker/facility_administrations/{facility}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] facility (required):
@@ -207,7 +1075,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facility_administrations/{facility}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_administrations/{facility}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'facility' + '}', facility.toString());
 
     Object postBody = data;
@@ -218,7 +1086,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -264,7 +1132,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/facility_administrations/{facility}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/facility_administrations/{facility}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] facility (required):
@@ -275,7 +1143,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: facility');
     }
 
-    final path = '/for_worker/facility_administrations/{facility}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_administrations/{facility}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'facility' + '}', facility.toString());
 
     Object postBody;
@@ -286,7 +1154,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -356,7 +1224,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -429,7 +1297,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -489,7 +1357,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -567,7 +1435,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -643,7 +1511,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -721,7 +1589,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -802,7 +1670,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -870,7 +1738,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -956,7 +1824,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1040,7 +1908,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1127,7 +1995,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1209,7 +2077,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1290,7 +2158,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1358,7 +2226,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1444,7 +2312,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1528,7 +2396,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1615,7 +2483,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1698,7 +2566,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1746,7 +2614,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /for_worker/facility_administrations/{facility}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /for_worker/facility_administrations/{facility}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] facility (required):
@@ -1762,7 +2630,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/facility_administrations/{facility}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/facility_administrations/{facility}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'facility' + '}', facility.toString());
 
     Object postBody = data;
@@ -1773,7 +2641,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1845,7 +2713,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1918,7 +2786,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -1984,7 +2852,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2049,7 +2917,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2108,7 +2976,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2181,7 +3049,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2253,7 +3121,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2330,7 +3198,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2411,7 +3279,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2479,7 +3347,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2565,7 +3433,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2649,7 +3517,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2736,7 +3604,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2814,7 +3682,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2874,7 +3742,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -2952,7 +3820,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3028,7 +3896,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3107,7 +3975,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3187,7 +4055,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3268,7 +4136,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3336,7 +4204,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3422,7 +4290,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3506,7 +4374,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3593,7 +4461,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3643,17 +4511,71 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /for_worker/roles/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/facility_user_link_types' operation and returns the [Response].
+  Future<Response> forWorkerFacilityUserLinkTypesListWithHttpInfo() async {
+    final path = '/for_worker/facility_user_link_types'.replaceAll('{format}', 'json');
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  Future<List<FacilityUserLinkType>> forWorkerFacilityUserLinkTypesList() async {
+    final response = await forWorkerFacilityUserLinkTypesListWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<FacilityUserLinkType>') as List)
+        .map((item) => item as FacilityUserLinkType)
+        .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /for_worker/facility_user_links' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [RoleForWrite] data (required):
-  Future<Response> forWorkerRolesCreateWithHttpInfo(RoleForWrite data) async {
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<Response> forWorkerFacilityUserLinksCreateWithHttpInfo(FacilityUserLinkForWrite data) async {
     // Verify required params are set.
     if (data == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/roles/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/facility_user_links'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -3663,7 +4585,414 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<FacilityUserLink> forWorkerFacilityUserLinksCreate(FacilityUserLinkForWrite data) async {
+    final response = await forWorkerFacilityUserLinksCreateWithHttpInfo(data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityUserLink') as FacilityUserLink;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'DELETE /for_worker/facility_user_links/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  Future<Response> forWorkerFacilityUserLinksDeleteWithHttpInfo(int id) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facility_user_links/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  Future<void> forWorkerFacilityUserLinksDelete(int id) async {
+    final response = await forWorkerFacilityUserLinksDeleteWithHttpInfo(id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facility_user_links' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationId:
+  ///
+  /// * [String] workerProfileId:
+  Future<Response> forWorkerFacilityUserLinksListWithHttpInfo({ String facilityAdministrationId, String workerProfileId }) async {
+    // Verify required params are set.
+
+    final path = '/for_worker/facility_user_links'.replaceAll('{format}', 'json');
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (facilityAdministrationId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'facility_administration_id', facilityAdministrationId));
+    }
+    if (workerProfileId != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'worker_profile_id', workerProfileId));
+    }
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] facilityAdministrationId:
+  ///
+  /// * [String] workerProfileId:
+  Future<List<FacilityUserLink>> forWorkerFacilityUserLinksList({ String facilityAdministrationId, String workerProfileId }) async {
+    final response = await forWorkerFacilityUserLinksListWithHttpInfo( facilityAdministrationId: facilityAdministrationId, workerProfileId: workerProfileId );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<FacilityUserLink>') as List)
+        .map((item) => item as FacilityUserLink)
+        .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PATCH /for_worker/facility_user_links/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<Response> forWorkerFacilityUserLinksPartialUpdateWithHttpInfo(int id, FacilityUserLinkForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_user_links/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<FacilityUserLink> forWorkerFacilityUserLinksPartialUpdate(int id, FacilityUserLinkForWrite data) async {
+    final response = await forWorkerFacilityUserLinksPartialUpdateWithHttpInfo(id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityUserLink') as FacilityUserLink;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/facility_user_links/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  Future<Response> forWorkerFacilityUserLinksReadWithHttpInfo(int id) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/facility_user_links/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  Future<FacilityUserLink> forWorkerFacilityUserLinksRead(int id) async {
+    final response = await forWorkerFacilityUserLinksReadWithHttpInfo(id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityUserLink') as FacilityUserLink;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PUT /for_worker/facility_user_links/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<Response> forWorkerFacilityUserLinksUpdateWithHttpInfo(int id, FacilityUserLinkForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/facility_user_links/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this facility user link.
+  ///
+  /// * [FacilityUserLinkForWrite] data (required):
+  Future<FacilityUserLink> forWorkerFacilityUserLinksUpdate(int id, FacilityUserLinkForWrite data) async {
+    final response = await forWorkerFacilityUserLinksUpdateWithHttpInfo(id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FacilityUserLink') as FacilityUserLink;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /for_worker/roles' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [RoleForWrite] data (required):
+  Future<Response> forWorkerRolesCreateWithHttpInfo(RoleForWrite data) async {
+    // Verify required params are set.
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/roles'.replaceAll('{format}', 'json');
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3706,7 +5035,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /for_worker/roles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /for_worker/roles/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -3717,7 +5046,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/for_worker/roles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/roles/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -3728,7 +5057,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3765,9 +5094,9 @@ class ForWorkerApi {
     }
   }
 
-  /// Performs an HTTP 'GET /for_worker/roles/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/roles' operation and returns the [Response].
   Future<Response> forWorkerRolesListWithHttpInfo() async {
-    final path = '/for_worker/roles/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/roles'.replaceAll('{format}', 'json');
 
     Object postBody;
 
@@ -3777,7 +5106,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3819,7 +5148,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /for_worker/roles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /for_worker/roles/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -3835,7 +5164,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/roles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/roles/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -3846,7 +5175,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3892,7 +5221,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/roles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/roles/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -3903,7 +5232,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
 
-    final path = '/for_worker/roles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/roles/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody;
@@ -3914,7 +5243,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -3958,7 +5287,7 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /for_worker/roles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /for_worker/roles/{id}' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] id (required):
@@ -3974,7 +5303,7 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/roles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/roles/{id}'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString());
 
     Object postBody = data;
@@ -3985,7 +5314,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4031,17 +5360,17 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /for_worker/user_profile/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /for_worker/user' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [WelfarebrothersUserProfileForWrite] data (required):
-  Future<Response> forWorkerUserProfileCreateWithHttpInfo(WelfarebrothersUserProfileForWrite data) async {
+  /// * [UserForWrite] data (required):
+  Future<Response> forWorkerUserCreateWithHttpInfo(UserForWrite data) async {
     // Verify required params are set.
     if (data == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user_profile/'.replaceAll('{format}', 'json');
+    final path = '/for_worker/user'.replaceAll('{format}', 'json');
 
     Object postBody = data;
 
@@ -4051,7 +5380,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4079,9 +5408,212 @@ class ForWorkerApi {
 
   /// Parameters:
   ///
+  /// * [UserForWrite] data (required):
+  Future<User> forWorkerUserCreate(UserForWrite data) async {
+    final response = await forWorkerUserCreateWithHttpInfo(data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'User') as User;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'DELETE /for_worker/user/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this welfarebrothers_user.
+  Future<Response> forWorkerUserDeleteWithHttpInfo(int id) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/user/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this welfarebrothers_user.
+  Future<void> forWorkerUserDelete(int id) async {
+    final response = await forWorkerUserDeleteWithHttpInfo(id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'PATCH /for_worker/user/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this welfarebrothers_user.
+  ///
+  /// * [UserForWrite] data (required):
+  Future<Response> forWorkerUserPartialUpdateWithHttpInfo(int id, UserForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/user/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this welfarebrothers_user.
+  ///
+  /// * [UserForWrite] data (required):
+  Future<User> forWorkerUserPartialUpdate(int id, UserForWrite data) async {
+    final response = await forWorkerUserPartialUpdateWithHttpInfo(id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'User') as User;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'POST /for_worker/user/{user_pk}/profile/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  ///
   /// * [WelfarebrothersUserProfileForWrite] data (required):
-  Future<WelfarebrothersUserProfile> forWorkerUserProfileCreate(WelfarebrothersUserProfileForWrite data) async {
-    final response = await forWorkerUserProfileCreateWithHttpInfo(data);
+  Future<Response> forWorkerUserProfileCreateWithHttpInfo(String userPk, WelfarebrothersUserProfileForWrite data) async {
+    // Verify required params are set.
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [WelfarebrothersUserProfileForWrite] data (required):
+  Future<WelfarebrothersUserProfile> forWorkerUserProfileCreate(String userPk, WelfarebrothersUserProfileForWrite data) async {
+    final response = await forWorkerUserProfileCreateWithHttpInfo(userPk, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4094,19 +5626,25 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /for_worker/user_profile/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /for_worker/user/{user_pk}/profile/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this welfarebrothers user profile.
-  Future<Response> forWorkerUserProfileDeleteWithHttpInfo(int id) async {
+  ///
+  /// * [String] userPk (required):
+  Future<Response> forWorkerUserProfileDeleteWithHttpInfo(int id, String userPk) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
 
-    final path = '/for_worker/user_profile/{id}/'.replaceAll('{format}', 'json')
-      .replaceAll('{' + 'id' + '}', id.toString());
+    final path = '/for_worker/user/{user_pk}/profile/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString());
 
     Object postBody;
 
@@ -4116,7 +5654,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4146,16 +5684,119 @@ class ForWorkerApi {
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this welfarebrothers user profile.
-  Future<void> forWorkerUserProfileDelete(int id) async {
-    final response = await forWorkerUserProfileDeleteWithHttpInfo(id);
+  ///
+  /// * [String] userPk (required):
+  Future<void> forWorkerUserProfileDelete(int id, String userPk) async {
+    final response = await forWorkerUserProfileDeleteWithHttpInfo(id, userPk);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'GET /for_worker/user_profile/' operation and returns the [Response].
-  Future<Response> forWorkerUserProfileListWithHttpInfo() async {
-    final path = '/for_worker/user_profile/'.replaceAll('{format}', 'json');
+  /// Performs an HTTP 'POST /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesCreateWithHttpInfo(String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    // Verify required params are set.
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<FavoriteFacility> forWorkerUserProfileFavoriteFacilitiesCreate(String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesCreateWithHttpInfo(userPk, userProfilePk, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FavoriteFacility') as FavoriteFacility;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'DELETE /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesDeleteWithHttpInfo(int id, String userPk, String userProfilePk) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
 
     Object postBody;
 
@@ -4165,7 +5806,75 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<void> forWorkerUserProfileFavoriteFacilitiesDelete(int id, String userPk, String userProfilePk) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesDeleteWithHttpInfo(id, userPk, userProfilePk);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesListWithHttpInfo(String userPk, String userProfilePk) async {
+    // Verify required params are set.
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4191,8 +5900,339 @@ class ForWorkerApi {
     );
   }
 
-  Future<List<WelfarebrothersUserProfile>> forWorkerUserProfileList() async {
-    final response = await forWorkerUserProfileListWithHttpInfo();
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<List<FavoriteFacility>> forWorkerUserProfileFavoriteFacilitiesList(String userPk, String userProfilePk) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesListWithHttpInfo(userPk, userProfilePk);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return (apiClient.deserialize(_decodeBodyBytes(response), 'List<FavoriteFacility>') as List)
+        .map((item) => item as FavoriteFacility)
+        .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PATCH /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesPartialUpdateWithHttpInfo(int id, String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<FavoriteFacility> forWorkerUserProfileFavoriteFacilitiesPartialUpdate(int id, String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesPartialUpdateWithHttpInfo(id, userPk, userProfilePk, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FavoriteFacility') as FavoriteFacility;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesReadWithHttpInfo(int id, String userPk, String userProfilePk) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  Future<FavoriteFacility> forWorkerUserProfileFavoriteFacilitiesRead(int id, String userPk, String userProfilePk) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesReadWithHttpInfo(id, userPk, userProfilePk);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FavoriteFacility') as FavoriteFacility;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PUT /for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<Response> forWorkerUserProfileFavoriteFacilitiesUpdateWithHttpInfo(int id, String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+    if (userProfilePk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/favorite_facilities/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
+      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this favorite facility.
+  ///
+  /// * [String] userPk (required):
+  ///
+  /// * [String] userProfilePk (required):
+  ///
+  /// * [FavoriteFacilityForWrite] data (required):
+  Future<FavoriteFacility> forWorkerUserProfileFavoriteFacilitiesUpdate(int id, String userPk, String userProfilePk, FavoriteFacilityForWrite data) async {
+    final response = await forWorkerUserProfileFavoriteFacilitiesUpdateWithHttpInfo(id, userPk, userProfilePk, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'FavoriteFacility') as FavoriteFacility;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  Future<Response> forWorkerUserProfileListWithHttpInfo(String userPk) async {
+    // Verify required params are set.
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
+
+    final path = '/for_worker/user/{user_pk}/profile/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] userPk (required):
+  Future<List<WelfarebrothersUserProfile>> forWorkerUserProfileList(String userPk) async {
+    final response = await forWorkerUserProfileListWithHttpInfo(userPk);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4207,24 +6247,30 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /for_worker/user_profile/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /for_worker/user/{user_pk}/profile/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this welfarebrothers user profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [WelfarebrothersUserProfileForWrite] data (required):
-  Future<Response> forWorkerUserProfilePartialUpdateWithHttpInfo(int id, WelfarebrothersUserProfileForWrite data) async {
+  Future<Response> forWorkerUserProfilePartialUpdateWithHttpInfo(int id, String userPk, WelfarebrothersUserProfileForWrite data) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
     }
     if (data == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user_profile/{id}/'.replaceAll('{format}', 'json')
-      .replaceAll('{' + 'id' + '}', id.toString());
+    final path = '/for_worker/user/{user_pk}/profile/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString());
 
     Object postBody = data;
 
@@ -4234,7 +6280,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4265,9 +6311,11 @@ class ForWorkerApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this welfarebrothers user profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [WelfarebrothersUserProfileForWrite] data (required):
-  Future<WelfarebrothersUserProfile> forWorkerUserProfilePartialUpdate(int id, WelfarebrothersUserProfileForWrite data) async {
-    final response = await forWorkerUserProfilePartialUpdateWithHttpInfo(id, data);
+  Future<WelfarebrothersUserProfile> forWorkerUserProfilePartialUpdate(int id, String userPk, WelfarebrothersUserProfileForWrite data) async {
+    final response = await forWorkerUserProfilePartialUpdateWithHttpInfo(id, userPk, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4280,19 +6328,25 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/user_profile/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this welfarebrothers user profile.
-  Future<Response> forWorkerUserProfileReadWithHttpInfo(int id) async {
+  ///
+  /// * [String] userPk (required):
+  Future<Response> forWorkerUserProfileReadWithHttpInfo(int id, String userPk) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
 
-    final path = '/for_worker/user_profile/{id}/'.replaceAll('{format}', 'json')
-      .replaceAll('{' + 'id' + '}', id.toString());
+    final path = '/for_worker/user/{user_pk}/profile/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString());
 
     Object postBody;
 
@@ -4302,7 +6356,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4332,8 +6386,10 @@ class ForWorkerApi {
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this welfarebrothers user profile.
-  Future<WelfarebrothersUserProfile> forWorkerUserProfileRead(int id) async {
-    final response = await forWorkerUserProfileReadWithHttpInfo(id);
+  ///
+  /// * [String] userPk (required):
+  Future<WelfarebrothersUserProfile> forWorkerUserProfileRead(int id, String userPk) async {
+    final response = await forWorkerUserProfileReadWithHttpInfo(id, userPk);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4346,24 +6402,30 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /for_worker/user_profile/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /for_worker/user/{user_pk}/profile/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this welfarebrothers user profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [WelfarebrothersUserProfileForWrite] data (required):
-  Future<Response> forWorkerUserProfileUpdateWithHttpInfo(int id, WelfarebrothersUserProfileForWrite data) async {
+  Future<Response> forWorkerUserProfileUpdateWithHttpInfo(int id, String userPk, WelfarebrothersUserProfileForWrite data) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
     }
     if (data == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user_profile/{id}/'.replaceAll('{format}', 'json')
-      .replaceAll('{' + 'id' + '}', id.toString());
+    final path = '/for_worker/user/{user_pk}/profile/{id}/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString());
 
     Object postBody = data;
 
@@ -4373,7 +6435,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4404,9 +6466,11 @@ class ForWorkerApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this welfarebrothers user profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [WelfarebrothersUserProfileForWrite] data (required):
-  Future<WelfarebrothersUserProfile> forWorkerUserProfileUpdate(int id, WelfarebrothersUserProfileForWrite data) async {
-    final response = await forWorkerUserProfileUpdateWithHttpInfo(id, data);
+  Future<WelfarebrothersUserProfile> forWorkerUserProfileUpdate(int id, String userPk, WelfarebrothersUserProfileForWrite data) async {
+    final response = await forWorkerUserProfileUpdateWithHttpInfo(id, userPk, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4419,14 +6483,19 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /for_worker/user_profile/{user_profile_pk}/worker_profile/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/' operation and returns the [Response].
   /// Parameters:
+  ///
+  /// * [String] userPk (required):
   ///
   /// * [String] userProfilePk (required):
   ///
   /// * [WorkerProfileForWrite] data (required):
-  Future<Response> forWorkerUserProfileWorkerProfileCreateWithHttpInfo(String userProfilePk, WorkerProfileForWrite data) async {
+  Future<Response> forWorkerUserProfileWorkerProfileCreateWithHttpInfo(String userPk, String userProfilePk, WorkerProfileForWrite data) async {
     // Verify required params are set.
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
     }
@@ -4434,7 +6503,8 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
 
     Object postBody = data;
@@ -4445,7 +6515,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4473,11 +6543,13 @@ class ForWorkerApi {
 
   /// Parameters:
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [WorkerProfileForWrite] data (required):
-  Future<WorkerProfile> forWorkerUserProfileWorkerProfileCreate(String userProfilePk, WorkerProfileForWrite data) async {
-    final response = await forWorkerUserProfileWorkerProfileCreateWithHttpInfo(userProfilePk, data);
+  Future<WorkerProfile> forWorkerUserProfileWorkerProfileCreate(String userPk, String userProfilePk, WorkerProfileForWrite data) async {
+    final response = await forWorkerUserProfileWorkerProfileCreateWithHttpInfo(userPk, userProfilePk, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4490,24 +6562,30 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
-  Future<Response> forWorkerUserProfileWorkerProfileDeleteWithHttpInfo(int id, String userProfilePk) async {
+  Future<Response> forWorkerUserProfileWorkerProfileDeleteWithHttpInfo(int id, String userPk, String userProfilePk) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
     }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
 
     Object postBody;
@@ -4518,7 +6596,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4549,24 +6627,31 @@ class ForWorkerApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
-  Future<void> forWorkerUserProfileWorkerProfileDelete(int id, String userProfilePk) async {
-    final response = await forWorkerUserProfileWorkerProfileDeleteWithHttpInfo(id, userProfilePk);
+  Future<void> forWorkerUserProfileWorkerProfileDelete(int id, String userPk, String userProfilePk) async {
+    final response = await forWorkerUserProfileWorkerProfileDeleteWithHttpInfo(id, userPk, userProfilePk);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'POST /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/' operation and returns the [Response].
+  /// Performs an HTTP 'POST /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/' operation and returns the [Response].
   /// Parameters:
+  ///
+  /// * [String] userPk (required):
   ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
   ///
   /// * [FacilityWorkerProfileForWrite] data (required):
-  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreateWithHttpInfo(String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
+  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreateWithHttpInfo(String userPk, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
     // Verify required params are set.
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
     }
@@ -4577,7 +6662,8 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString())
       .replaceAll('{' + 'worker_profile_pk' + '}', workerProfilePk.toString());
 
@@ -4589,7 +6675,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4617,13 +6703,15 @@ class ForWorkerApi {
 
   /// Parameters:
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
   ///
   /// * [FacilityWorkerProfileForWrite] data (required):
-  Future<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate(String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
-    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreateWithHttpInfo(userProfilePk, workerProfilePk, data);
+  Future<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreate(String userPk, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
+    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesCreateWithHttpInfo(userPk, userProfilePk, workerProfilePk, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4636,19 +6724,24 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'DELETE /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this facility worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
-  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDeleteWithHttpInfo(int id, String userProfilePk, String workerProfilePk) async {
+  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDeleteWithHttpInfo(int id, String userPk, String userProfilePk, String workerProfilePk) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
     }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
@@ -4657,8 +6750,9 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: workerProfilePk');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString())
       .replaceAll('{' + 'worker_profile_pk' + '}', workerProfilePk.toString());
 
@@ -4670,7 +6764,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4701,24 +6795,31 @@ class ForWorkerApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this facility worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
-  Future<void> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete(int id, String userProfilePk, String workerProfilePk) async {
-    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDeleteWithHttpInfo(id, userProfilePk, workerProfilePk);
+  Future<void> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDelete(int id, String userPk, String userProfilePk, String workerProfilePk) async {
+    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesDeleteWithHttpInfo(id, userPk, userProfilePk, workerProfilePk);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
   }
 
-  /// Performs an HTTP 'GET /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/' operation and returns the [Response].
   /// Parameters:
+  ///
+  /// * [String] userPk (required):
   ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
-  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesListWithHttpInfo(String userProfilePk, String workerProfilePk) async {
+  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesListWithHttpInfo(String userPk, String userProfilePk, String workerProfilePk) async {
     // Verify required params are set.
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
     }
@@ -4726,7 +6827,8 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: workerProfilePk');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString())
       .replaceAll('{' + 'worker_profile_pk' + '}', workerProfilePk.toString());
 
@@ -4738,7 +6840,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4766,11 +6868,13 @@ class ForWorkerApi {
 
   /// Parameters:
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
-  Future<List<FacilityWorkerProfile>> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList(String userProfilePk, String workerProfilePk) async {
-    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesListWithHttpInfo(userProfilePk, workerProfilePk);
+  Future<List<FacilityWorkerProfile>> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesList(String userPk, String userProfilePk, String workerProfilePk) async {
+    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesListWithHttpInfo(userPk, userProfilePk, workerProfilePk);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4785,21 +6889,26 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this facility worker profile.
+  ///
+  /// * [String] userPk (required):
   ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
   ///
   /// * [FacilityWorkerProfileForWrite] data (required):
-  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdateWithHttpInfo(int id, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
+  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdateWithHttpInfo(int id, String userPk, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
     }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
@@ -4811,8 +6920,9 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString())
       .replaceAll('{' + 'worker_profile_pk' + '}', workerProfilePk.toString());
 
@@ -4824,7 +6934,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4855,13 +6965,15 @@ class ForWorkerApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this facility worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
   ///
   /// * [FacilityWorkerProfileForWrite] data (required):
-  Future<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate(int id, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
-    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdateWithHttpInfo(id, userProfilePk, workerProfilePk, data);
+  Future<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdate(int id, String userPk, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
+    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesPartialUpdateWithHttpInfo(id, userPk, userProfilePk, workerProfilePk, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4874,19 +6986,24 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this facility worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
-  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesReadWithHttpInfo(int id, String userProfilePk, String workerProfilePk) async {
+  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesReadWithHttpInfo(int id, String userPk, String userProfilePk, String workerProfilePk) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
     }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
@@ -4895,8 +7012,9 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: workerProfilePk');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString())
       .replaceAll('{' + 'worker_profile_pk' + '}', workerProfilePk.toString());
 
@@ -4908,7 +7026,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -4939,11 +7057,13 @@ class ForWorkerApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this facility worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
-  Future<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead(int id, String userProfilePk, String workerProfilePk) async {
-    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesReadWithHttpInfo(id, userProfilePk, workerProfilePk);
+  Future<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesRead(int id, String userPk, String userProfilePk, String workerProfilePk) async {
+    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesReadWithHttpInfo(id, userPk, userProfilePk, workerProfilePk);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -4956,21 +7076,26 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this facility worker profile.
+  ///
+  /// * [String] userPk (required):
   ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
   ///
   /// * [FacilityWorkerProfileForWrite] data (required):
-  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdateWithHttpInfo(int id, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
+  Future<Response> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdateWithHttpInfo(int id, String userPk, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
     }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
@@ -4982,8 +7107,9 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{worker_profile_pk}/facility_worker_profiles/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString())
       .replaceAll('{' + 'worker_profile_pk' + '}', workerProfilePk.toString());
 
@@ -4995,7 +7121,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -5026,13 +7152,15 @@ class ForWorkerApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this facility worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [String] workerProfilePk (required):
   ///
   /// * [FacilityWorkerProfileForWrite] data (required):
-  Future<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate(int id, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
-    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdateWithHttpInfo(id, userProfilePk, workerProfilePk, data);
+  Future<FacilityWorkerProfile> forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdate(int id, String userPk, String userProfilePk, String workerProfilePk, FacilityWorkerProfileForWrite data) async {
+    final response = await forWorkerUserProfileWorkerProfileFacilityWorkerProfilesUpdateWithHttpInfo(id, userPk, userProfilePk, workerProfilePk, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -5045,17 +7173,23 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/user_profile/{user_profile_pk}/worker_profile/' operation and returns the [Response].
+  /// Performs an HTTP 'GET /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/' operation and returns the [Response].
   /// Parameters:
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
-  Future<Response> forWorkerUserProfileWorkerProfileListWithHttpInfo(String userProfilePk) async {
+  Future<Response> forWorkerUserProfileWorkerProfileListWithHttpInfo(String userPk, String userProfilePk) async {
     // Verify required params are set.
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
+    }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
 
     Object postBody;
@@ -5066,7 +7200,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>[];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -5094,9 +7228,11 @@ class ForWorkerApi {
 
   /// Parameters:
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
-  Future<List<WorkerProfile>> forWorkerUserProfileWorkerProfileList(String userProfilePk) async {
-    final response = await forWorkerUserProfileWorkerProfileListWithHttpInfo(userProfilePk);
+  Future<List<WorkerProfile>> forWorkerUserProfileWorkerProfileList(String userPk, String userProfilePk) async {
+    final response = await forWorkerUserProfileWorkerProfileListWithHttpInfo(userPk, userProfilePk);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -5111,19 +7247,24 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PATCH /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [WorkerProfileForWrite] data (required):
-  Future<Response> forWorkerUserProfileWorkerProfilePartialUpdateWithHttpInfo(int id, String userProfilePk, WorkerProfileForWrite data) async {
+  Future<Response> forWorkerUserProfileWorkerProfilePartialUpdateWithHttpInfo(int id, String userPk, String userProfilePk, WorkerProfileForWrite data) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
     }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
@@ -5132,8 +7273,9 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
 
     Object postBody = data;
@@ -5144,7 +7286,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -5175,11 +7317,13 @@ class ForWorkerApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [WorkerProfileForWrite] data (required):
-  Future<WorkerProfile> forWorkerUserProfileWorkerProfilePartialUpdate(int id, String userProfilePk, WorkerProfileForWrite data) async {
-    final response = await forWorkerUserProfileWorkerProfilePartialUpdateWithHttpInfo(id, userProfilePk, data);
+  Future<WorkerProfile> forWorkerUserProfileWorkerProfilePartialUpdate(int id, String userPk, String userProfilePk, WorkerProfileForWrite data) async {
+    final response = await forWorkerUserProfileWorkerProfilePartialUpdateWithHttpInfo(id, userPk, userProfilePk, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -5192,93 +7336,24 @@ class ForWorkerApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/' operation and returns the [Response].
+  /// Performs an HTTP 'PUT /for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this worker profile.
   ///
-  /// * [String] userProfilePk (required):
-  Future<Response> forWorkerUserProfileWorkerProfileReadWithHttpInfo(int id, String userProfilePk) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-    if (userProfilePk == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
-    }
-
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/'.replaceAll('{format}', 'json')
-      .replaceAll('{' + 'id' + '}', id.toString())
-      .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
-
-    Object postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    final contentTypes = <String>[];
-    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
-
-    if (
-      nullableContentType != null &&
-      nullableContentType.toLowerCase().startsWith('multipart/form-data')
-    ) {
-      bool hasFields = false;
-      final mp = MultipartRequest(null, null);
-      if (hasFields) {
-        postBody = mp;
-      }
-    } else {
-    }
-
-    return await apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      nullableContentType,
-      authNames,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [int] id (required):
-  ///   A unique integer value identifying this worker profile.
-  ///
-  /// * [String] userProfilePk (required):
-  Future<WorkerProfile> forWorkerUserProfileWorkerProfileRead(int id, String userProfilePk) async {
-    final response = await forWorkerUserProfileWorkerProfileReadWithHttpInfo(id, userProfilePk);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'WorkerProfile') as WorkerProfile;
-    }
-    return null;
-  }
-
-  /// Performs an HTTP 'PUT /for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [int] id (required):
-  ///   A unique integer value identifying this worker profile.
+  /// * [String] userPk (required):
   ///
   /// * [String] userProfilePk (required):
   ///
   /// * [WorkerProfileForWrite] data (required):
-  Future<Response> forWorkerUserProfileWorkerProfileUpdateWithHttpInfo(int id, String userProfilePk, WorkerProfileForWrite data) async {
+  Future<Response> forWorkerUserProfileWorkerProfileUpdateWithHttpInfo(int id, String userPk, String userProfilePk, WorkerProfileForWrite data) async {
     // Verify required params are set.
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (userPk == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: userPk');
     }
     if (userProfilePk == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: userProfilePk');
@@ -5287,8 +7362,9 @@ class ForWorkerApi {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
     }
 
-    final path = '/for_worker/user_profile/{user_profile_pk}/worker_profile/{id}/'.replaceAll('{format}', 'json')
+    final path = '/for_worker/user/{user_pk}/profile/{user_profile_pk}/worker_profile/{id}/'.replaceAll('{format}', 'json')
       .replaceAll('{' + 'id' + '}', id.toString())
+      .replaceAll('{' + 'user_pk' + '}', userPk.toString())
       .replaceAll('{' + 'user_profile_pk' + '}', userProfilePk.toString());
 
     Object postBody = data;
@@ -5299,7 +7375,7 @@ class ForWorkerApi {
 
     final contentTypes = <String>['application/json'];
     final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    final authNames = <String>['Basic'];
+    final authNames = <String>['Bearer'];
 
     if (
       nullableContentType != null &&
@@ -5330,11 +7406,13 @@ class ForWorkerApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this worker profile.
   ///
+  /// * [String] userPk (required):
+  ///
   /// * [String] userProfilePk (required):
   ///
   /// * [WorkerProfileForWrite] data (required):
-  Future<WorkerProfile> forWorkerUserProfileWorkerProfileUpdate(int id, String userProfilePk, WorkerProfileForWrite data) async {
-    final response = await forWorkerUserProfileWorkerProfileUpdateWithHttpInfo(id, userProfilePk, data);
+  Future<WorkerProfile> forWorkerUserProfileWorkerProfileUpdate(int id, String userPk, String userProfilePk, WorkerProfileForWrite data) async {
+    final response = await forWorkerUserProfileWorkerProfileUpdateWithHttpInfo(id, userPk, userProfilePk, data);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     }
@@ -5343,6 +7421,145 @@ class ForWorkerApi {
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
       return apiClient.deserialize(_decodeBodyBytes(response), 'WorkerProfile') as WorkerProfile;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /for_worker/user/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this welfarebrothers_user.
+  Future<Response> forWorkerUserReadWithHttpInfo(int id) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    final path = '/for_worker/user/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>[];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this welfarebrothers_user.
+  Future<User> forWorkerUserRead(int id) async {
+    final response = await forWorkerUserReadWithHttpInfo(id);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'User') as User;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PUT /for_worker/user/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this welfarebrothers_user.
+  ///
+  /// * [UserForWrite] data (required):
+  Future<Response> forWorkerUserUpdateWithHttpInfo(int id, UserForWrite data) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (data == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: data');
+    }
+
+    final path = '/for_worker/user/{id}'.replaceAll('{format}', 'json')
+      .replaceAll('{' + 'id' + '}', id.toString());
+
+    Object postBody = data;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    final contentTypes = <String>['application/json'];
+    final nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
+    final authNames = <String>['Bearer'];
+
+    if (
+      nullableContentType != null &&
+      nullableContentType.toLowerCase().startsWith('multipart/form-data')
+    ) {
+      bool hasFields = false;
+      final mp = MultipartRequest(null, null);
+      if (hasFields) {
+        postBody = mp;
+      }
+    } else {
+    }
+
+    return await apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      nullableContentType,
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  ///   A unique integer value identifying this welfarebrothers_user.
+  ///
+  /// * [UserForWrite] data (required):
+  Future<User> forWorkerUserUpdate(int id, UserForWrite data) async {
+    final response = await forWorkerUserUpdateWithHttpInfo(id, data);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'User') as User;
     }
     return null;
   }

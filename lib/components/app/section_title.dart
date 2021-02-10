@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
-  final bool withBack;
-  const SectionTitle(this.title, {bool withBack}) : this.withBack = withBack ?? false;
+  const SectionTitle(this.title);
 
   @override
   Widget build(BuildContext context) {
@@ -11,20 +10,15 @@ class SectionTitle extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       child: Align(
         child: Row(children: [
-          if (withBack)
-            IconButton(
-              icon: Icon(Icons.navigate_before_rounded),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
           Text(
             title,
             style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 15,
+              fontWeight: FontWeight.w400,
+              fontSize: 18,
             ),
           )
         ]),
-        alignment: Alignment.centerLeft,
+        alignment: Alignment.topLeft,
       ),
     );
   }

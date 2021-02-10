@@ -9,77 +9,176 @@ All URIs are relative to *http://localhost:8000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**usersList**](UsersApi.md#usersList) | **GET** /users/ | 
-[**usersProfilesCreate**](UsersApi.md#usersProfilesCreate) | **POST** /users/{user_pk}/profiles/ | 
-[**usersProfilesDelete**](UsersApi.md#usersProfilesDelete) | **DELETE** /users/{user_pk}/profiles/{id}/ | 
-[**usersProfilesList**](UsersApi.md#usersProfilesList) | **GET** /users/{user_pk}/profiles/ | 
-[**usersProfilesPartialUpdate**](UsersApi.md#usersProfilesPartialUpdate) | **PATCH** /users/{user_pk}/profiles/{id}/ | 
-[**usersProfilesRead**](UsersApi.md#usersProfilesRead) | **GET** /users/{user_pk}/profiles/{id}/ | 
-[**usersProfilesUpdate**](UsersApi.md#usersProfilesUpdate) | **PUT** /users/{user_pk}/profiles/{id}/ | 
-[**usersRead**](UsersApi.md#usersRead) | **GET** /users/{id}/ | 
+[**usersCreate**](UsersApi.md#usersCreate) | **POST** /users | 
+[**usersDelete**](UsersApi.md#usersDelete) | **DELETE** /users/{id} | 
+[**usersPartialUpdate**](UsersApi.md#usersPartialUpdate) | **PATCH** /users/{id} | 
+[**usersProfileCreate**](UsersApi.md#usersProfileCreate) | **POST** /users/{user_pk}/profile/ | 
+[**usersProfileDelete**](UsersApi.md#usersProfileDelete) | **DELETE** /users/{user_pk}/profile/{id}/ | 
+[**usersProfileList**](UsersApi.md#usersProfileList) | **GET** /users/{user_pk}/profile/ | 
+[**usersProfilePartialUpdate**](UsersApi.md#usersProfilePartialUpdate) | **PATCH** /users/{user_pk}/profile/{id}/ | 
+[**usersProfileUpdate**](UsersApi.md#usersProfileUpdate) | **PUT** /users/{user_pk}/profile/{id}/ | 
+[**usersRead**](UsersApi.md#usersRead) | **GET** /users/{id} | 
+[**usersUpdate**](UsersApi.md#usersUpdate) | **PUT** /users/{id} | 
 
 
-# **usersList**
-> List<WelfarebrothersUser> usersList()
+# **usersCreate**
+> User usersCreate(data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = UsersApi();
+final data = UserForWrite(); // UserForWrite | 
 
 try { 
-    final result = api_instance.usersList();
+    final result = api_instance.usersCreate(data);
     print(result);
 } catch (e) {
-    print('Exception when calling UsersApi->usersList: $e\n');
+    print('Exception when calling UsersApi->usersCreate: $e\n');
 }
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**UserForWrite**](UserForWrite.md)|  | 
 
 ### Return type
 
-[**List<WelfarebrothersUser>**](WelfarebrothersUser.md)
+[**User**](User.md)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **usersProfilesCreate**
-> WelfarebrothersUserProfile usersProfilesCreate(userPk, data)
+# **usersDelete**
+> usersDelete(id)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = UsersApi();
+final id = 56; // int | A unique integer value identifying this welfarebrothers_user.
+
+try { 
+    api_instance.usersDelete(id);
+} catch (e) {
+    print('Exception when calling UsersApi->usersDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this welfarebrothers_user. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersPartialUpdate**
+> User usersPartialUpdate(id, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = UsersApi();
+final id = 56; // int | A unique integer value identifying this welfarebrothers_user.
+final data = UserForWrite(); // UserForWrite | 
+
+try { 
+    final result = api_instance.usersPartialUpdate(id, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling UsersApi->usersPartialUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this welfarebrothers_user. | 
+ **data** | [**UserForWrite**](UserForWrite.md)|  | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersProfileCreate**
+> WelfarebrothersUserProfile usersProfileCreate(userPk, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = UsersApi();
 final userPk = userPk_example; // String | 
 final data = WelfarebrothersUserProfileForWrite(); // WelfarebrothersUserProfileForWrite | 
 
 try { 
-    final result = api_instance.usersProfilesCreate(userPk, data);
+    final result = api_instance.usersProfileCreate(userPk, data);
     print(result);
 } catch (e) {
-    print('Exception when calling UsersApi->usersProfilesCreate: $e\n');
+    print('Exception when calling UsersApi->usersProfileCreate: $e\n');
 }
 ```
 
@@ -96,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -105,26 +204,27 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **usersProfilesDelete**
-> usersProfilesDelete(id, userPk)
+# **usersProfileDelete**
+> usersProfileDelete(id, userPk)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = UsersApi();
 final id = 56; // int | A unique integer value identifying this welfarebrothers user profile.
 final userPk = userPk_example; // String | 
 
 try { 
-    api_instance.usersProfilesDelete(id, userPk);
+    api_instance.usersProfileDelete(id, userPk);
 } catch (e) {
-    print('Exception when calling UsersApi->usersProfilesDelete: $e\n');
+    print('Exception when calling UsersApi->usersProfileDelete: $e\n');
 }
 ```
 
@@ -141,7 +241,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -150,26 +250,27 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **usersProfilesList**
-> List<WelfarebrothersUserProfile> usersProfilesList(userPk)
+# **usersProfileList**
+> List<WelfarebrothersUserProfile> usersProfileList(userPk)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = UsersApi();
 final userPk = userPk_example; // String | 
 
 try { 
-    final result = api_instance.usersProfilesList(userPk);
+    final result = api_instance.usersProfileList(userPk);
     print(result);
 } catch (e) {
-    print('Exception when calling UsersApi->usersProfilesList: $e\n');
+    print('Exception when calling UsersApi->usersProfileList: $e\n');
 }
 ```
 
@@ -185,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -194,17 +295,18 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **usersProfilesPartialUpdate**
-> WelfarebrothersUserProfile usersProfilesPartialUpdate(id, userPk, data)
+# **usersProfilePartialUpdate**
+> WelfarebrothersUserProfile usersProfilePartialUpdate(id, userPk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = UsersApi();
 final id = 56; // int | A unique integer value identifying this welfarebrothers user profile.
@@ -212,10 +314,10 @@ final userPk = userPk_example; // String |
 final data = WelfarebrothersUserProfileForWrite(); // WelfarebrothersUserProfileForWrite | 
 
 try { 
-    final result = api_instance.usersProfilesPartialUpdate(id, userPk, data);
+    final result = api_instance.usersProfilePartialUpdate(id, userPk, data);
     print(result);
 } catch (e) {
-    print('Exception when calling UsersApi->usersProfilesPartialUpdate: $e\n');
+    print('Exception when calling UsersApi->usersProfilePartialUpdate: $e\n');
 }
 ```
 
@@ -233,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -242,63 +344,18 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **usersProfilesRead**
-> WelfarebrothersUserProfile usersProfilesRead(id, userPk)
+# **usersProfileUpdate**
+> WelfarebrothersUserProfile usersProfileUpdate(id, userPk, data)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
-
-final api_instance = UsersApi();
-final id = 56; // int | A unique integer value identifying this welfarebrothers user profile.
-final userPk = userPk_example; // String | 
-
-try { 
-    final result = api_instance.usersProfilesRead(id, userPk);
-    print(result);
-} catch (e) {
-    print('Exception when calling UsersApi->usersProfilesRead: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| A unique integer value identifying this welfarebrothers user profile. | 
- **userPk** | **String**|  | 
-
-### Return type
-
-[**WelfarebrothersUserProfile**](WelfarebrothersUserProfile.md)
-
-### Authorization
-
-[Basic](../README.md#Basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **usersProfilesUpdate**
-> WelfarebrothersUserProfile usersProfilesUpdate(id, userPk, data)
-
-
-
-### Example 
-```dart
-import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = UsersApi();
 final id = 56; // int | A unique integer value identifying this welfarebrothers user profile.
@@ -306,10 +363,10 @@ final userPk = userPk_example; // String |
 final data = WelfarebrothersUserProfileForWrite(); // WelfarebrothersUserProfileForWrite | 
 
 try { 
-    final result = api_instance.usersProfilesUpdate(id, userPk, data);
+    final result = api_instance.usersProfileUpdate(id, userPk, data);
     print(result);
 } catch (e) {
-    print('Exception when calling UsersApi->usersProfilesUpdate: $e\n');
+    print('Exception when calling UsersApi->usersProfileUpdate: $e\n');
 }
 ```
 
@@ -327,7 +384,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -337,16 +394,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **usersRead**
-> WelfarebrothersUser usersRead(id)
+> User usersRead(id)
 
 
 
 ### Example 
 ```dart
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
-// TODO Configure HTTP basic authorization: Basic
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('Basic').password = 'YOUR_PASSWORD';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
 
 final api_instance = UsersApi();
 final id = 56; // int | A unique integer value identifying this welfarebrothers_user.
@@ -367,15 +425,62 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WelfarebrothersUser**](WelfarebrothersUser.md)
+[**User**](User.md)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersUpdate**
+> User usersUpdate(id, data)
+
+
+
+### Example 
+```dart
+import 'package:welfarebrothers_for_worker_api_client/api.dart';
+// TODO Configure API key authorization: Bearer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Bearer').apiKeyPrefix = 'Bearer';
+
+final api_instance = UsersApi();
+final id = 56; // int | A unique integer value identifying this welfarebrothers_user.
+final data = UserForWrite(); // UserForWrite | 
+
+try { 
+    final result = api_instance.usersUpdate(id, data);
+    print(result);
+} catch (e) {
+    print('Exception when calling UsersApi->usersUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique integer value identifying this welfarebrothers_user. | 
+ **data** | [**UserForWrite**](UserForWrite.md)|  | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

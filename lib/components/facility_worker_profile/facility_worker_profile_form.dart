@@ -5,10 +5,12 @@ import 'package:provider/provider.dart';
 import 'package:welfarebrothers_for_worker/components/app/loading_overlay.dart';
 import 'package:welfarebrothers_for_worker/components/app/panel.dart';
 import 'package:welfarebrothers_for_worker/components/app/section_title.dart';
+import 'package:welfarebrothers_for_worker/components/input/welfarebrothers_input.dart';
 import 'package:welfarebrothers_for_worker/domain/facility_worker_profile/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker/utils/datetime.dart';
+import 'package:welfarebrothers_for_worker/utils/design.dart';
 import 'package:welfarebrothers_for_worker/view_models/app.dart';
-import 'package:welfarebrothers_for_worker/view_models/facility_worker_profile.dart';
+import 'package:welfarebrothers_for_worker/view_models/for_admin/facility_worker_profile.dart';
 import 'package:welfarebrothers_for_worker_api_client/api.dart';
 
 class FacilityWorkerProfileForm extends StatefulWidget {
@@ -25,8 +27,6 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
 
   FacilityWorkerProfile _facilityWorkerProfile;
   WorkingHoursConfig _workingHoursConfig;
-  TextEditingController _lastNameEditingController;
-  TextEditingController _firstNameEditingController;
 
   @override
   void initState() {
@@ -35,8 +35,6 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
       _facilityWorkerProfile = widget.facilityWorkerProfile.clone();
       _workingHoursConfig = _facilityWorkerProfile.workingHoursConfig ??
           WorkingHoursConfig(facilityWorkerProfileId: _facilityWorkerProfile.id);
-      _lastNameEditingController = TextEditingController(text: _facilityWorkerProfile.lastName);
-      _firstNameEditingController = TextEditingController(text: _facilityWorkerProfile.firstName);
       _slidableController = SlidableController();
     });
     super.initState();
@@ -92,18 +90,18 @@ class _FacilityWorkerProfileFormState extends State<FacilityWorkerProfileForm> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Flexible(
-              child: TextField(
-                controller: _lastNameEditingController,
+              child: WelfarebrothersInput(
+                text: _facilityWorkerProfile.lastName,
+                labelText: "姓",
                 onChanged: (value) => _facilityWorkerProfile.lastName = value,
-                decoration: InputDecoration(labelText: "姓"),
               ),
             ),
-            SizedBox(width: 20),
+            horizontalSpace(),
             Flexible(
-              child: TextField(
-                controller: _firstNameEditingController,
+              child: WelfarebrothersInput(
+                text: _facilityWorkerProfile.firstName,
+                labelText: "名",
                 onChanged: (value) => _facilityWorkerProfile.firstName = value,
-                decoration: InputDecoration(labelText: "名"),
               ),
             )
           ],
