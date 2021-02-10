@@ -38,7 +38,7 @@ Future setUp() async {
   final dio = Dio();
   locator.registerSingleton<Dio>(dio);
 
-  String basePath = "http://api-welfare.b-r-o-t-h-e-r-s.com";
+  String basePath = "https://welfarebrothers-api.herokuapp.com";
   locator.registerSingleton<ApiClient>(ApiClient(basePath: basePath));
   var apiClient = WelfarebrothersApiClient();
   var secureStorage = FlutterSecureStorage();
