@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:welfarebrothers_for_worker/domain/area/area_repository.dart';
@@ -39,12 +38,7 @@ Future setUp() async {
   final dio = Dio();
   locator.registerSingleton<Dio>(dio);
 
-  String basePath;
-  if (kDebugMode) {
-    basePath = "http://localhost:8000";
-  } else {
-    basePath = "https://api-welfare.b-r-o-t-h-e-r-s.com";
-  }
+  String basePath = "https://api-welfare.b-r-o-t-h-e-r-s.com";
 
   locator.registerSingleton<ApiClient>(ApiClient(basePath: basePath));
   var apiClient = WelfarebrothersApiClient();
