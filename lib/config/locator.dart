@@ -43,7 +43,7 @@ Future setUp() async {
   if (kDebugMode) {
     basePath = "http://localhost:8000";
   } else {
-    basePath = "https://welfarebrothers-api-edge.herokuapp.com";
+    basePath = "https://api-welfare.b-r-o-t-h-e-r-s.com";
   }
 
   locator.registerSingleton<ApiClient>(ApiClient(basePath: basePath));
